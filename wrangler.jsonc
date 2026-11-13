@@ -16,9 +16,8 @@
     {
       "binding": "DB",
       "database_name": "voisins-and-co-db",
-      // Créer la base UNE fois :  npx wrangler d1 create voisins-and-co-db
-      // puis coller ici l'UUID affiché (database_id). Sans UUID valide, wrangler deploy échoue (code 10021).
-      "database_id": "REMPLACER-PAR-L-ID-D1",
+      // UUID de la base créée avec : npx wrangler d1 create voisins-and-co-db
+      "database_id": "2b4adc41-6e46-4e99-9887-5d663b79e211",
       "migrations_dir": "migrations"
     }
   ]
