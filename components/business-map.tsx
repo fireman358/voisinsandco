@@ -12,7 +12,7 @@ interface BusinessMapProps {
 }
 
 const TIER_FILL: Record<string, string> = {
-  pro: "#D97706",
+  pro: "#38BDF8",
   verified: "#15803D",
   standard: "#A3A3A3",
 };

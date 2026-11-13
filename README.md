@@ -12,7 +12,11 @@ et Baulers (1401)** — Lillois.
 - **Repli automatique** sur les données de démonstration (`lib/seed-data.json`) si `env.DB` n'est pas lié : l'app fonctionne dès le premier déploiement.
 - **PWA** : `public/manifest.json`, service worker `public/sw.js` (cache hors-ligne), icônes PNG/SVG.
 
-Palette : fond `#FAFAFA`, cartes blanches, primaire **vert forêt `#15803D`**, accent **ambre `#D97706`** (badges Pro / offres flash).
+Palette : fond `#FAFAFA`, cartes blanches, texte **encre `#0F1115`**, primaire **vert forêt `#15803D`**
+(identité Voisins & Co), accent **bleu Edukisto `#38BDF8`** (teal `#0E7490` pour le texte) —
+badges Pro / offres flash. Les données de démo sont des **sociétés réelles** importées
+d'OpenStreetMap (Overpass) par [`scripts/fetch-osm-pois.mjs`](scripts/fetch-osm-pois.mjs),
+rafraîches chaque mois par [`.github/workflows/update-osm-data.yml`](.github/workflows/update-osm-data.yml).
 
 ## Scripts
 

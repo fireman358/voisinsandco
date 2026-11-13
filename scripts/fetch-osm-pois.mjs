@@ -10,6 +10,8 @@ const OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
   "https://overpass.private.coffee/api/interpreter",
+  "https://overpass.osm.jp/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
 const QUERY = `[out:json][timeout:90];
@@ -81,20 +83,46 @@ function slug(id, name) {
   return `osm-${id}-${base || "poi"}`;
 }
 
-async function fetchOverpass() {
-  let lastError;
-  for (const endpoint of OVERPASS_ENDPOINTS) {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function tryEndpoint(endpoint) {
+  for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
+          "User-Agent": "voisinsandco-osm-import/1.0 (https://github.com/fireman358/voisinsandco)",
+        },
         body: `data=${encodeURIComponent(QUERY)}`,
         signal: AbortSignal.timeout(120_000),
       });
+      if (res.status === 429 || res.status === 504) {
+        console.warn(`Échec ${endpoint} : HTTP ${res.status} (tentative ${attempt}/3)`);
+        await sleep(20_000 * attempt);
+        continue;
+      }
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
       if (json.elements) return json.elements;
       throw new Error("réponse Overpass sans éléments");
+    } catch (err) {
+      if (err.name === "TimeoutError" || attempt === 3) throw err;
+      console.warn(`Échec ${endpoint} : ${err.message} (tentative ${attempt}/3)`);
+      await sleep(10_000);
+    }
+  }
+  throw new Error("inaccessible");
+}
+
+async function fetchOverpass() {
+  let lastError;
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const elements = await tryEndpoint(endpoint);
+      console.log(`OK ${endpoint} : ${elements.length} éléments`);
+      return elements;
     } catch (err) {
       lastError = err;
       console.warn(`Échec ${endpoint} : ${err.message}`);
