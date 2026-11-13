@@ -132,7 +132,6 @@ async function fetchOverpass() {
 }
 
 const elements = await fetchOverpass();
-console.log("Premier élément :", JSON.stringify(elements[0]));
 
 const businesses = [];
 const seen = new Set();
@@ -140,7 +139,7 @@ const seen = new Set();
 for (const el of elements) {
   const tags = el.tags ?? {};
   const lat = el.lat ?? el.center?.lat;
-  const lng = el.lng ?? el.center?.lng;
+  const lng = el.lon ?? el.center?.lon;
   const name = tags.name?.trim();
   if (!name || lat === undefined || lng === undefined) continue;
 
