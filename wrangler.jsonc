@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "voisins-and-co",
+  "name": "voisinsandco",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-08-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -16,6 +16,8 @@
     {
       "binding": "DB",
       "database_name": "voisins-and-co-db",
+      // Créer la base UNE fois :  npx wrangler d1 create voisins-and-co-db
+      // puis coller ici l'UUID affiché (database_id). Sans UUID valide, wrangler deploy échoue (code 10021).
       "database_id": "REMPLACER-PAR-L-ID-D1",
       "migrations_dir": "migrations"
     }

@@ -30,11 +30,17 @@ npm run lint      # eslint
 
 ```bash
 npx wrangler login
-npx wrangler d1 create voisins-and-co-db        # copier le database_id rendu
-# coller cet id à la place de "REMPLACER-PAR-L-ID-D1" dans wrangler.jsonc
+npx wrangler d1 create voisins-and-co-db        # copier le database_id (UUID) rendu
+# coller cet UUID à la place de "REMPLACER-PAR-L-ID-D1" dans wrangler.jsonc, puis commit + push
 npx wrangler d1 migrations apply voisins-and-co-db --remote   # 0001_init.sql + 0002_seed.sql
 # ou manuellement : wrangler d1 execute voisins-and-co-db --remote --file=schema.sql --file=seed.sql
 ```
+
+> Le Worker s'appelle `voisinsandco` (aligné sur le nom du projet Cloudflare Pages) :
+> URL de prod = `https://voisinsandco.<sous-domaine>.workers.dev`.
+> Sans UUID valide dans `wrangler.jsonc`, `wrangler deploy` échoue avec l'erreur 10021
+> (« binding DB of type d1 must have a valid database_id ») — c'est le seul prérequis bloquant.
+> Tant que la base n'existe pas encore, l'app fonctionne en mode démo (données seed en mémoire).
 
 Sans cette étape, l'app tourne en **mode démo** (données seed en mémoire, badge « Données de démo » dans le header).
 
