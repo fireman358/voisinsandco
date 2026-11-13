@@ -132,6 +132,7 @@ async function fetchOverpass() {
 }
 
 const elements = await fetchOverpass();
+console.log("Premier élément :", JSON.stringify(elements[0]));
 
 const businesses = [];
 const seen = new Set();
