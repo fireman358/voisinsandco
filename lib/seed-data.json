@@ -52,30 +52,6 @@
       "lng": 4.388362
     },
     {
-      "id": "osm-3659503888-axa",
-      "name": "AXA",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Arquennes",
-      "postalCode": "7181",
-      "lat": 50.466441,
-      "lng": 4.332081
-    },
-    {
-      "id": "osm-265578188-bnp-paribas-fortis",
-      "name": "BNP Paribas Fortis",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Arquennes",
-      "postalCode": "7181",
-      "lat": 50.512403,
-      "lng": 4.362003
-    },
-    {
       "id": "osm-1943456768-boulangerie-christophe",
       "name": "Boulangerie Christophe",
       "category": "alimentation",
@@ -210,18 +186,6 @@
       "postalCode": "7181",
       "lat": 50.548925,
       "lng": 4.394589
-    },
-    {
-      "id": "osm-1015286121-ferme-van-landschoot",
-      "name": "Ferme Van Landschoot",
-      "category": "alimentation",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Arquennes",
-      "postalCode": "7181",
-      "lat": 50.549088,
-      "lng": 4.394193
     },
     {
       "id": "osm-9365817833-fromagerie-lambert-marcel",
@@ -939,19 +903,6 @@
       "hours": "PH,Mo-Su 08:00-20:00"
     },
     {
-      "id": "osm-262602331-carrefour-market",
-      "name": "Carrefour Market",
-      "category": "alimentation",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "62 Rue Philippe Monnoyer",
-      "town": "Courcelles",
-      "postalCode": "6180",
-      "lat": 50.463996,
-      "lng": 4.377609,
-      "hours": "Su 08:30-18:00; Mo-Fr 08:00-19:30; Sa 08:30-19:30"
-    },
-    {
       "id": "osm-13672851302-la-brasserie-du-trieu",
       "name": "La brasserie du Trieu",
       "category": "horeca",
@@ -1374,18 +1325,6 @@
       "lng": 4.394646
     },
     {
-      "id": "osm-255002899-belfius",
-      "name": "Belfius",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2 Rue Sainte-Anne",
-      "town": "Luttre",
-      "postalCode": "6238",
-      "lat": 50.507796,
-      "lng": 4.38957
-    },
-    {
       "id": "osm-253344341-chez-jackie",
       "name": "Chez Jackie",
       "category": "artisan",
@@ -1420,18 +1359,6 @@
       "postalCode": "6238",
       "lat": 50.50876,
       "lng": 4.391958
-    },
-    {
-      "id": "osm-253933413-crelan",
-      "name": "Crelan",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "13 Rue Escavée",
-      "town": "Luttre",
-      "postalCode": "6238",
-      "lat": 50.508189,
-      "lng": 4.394755
     },
     {
       "id": "osm-254110920-douceurs-du-coin",
@@ -1744,20 +1671,6 @@
       "phone": "+32 67 87 08 68"
     },
     {
-      "id": "osm-7484439792-argenta",
-      "name": "Argenta",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.59819,
-      "lng": 4.325859,
-      "phone": "+32 67 84 20 88",
-      "website": "https://www.argenta.be/"
-    },
-    {
       "id": "osm-9863033866-aroti-of-india",
       "name": "Aroti Of India",
       "category": "horeca",
@@ -1905,18 +1818,6 @@
       "phone": "+32 67 84 04 30"
     },
     {
-      "id": "osm-9903330732-axa",
-      "name": "AXA",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2 Rue de l'Archiduc",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.594056,
-      "lng": 4.327197
-    },
-    {
       "id": "osm-9886586554-bancontact-cash",
       "name": "Bancontact CASH",
       "category": "distributeur",
@@ -1932,18 +1833,6 @@
       "hours": "24/7"
     },
     {
-      "id": "osm-7442029120-belfius",
-      "name": "Belfius",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.590346,
-      "lng": 4.314903
-    },
-    {
       "id": "osm-7560627928-benedicte-nolmans",
       "name": "Benedicte Nolmans",
       "category": "artisan",
@@ -1955,18 +1844,6 @@
       "lat": 50.597451,
       "lng": 4.320923,
       "phone": "+32 67 84 08 48"
-    },
-    {
-      "id": "osm-1780928796-beobank",
-      "name": "Beobank",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.598158,
-      "lng": 4.32452
     },
     {
       "id": "osm-7578200712-bernard-bauvignet",
@@ -2036,18 +1913,6 @@
       "postalCode": "1400",
       "lat": 50.599434,
       "lng": 4.329533
-    },
-    {
-      "id": "osm-355881156-bnp-paribas-fortis",
-      "name": "BNP Paribas Fortis",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.598291,
-      "lng": 4.325752
     },
     {
       "id": "osm-13725516900-brasserie-de-la-place",
@@ -2207,18 +2072,6 @@
       "lng": 4.32108,
       "website": "https://magasins.carrefour.be/fr/s/carrefour/carrefour-market-nivelles-arbaletriers/1858",
       "hours": "Mo-Su 07:00-20:00"
-    },
-    {
-      "id": "osm-7513513135-cbc",
-      "name": "CBC",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.590793,
-      "lng": 4.314594
     },
     {
       "id": "osm-9980142128-centre-67",
@@ -2499,34 +2352,6 @@
       "phone": "+32 67 21 99 34",
       "website": "https://cotejardin.be/",
       "hours": "Tu-Th 08:30-18:30; Fr,Sa 08:30-19:00; Su 09:00-12:30"
-    },
-    {
-      "id": "osm-7601803683-cph",
-      "name": "CPH",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.598867,
-      "lng": 4.323302,
-      "phone": "+32 67 84 43 59",
-      "website": "https://www.cph.be"
-    },
-    {
-      "id": "osm-7402103843-crelan",
-      "name": "Crelan",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.599313,
-      "lng": 4.327844,
-      "website": "https://www.crelan.be/",
-      "hours": "Mo-Fr 08:30-12:30,13:30-16:00"
     },
     {
       "id": "osm-12979358601-crescendo",
@@ -2842,20 +2667,6 @@
       "phone": "+32 67 78 09 51"
     },
     {
-      "id": "osm-7601803682-europabank",
-      "name": "Europabank",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.599257,
-      "lng": 4.328564,
-      "phone": "+32 67 48 57 16",
-      "website": "https://www.europabank.be/fr/nos-agences/nivelles"
-    },
-    {
       "id": "osm-7514027564-exki",
       "name": "Exki",
       "category": "horeca",
@@ -2935,18 +2746,6 @@
       "postalCode": "1400",
       "lat": 50.566232,
       "lng": 4.358557
-    },
-    {
-      "id": "osm-1780911881-fintro",
-      "name": "Fintro",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.596912,
-      "lng": 4.323565
     },
     {
       "id": "osm-9831241380-flacon",
@@ -3131,18 +2930,6 @@
       "postalCode": "1400",
       "lat": 50.598393,
       "lng": 4.327214
-    },
-    {
-      "id": "osm-355881151-ing",
-      "name": "ING",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.598349,
-      "lng": 4.323
     },
     {
       "id": "osm-9930240398-institut-laetitia",
@@ -4402,18 +4189,6 @@
       "lng": 4.325191
     },
     {
-      "id": "osm-7416505382-multipharma",
-      "name": "Multipharma",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.596762,
-      "lng": 4.323022
-    },
-    {
       "id": "osm-9858700934-my-clinic",
       "name": "My Clinic",
       "category": "artisan",
@@ -4438,18 +4213,6 @@
       "lat": 50.595057,
       "lng": 4.30834,
       "phone": "+32 67 21 32 80"
-    },
-    {
-      "id": "osm-6777269240-nagelmackers",
-      "name": "Nagelmackers",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.594556,
-      "lng": 4.335031
     },
     {
       "id": "osm-9913257346-nathalie-cantineau",
@@ -4878,31 +4641,6 @@
       "lng": 4.367229
     },
     {
-      "id": "osm-1897007558-q8",
-      "name": "Q8",
-      "category": "distributeur",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.588711,
-      "lng": 4.31095
-    },
-    {
-      "id": "osm-6777557004-q8",
-      "name": "Q8",
-      "category": "distributeur",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "42 Avenue du Centenaire",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.594292,
-      "lng": 4.336244,
-      "website": "https://www.q8.be/fr/stations/q8-nivelles-avenue-du-centenaire"
-    },
-    {
       "id": "osm-803251517-quick",
       "name": "Quick",
       "category": "horeca",
@@ -5097,19 +4835,6 @@
       "lat": 50.592019,
       "lng": 4.318793,
       "website": "https://www.maes-oil.be/nl/tankstation/nivelles-shell/"
-    },
-    {
-      "id": "osm-251737739-shell",
-      "name": "Shell",
-      "category": "distributeur",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.597369,
-      "lng": 4.357047,
-      "hours": "PH,Mo-Su 00:00-24:00"
     },
     {
       "id": "osm-807061982-shop-go",
@@ -5728,19 +5453,6 @@
       "postalCode": "7180",
       "lat": 50.522453,
       "lng": 4.256879
-    },
-    {
-      "id": "osm-2072984630-cbc",
-      "name": "CBC",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Seneffe",
-      "postalCode": "7180",
-      "lat": 50.529058,
-      "lng": 4.255296,
-      "hours": "Mo-Fr 09:00-12:30"
     },
     {
       "id": "osm-11881424583-centre-de-kinesitherapie-barone",
@@ -6507,19 +6219,6 @@
       "postalCode": "7180",
       "lat": 50.556168,
       "lng": 4.314172
-    },
-    {
-      "id": "osm-3659481242-belfius-bank-insurances",
-      "name": "Belfius Bank & Insurances",
-      "category": "artisan",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "12 Grand-Rue",
-      "town": "Trazegnies",
-      "postalCode": "6183",
-      "lat": 50.462818,
-      "lng": 4.333348,
-      "phone": "+32 71 46 80 80"
     },
     {
       "id": "osm-92442488-intermarche",
