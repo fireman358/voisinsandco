@@ -19,7 +19,7 @@ lines.push("");
 
 for (const b of data.businesses) {
   lines.push(
-    `INSERT INTO businesses (id, name, category, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES (${[
+    `INSERT OR REPLACE INTO businesses (id, name, category, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES (${[
       q(b.id), q(b.name), q(b.category), q(b.tier), q(b.description), q(b.address), q(b.town),
       q(b.postalCode), q(b.lat), q(b.lng), q(b.phone ?? null), q(b.website ?? null),
       q(b.hours ?? null), q(b.bce ?? null), q(b.news ?? null),
@@ -29,7 +29,7 @@ for (const b of data.businesses) {
 lines.push("");
 for (const d of data.deals) {
   lines.push(
-    `INSERT INTO deals (id, business_id, business_name, category, title, description, price, original_price, quantity, remaining, pickup, town, lat, lng, expires_at) VALUES (${[
+    `INSERT OR REPLACE INTO deals (id, business_id, business_name, category, title, description, price, original_price, quantity, remaining, pickup, town, lat, lng, expires_at) VALUES (${[
       q(d.id), q(d.businessId), q(d.businessName), q(d.category), q(d.title), q(d.description),
       q(d.price), q(d.originalPrice ?? null), q(d.quantity), q(d.remaining), q(d.pickup), q(d.town),
       q(d.lat), q(d.lng), `datetime('now', '+${d.expiresOffsetHours} hours')`,
@@ -39,7 +39,7 @@ for (const d of data.deals) {
 lines.push("");
 for (const e of data.events) {
   lines.push(
-    `INSERT INTO events (id, title, organizer, type, date, location, town, lat, lng) VALUES (${[
+    `INSERT OR REPLACE INTO events (id, title, organizer, type, date, location, town, lat, lng) VALUES (${[
       q(e.id), q(e.title), q(e.organizer), q(e.type), `datetime('now', '+${e.dateOffsetDays} days')`,
       q(e.location), q(e.town), q(e.lat), q(e.lng),
     ].join(", ")});`,
@@ -48,7 +48,7 @@ for (const e of data.events) {
 lines.push("");
 for (const n of data.needs) {
   lines.push(
-    `INSERT INTO needs (id, title, description, kind, artisan_category, author, town, lat, lng, status, created_at) VALUES (${[
+    `INSERT OR REPLACE INTO needs (id, title, description, kind, artisan_category, author, town, lat, lng, status, created_at) VALUES (${[
       q(n.id), q(n.title), q(n.description), q(n.kind), q(n.artisanCategory ?? null), q(n.author),
       q(n.town), q(n.lat), q(n.lng), q("open"), `datetime('now', '-${n.createdOffsetHours} hours')`,
     ].join(", ")});`,
@@ -57,7 +57,7 @@ for (const n of data.needs) {
 lines.push("");
 for (const t of data.tools) {
   lines.push(
-    `INSERT INTO tools (id, name, description, owner, town, lat, lng, available) VALUES (${[
+    `INSERT OR REPLACE INTO tools (id, name, description, owner, town, lat, lng, available) VALUES (${[
       q(t.id), q(t.name), q(t.description), q(t.owner), q(t.town), q(t.lat), q(t.lng), q(t.available),
     ].join(", ")});`,
   );
