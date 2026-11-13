@@ -30,7 +30,7 @@ const ALIMENTATION_SHOPS = new Set([
 const HORECA_AMENITIES = new Set(["restaurant", "fast_food", "cafe", "bar", "pub", "ice_cream"]);
 const DISTRIBUTEUR_AMENITIES = new Set(["fuel", "vending_machine", "atm"]);
 const ARTISAN_AMENITIES = new Set([
-  "pharmacy", "doctors", "dentist", "veterinary", "hairdresser", "car_repair", "bank",
+  "pharmacy", "doctors", "dentist", "veterinary", "hairdresser", "car_repair",
 ]);
 
 const CATEGORY_DESCRIPTIONS = {
@@ -148,10 +148,14 @@ for (const el of elements) {
 
   const key = `${name.toLowerCase()}|${Math.round(lat * 1000)}|${Math.round(lng * 1000)}`;
   if (seen.has(key)) continue;
-  seen.add(key);
 
   const town = tags["addr:city"] ? { name: tags["addr:city"], postalCode: tags["addr:postcode"] ?? nearestTown(lat, lng).postalCode } : nearestTown(lat, lng);
   const address = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ") || null;
+
+  const townKey = `${name.toLowerCase()}|${town.name.toLowerCase()}`;
+  if (seen.has(townKey)) continue;
+  seen.add(key);
+  seen.add(townKey);
 
   businesses.push({
     id: slug(el.id, name),
