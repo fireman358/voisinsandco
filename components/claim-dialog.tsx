@@ -1,0 +1,135 @@
+"use client";
+
+import { useState } from "react";
+import { CheckCircle2, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/toast";
+import type { Business } from "@/lib/types";
+
+interface ClaimDialogProps {
+  business: Business | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) {
+  const toast = useToast();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [done, setDone] = useState(false);
+
+  if (!business) return null;
+
+  const submit = async () => {
+    if (!name.trim() || !email.trim() || !email.includes("@")) {
+      toast("Nom et e-mail valide requis", "error");
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch("/api/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ businessId: business.id, name, email, phone, message }),
+      });
+      if (!res.ok) throw new Error("bad status");
+      setDone(true);
+      toast("Revendication envoyée à l'équipe Voisins & Co", "success");
+    } catch {
+      toast("Envoi impossible, réessayez dans un instant", "error");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={(o) => {
+        onOpenChange(o);
+        if (!o) setDone(false);
+      }}
+    >
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Revendiquer « {business.name} »</DialogTitle>
+          <DialogDescription>
+            Prouvez que vous êtes le propriétaire (N° BCE {business.bce ?? "à communiquer"}) : la fiche
+            passe en <span className="font-medium text-forest">Vérifiée</span> après validation sous 48h.
+          </DialogDescription>
+        </DialogHeader>
+        {done ? (
+          <div className="flex flex-col items-center gap-2 py-6 text-center">
+            <CheckCircle2 className="size-12 text-forest" />
+            <p className="font-semibold text-neutral-800">Merci {name.split(" ")[0]} !</p>
+            <p className="text-sm text-neutral-500">
+              Votre demande a bien été enregistrée. Un e-mail de confirmation arrive à {email}.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-name">Nom complet</Label>
+              <Input
+                id="claim-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Jean Dupont"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-email">E-mail</Label>
+              <Input
+                id="claim-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="jean@commerce.be"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-phone">Téléphone (optionnel)</Label>
+              <Input
+                id="claim-phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+32 4xx xx xx xx"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-msg">Message / justificatif</Label>
+              <Textarea
+                id="claim-msg"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="N° BCE, lien vers votre site, facture…"
+              />
+            </div>
+          </div>
+        )}
+        <DialogFooter>
+          {!done && (
+            <Button onClick={submit} disabled={sending} className="w-full sm:w-auto">
+              {sending && <Loader2 className="size-4 animate-spin" />}
+              Envoyer la revendication
+            </Button>
+          )}
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
