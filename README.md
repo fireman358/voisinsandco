@@ -17,6 +17,9 @@ Palette : fond `#FAFAFA`, cartes blanches, texte **encre `#0F1115`**, primaire *
 badges Pro / offres flash. Les données de démo sont des **sociétés réelles** importées
 d'OpenStreetMap (Overpass) par [`scripts/fetch-osm-pois.mjs`](scripts/fetch-osm-pois.mjs),
 rafraîches chaque mois par [`.github/workflows/update-osm-data.yml`](.github/workflows/update-osm-data.yml).
+Le fallback de démo embarqué (`lib/demo-data.json`) reste limité au périmètre de référence pour
+ne pas alourdir le bundle du Worker. Packs : Visibilité 9 €/mois, Pro 29 €/mois (activation
+manuelle après contact téléphone/WhatsApp, pas de prélèvement automatique).
 
 ## Scripts
 
@@ -36,8 +39,8 @@ npm run lint      # eslint
 npx wrangler login
 npx wrangler d1 create voisins-and-co-db        # copier le database_id (UUID) rendu
 # coller cet UUID à la place de "REMPLACER-PAR-L-ID-D1" dans wrangler.jsonc, puis commit + push
-npx wrangler d1 migrations apply voisins-and-co-db --remote   # 0001_init.sql + 0002_seed.sql
-# ou manuellement : wrangler d1 execute voisins-and-co-db --remote --file=schema.sql --file=seed.sql
+npx wrangler d1 migrations apply voisins-and-co-db --remote   # 0001_init.sql (schéma) + 0003_purge_demo.sql
+npx wrangler d1 execute voisins-and-co-db --remote --file=seed.sql  # seed complet (Wallonie), ré-exécuté à chaque déploiement
 ```
 
 > Le Worker s'appelle `voisinsandco` (aligné sur le nom du projet Cloudflare Pages) :
@@ -73,8 +76,8 @@ app/            pages, layout, routes API (D1 + fallback seed)
 components/     app-shell, header, onglets, modales, ui/ (shadcn)
 lib/            types, geo (Haversine + bounding box), data (D1), seed
 schema.sql      schéma D1
-seed.sql        seed SQL (généré depuis lib/seed-data.json)
-migrations/     0001_init.sql (schéma) + 0002_seed.sql (seed)
+seed.sql        seed SQL idempotent (généré depuis lib/seed-data.json — toute la Wallonie)
+migrations/     0001_init.sql (schéma) + 0003_purge_demo.sql
 wrangler.jsonc  config Worker (binding DB, nodejs_compat, assets)
 open-next.config.ts
 scripts/        generate-icons.mjs, generate-seed-sql.mjs

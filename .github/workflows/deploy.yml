@@ -42,6 +42,7 @@ jobs:
           echo "D1 database_id: ${DB_ID:0:8}…"
           sed -i "s/REMPLACER-PAR-L-ID-D1/$DB_ID/" wrangler.jsonc
           npx wrangler d1 migrations apply voisins-and-co-db --remote
+          npx wrangler d1 execute voisins-and-co-db --remote --file=seed.sql
 
       - name: Deploy to Cloudflare Workers (OpenNext)
         env:

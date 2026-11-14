@@ -4,8 +4,6 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const BBOX = [50.46, 4.24, 50.64, 4.42];
-
 const OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
@@ -14,13 +12,25 @@ const OVERPASS_ENDPOINTS = [
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
-const QUERY = `[out:json][timeout:90];
+// Les 5 provinces wallonnes : le rayon de recherche de l'app (2–15 km) fait le
+// reste — aucune limite provinciale pour l'utilisateur près d'une frontière.
+const PROVINCES = ["Hainaut", "Liège", "Namur", "Luxembourg", "Brabant wallon"];
+
+const POI_QUERY = `[out:json][timeout:300];
 (
-  nwr["shop"]["name"](${BBOX.join(",")});
-  nwr["craft"]["name"](${BBOX.join(",")});
-  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](${BBOX.join(",")});
+${PROVINCES.map((p) => `  area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"];`).join("\n")}
+)->.wal;
+(
+  nwr["shop"]["name"](area.wal);
+  nwr["craft"]["name"](area.wal);
+  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](area.wal);
 );
 out center tags;`;
+
+// Communes wallonnes (polygones) pour rattacher chaque POI à sa commune.
+const COMMUNES_QUERY = `[out:json][timeout:300];
+rel["boundary"="administrative"]["admin_level"="8"](49.8,2.7,50.95,6.5);
+out tags geom;`;
 
 const ALIMENTATION_SHOPS = new Set([
   "bakery", "butcher", "supermarket", "convenience", "greengrocer", "farm", "cheese",
@@ -40,13 +50,7 @@ const CATEGORY_DESCRIPTIONS = {
   distributeur: "Distributeur et services 24/7, repérés sur OpenStreetMap.",
 };
 
-const TOWNS = [
-  { name: "Arquennes", postalCode: "7181", lat: 50.5045, lng: 4.3695 },
-  { name: "Seneffe", postalCode: "7180", lat: 50.5293, lng: 4.2706 },
-  { name: "Feluy", postalCode: "7181", lat: 50.5417, lng: 4.2419 },
-  { name: "Nivelles", postalCode: "1400", lat: 50.5975, lng: 4.3258 },
-  { name: "Baulers", postalCode: "1401", lat: 50.6117, lng: 4.3056 },
-];
+const DEMO_RADIUS_KM = 12;
 
 function categoryFor(tags) {
   if (tags.shop && ALIMENTATION_SHOPS.has(tags.shop)) return "alimentation";
@@ -57,19 +61,6 @@ function categoryFor(tags) {
     return "artisan";
   }
   return null;
-}
-
-function nearestTown(lat, lng) {
-  let best = TOWNS[0];
-  let bestD = Infinity;
-  for (const t of TOWNS) {
-    const d = (t.lat - lat) ** 2 + ((t.lng - lng) * 0.65) ** 2;
-    if (d < bestD) {
-      bestD = d;
-      best = t;
-    }
-  }
-  return best;
 }
 
 function slug(id, name) {
@@ -85,7 +76,7 @@ function slug(id, name) {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function tryEndpoint(endpoint) {
+async function tryEndpoint(endpoint, query) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const res = await fetch(endpoint, {
@@ -95,8 +86,8 @@ async function tryEndpoint(endpoint) {
           Accept: "application/json",
           "User-Agent": "voisinsandco-osm-import/1.0 (https://github.com/fireman358/voisinsandco)",
         },
-        body: `data=${encodeURIComponent(QUERY)}`,
-        signal: AbortSignal.timeout(120_000),
+        body: `data=${encodeURIComponent(query)}`,
+        signal: AbortSignal.timeout(300_000),
       });
       if (res.status === 429 || res.status === 504) {
         console.warn(`Échec ${endpoint} : HTTP ${res.status} (tentative ${attempt}/3)`);
@@ -116,46 +107,106 @@ async function tryEndpoint(endpoint) {
   throw new Error("inaccessible");
 }
 
-async function fetchOverpass() {
+async function fetchOverpass(query, label) {
   let lastError;
   for (const endpoint of OVERPASS_ENDPOINTS) {
     try {
-      const elements = await tryEndpoint(endpoint);
-      console.log(`OK ${endpoint} : ${elements.length} éléments`);
+      const elements = await tryEndpoint(endpoint, query);
+      console.log(`OK ${label} — ${endpoint} : ${elements.length} éléments`);
       return elements;
     } catch (err) {
       lastError = err;
-      console.warn(`Échec ${endpoint} : ${err.message}`);
+      console.warn(`Échec ${label} — ${endpoint} : ${err.message}`);
     }
   }
-  throw new Error(`Tous les miroirs Overpass ont échoué : ${lastError?.message}`);
+  throw new Error(`Tous les miroirs Overpass ont échoué (${label}) : ${lastError?.message}`);
 }
 
-const elements = await fetchOverpass();
+function buildCommunes(relations) {
+  const communes = [];
+  for (const rel of relations) {
+    const name = rel.tags?.name;
+    if (!name) continue;
+    const rings = [];
+    for (const m of rel.members ?? []) {
+      if (m.role !== "outer" || !m.geometry) continue;
+      const ring = m.geometry.filter((p) => p).map((p) => [p.lon, p.lat]);
+      if (ring.length >= 4) rings.push(ring);
+    }
+    if (rings.length) {
+      let minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
+      for (const ring of rings) for (const [lon, lat] of ring) {
+        if (lon < minLon) minLon = lon;
+        if (lon > maxLon) maxLon = lon;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      }
+      communes.push({ name, rings, minLon, maxLon, minLat, maxLat });
+    }
+  }
+  return communes;
+}
+
+function pointInRing(lon, lat, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+function communeFor(communes, lat, lon) {
+  for (const c of communes) {
+    if (lon < c.minLon || lon > c.maxLon || lat < c.minLat || lat > c.maxLat) continue;
+    for (const ring of c.rings) {
+      if (pointInRing(lon, lat, ring)) return c.name;
+    }
+  }
+  return null;
+}
+
+const haversineKm = (lat1, lon1, lat2, lon2) => {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+};
+
+const poiElements = await fetchOverpass(POI_QUERY, "POI Wallonie");
+const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes");
+const communes = buildCommunes(communeElements.filter((e) => e.type === "relation"));
+console.log(`${communes.length} communes chargées`);
 
 const businesses = [];
 const seen = new Set();
 
-for (const el of elements) {
+for (const el of poiElements) {
   const tags = el.tags ?? {};
   const lat = el.lat ?? el.center?.lat;
-  const lng = el.lon ?? el.center?.lon;
+  const lon = el.lon ?? el.center?.lon;
   const name = tags.name?.trim();
-  if (!name || lat === undefined || lng === undefined) continue;
+  if (!name || lat === undefined || lon === undefined) continue;
 
   const category = categoryFor(tags);
   if (!category) continue;
 
-  const key = `${name.toLowerCase()}|${Math.round(lat * 1000)}|${Math.round(lng * 1000)}`;
-  if (seen.has(key)) continue;
+  const town = tags["addr:city"] || communeFor(communes, lat, lon);
+  if (!town) continue;
 
-  const town = tags["addr:city"] ? { name: tags["addr:city"], postalCode: tags["addr:postcode"] ?? nearestTown(lat, lng).postalCode } : nearestTown(lat, lng);
-  const address = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ") || null;
-
-  const townKey = `${name.toLowerCase()}|${town.name.toLowerCase()}`;
-  if (seen.has(townKey)) continue;
+  const key = `${name.toLowerCase()}|${Math.round(lat * 1000)}|${Math.round(lon * 1000)}`;
+  const townKey = `${name.toLowerCase()}|${town.toLowerCase()}`;
+  if (seen.has(key) || seen.has(townKey)) continue;
   seen.add(key);
   seen.add(townKey);
+
+  const address = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ") || null;
 
   businesses.push({
     id: slug(el.id, name),
@@ -164,10 +215,10 @@ for (const el of elements) {
     tier: "standard",
     description: CATEGORY_DESCRIPTIONS[category],
     address: address ?? "Adresse à compléter",
-    town: town.name,
-    postalCode: town.postalCode,
+    town,
+    postalCode: tags["addr:postcode"] ?? "",
     lat: Math.round(lat * 1e6) / 1e6,
-    lng: Math.round(lng * 1e6) / 1e6,
+    lng: Math.round(lon * 1e6) / 1e6,
     ...(tags.phone || tags["contact:phone"] || tags["contact:mobile"]
       ? { phone: tags.phone || tags["contact:phone"] || tags["contact:mobile"] }
       : {}),
@@ -188,4 +239,27 @@ seed.businesses = businesses;
 seed.deals = seed.deals.filter((d) => keptIds.has(d.businessId));
 
 fs.writeFileSync(seedPath, `${JSON.stringify(seed, null, 2)}\n`);
-console.log(`OK ${businesses.length} sociétés réelles importées d'OpenStreetMap dans lib/seed-data.json`);
+
+// Fallback de démonstration embarqué dans le Worker (bundle léger) :
+// uniquement les fiches autour des communes de référence.
+const demoTowns = { Arquennes: [50.5033, 4.3667], Seneffe: [50.5256, 4.259], Feluy: [50.551, 4.27], Nivelles: [50.5928, 4.3244], Baulers: [50.579, 4.305] };
+const demoBusinesses = businesses.filter((b) =>
+  Object.values(demoTowns).some(([lat, lng]) => haversineKm(b.lat, b.lng, lat, lng) <= DEMO_RADIUS_KM),
+);
+const demoIds = new Set(demoBusinesses.map((b) => b.id));
+fs.writeFileSync(
+  path.join(root, "lib", "demo-data.json"),
+  `${JSON.stringify(
+    {
+      businesses: demoBusinesses,
+      deals: seed.deals.filter((d) => demoIds.has(d.businessId)),
+      events: seed.events,
+      needs: seed.needs,
+      tools: seed.tools,
+    },
+    null,
+    2,
+  )}\n`,
+);
+
+console.log(`OK ${businesses.length} sociétés réelles en Wallonie (dont ${demoBusinesses.length} dans le périmètre de démo)`);

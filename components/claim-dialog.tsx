@@ -35,8 +35,8 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
   if (!business) return null;
 
   const submit = async () => {
-    if (!name.trim() || !email.trim() || !email.includes("@")) {
-      toast("Nom et e-mail valide requis", "error");
+    if (!name.trim() || !phone.trim()) {
+      toast("Nom et téléphone requis", "error");
       return;
     }
     setSending(true);
@@ -68,8 +68,10 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
         <DialogHeader>
           <DialogTitle>Revendiquer « {business.name} »</DialogTitle>
           <DialogDescription>
-            Prouvez que vous êtes le propriétaire (N° BCE {business.bce ?? "à communiquer"}) : la fiche
-            passe en <span className="font-medium text-forest">Vérifiée</span> après validation sous 48h.
+            Justifiez que vous êtes le gérant (n° BCE, appel ou passage en boutique) : la fiche
+            passe en <span className="font-medium text-forest">Vérifiée</span> gratuitement après
+            validation sous 48h. Ensuite, si vous le souhaitez, nous vous rappelons pour activer un
+            pack payant — paiement simple par virement, aucun prélèvement automatique.
           </DialogDescription>
         </DialogHeader>
         {done ? (
@@ -77,8 +79,14 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
             <CheckCircle2 className="size-12 text-forest" />
             <p className="font-semibold text-neutral-800">Merci {name.split(" ")[0]} !</p>
             <p className="text-sm text-neutral-500">
-              Votre demande a bien été enregistrée. Un e-mail de confirmation arrive à {email}.
+              Votre demande est enregistrée. Nous vous contactons au {phone} (appel ou WhatsApp)
+              pour vérifier votre fiche — aucun e-mail de domaine n'est exigé.
             </p>
+            <div className="mt-2 space-y-1 rounded-lg bg-green-50 px-3 py-2 text-left text-xs text-neutral-700">
+              <p><span className="font-semibold">Fiche Vérifiée</span> — gratuite après vérification.</p>
+              <p><span className="font-semibold">Pack Visibilité</span> — 9 €/mois sans engagement : horaires, photo de vitrine, actualités.</p>
+              <p><span className="font-semibold">Pack Pro</span> — 29 €/mois sans engagement : lien site/réseaux, offres flash à 10 km, tête de liste, badge Vérifié.</p>
+            </div>
           </div>
         ) : (
           <div className="space-y-3">
@@ -92,17 +100,7 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="claim-email">E-mail</Label>
-              <Input
-                id="claim-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="jean@commerce.be"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="claim-phone">Téléphone (optionnel)</Label>
+              <Label htmlFor="claim-phone">Téléphone / WhatsApp</Label>
               <Input
                 id="claim-phone"
                 value={phone}
@@ -111,12 +109,22 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
               />
             </div>
             <div className="space-y-1.5">
+              <Label htmlFor="claim-email">E-mail (optionnel)</Label>
+              <Input
+                id="claim-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="jean@exemple.be"
+              />
+            </div>
+            <div className="space-y-1.5">
               <Label htmlFor="claim-msg">Message / justificatif</Label>
               <Textarea
                 id="claim-msg"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="N° BCE, lien vers votre site, facture…"
+                placeholder="N° BCE, nom de la société, photo de la vitrine…"
               />
             </div>
           </div>

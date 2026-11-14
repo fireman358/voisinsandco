@@ -288,8 +288,8 @@ export async function createReservation(input: {
 export async function createClaim(input: {
   businessId: string;
   name: string;
-  email: string;
-  phone?: string;
+  phone: string;
+  email?: string;
   message?: string;
 }): Promise<{ ok: boolean; demo: boolean }> {
   const conn = getDB();
@@ -304,8 +304,8 @@ export async function createClaim(input: {
           crypto.randomUUID(),
           input.businessId,
           input.name,
-          input.email,
-          input.phone ?? null,
+          input.email ?? null,
+          input.phone,
           input.message ?? null,
           new Date().toISOString(),
         )

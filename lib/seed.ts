@@ -1,4 +1,4 @@
-import raw from "./seed-data.json";
+import raw from "./demo-data.json";
 import type { AgendaEvent, Business, Deal, Need, Tool } from "./types";
 
 export interface BasePoint {

@@ -3,7 +3,8 @@ name: Mise à jour des sociétés (OpenStreetMap)
 on:
   push:
     branches:
-      - vibe/osm-reel-d05f19
+      - main
+      - vibe/wallonie-d05f19
   schedule:
     - cron: "0 4 1 * *"
   workflow_dispatch:
@@ -34,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lib/seed-data.json seed.sql migrations/0002_seed.sql
+          git add lib/seed-data.json lib/demo-data.json seed.sql
           if git diff --cached --quiet; then
             echo "Aucun changement à committer."
             exit 0
