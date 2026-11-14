@@ -26,9 +26,11 @@ const POI_QUERY = `[out:json][timeout:300];
 );
 out center tags;`;
 
-// Centroïdes des communes (admin_level=8) pour rattacher chaque POI à sa commune.
+// Centroïdes des communes (admin_level=8) ET des villages/sections (admin_level=10)
+// pour rattacher chaque POI à la localité la plus proche — un village comme Arquennes
+// (commune de Seneffe) est ainsi correctement localisé, pas renvoyé au centre de Seneffe.
 const COMMUNES_QUERY = `[out:json][timeout:120];
-rel["boundary"="administrative"]["admin_level"="8"](${BBOX.join(",")});
+rel["boundary"="administrative"]["admin_level"~"^(8|10)$"](${BBOX.join(",")});
 out center tags;`;
 
 const ALIMENTATION_SHOPS = new Set([
@@ -141,10 +143,15 @@ const haversineKm = (lat1, lon1, lat2, lon2) => {
 };
 
 const poiElements = await fetchOverpass(POI_QUERY, "POI Wallonie");
-const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes");
+const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes et villages");
 const communes = communeElements
   .filter((e) => e.type === "relation" && e.tags?.name && e.center)
-  .map((e) => ({ name: e.tags.name, lat: e.center.lat, lng: e.center.lon }));
+  .map((e) => ({
+    name: e.tags.name,
+    level: Number(e.tags.admin_level),
+    lat: e.center.lat,
+    lng: e.center.lon,
+  }));
 console.log(`${communes.length} communes chargées`);
 if (communes.length === 0) throw new Error("aucune commune récupérée");
 
@@ -152,13 +159,19 @@ function nearestCommune(lat, lng) {
   let best = null;
   let bestD = Infinity;
   for (const c of communes) {
+    // Un village (niveau 10) n'est retenu que s'il est proche : au-delà de 4 km,
+    // on retombe sur la commune (niveau 8), plus fiable en zone rurale.
+    if (c.level === 10) {
+      const d = haversineKm(lat, lng, c.lat, c.lng);
+      if (d > 4) continue;
+    }
     const d = haversineKm(lat, lng, c.lat, c.lng);
     if (d < bestD) {
       bestD = d;
       best = c;
     }
   }
-  return best.name;
+  return best?.name ?? null;
 }
 
 const businesses = [];
