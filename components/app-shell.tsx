@@ -77,13 +77,11 @@ export function AppShell() {
     }
   }, [geo, radius, toast]);
 
-  const firstVisit = useRef(!localStorage.getItem("voisins-geo"));
   useEffect(() => {
     void load();
   }, [load]);
   useEffect(() => {
-    if (!firstVisit.current) return;
-    firstVisit.current = false;
+    if (localStorage.getItem("voisins-geo")) return;
     fetchJSON<{ city: string | null; lat?: number; lng?: number }>("/api/geo")
       .then((g) => {
         if (!g.city || typeof g.lat !== "number" || typeof g.lng !== "number") return;
