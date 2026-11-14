@@ -143,6 +143,7 @@ const NACE_RULES = [
   [/ing[ée]nieurs?|engineering/, "ingenieur"],
   [/g[ée]om[èe]tres?|topographie/, "geomestre"],
   [/programmation informatique|conseil en syst[èe]mes? informatiques?|traitement de donn[ée]es?|h[ée]bergement de donn[ée]es?|r[ée]paration d.ordinateurs|mat[ée]riel informatique|t[ée]l[ée]communications?|t[ée]l[ée]phonie/, "informatique"],
+  [/informatique|portails? et autres sites|sites? internet|t[ée]l[ée]phonie/, "informatique"],
   [/conseil pour les affaires et la gestion|conseil de gestion|autres activit[ée]s? de conseil|conseil en/, "conseil"],
   [/publicit[ée]|graphisme|design|communication|relations publiques/, "communication_design"],
   [/photographes?|photographie/, "photographe"],
@@ -281,6 +282,10 @@ const addrOf = new Map(); // enterpriseNumber → { street, house, zip, town }
       const town = (r.MunicipalityFR ?? r.MunicipalityNL ?? "").trim();
       const c = communeByNorm.get(norm(town));
       if (!c) continue;
+      // Plages postales de la Wallonie : évite les homonymes bruxellois/flamands
+      // (ex. Forest 1190 = Bruxelles vs Forest 49xx = Trois-Ponts).
+      const zip = Number((r.Zipcode ?? "").trim());
+      if (!Number.isFinite(zip) || !((zip >= 1300 && zip <= 1499) || (zip >= 4000 && zip <= 7999))) continue;
       let ent = r.EntityNumber ?? "";
       if (estToEnt.has(ent)) ent = estToEnt.get(ent);
       if (!ent || !/^\d/.test(ent)) continue;
@@ -314,7 +319,7 @@ const nameOf = new Map();
       const type = r.TypeOfDenomination ?? "";
       const lang = r.Language ?? "";
       const score =
-        (type === "001" ? 0 : type === "003" ? 1 : type === "002" ? 2 : 3) * 10 +
+        (type === "003" ? 0 : type === "002" ? 1 : type === "001" ? 2 : 3) * 10 +
         (lang === "1" || lang === "F" ? 0 : lang === "2" || lang === "N" ? 1 : lang === "3" || lang === "D" ? 2 : 3);
       const prev = nameOf.get(ent);
       if (!prev || score < prev.score) nameOf.set(ent, { name, score });
@@ -398,16 +403,20 @@ for (const ent of activeEnt) {
   if (!nace) { skippedUnmapped++; continue; }
   const group = groupForNace(nace);
   if (!group) { skippedUnmapped++; continue; }
-  const key = `${norm(nameRec.name)}|${norm(addr.town)}`;
+  let display = nameRec.name;
+  const quoted = display.match(/[«"]([^«»"]{2,60})[»"]/);
+  if (quoted && display.length > 80) display = quoted[1];
+  display = display.replace(/\s+/g, " ").trim();
+  const key = `${norm(display)}|${norm(addr.town)}`;
   if (osmKeys.has(key) || seenKeys.has(key)) { skippedDup++; continue; }
   seenKeys.add(key);
   const digits = ent.replace(/\D/g, "");
-  const bce = digits.replace(/^(\d{3})(\d{3})(\d{3})$/, "$1.$2.$3");
+  const bce = digits.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1.$2.$3");
   const contact = contactOf.get(ent) ?? {};
   const category = categoryForGroup(group);
   out.push({
     id: `bce-${digits}`,
-    name: nameRec.name,
+    name: display,
     category,
     subcategory: group,
     tier: "standard",
@@ -428,3 +437,4 @@ for (const ent of activeEnt) {
 out.sort((a, b) => a.town.localeCompare(b.town, "fr") || a.name.localeCompare(b.name, "fr"));
 fs.writeFileSync(path.join(root, "lib", "bce-data.json"), `${JSON.stringify({ businesses: out }, null, 2)}\n`);
 console.log(`OK ${out.length} fiches BCE ajoutées (${skippedDup} doublons OSM évités, ${skippedUnmapped} sans activité pertinente)`);
+console.log(`Diagnostic : ${addrOf.size} entités wallonnes, ${nameOf.size} avec nom, ${naceOf.size} avec activité`);
