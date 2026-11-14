@@ -194,7 +194,7 @@ export default function AdminPage() {
     setError("");
     try {
       await api("/api/admin/claims", { method: "DELETE", body: JSON.stringify({ id }) });
-      setClaims((prev) => prev.filter((c) => c.id !== id));
+      setClaims((prev) => (prev ? prev.filter((c) => c.id !== id) : prev));
     } catch (e) {
       setError((e as Error).message);
     }
