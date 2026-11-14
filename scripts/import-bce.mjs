@@ -316,7 +316,7 @@ const nameOf = new Map();
       if (estToEnt.has(ent)) ent = estToEnt.get(ent);
       if (!addrOf.has(ent)) continue;
       const name = (r.Denomination ?? "").trim();
-      if (!name) continue;
+      if (!name || !/[a-zA-Zàâäéèêëîïôöùûüç]/.test(name)) continue;
       const type = r.TypeOfDenomination ?? "";
       const lang = r.Language ?? "";
       const score =
