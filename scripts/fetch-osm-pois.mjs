@@ -17,18 +17,15 @@ const OVERPASS_ENDPOINTS = [
 // province — aucune limite pour qui habite près d'une frontière provinciale).
 const BBOX = [49.95, 2.9, 50.85, 6.45];
 
-// Filtre sur les 5 provinces wallonnes (zones Overpass) — exclut les POI des
-// zones étrangères/bruxelloises couvertes par la boîte englobante.
-const PROVINCES = ["Hainaut", "Liège", "Namur", "Luxembourg", "Brabant wallon"];
-
+// Filtre sur la Région wallonne (zone Overpass, admin_level=4) — exclut les POI
+// des zones étrangères/bruxelloises couvertes par la boîte englobante.
 const POI_QUERY_AREAS = `[out:json][timeout:300];
+area["boundary"="administrative"]["admin_level"="4"]["name"~"^(Wallonie|Région wallonne|Walloon Region)$"]->.wal;
 (
-${PROVINCES.map(
-  (p) => `  nwr["shop"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
-  nwr["craft"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
-  nwr["office"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
-  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);`,
-).join("\n")}
+  nwr["shop"]["name"](area.wal);
+  nwr["craft"]["name"](area.wal);
+  nwr["office"]["name"](area.wal);
+  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](area.wal);
 );
 out center tags;`;
 
