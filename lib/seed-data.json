@@ -9065,7 +9065,9 @@
       "postalCode": "52080",
       "lat": 50.794569,
       "lng": 6.127425,
-      "hours": "Mo-Fr 07:00-19:00; Sa 07:00-16:00"
+      "phone": "+49 241 161165",
+      "website": "https://www.edeka.de/maerkte/070127/",
+      "hours": "Mo-Fr 07:30-19:00; Sa 07:30-16:00"
     },
     {
       "id": "osm-1079748669-edeka-geldermann",
