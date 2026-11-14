@@ -15,13 +15,8 @@ const q = (v) => {
 const lines = [];
 lines.push("-- Seed Voisins & Co (sociétés réelles OpenStreetMap — Wallonie)");
 lines.push("-- Généré depuis lib/seed-data.json — ne pas éditer à la main.");
-lines.push("-- Exécuté à chaque déploiement (wrangler d1 execute) : purge puis re-seed.");
-lines.push("");
-lines.push("DELETE FROM businesses;");
-lines.push("DELETE FROM deals;");
-lines.push("DELETE FROM events;");
-lines.push("DELETE FROM needs;");
-lines.push("DELETE FROM tools;");
+lines.push("-- Appliqué par le workflow quotidien « D1 refresh » (upsert idempotent, pas de purge");
+lines.push("-- pour préserver le contenu communautaire et le quota d'écritures D1).");
 lines.push("");
 
 for (const b of data.businesses) {

@@ -1,12 +1,7 @@
 -- Seed Voisins & Co (sociétés réelles OpenStreetMap — Wallonie)
 -- Généré depuis lib/seed-data.json — ne pas éditer à la main.
--- Exécuté à chaque déploiement (wrangler d1 execute) : purge puis re-seed.
-
-DELETE FROM businesses;
-DELETE FROM deals;
-DELETE FROM events;
-DELETE FROM needs;
-DELETE FROM tools;
+-- Appliqué par le workflow quotidien « D1 refresh » (upsert idempotent, pas de purge
+-- pour préserver le contenu communautaire et le quota d'écritures D1).
 
 INSERT OR REPLACE INTO businesses (id, name, category, subcategory, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES ('osm-44703648-apotheek-krausch-aurelie', 'Apotheek Krausch Aurélie', 'artisan', 'pharmacy', 'standard', 'Artisan ou service de proximité, repéré sur OpenStreetMap.', '7 Kloosterstraat', '''s-Gravenvoeren', '3798', 50.758887, 5.760445, NULL, NULL, NULL, NULL, NULL);
 INSERT OR REPLACE INTO businesses (id, name, category, subcategory, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES ('osm-11976510987-madame-croqu-o', 'Madame Croqu''o', 'horeca', 'restaurant', 'standard', 'Table et terrasse du quartier, repérée sur OpenStreetMap.', '34 Ringlaan', '8500 Kortrijk', '', 50.846191, 3.261294, NULL, 'https://madamecroquo.be', 'Mo-Sa 10:00-19:00', NULL, NULL);

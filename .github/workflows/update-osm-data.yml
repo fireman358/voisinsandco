@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lib/seed-data.json lib/demo-data.json seed.sql
+          git add lib/seed-data.json lib/demo-data.json lib/communes.json seed.sql
           if git diff --cached --quiet; then
             echo "Aucun changement à committer."
             exit 0
