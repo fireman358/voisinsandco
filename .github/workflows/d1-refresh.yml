@@ -47,3 +47,4 @@ jobs:
           else
             echo "seed.sql inchangé — rien à appliquer."
           fi
+
