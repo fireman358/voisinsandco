@@ -316,6 +316,13 @@ export async function createClaim(input: {
   const conn = getDB();
   if (conn) {
     try {
+      // Une seule revendication en attente par fiche : les doubles clics et
+      // rechargements ne créent pas de doublon dans la console admin.
+      const existing = await conn
+        .prepare(`SELECT id FROM claims WHERE business_id = ? LIMIT 1`)
+        .bind(input.businessId)
+        .first<{ id: string }>();
+      if (existing) return { ok: true, demo: false };
       await conn
         .prepare(
           `INSERT INTO claims (id, business_id, name, email, phone, bce, message, created_at)
@@ -413,6 +420,13 @@ export async function listClaims(): Promise<AdminClaim[]> {
       return [];
     }
   }
+}
+
+export async function deleteClaim(id: string): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`DELETE FROM claims WHERE id = ?`).bind(id).run();
+  return true;
 }
 
 export async function adminSearchBusinesses(q: string): Promise<Business[]> {

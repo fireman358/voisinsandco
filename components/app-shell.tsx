@@ -22,13 +22,28 @@ import { fetchJSON } from "@/lib/utils";
 
 export function AppShell() {
   const toast = useToast();
-  const [geo, setGeo] = useState<GeoState>({
-    lat: DEFAULT_BASE.lat,
-    lng: DEFAULT_BASE.lng,
-    label: DEFAULT_BASE.label,
-    shortLabel: DEFAULT_BASE.shortLabel,
-    isGeo: false,
+  const [geo, setGeoState] = useState<GeoState>(() => {
+    try {
+      const saved = localStorage.getItem("voisins-geo");
+      if (saved) {
+        const g = JSON.parse(saved) as GeoState;
+        if (typeof g.lat === "number" && typeof g.lng === "number") return g;
+      }
+    } catch {}
+    return {
+      lat: DEFAULT_BASE.lat,
+      lng: DEFAULT_BASE.lng,
+      label: DEFAULT_BASE.label,
+      shortLabel: DEFAULT_BASE.shortLabel,
+      isGeo: false,
+    };
   });
+  const setGeo = useCallback((g: GeoState) => {
+    setGeoState(g);
+    try {
+      localStorage.setItem("voisins-geo", JSON.stringify(g));
+    } catch {}
+  }, []);
   const [radius, setRadius] = useState(10);
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);

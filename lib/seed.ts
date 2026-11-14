@@ -10,9 +10,9 @@ export interface BasePoint {
 }
 
 export const BASE_POINTS: BasePoint[] = [
-  { key: "arquennes", label: "Arquennes 7181", shortLabel: "Arquennes", lat: 50.5033, lng: 4.3667 },
-  { key: "seneffe", label: "Seneffe 7180", shortLabel: "Seneffe", lat: 50.5256, lng: 4.259 },
-  { key: "feluy", label: "Feluy 7181", shortLabel: "Feluy", lat: 50.551, lng: 4.27 },
+  { key: "arquennes", label: "Arquennes 7181", shortLabel: "Arquennes", lat: 50.568, lng: 4.2746 },
+  { key: "seneffe", label: "Seneffe 7180", shortLabel: "Seneffe", lat: 50.5293, lng: 4.2567 },
+  { key: "feluy", label: "Feluy 7181", shortLabel: "Feluy", lat: 50.5608, lng: 4.2535 },
   { key: "nivelles", label: "Nivelles 1400", shortLabel: "Nivelles", lat: 50.5928, lng: 4.3244 },
   { key: "baulers", label: "Baulers 1401", shortLabel: "Baulers", lat: 50.579, lng: 4.305 },
 ];

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, CalendarClock, Copy, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search } from "lucide-react";
+import { ArrowLeft, CalendarClock, Copy, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -190,6 +190,16 @@ export default function AdminPage() {
     }
   };
 
+  const removeClaim = async (id: string) => {
+    setError("");
+    try {
+      await api("/api/admin/claims", { method: "DELETE", body: JSON.stringify({ id }) });
+      setClaims((prev) => prev.filter((c) => c.id !== id));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
   const [editTarget, setEditTarget] = useState<Business | null>(null);
   const [fPhone, setFPhone] = useState("");
   const [fWebsite, setFWebsite] = useState("");
@@ -359,17 +369,27 @@ export default function AdminPage() {
                           {c.message && <p className="mt-1 text-xs text-neutral-500">{c.message}</p>}
                           <p className="mt-1 text-[11px] text-neutral-400">{new Date(c.createdAt).toLocaleString("fr-BE")}</p>
                         </div>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => {
-                            const b = subs.find((x) => x.id === c.businessId) ?? results.find((x) => x.id === c.businessId) ?? null;
-                            pickTarget(b, c);
-                            setTemplateKey("verified");
-                          }}
-                        >
-                          <Mail className="size-3.5" /> Répondre
-                        </Button>
+                        <div className="flex gap-1">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => {
+                              const b = subs.find((x) => x.id === c.businessId) ?? results.find((x) => x.id === c.businessId) ?? null;
+                              pickTarget(b, c);
+                              setTemplateKey("verified");
+                            }}
+                          >
+                            <Mail className="size-3.5" /> Répondre
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            title="Supprimer cette demande"
+                            onClick={() => removeClaim(c.id)}
+                          >
+                            <Trash2 className="size-3.5 text-red-500" />
+                          </Button>
+                        </div>
                       </div>
                     </li>
                   ))}

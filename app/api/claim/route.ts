@@ -25,5 +25,5 @@ export async function POST(req: NextRequest) {
     bce: body.bce?.trim() || undefined,
     message: body.message?.trim(),
   });
-  return NextResponse.json({ ok, demo }, { status: 201 });
+  return NextResponse.json({ ok, demo }, { status: ok ? 200 : 500 });
 }
