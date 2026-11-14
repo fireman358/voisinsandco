@@ -240,9 +240,24 @@ export default function AdminPage() {
       <div className="mx-auto w-full max-w-3xl space-y-5">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-bold text-neutral-900">Console Voisins &amp; Co</h1>
-          <Link href="/" className="flex items-center gap-1 text-sm font-medium text-forest">
-            <ArrowLeft className="size-4" /> Retour à l&apos;appli
-          </Link>
+          <div className="flex items-center gap-3">
+            {authed && (
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.removeItem("admin-token");
+                  setAuthed(false);
+                  setToken("");
+                }}
+                className="text-xs font-medium text-neutral-400 underline hover:text-accent-dark"
+              >
+                Se déconnecter
+              </button>
+            )}
+            <Link href="/" className="flex items-center gap-1 text-sm font-medium text-forest">
+              <ArrowLeft className="size-4" /> Retour à l&apos;appli
+            </Link>
+          </div>
         </div>
 
         {!authed ? (
