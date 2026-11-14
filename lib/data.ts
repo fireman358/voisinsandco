@@ -422,6 +422,13 @@ export async function listClaims(): Promise<AdminClaim[]> {
   }
 }
 
+export async function deleteClaimsForBusiness(businessId: string): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`DELETE FROM claims WHERE business_id = ?`).bind(businessId).run();
+  return true;
+}
+
 export async function deleteClaim(id: string): Promise<boolean> {
   const conn = getDB();
   if (!conn) return false;

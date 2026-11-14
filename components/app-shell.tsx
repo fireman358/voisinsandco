@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   BadgePercent,
@@ -77,9 +77,28 @@ export function AppShell() {
     }
   }, [geo, radius, toast]);
 
+  const firstVisit = useRef(!localStorage.getItem("voisins-geo"));
   useEffect(() => {
     void load();
   }, [load]);
+  useEffect(() => {
+    if (!firstVisit.current) return;
+    firstVisit.current = false;
+    fetchJSON<{ city: string | null; lat?: number; lng?: number }>("/api/geo")
+      .then((g) => {
+        if (!g.city || typeof g.lat !== "number" || typeof g.lng !== "number") return;
+        setGeo({
+          lat: g.lat,
+          lng: g.lng,
+          label: g.city,
+          shortLabel: g.city,
+          isGeo: false,
+        });
+        toast(`Centré sur ${g.city} — ta zone détectée`, "success");
+      })
+      .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleCitySelect = useCallback(
     (city: { name: string; lat: number; lng: number }) => {

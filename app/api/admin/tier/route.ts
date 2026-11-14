@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAdmin, setBusinessTier } from "@/lib/data";
+import { deleteClaimsForBusiness, isAdmin, setBusinessTier } from "@/lib/data";
 import type { BusinessTier } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -23,5 +23,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "id et tier valides requis" }, { status: 400 });
   }
   const ok = await setBusinessTier(id, tier, paidUntil || null);
+  if (ok && tier !== "standard") await deleteClaimsForBusiness(id);
   return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
 }
