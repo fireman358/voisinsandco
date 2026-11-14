@@ -543,3 +543,48 @@ export async function deleteRow(table: "needs" | "tools" | "events" | "deals", i
   await conn.prepare(`DELETE FROM ${table} WHERE id = ?`).bind(id).run();
   return true;
 }
+
+export async function takeNeed(id: string): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`UPDATE needs SET status = 'taken' WHERE id = ?`).bind(id).run();
+  return true;
+}
+
+export interface NewTool {
+  name: string;
+  description: string;
+  owner: string;
+  town: string;
+  lat: number;
+  lng: number;
+}
+
+export async function createTool(input: NewTool): Promise<{ tool: Tool; demo: boolean }> {
+  const tool: Tool = {
+    id: crypto.randomUUID(),
+    name: input.name,
+    description: input.description,
+    owner: input.owner,
+    town: input.town,
+    lat: input.lat,
+    lng: input.lng,
+    available: true,
+  };
+  const conn = getDB();
+  if (conn) {
+    try {
+      await conn
+        .prepare(
+          `INSERT INTO tools (id, name, description, owner, town, lat, lng, available)
+           VALUES (?, ?, ?, ?, ?, ?, ?, 1)`,
+        )
+        .bind(tool.id, tool.name, tool.description, tool.owner, tool.town, tool.lat, tool.lng)
+        .run();
+      return { tool, demo: false };
+    } catch {
+      // mode démo
+    }
+  }
+  return { tool, demo: true };
+}

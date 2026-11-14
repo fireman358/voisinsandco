@@ -145,10 +145,12 @@ function ReserveDialog({
 function EventDialog({
   open,
   onOpenChange,
+  geo,
   onCreated,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  geo: { lat: number; lng: number; shortLabel: string };
   onCreated: (e: AgendaEvent) => void;
 }) {
   const toast = useToast();
@@ -161,11 +163,18 @@ function EventDialog({
   const [sending, setSending] = useState(false);
 
   const submit = async () => {
-    const commune = COMMUNES.find((c) => c.name.toLowerCase() === town.trim().toLowerCase());
-    if (!title.trim() || !organizer.trim() || !date || !commune) {
-      toast("Titre, asso, date et ville (choisie dans la liste) requis", "error");
+    if (!title.trim() || !organizer.trim() || !date) {
+      toast("Titre, asso et date requis", "error");
       return;
     }
+    const q = town.trim().toLowerCase();
+    const commune =
+      COMMUNES.find((c) => c.name.toLowerCase() === q) ??
+      COMMUNES.find((c) => c.name.toLowerCase().startsWith(q)) ??
+      COMMUNES.find((c) => c.name.toLowerCase().includes(q));
+    const finalTown = commune?.name ?? (town.trim() || geo.shortLabel);
+    const lat = commune?.lat ?? geo.lat;
+    const lng = commune?.lng ?? geo.lng;
     setSending(true);
     try {
       const res = await fetch("/api/events", {
@@ -177,9 +186,9 @@ function EventDialog({
           type,
           date,
           location,
-          town: commune.name,
-          lat: commune.lat,
-          lng: commune.lng,
+          town: finalTown,
+          lat,
+          lng,
         }),
       });
       if (!res.ok) throw new Error("bad status");
@@ -258,10 +267,12 @@ export function BonsPlansTab({
   deals,
   events,
   loading,
+  geo,
 }: {
   deals: Deal[];
   events: AgendaEvent[];
   loading: boolean;
+  geo: { lat: number; lng: number; shortLabel: string };
 }) {
   const [localDeals, setLocalDeals] = useState<Deal[]>(deals);
   const [reserveTarget, setReserveTarget] = useState<Deal | null>(null);
@@ -419,7 +430,7 @@ export function BonsPlansTab({
         )}
       </section>
 
-      <EventDialog open={eventOpen} onOpenChange={setEventOpen} onCreated={(e) => setLocalEvents((prev) => [e, ...prev])} />
+      <EventDialog open={eventOpen} onOpenChange={setEventOpen} geo={geo} onCreated={(e) => setLocalEvents((prev) => [e, ...prev])} />
       <ReserveDialog
         deal={reserveTarget}
         open={reserveTarget !== null}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HandHeart, Loader2, MapPin, Search, Trash2, Wrench } from "lucide-react";
+import { HandHeart, Loader2, MapPin, Plus, Search, Trash2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -112,15 +112,106 @@ function LoanDialog({
   );
 }
 
+function AddToolDialog({
+  open,
+  onOpenChange,
+  geo,
+  onCreated,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  geo: { lat: number; lng: number; shortLabel: string };
+  onCreated: (t: Tool) => void;
+}) {
+  const toast = useToast();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [owner, setOwner] = useState("");
+  const [town, setTown] = useState(geo.shortLabel);
+  const [sending, setSending] = useState(false);
+
+  const submit = async () => {
+    if (!name.trim() || !owner.trim()) {
+      toast("Nom de l'objet et ton prénom requis", "error");
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch("/api/tools", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, description, owner, town, lat: geo.lat, lng: geo.lng }),
+      });
+      if (!res.ok) throw new Error("bad status");
+      const data = (await res.json()) as { tool: Tool };
+      onCreated(data.tool);
+      toast("Objet proposé à la boîte à outils du quartier", "success");
+      onOpenChange(false);
+      setName("");
+      setDescription("");
+      setOwner("");
+    } catch {
+      toast("Publication impossible, réessaie dans un instant", "error");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Proposer un objet à prêter</DialogTitle>
+          <DialogDescription>
+            Kärcher, échelle, remorque, raclette… liste ce que tu peux prêter à tes voisins.
+            Aucune inscription requise.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-3">
+          <div className="space-y-1.5">
+            <Label htmlFor="tool-name">Objet</Label>
+            <Input id="tool-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Kärcher 1400 W" />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="tool-desc">Détails (optionnel)</Label>
+            <Textarea id="tool-desc" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Prêt pour une demi-journée, tuyau 10 m inclus…" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="tool-owner">Ton prénom</Label>
+              <Input id="tool-owner" value={owner} onChange={(e) => setOwner(e.target.value)} placeholder="David" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="tool-town">Ville / village</Label>
+              <Input id="tool-town" value={town} onChange={(e) => setTown(e.target.value)} placeholder="Arquennes" />
+            </div>
+          </div>
+        </div>
+        <DialogFooter>
+          <Button onClick={submit} disabled={sending} className="w-full sm:w-auto">
+            {sending && <Loader2 className="size-4 animate-spin" />}
+            Proposer l&rsquo;objet
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export function OutilsTab({
   tools,
   loading,
+  geo,
   onDeleted,
+  onCreated,
 }: {
   tools: Tool[];
   loading: boolean;
+  geo: { lat: number; lng: number; shortLabel: string };
   onDeleted: (id: string) => void;
+  onCreated: (t: Tool) => void;
 }) {
+  const [addOpen, setAddOpen] = useState(false);
   const remove = async (id: string) => {
     if (!confirm("Retirer cet objet de la boîte à outils ?")) return;
     onDeleted(id);
@@ -149,7 +240,9 @@ export function OutilsTab({
       <div className="flex items-center gap-2">
         <Wrench className="size-5 text-forest" />
         <h2 className="text-base font-bold text-neutral-900">La Boîte à Outils du Quartier</h2>
-      </div>
+      </div>        <Button size="sm" onClick={() => setAddOpen(true)}>
+          <Plus className="size-4" /> Proposer un objet
+        </Button>
       <div className="relative">
         <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
         <Input
@@ -224,6 +317,7 @@ export function OutilsTab({
           ))}
         </div>
       )}
+      <AddToolDialog open={addOpen} onOpenChange={setAddOpen} geo={geo} onCreated={onCreated} />
       <LoanDialog
         tool={loanTarget}
         open={loanTarget !== null}

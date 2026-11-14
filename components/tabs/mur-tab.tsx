@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HeartHandshake, Loader2, MapPin, Megaphone, Plus, Trash2, Wrench, Zap } from "lucide-react";
+import { HandHeart, HeartHandshake, Loader2, MapPin, Megaphone, Plus, Trash2, Wrench, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -201,7 +201,7 @@ function PublishNeedDialog({
   );
 }
 
-function NeedCard({ need }: { need: Need }) {
+function NeedCard({ need, onTake }: { need: Need; onTake: (id: string) => void }) {
   const isArtisan = need.kind === "artisan";
   return (
     <Card>
@@ -232,6 +232,18 @@ function NeedCard({ need }: { need: Need }) {
             {need.status === "open" ? "Ouvert" : "Pris en charge"}
           </span>
         </p>
+        {need.status === "open" && (
+          <div className="space-y-1.5 pt-1">
+            <Button size="sm" className="w-full" onClick={() => onTake(need.id)}>
+              <HandHeart className="size-4" /> {isArtisan ? "Je peux faire ce travail" : "Je peux aider"}
+            </Button>
+            <p className="text-[10px] leading-tight text-neutral-400">
+              {isArtisan
+                ? "Artisan ? Reviendique ta fiche dans l'annuaire pour être contacté directement."
+                : "Le voisin ou la voisine qui aide convient du moment et du lieu avec l&rsquo;auteur, en vrai ou via le quartier."}
+            </p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
@@ -243,13 +255,28 @@ export function MurTab({
   radius,
   onCreated,
   onDeleted,
+  onTaken,
 }: {
   needs: Need[];
   geo: GeoState;
   radius: number;
   onCreated: (need: Need) => void;
   onDeleted: (id: string) => void;
+  onTaken: (id: string) => void;
 }) {
+  const take = async (id: string) => {
+    onTaken(id);
+    try {
+      await fetch("/api/needs", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+    } catch {
+      // mode démo : mise à jour locale uniquement
+    }
+  };
+
   const remove = async (id: string) => {
     if (!confirm("Supprimer cette publication du mur ?")) return;
     onDeleted(id);
@@ -283,7 +310,7 @@ export function MurTab({
         <div className="space-y-2.5">
           {needs.map((n) => (
             <div key={n.id} className="relative">
-              <NeedCard need={n} />
+              <NeedCard need={n} onTake={take} />
               <button
                 type="button"
                 onClick={() => remove(n.id)}

@@ -117,13 +117,13 @@ export function AppShell() {
               <AnnuaireTab businesses={businesses} loading={loading} center={{ lat: geo.lat, lng: geo.lng }} />
             </TabsContent>
             <TabsContent value="bons-plans" className="mt-0">
-              <BonsPlansTab deals={deals} events={events} loading={loading} />
+              <BonsPlansTab deals={deals} events={events} loading={loading} geo={geo} />
             </TabsContent>
             <TabsContent value="mur" className="mt-0">
-              <MurTab needs={needs} geo={geo} radius={radius} onCreated={(n) => setNeeds((prev) => [n, ...prev])} onDeleted={(id) => setNeeds((prev) => prev.filter((x) => x.id !== id))} />
+              <MurTab needs={needs} geo={geo} radius={radius} onCreated={(n) => setNeeds((prev) => [n, ...prev])} onDeleted={(id) => setNeeds((prev) => prev.filter((x) => x.id !== id))} onTaken={(id) => setNeeds((prev) => prev.map((n) => (n.id === id ? { ...n, status: "taken" as const } : n)))} />
             </TabsContent>
             <TabsContent value="outils" className="mt-0">
-              <OutilsTab tools={tools} loading={loading} onDeleted={(id) => setTools((prev) => prev.filter((x) => x.id !== id))} />
+              <OutilsTab tools={tools} loading={loading} geo={geo} onDeleted={(id) => setTools((prev) => prev.filter((x) => x.id !== id))} onCreated={(t) => setTools((prev) => [t, ...prev])} />
             </TabsContent>
             <TabsList className="fixed bottom-0 left-1/2 z-40 grid h-16 w-full max-w-3xl -translate-x-1/2 grid-cols-4 gap-0 border-t border-neutral-200 bg-white/95 px-1 backdrop-blur">
               <TabsTrigger

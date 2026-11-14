@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createNeed, deleteRow, listNeeds, parseGeo, type NewNeed } from "@/lib/data";
+import { createNeed, deleteRow, listNeeds, parseGeo, takeNeed, type NewNeed } from "@/lib/data";
 
 export const runtime = "nodejs";
 
@@ -44,5 +44,18 @@ export async function DELETE(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id")?.trim();
   if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
   const ok = await deleteRow("needs", id);
+  return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
+}
+
+export async function PATCH(req: NextRequest) {
+  let body: { id?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "JSON invalide" }, { status: 400 });
+  }
+  const id = body.id?.trim();
+  if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
+  const ok = await takeNeed(id);
   return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
 }
