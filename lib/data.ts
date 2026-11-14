@@ -536,3 +536,10 @@ export async function createEvent(input: NewEvent): Promise<{ event: AgendaEvent
   }
   return { event, demo: true };
 }
+
+export async function deleteRow(table: "needs" | "tools" | "events" | "deals", id: string): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`DELETE FROM ${table} WHERE id = ?`).bind(id).run();
+  return true;
+}

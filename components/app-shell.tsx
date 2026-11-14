@@ -120,10 +120,10 @@ export function AppShell() {
               <BonsPlansTab deals={deals} events={events} loading={loading} />
             </TabsContent>
             <TabsContent value="mur" className="mt-0">
-              <MurTab needs={needs} geo={geo} radius={radius} onCreated={(n) => setNeeds((prev) => [n, ...prev])} />
+              <MurTab needs={needs} geo={geo} radius={radius} onCreated={(n) => setNeeds((prev) => [n, ...prev])} onDeleted={(id) => setNeeds((prev) => prev.filter((x) => x.id !== id))} />
             </TabsContent>
             <TabsContent value="outils" className="mt-0">
-              <OutilsTab tools={tools} loading={loading} />
+              <OutilsTab tools={tools} loading={loading} onDeleted={(id) => setTools((prev) => prev.filter((x) => x.id !== id))} />
             </TabsContent>
             <TabsList className="fixed bottom-0 left-1/2 z-40 grid h-16 w-full max-w-3xl -translate-x-1/2 grid-cols-4 gap-0 border-t border-neutral-200 bg-white/95 px-1 backdrop-blur">
               <TabsTrigger

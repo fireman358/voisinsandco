@@ -1,6 +1,12 @@
 name: D1 refresh (migrations + seed OSM)
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/d1-refresh.yml"
+      - "migrations/**"
+      - "seed.sql"
   schedule:
     # 03:00 UTC : la limite d'écritures journalières D1 (free tier) est
     # réinitialisée à minuit UTC, on laisse une marge.

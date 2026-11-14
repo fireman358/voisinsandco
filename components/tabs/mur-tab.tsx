@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HeartHandshake, Loader2, MapPin, Megaphone, Plus, Wrench, Zap } from "lucide-react";
+import { HeartHandshake, Loader2, MapPin, Megaphone, Plus, Trash2, Wrench, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -242,12 +242,23 @@ export function MurTab({
   geo,
   radius,
   onCreated,
+  onDeleted,
 }: {
   needs: Need[];
   geo: GeoState;
   radius: number;
   onCreated: (need: Need) => void;
+  onDeleted: (id: string) => void;
 }) {
+  const remove = async (id: string) => {
+    if (!confirm("Supprimer cette publication du mur ?")) return;
+    onDeleted(id);
+    try {
+      await fetch(`/api/needs?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+    } catch {
+      // mode démo : suppression locale uniquement
+    }
+  };
   const [open, setOpen] = useState(false);
   return (
     <div className="space-y-3">
@@ -271,7 +282,18 @@ export function MurTab({
       ) : (
         <div className="space-y-2.5">
           {needs.map((n) => (
-            <NeedCard key={n.id} need={n} />
+            <div key={n.id} className="relative">
+              <NeedCard need={n} />
+              <button
+                type="button"
+                onClick={() => remove(n.id)}
+                title="Supprimer"
+                aria-label="Supprimer cette publication"
+                className="absolute right-2 top-2 rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
+              >
+                <Trash2 className="size-4" />
+              </button>
+            </div>
           ))}
         </div>
       )}

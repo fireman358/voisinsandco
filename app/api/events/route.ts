@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createEvent } from "@/lib/data";
+import { createEvent, deleteRow } from "@/lib/data";
 
 export const runtime = "nodejs";
 
@@ -42,4 +42,11 @@ export async function POST(req: NextRequest) {
     lng,
   });
   return NextResponse.json({ event, demo }, { status: 201 });
+}
+
+export async function DELETE(req: NextRequest) {
+  const id = req.nextUrl.searchParams.get("id")?.trim();
+  if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
+  const ok = await deleteRow("events", id);
+  return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
 }

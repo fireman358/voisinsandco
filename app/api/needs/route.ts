@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createNeed, listNeeds, parseGeo, type NewNeed } from "@/lib/data";
+import { createNeed, deleteRow, listNeeds, parseGeo, type NewNeed } from "@/lib/data";
 
 export const runtime = "nodejs";
 
@@ -38,4 +38,11 @@ export async function POST(req: NextRequest) {
     lng,
   });
   return NextResponse.json({ need, demo }, { status: 201 });
+}
+
+export async function DELETE(req: NextRequest) {
+  const id = req.nextUrl.searchParams.get("id")?.trim();
+  if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
+  const ok = await deleteRow("needs", id);
+  return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
 }

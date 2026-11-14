@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HandHeart, Loader2, MapPin, Search, Wrench } from "lucide-react";
+import { HandHeart, Loader2, MapPin, Search, Trash2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -112,7 +112,24 @@ function LoanDialog({
   );
 }
 
-export function OutilsTab({ tools, loading }: { tools: Tool[]; loading: boolean }) {
+export function OutilsTab({
+  tools,
+  loading,
+  onDeleted,
+}: {
+  tools: Tool[];
+  loading: boolean;
+  onDeleted: (id: string) => void;
+}) {
+  const remove = async (id: string) => {
+    if (!confirm("Retirer cet objet de la boîte à outils ?")) return;
+    onDeleted(id);
+    try {
+      await fetch(`/api/tools?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+    } catch {
+      // mode démo : suppression locale uniquement
+    }
+  };
   const [query, setQuery] = useState("");
   const [loanTarget, setLoanTarget] = useState<Tool | null>(null);
 
@@ -181,16 +198,27 @@ export function OutilsTab({ tools, loading }: { tools: Tool[]; loading: boolean 
                     {formatDistance(tool.distanceKm)} • {tool.town}
                   </span>
                 </p>
-                <Button
-                  variant={tool.available ? "default" : "secondary"}
-                  size="sm"
-                  className="w-full"
-                  disabled={!tool.available}
-                  onClick={() => setLoanTarget(tool)}
-                >
-                  <HandHeart className="size-4" />
-                  {tool.available ? "Demander le prêt" : "Indisponible pour le moment"}
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant={tool.available ? "default" : "secondary"}
+                    size="sm"
+                    className="flex-1"
+                    disabled={!tool.available}
+                    onClick={() => setLoanTarget(tool)}
+                  >
+                    <HandHeart className="size-4" />
+                    {tool.available ? "Demander le prêt" : "Indisponible"}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => remove(tool.id)}
+                    title="Supprimer"
+                    aria-label="Supprimer cet objet"
+                  >
+                    <Trash2 className="size-4 text-neutral-300 hover:text-red-500" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

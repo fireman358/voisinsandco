@@ -1,19 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  CalendarDays,
-  Clock,
-  Hammer,
-  Loader2,
-  MapPin,
-  PackageOpen,
-  ShoppingBasket,
-  ShoppingCart,
-  Store,
-  Tag,
-  UtensilsCrossed,
-} from "lucide-react";
+import { CalendarDays, Clock, Hammer, Loader2, MapPin, PackageOpen, ShoppingBasket, ShoppingCart, Store, Tag, Trash2, UtensilsCrossed } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -287,6 +275,16 @@ export function BonsPlansTab({
   const onReserved = (dealId: string) =>
     setLocalDeals((ds) => ds.map((d) => (d.id === dealId ? { ...d, remaining: Math.max(0, d.remaining - 1) } : d)));
 
+  const removeEvent = async (id: string) => {
+    if (!confirm("Supprimer cet événement de l'agenda ?")) return;
+    setLocalEvents((es) => es.filter((e) => e.id !== id));
+    try {
+      await fetch(`/api/events?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+    } catch {
+      // mode démo : suppression locale uniquement
+    }
+  };
+
   return (
     <div className="space-y-5">
       <section className="space-y-3">
@@ -392,7 +390,7 @@ export function BonsPlansTab({
                       {new Date(e.date).getDate()}
                     </span>
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-semibold text-neutral-900">{e.title}</p>
                     <p className="text-xs text-neutral-500">
                       {e.organizer} • <Badge variant="secondary" className="text-[10px]">{e.type}</Badge>
@@ -405,6 +403,15 @@ export function BonsPlansTab({
                       {formatDistance(e.distanceKm)} • {e.town}
                     </p>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => removeEvent(e.id)}
+                    title="Supprimer"
+                    aria-label="Supprimer cet événement"
+                    className="self-start rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
                 </CardContent>
               </Card>
             ))}
