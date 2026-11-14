@@ -33,7 +33,7 @@ import { cn, normalizeText } from "@/lib/utils";
 const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
   { key: "all", label: "Tous" },
   { key: "alimentation", label: "Alimentation & Fermes" },
-  { key: "artisan", label: "Artisans" },
+  { key: "artisan", label: "Artisans & Services" },
   { key: "horeca", label: "Horeca" },
   { key: "distributeur", label: "Distributeurs 24/7" },
 ];

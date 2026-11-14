@@ -1,0 +1,72 @@
+name: Rappel des échéances d'abonnements
+
+on:
+  schedule:
+    # 06:00 UTC (07:00 en Belgique) : résumé quotidien des packs
+    # qui expirent sous 7 jours ou déjà expirés, posté dans une issue GitHub
+    # (notification e-mail automatique).
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  rappel:
+    name: Échéances ≤ 7 jours
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Interroge D1
+        id: query
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler d1 execute voisins-and-co-db --remote --json --command \
+            "SELECT name, town, tier, paid_until AS paidUntil FROM businesses WHERE tier != 'standard' AND paid_until IS NOT NULL ORDER BY paid_until" \
+            > /tmp/subs.json
+
+      - name: Filtre les échéances ≤ 7 jours
+        id: filter
+        run: |
+          node -e '
+            const fs = require("fs");
+            const rows = JSON.parse(fs.readFileSync("/tmp/subs.json", "utf8"))[0]?.results ?? [];
+            const today = new Date();
+            const soon = rows.filter((r) => {
+              const d = new Date(r.paidUntil + "T00:00:00");
+              return !Number.isNaN(d.getTime()) && (d.getTime() - today.getTime()) / 86400000 <= 7;
+            });
+            fs.writeFileSync("/tmp/soon.json", JSON.stringify(soon));
+            console.log(soon.length + " échéance(s) à notifier");
+          '
+
+      - name: Ouvre ou met à jour l'issue de rappel
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("/tmp/soon.json","utf8")).length)')
+          if [ "$COUNT" = "0" ]; then
+            echo "Aucune échéance — rien à envoyer."
+            exit 0
+          fi
+          BODY=$(node -e '
+            const rows = JSON.parse(require("fs").readFileSync("/tmp/soon.json","utf8"));
+            const lines = rows.map(r => `- **${r.name}** (${r.town}) — ${r.tier === "pro" ? "Pack Pro" : "Vérifiée"} — échéance ${r.paidUntil}`);
+            console.log("## ⏰ Échéances Voisins & Co\n\n" + lines.join("\n") + "\n\nOuvre la console /admin pour envoyer les rappels (canevas prêts).");
+          ')
+          ISSUE=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title Échéances Voisins & Co" --json number --jq '.[0].number' || true)
+          if [ -n "$ISSUE" ] && [ "$ISSUE" != "null" ]; then
+            gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body "$BODY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "⏰ Échéances Voisins & Co" --body "$BODY"
+          fi

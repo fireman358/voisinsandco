@@ -58,7 +58,8 @@ export async function listBusinesses(
       const { results } = await conn
         .prepare(
           `SELECT id, name, category, subcategory, tier, description, address, town,
-                  postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+                  postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                  paid_until AS paidUntil
            FROM businesses
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
         )
@@ -395,7 +396,8 @@ export async function adminSearchBusinesses(q: string): Promise<Business[]> {
   const { results } = await conn
     .prepare(
       `SELECT id, name, category, subcategory, tier, description, address, town,
-              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+              paid_until AS paidUntil
        FROM businesses
        WHERE name LIKE ?1 OR town LIKE ?1
        ORDER BY name LIMIT 50`,
@@ -405,9 +407,32 @@ export async function adminSearchBusinesses(q: string): Promise<Business[]> {
   return results ?? [];
 }
 
-export async function setBusinessTier(id: string, tier: BusinessTier): Promise<boolean> {
+export async function setBusinessTier(
+  id: string,
+  tier: BusinessTier,
+  paidUntil?: string | null,
+): Promise<boolean> {
   const conn = getDB();
   if (!conn) return false;
-  await conn.prepare(`UPDATE businesses SET tier = ? WHERE id = ?`).bind(tier, id).run();
+  await conn
+    .prepare(`UPDATE businesses SET tier = ?, paid_until = ? WHERE id = ?`)
+    .bind(tier, paidUntil ?? null, id)
+    .run();
   return true;
+}
+
+export async function listSubscriptions(): Promise<Business[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  const { results } = await conn
+    .prepare(
+      `SELECT id, name, category, subcategory, tier, description, address, town,
+              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+              paid_until AS paidUntil
+       FROM businesses
+       WHERE tier != 'standard'
+       ORDER BY paid_until ASC NULLS LAST LIMIT 100`,
+    )
+    .all<Business>();
+  return results ?? [];
 }

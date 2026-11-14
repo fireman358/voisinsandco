@@ -1,0 +1,32 @@
+name: Définit le mot de passe admin (ADMIN_TOKEN Cloudflare)
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/set-admin-token.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  set-token:
+    name: wrangler secret put ADMIN_TOKEN
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Pousse le secret Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: |
+          if [ -z "$ADMIN_PASSWORD" ]; then
+            echo "Secret GitHub ADMIN_PASSWORD non défini — ajoute-le dans Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          printf '%s' "$ADMIN_PASSWORD" | npx wrangler secret put ADMIN_TOKEN --name voisinsandco

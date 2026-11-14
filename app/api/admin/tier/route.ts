@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   if (!isAdmin(req.headers.get("x-admin-token"))) {
     return NextResponse.json({ error: "non autorisé" }, { status: 403 });
   }
-  let body: { id?: string; tier?: string };
+  let body: { id?: string; tier?: string; paidUntil?: string | null };
   try {
     body = await req.json();
   } catch {
@@ -18,9 +18,10 @@ export async function POST(req: NextRequest) {
   }
   const id = body.id?.trim();
   const tier = body.tier as BusinessTier | undefined;
+  const paidUntil = body.paidUntil === undefined ? null : body.paidUntil;
   if (!id || !tier || !TIERS.includes(tier)) {
     return NextResponse.json({ error: "id et tier valides requis" }, { status: 400 });
   }
-  const ok = await setBusinessTier(id, tier);
+  const ok = await setBusinessTier(id, tier, paidUntil || null);
   return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
 }

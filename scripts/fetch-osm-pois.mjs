@@ -21,6 +21,7 @@ const POI_QUERY = `[out:json][timeout:300];
 (
   nwr["shop"]["name"](${BBOX.join(",")});
   nwr["craft"]["name"](${BBOX.join(",")});
+  nwr["office"]["name"](${BBOX.join(",")});
   nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](${BBOX.join(",")});
 );
 out center tags;`;
@@ -61,7 +62,9 @@ function categoryFor(tags) {
   if (tags.shop && ALIMENTATION_SHOPS.has(tags.shop)) return "alimentation";
   if (tags.amenity && HORECA_AMENITIES.has(tags.amenity)) return "horeca";
   if (tags.amenity && DISTRIBUTEUR_AMENITIES.has(tags.amenity)) return "distributeur";
-  if (tags.craft || (tags.amenity && ARTISAN_AMENITIES.has(tags.amenity))) return "artisan";
+  if (tags.craft || tags.office || (tags.amenity && ARTISAN_AMENITIES.has(tags.amenity))) {
+    return "artisan";
+  }
   if (tags.shop && ["hairdresser", "beauty", "florist", "hardware", "bakery"].includes(tags.shop)) {
     return "artisan";
   }
@@ -185,7 +188,7 @@ for (const el of poiElements) {
     id: slug(el.id, name),
     name,
     category,
-    subcategory: tags.shop || tags.craft || tags.amenity || "",
+    subcategory: tags.shop || tags.craft || tags.office || tags.amenity || "",
     tier: "standard",
     description: CATEGORY_DESCRIPTIONS[category],
     address: address ?? "Adresse à compléter",

@@ -16,11 +16,9 @@ import { BonsPlansTab } from "@/components/tabs/bons-plans-tab";
 import { MurTab } from "@/components/tabs/mur-tab";
 import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
-import { BASE_POINTS, DEFAULT_BASE } from "@/lib/seed";
+import { DEFAULT_BASE } from "@/lib/seed";
 import type { AgendaEvent, Business, Deal, GeoState, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
-
-const GEO_KEY = "__geo";
 
 export function AppShell() {
   const toast = useToast();
@@ -31,7 +29,6 @@ export function AppShell() {
     shortLabel: DEFAULT_BASE.shortLabel,
     isGeo: false,
   });
-  const [baseKey, setBaseKey] = useState<string>(DEFAULT_BASE.key);
   const [radius, setRadius] = useState(10);
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
@@ -72,53 +69,41 @@ export function AppShell() {
   const handleCitySelect = useCallback(
     (city: { name: string; lat: number; lng: number }) => {
       setGeo({ lat: city.lat, lng: city.lng, label: city.name, shortLabel: city.name, isGeo: false });
-      setBaseKey("__city");
     },
     [],
   );
 
-  const handleBaseChange = useCallback(
-    (key: string) => {
-      if (key === GEO_KEY) {
-        if (!navigator.geolocation) {
-          toast("Géolocalisation non disponible sur cet appareil", "error");
-          return;
-        }
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            setGeo({
-              lat: pos.coords.latitude,
-              lng: pos.coords.longitude,
-              label: "Position actuelle",
-              shortLabel: "ma position",
-              isGeo: true,
-            });
-            setBaseKey(GEO_KEY);
-            toast("Position actuelle utilisée", "success");
-          },
-          () => toast("Autorisez la géolocalisation ou choisissez un camp de base", "error"),
-          { enableHighAccuracy: true, timeout: 8000 },
-        );
-        return;
-      }
-      const point = BASE_POINTS.find((p) => p.key === key) ?? DEFAULT_BASE;
-      setGeo({ lat: point.lat, lng: point.lng, label: point.label, shortLabel: point.shortLabel, isGeo: false });
-      setBaseKey(key);
-    },
-    [toast],
-  );
+  const handleUseGps = useCallback(() => {
+    if (!navigator.geolocation) {
+      toast("Géolocalisation indisponible sur cet appareil (PC ?) — cherche ta ville ci-dessus", "error");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setGeo({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+          label: "Position actuelle",
+          shortLabel: "ma position",
+          isGeo: true,
+        });
+        toast("Position actuelle utilisée", "success");
+      },
+      () => toast("GPS indisponible ou refusé — cherche ta ville ci-dessus", "error"),
+      { enableHighAccuracy: true, timeout: 8000 },
+    );
+  }, [toast]);
 
   return (
     <div className="min-h-dvh bg-paper">
       <HeaderBar
         geo={geo}
-        baseKey={baseKey}
         radius={radius}
         demo={demo}
         count={businesses.length}
-        onBaseChange={handleBaseChange}
         onRadiusChange={setRadius}
         onCitySelect={handleCitySelect}
+        onUseGps={handleUseGps}
       />
       <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4">
         {loading && businesses.length === 0 && needs.length === 0 ? (
