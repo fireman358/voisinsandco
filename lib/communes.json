@@ -85,6 +85,11 @@
     "lng": 6.177886
   },
   {
+    "name": "Amercœur",
+    "lat": 50.636263,
+    "lng": 5.596504
+  },
+  {
     "name": "Ammeldingen bei Neuerburg",
     "lat": 50.045213,
     "lng": 6.271378
@@ -118,6 +123,11 @@
     "name": "Aniche",
     "lat": 50.330082,
     "lng": 3.258323
+  },
+  {
+    "name": "Annappes",
+    "lat": 50.627845,
+    "lng": 3.146372
   },
   {
     "name": "Annay",
@@ -188,6 +198,11 @@
     "name": "Arzfeld",
     "lat": 50.08817,
     "lng": 6.282426
+  },
+  {
+    "name": "Ascq",
+    "lat": 50.621994,
+    "lng": 3.177524
   },
   {
     "name": "Assesse",
@@ -355,6 +370,16 @@
     "lng": 2.893377
   },
   {
+    "name": "Baneheide",
+    "lat": 50.818408,
+    "lng": 5.972624
+  },
+  {
+    "name": "Banholt",
+    "lat": 50.791243,
+    "lng": 5.807282
+  },
+  {
     "name": "Banteux",
     "lat": 50.064258,
     "lng": 3.187037
@@ -398,6 +423,16 @@
     "name": "Bastogne",
     "lat": 50.013291,
     "lng": 5.704144
+  },
+  {
+    "name": "Bastogne 1",
+    "lat": 50.006263,
+    "lng": 5.686694
+  },
+  {
+    "name": "Bastogne 2",
+    "lat": 49.989487,
+    "lng": 5.72049
   },
   {
     "name": "Bauler",
@@ -446,8 +481,8 @@
   },
   {
     "name": "Beaumont",
-    "lat": 50.226905,
-    "lng": 4.255504
+    "lat": 50.389717,
+    "lng": 2.967549
   },
   {
     "name": "Beaumont-en-Cambrésis",
@@ -525,9 +560,19 @@
     "lng": 3.684563
   },
   {
+    "name": "Bemelen",
+    "lat": 50.844202,
+    "lng": 5.781632
+  },
+  {
     "name": "Bérelles",
     "lat": 50.209827,
     "lng": 4.103487
+  },
+  {
+    "name": "Berg en Terblijt",
+    "lat": 50.860777,
+    "lng": 5.784561
   },
   {
     "name": "Bergues-sur-Sambre",
@@ -590,6 +635,11 @@
     "lng": 3.442634
   },
   {
+    "name": "Besonrieux",
+    "lat": 50.513746,
+    "lng": 4.194947
+  },
+  {
     "name": "Béthencourt",
     "lat": 50.142431,
     "lng": 3.421358
@@ -618,6 +668,11 @@
     "name": "Beugny",
     "lat": 50.117952,
     "lng": 2.933636
+  },
+  {
+    "name": "Beutenaken",
+    "lat": 50.78164,
+    "lng": 5.859405
   },
   {
     "name": "Beuvrages",
@@ -680,6 +735,11 @@
     "lng": 4.15416
   },
   {
+    "name": "Birkesdorf",
+    "lat": 50.827212,
+    "lng": 6.461453
+  },
+  {
     "name": "Blécourt",
     "lat": 50.217645,
     "lng": 3.213215
@@ -695,6 +755,11 @@
     "lng": 6.288479
   },
   {
+    "name": "Bocholtz",
+    "lat": 50.816651,
+    "lng": 5.999805
+  },
+  {
     "name": "Bohain-en-Vermandois",
     "lat": 49.988739,
     "lng": 3.464023
@@ -703,6 +768,11 @@
     "name": "Boiry-Notre-Dame",
     "lat": 50.274534,
     "lng": 2.941358
+  },
+  {
+    "name": "Bois Blancs",
+    "lat": 50.630368,
+    "lng": 3.028483
   },
   {
     "name": "Bois-Bernard",
@@ -718,6 +788,11 @@
     "name": "Bony",
     "lat": 49.989557,
     "lng": 3.217956
+  },
+  {
+    "name": "Born",
+    "lat": 50.342528,
+    "lng": 6.103869
   },
   {
     "name": "Bouchain",
@@ -865,6 +940,11 @@
     "lng": 3.489566
   },
   {
+    "name": "Brigode",
+    "lat": 50.630001,
+    "lng": 3.159651
+  },
+  {
     "name": "Brillon",
     "lat": 50.433031,
     "lng": 3.338294
@@ -906,8 +986,8 @@
   },
   {
     "name": "Bruxelles - Brussel",
-    "lat": 50.855125,
-    "lng": 4.375417
+    "lat": 50.843421,
+    "lng": 4.368739
   },
   {
     "name": "Bry",
@@ -950,6 +1030,11 @@
     "lng": 6.311725
   },
   {
+    "name": "Buqueux",
+    "lat": 50.496578,
+    "lng": 2.983265
+  },
+  {
     "name": "Burdinne",
     "lat": 50.581773,
     "lng": 5.097186
@@ -963,6 +1048,11 @@
     "name": "Burg-Reuland",
     "lat": 50.197045,
     "lng": 6.100594
+  },
+  {
+    "name": "Burscheid",
+    "lat": 50.036637,
+    "lng": 6.357893
   },
   {
     "name": "Bus",
@@ -983,6 +1073,11 @@
     "name": "Bütgenbach",
     "lat": 50.462472,
     "lng": 6.216306
+  },
+  {
+    "name": "Cadier en Keer",
+    "lat": 50.827864,
+    "lng": 5.770293
   },
   {
     "name": "Cagnicourt",
@@ -1090,6 +1185,11 @@
     "lng": 4.440291
   },
   {
+    "name": "Champ du Cerf",
+    "lat": 50.594529,
+    "lng": 3.091632
+  },
+  {
     "name": "Chapelle-lez-Herlaimont",
     "lat": 50.465805,
     "lng": 4.294395
@@ -1110,6 +1210,11 @@
     "lng": 4.62317
   },
   {
+    "name": "Château",
+    "lat": 50.633633,
+    "lng": 3.136527
+  },
+  {
     "name": "Château-l'Abbaye",
     "lat": 50.485137,
     "lng": 3.472235
@@ -1123,6 +1228,11 @@
     "name": "Chaudfontaine",
     "lat": 50.582245,
     "lng": 5.634591
+  },
+  {
+    "name": "Chauffours",
+    "lat": 50.445309,
+    "lng": 2.922675
   },
   {
     "name": "Chaumont-Gistoux",
@@ -1173,6 +1283,26 @@
     "name": "Ciney",
     "lat": 50.274448,
     "lng": 5.132004
+  },
+  {
+    "name": "Cité Jardin",
+    "lat": 50.604271,
+    "lng": 3.086589
+  },
+  {
+    "name": "Cité Saint-Jean",
+    "lat": 50.473997,
+    "lng": 2.936434
+  },
+  {
+    "name": "Cité Saint-Paul",
+    "lat": 50.473122,
+    "lng": 2.92118
+  },
+  {
+    "name": "Cité Scientifique",
+    "lat": 50.607258,
+    "lng": 3.142109
   },
   {
     "name": "Clairfayts",
@@ -1273,6 +1403,11 @@
     "name": "Court-Saint-Etienne",
     "lat": 50.62709,
     "lng": 4.56237
+  },
+  {
+    "name": "Cousinerie",
+    "lat": 50.642447,
+    "lng": 3.164197
   },
   {
     "name": "Cousolre",
@@ -1380,6 +1515,11 @@
     "lng": 6.140281
   },
   {
+    "name": "Dausfeld",
+    "lat": 50.222902,
+    "lng": 6.444417
+  },
+  {
     "name": "Dauwelshausen",
     "lat": 50.004338,
     "lng": 6.184243
@@ -1408,6 +1548,11 @@
     "name": "Denain",
     "lat": 50.328986,
     "lng": 3.392148
+  },
+  {
+    "name": "Derichsweiler",
+    "lat": 50.810572,
+    "lng": 6.447257
   },
   {
     "name": "Deûlémont",
@@ -1550,6 +1695,11 @@
     "lng": 6.409399
   },
   {
+    "name": "Eckelrade",
+    "lat": 50.810241,
+    "lng": 5.765794
+  },
+  {
     "name": "Éclaibes",
     "lat": 50.201845,
     "lng": 3.937001
@@ -1580,6 +1730,11 @@
     "lng": 6.467145
   },
   {
+    "name": "Eijsden",
+    "lat": 50.782607,
+    "lng": 5.716244
+  },
+  {
     "name": "Eijsden-Margraten",
     "lat": 50.805028,
     "lng": 5.773053
@@ -1598,6 +1753,11 @@
     "name": "Élincourt",
     "lat": 50.047706,
     "lng": 3.368925
+  },
+  {
+    "name": "Elkenrade",
+    "lat": 50.840052,
+    "lng": 5.91467
   },
   {
     "name": "Ellezelles",
@@ -1653,6 +1813,11 @@
     "name": "Épehy",
     "lat": 50.006342,
     "lng": 3.133645
+  },
+  {
+    "name": "Epen",
+    "lat": 50.766298,
+    "lng": 5.909612
   },
   {
     "name": "Épinoy",
@@ -1845,6 +2010,11 @@
     "lng": 3.030933
   },
   {
+    "name": "Eys",
+    "lat": 50.831303,
+    "lng": 5.940058
+  },
+  {
     "name": "Faches-Thumesnil",
     "lat": 50.595517,
     "lng": 3.071395
@@ -1863,6 +2033,11 @@
     "name": "Farciennes",
     "lat": 50.432331,
     "lng": 4.548975
+  },
+  {
+    "name": "Faubourg de Béthune",
+    "lat": 50.618277,
+    "lng": 3.035606
   },
   {
     "name": "Faumont",
@@ -1955,6 +2130,11 @@
     "lng": 6.336517
   },
   {
+    "name": "Fives",
+    "lat": 50.628761,
+    "lng": 3.091214
+  },
+  {
     "name": "Flaumont-Waudrechies",
     "lat": 50.130966,
     "lng": 3.96841
@@ -1968,6 +2148,16 @@
     "name": "Fléron",
     "lat": 50.617446,
     "lng": 5.679531
+  },
+  {
+    "name": "Flers-Bourg",
+    "lat": 50.636542,
+    "lng": 3.130655
+  },
+  {
+    "name": "Flers-Breucq",
+    "lat": 50.668269,
+    "lng": 3.142109
   },
   {
     "name": "Flers-en-Escrebieux",
@@ -1998,6 +2188,11 @@
     "name": "Flobecq",
     "lat": 50.75559,
     "lng": 3.731477
+  },
+  {
+    "name": "Floréal",
+    "lat": 50.809187,
+    "lng": 4.421213
   },
   {
     "name": "Floreffe",
@@ -2185,6 +2380,11 @@
     "lng": 5.183432
   },
   {
+    "name": "Geich-Obergeich",
+    "lat": 50.817707,
+    "lng": 6.397285
+  },
+  {
     "name": "Geichlingen",
     "lat": 49.95227,
     "lng": 6.262804
@@ -2325,6 +2525,11 @@
     "lng": 3.10224
   },
   {
+    "name": "Grand Ronchin",
+    "lat": 50.60428,
+    "lng": 3.095421
+  },
+  {
     "name": "Grand-Fayt",
     "lat": 50.111533,
     "lng": 3.797673
@@ -2338,6 +2543,11 @@
     "name": "Grez-Doiceau",
     "lat": 50.749968,
     "lng": 4.685304
+  },
+  {
+    "name": "Gronsveld",
+    "lat": 50.807227,
+    "lng": 5.732178
   },
   {
     "name": "Großkampenberg",
@@ -2373,6 +2583,16 @@
     "name": "Guesnain",
     "lat": 50.348584,
     "lng": 3.147978
+  },
+  {
+    "name": "Guillemins",
+    "lat": 50.624692,
+    "lng": 5.569654
+  },
+  {
+    "name": "Gulpen",
+    "lat": 50.803117,
+    "lng": 5.880929
   },
   {
     "name": "Gulpen-Wittem",
@@ -2545,6 +2765,11 @@
     "lng": 3.902499
   },
   {
+    "name": "Haute-Borne",
+    "lat": 50.604974,
+    "lng": 3.16061
+  },
+  {
     "name": "Hautmont",
     "lat": 50.247979,
     "lng": 3.920224
@@ -2586,13 +2811,18 @@
   },
   {
     "name": "Heerlen",
-    "lat": 50.877507,
-    "lng": 5.960865
+    "lat": 50.876312,
+    "lng": 5.971313
   },
   {
     "name": "Heers",
     "lat": 50.753486,
     "lng": 5.31828
+  },
+  {
+    "name": "Heijenrath",
+    "lat": 50.775047,
+    "lng": 5.870659
   },
   {
     "name": "Heilbach",
@@ -2730,6 +2960,11 @@
     "lng": 3.093611
   },
   {
+    "name": "Heusy",
+    "lat": 50.576622,
+    "lng": 5.872061
+  },
+  {
     "name": "Heuvelland",
     "lat": 50.767801,
     "lng": 2.836745
@@ -2743,6 +2978,11 @@
     "name": "Hirson",
     "lat": 49.937917,
     "lng": 4.113132
+  },
+  {
+    "name": "Hisel",
+    "lat": 49.963681,
+    "lng": 6.376897
   },
   {
     "name": "Hoegaarden",
@@ -2788,6 +3028,11 @@
     "name": "Hornaing",
     "lat": 50.369334,
     "lng": 3.337266
+  },
+  {
+    "name": "Hôtel-de-Ville",
+    "lat": 50.615876,
+    "lng": 3.127953
   },
   {
     "name": "Hotton",
@@ -2870,6 +3115,11 @@
     "lng": 6.374521
   },
   {
+    "name": "Ingber",
+    "lat": 50.820945,
+    "lng": 5.864773
+  },
+  {
     "name": "Iron",
     "lat": 49.951607,
     "lng": 3.665478
@@ -2940,6 +3190,11 @@
     "lng": 6.229117
   },
   {
+    "name": "Jüngersdorf",
+    "lat": 50.802905,
+    "lng": 6.371163
+  },
+  {
     "name": "Juprelle",
     "lat": 50.713956,
     "lng": 5.539025
@@ -2966,7 +3221,7 @@
   },
   {
     "name": "Kerkrade",
-    "lat": 50.874723,
+    "lat": 50.872043,
     "lng": 6.044335
   },
   {
@@ -3176,8 +3431,8 @@
   },
   {
     "name": "Langerwehe",
-    "lat": 50.795992,
-    "lng": 6.358405
+    "lat": 50.820544,
+    "lng": 6.352373
   },
   {
     "name": "Lannoy",
@@ -3233,6 +3488,11 @@
     "name": "Le Favril",
     "lat": 50.094022,
     "lng": 3.720334
+  },
+  {
+    "name": "Le Logis",
+    "lat": 50.80392,
+    "lng": 4.416614
   },
   {
     "name": "Le Nouvion-en-Thiérache",
@@ -3300,6 +3560,11 @@
     "lng": 6.25757
   },
   {
+    "name": "Lemiers",
+    "lat": 50.783916,
+    "lng": 5.982665
+  },
+  {
     "name": "Lempire",
     "lat": 49.997617,
     "lng": 3.17523
@@ -3363,6 +3628,11 @@
     "name": "Leuven",
     "lat": 50.884141,
     "lng": 4.705366
+  },
+  {
+    "name": "Leuvens Haasrode",
+    "lat": 50.851384,
+    "lng": 4.72747
   },
   {
     "name": "Leuze-en-Hainaut",
@@ -3465,6 +3735,21 @@
     "lng": 3.046846
   },
   {
+    "name": "Lille-Centre",
+    "lat": 50.632703,
+    "lng": 3.066087
+  },
+  {
+    "name": "Lille-Moulins",
+    "lat": 50.619352,
+    "lng": 3.066486
+  },
+  {
+    "name": "Lille-Sud",
+    "lat": 50.608778,
+    "lng": 3.050186
+  },
+  {
     "name": "Limbourg",
     "lat": 50.614715,
     "lng": 5.941125
@@ -3520,6 +3805,11 @@
     "lng": 3.062124
   },
   {
+    "name": "Longdoz",
+    "lat": 50.629955,
+    "lng": 5.581233
+  },
+  {
     "name": "Lontzen",
     "lat": 50.676738,
     "lng": 6.013707
@@ -3548,6 +3838,11 @@
     "name": "Louvroil",
     "lat": 50.259758,
     "lng": 3.951694
+  },
+  {
+    "name": "Luchem",
+    "lat": 50.828815,
+    "lng": 6.375388
   },
   {
     "name": "Lünebach",
@@ -3605,6 +3900,11 @@
     "lng": 4.242941
   },
   {
+    "name": "Manderfeld",
+    "lat": 50.35604,
+    "lng": 6.340259
+  },
+  {
     "name": "Manderscheid",
     "lat": 50.100725,
     "lng": 6.328892
@@ -3660,6 +3960,16 @@
     "lng": 3.420984
   },
   {
+    "name": "Margraten",
+    "lat": 50.823354,
+    "lng": 5.817521
+  },
+  {
+    "name": "Mariaweiler-Hoven",
+    "lat": 50.822533,
+    "lng": 6.444468
+  },
+  {
     "name": "Marly",
     "lat": 50.34646,
     "lng": 3.547808
@@ -3668,6 +3978,11 @@
     "name": "Maroilles",
     "lat": 50.130194,
     "lng": 3.766449
+  },
+  {
+    "name": "Marolles - Marollen",
+    "lat": 50.837817,
+    "lng": 4.348081
   },
   {
     "name": "Marpent",
@@ -3715,6 +4030,11 @@
     "lng": 6.295205
   },
   {
+    "name": "Matongé",
+    "lat": 50.836688,
+    "lng": 4.364236
+  },
+  {
     "name": "Matzerath",
     "lat": 50.142602,
     "lng": 6.390643
@@ -3745,6 +4065,11 @@
     "lng": 3.598667
   },
   {
+    "name": "Mechelen",
+    "lat": 50.789353,
+    "lng": 5.920125
+  },
+  {
     "name": "Mecquignies",
     "lat": 50.269818,
     "lng": 3.803653
@@ -3770,9 +4095,24 @@
     "lng": 3.122187
   },
   {
+    "name": "Merken",
+    "lat": 50.842971,
+    "lng": 6.417931
+  },
+  {
+    "name": "Merkeshausen",
+    "lat": 50.042127,
+    "lng": 6.404193
+  },
+  {
     "name": "Merlscheid",
     "lat": 50.123575,
     "lng": 6.361544
+  },
+  {
+    "name": "Merode",
+    "lat": 50.784922,
+    "lng": 6.377633
   },
   {
     "name": "Mesen",
@@ -3803,6 +4143,16 @@
     "name": "Meurchin",
     "lat": 50.495027,
     "lng": 2.897222
+  },
+  {
+    "name": "Mheer",
+    "lat": 50.780466,
+    "lng": 5.792192
+  },
+  {
+    "name": "Michelbeke",
+    "lat": 50.832815,
+    "lng": 3.754864
   },
   {
     "name": "Millonfosse",
@@ -4090,14 +4440,29 @@
     "lng": 6.486756
   },
   {
+    "name": "Niedergeckler",
+    "lat": 49.970604,
+    "lng": 6.307409
+  },
+  {
     "name": "Niederlauch",
     "lat": 50.159453,
     "lng": 6.428478
   },
   {
+    "name": "Niedermehlen",
+    "lat": 50.213828,
+    "lng": 6.390446
+  },
+  {
     "name": "Niederpierscheid",
     "lat": 50.076339,
     "lng": 6.373025
+  },
+  {
+    "name": "Niederprüm",
+    "lat": 50.192781,
+    "lng": 6.399719
   },
   {
     "name": "Niederraden",
@@ -4145,9 +4510,19 @@
     "lng": 4.326112
   },
   {
+    "name": "Noir Bonnet",
+    "lat": 50.676239,
+    "lng": 3.128919
+  },
+  {
     "name": "Nomain",
     "lat": 50.503922,
     "lng": 3.242638
+  },
+  {
+    "name": "Noorbeek",
+    "lat": 50.773637,
+    "lng": 5.81914
   },
   {
     "name": "Noreuil",
@@ -4208,6 +4583,11 @@
     "name": "Oberlauch",
     "lat": 50.165505,
     "lng": 6.42901
+  },
+  {
+    "name": "Obermehlen",
+    "lat": 50.238947,
+    "lng": 6.387655
   },
   {
     "name": "Oberpierscheid",
@@ -4365,9 +4745,24 @@
     "lng": 5.642566
   },
   {
+    "name": "Outremeuse",
+    "lat": 50.642712,
+    "lng": 5.589659
+  },
+  {
     "name": "Overijse",
     "lat": 50.768026,
     "lng": 4.532535
+  },
+  {
+    "name": "Overlaar",
+    "lat": 50.789863,
+    "lng": 4.914428
+  },
+  {
+    "name": "Ovifat",
+    "lat": 50.487053,
+    "lng": 6.092299
   },
   {
     "name": "Paillencourt",
@@ -4450,6 +4845,11 @@
     "lng": 4.792969
   },
   {
+    "name": "Petit Ronchin",
+    "lat": 50.608226,
+    "lng": 3.080111
+  },
+  {
     "name": "Petit-Fayt",
     "lat": 50.098449,
     "lng": 3.835621
@@ -4485,6 +4885,11 @@
     "lng": 6.350519
   },
   {
+    "name": "Plaine du 7",
+    "lat": 50.437399,
+    "lng": 2.933285
+  },
+  {
     "name": "Plascheid",
     "lat": 50.034139,
     "lng": 6.291266
@@ -4510,6 +4915,11 @@
     "lng": 3.617702
   },
   {
+    "name": "Polleur (Verviers)",
+    "lat": 50.565156,
+    "lng": 5.878615
+  },
+  {
     "name": "Pommereuil",
     "lat": 50.11679,
     "lng": 3.585528
@@ -4530,6 +4940,11 @@
     "lng": 2.886416
   },
   {
+    "name": "Pont-de-Bois",
+    "lat": 50.627207,
+    "lng": 3.129494
+  },
+  {
     "name": "Pont-sur-Sambre",
     "lat": 50.230596,
     "lng": 3.84831
@@ -4538,6 +4953,11 @@
     "name": "Pontru",
     "lat": 49.921413,
     "lng": 3.200687
+  },
+  {
+    "name": "Poste.",
+    "lat": 50.62563,
+    "lng": 3.141333
   },
   {
     "name": "Potelle",
@@ -4558,6 +4978,11 @@
     "name": "Prémont",
     "lat": 50.015676,
     "lng": 3.392772
+  },
+  {
+    "name": "Prés",
+    "lat": 50.648369,
+    "lng": 3.13101
   },
   {
     "name": "Préseau",
@@ -4628,6 +5053,66 @@
     "name": "Quarouble",
     "lat": 50.405643,
     "lng": 3.626051
+  },
+  {
+    "name": "Quartier de la Cathédrale",
+    "lat": 50.848335,
+    "lng": 4.359915
+  },
+  {
+    "name": "Quartier de la Senne - Zennewijk",
+    "lat": 50.849003,
+    "lng": 4.343058
+  },
+  {
+    "name": "Quartier des Libertés - Vrijheidswijk",
+    "lat": 50.850198,
+    "lng": 4.36591
+  },
+  {
+    "name": "Quartier des Quais - Kaaienwijk",
+    "lat": 50.853654,
+    "lng": 4.347332
+  },
+  {
+    "name": "Quartier du Centre - Centrumwijk",
+    "lat": 50.846698,
+    "lng": 4.352416
+  },
+  {
+    "name": "Quartier Est",
+    "lat": 50.409624,
+    "lng": 2.959617
+  },
+  {
+    "name": "Quartier Marais-Jacqmain - Wijk Marais-Jacqmain",
+    "lat": 50.852138,
+    "lng": 4.358188
+  },
+  {
+    "name": "Quartier Midi-Lemonnier - Zuid-Lemonnierwijk",
+    "lat": 50.842882,
+    "lng": 4.345466
+  },
+  {
+    "name": "Quartier Nord-Ouest",
+    "lat": 50.438659,
+    "lng": 2.957494
+  },
+  {
+    "name": "Quartier Royal - Koninklijke Wijk",
+    "lat": 50.843563,
+    "lng": 4.361933
+  },
+  {
+    "name": "Quartier Saint-Géry - Sint-Gorikswijk",
+    "lat": 50.8485,
+    "lng": 4.348319
+  },
+  {
+    "name": "Quartier Sud",
+    "lat": 50.410154,
+    "lng": 2.936296
   },
   {
     "name": "Quéant",
@@ -4755,9 +5240,19 @@
     "lng": 4.049062
   },
   {
+    "name": "Recueil",
+    "lat": 50.655838,
+    "lng": 3.1634
+  },
+  {
     "name": "Reiff",
     "lat": 50.105721,
     "lng": 6.220401
+  },
+  {
+    "name": "Reijmerstok",
+    "lat": 50.796687,
+    "lng": 5.844552
   },
   {
     "name": "Reipeldingen",
@@ -4783,6 +5278,11 @@
     "name": "Rendeux",
     "lat": 50.214357,
     "lng": 5.527067
+  },
+  {
+    "name": "Résidence",
+    "lat": 50.621033,
+    "lng": 3.144661
   },
   {
     "name": "Reumont",
@@ -4828,6 +5328,11 @@
     "name": "Rieux-en-Cambrésis",
     "lat": 50.202108,
     "lng": 3.353296
+  },
+  {
+    "name": "Risquons-Tout",
+    "lat": 50.75437,
+    "lng": 3.184803
   },
   {
     "name": "Rixensart",
@@ -4970,6 +5475,11 @@
     "lng": 3.58227
   },
   {
+    "name": "Ruitzhof",
+    "lat": 50.52596,
+    "lng": 6.19698
+  },
+  {
     "name": "Rumaucourt",
     "lat": 50.238221,
     "lng": 3.066421
@@ -4993,6 +5503,11 @@
     "name": "Ruyaulcourt",
     "lat": 50.082412,
     "lng": 3.020511
+  },
+  {
+    "name": "Sablon - Zavel",
+    "lat": 50.839801,
+    "lng": 4.356587
   },
   {
     "name": "Sailly-en-Ostrevent",
@@ -5110,6 +5625,11 @@
     "lng": 3.51617
   },
   {
+    "name": "Saint-Maurice Pellevoisin",
+    "lat": 50.647176,
+    "lng": 3.089355
+  },
+  {
     "name": "Saint-Michel",
     "lat": 49.931002,
     "lng": 4.150038
@@ -5200,6 +5720,11 @@
     "lng": 4.0487
   },
   {
+    "name": "Sart-Babylone",
+    "lat": 50.656366,
+    "lng": 3.138732
+  },
+  {
     "name": "Sassegnies",
     "lat": 50.176162,
     "lng": 3.795547
@@ -5250,9 +5775,29 @@
     "lng": 6.31737
   },
   {
+    "name": "Scheulder",
+    "lat": 50.827422,
+    "lng": 5.849466
+  },
+  {
+    "name": "Schin op Geul",
+    "lat": 50.84846,
+    "lng": 5.863675
+  },
+  {
     "name": "Schleiden",
     "lat": 50.558562,
     "lng": 6.453768
+  },
+  {
+    "name": "Schlich-D'horn",
+    "lat": 50.794081,
+    "lng": 6.400285
+  },
+  {
+    "name": "Schönberg (Büllingen)",
+    "lat": 50.328244,
+    "lng": 6.289054
   },
   {
     "name": "Schönecken",
@@ -5351,8 +5896,8 @@
   },
   {
     "name": "Simpelveld",
-    "lat": 50.83083,
-    "lng": 5.989137
+    "lat": 50.839825,
+    "lng": 5.979325
   },
   {
     "name": "Sin-le-Noble",
@@ -5365,9 +5910,19 @@
     "lng": 6.320138
   },
   {
+    "name": "Sint Geertruid",
+    "lat": 50.792397,
+    "lng": 5.778067
+  },
+  {
     "name": "Sint-Genesius-Rode - Rhode-Saint-Genèse",
     "lat": 50.744237,
     "lng": 4.372548
+  },
+  {
+    "name": "Sint-Maria-Oudenhove (Brakel)",
+    "lat": 50.823055,
+    "lng": 3.779903
   },
   {
     "name": "Sint-Pieters-Leeuw",
@@ -5383,6 +5938,11 @@
     "name": "Sivry-Rance",
     "lat": 50.168022,
     "lng": 4.215706
+  },
+  {
+    "name": "Slenaken",
+    "lat": 50.770161,
+    "lng": 5.855632
   },
   {
     "name": "Soignies",
@@ -5460,6 +6020,11 @@
     "lng": 5.940762
   },
   {
+    "name": "Steinmehlen",
+    "lat": 50.211461,
+    "lng": 6.375309
+  },
+  {
     "name": "Stolberg",
     "lat": 50.745136,
     "lng": 6.270083
@@ -5518,6 +6083,11 @@
     "name": "Ternat",
     "lat": 50.86522,
     "lng": 4.156453
+  },
+  {
+    "name": "Terstok",
+    "lat": 50.84778,
+    "lng": 5.244787
   },
   {
     "name": "Tervuren",
@@ -5645,6 +6215,11 @@
     "lng": 3.189675
   },
   {
+    "name": "Triolo",
+    "lat": 50.617021,
+    "lng": 3.144491
+  },
+  {
     "name": "Trith-Saint-Léger",
     "lat": 50.329471,
     "lng": 3.4879
@@ -5706,8 +6281,8 @@
   },
   {
     "name": "Vaals",
-    "lat": 50.7781,
-    "lng": 5.974235
+    "lat": 50.768873,
+    "lng": 5.996771
   },
   {
     "name": "Valenciennes",
@@ -5715,9 +6290,19 @@
     "lng": 3.514263
   },
   {
+    "name": "Valkenburg",
+    "lat": 50.860888,
+    "lng": 5.821073
+  },
+  {
     "name": "Valkenburg aan de Geul",
     "lat": 50.860888,
     "lng": 5.818648
+  },
+  {
+    "name": "Vauban-Esquermes",
+    "lat": 50.634359,
+    "lng": 3.041218
   },
   {
     "name": "Vaulx-Vraucourt",
@@ -5815,6 +6400,11 @@
     "lng": 3.561388
   },
   {
+    "name": "Vieux-Lille",
+    "lat": 50.643555,
+    "lng": 3.060458
+  },
+  {
     "name": "Vieux-Mesnil",
     "lat": 50.260803,
     "lng": 3.869261
@@ -5823,6 +6413,11 @@
     "name": "Vieux-Reng",
     "lat": 50.323261,
     "lng": 4.044274
+  },
+  {
+    "name": "Vijlen",
+    "lat": 50.779479,
+    "lng": 5.952807
   },
   {
     "name": "Villeneuve-d'Ascq",
@@ -5936,13 +6531,18 @@
   },
   {
     "name": "Voerendaal",
-    "lat": 50.872252,
-    "lng": 5.915427
+    "lat": 50.871139,
+    "lng": 5.925949
   },
   {
     "name": "Vred",
     "lat": 50.394238,
     "lng": 3.231035
+  },
+  {
+    "name": "Vrijhern",
+    "lat": 50.819346,
+    "lng": 5.457893
   },
   {
     "name": "Wahagnies",
@@ -5973,6 +6573,11 @@
     "name": "Walincourt-Selvigny",
     "lat": 50.076416,
     "lng": 3.338563
+  },
+  {
+    "name": "Wallerode",
+    "lat": 50.296338,
+    "lng": 6.166312
   },
   {
     "name": "Wallers",
@@ -6038,6 +6643,11 @@
     "name": "Warneton",
     "lat": 50.74661,
     "lng": 2.965827
+  },
+  {
+    "name": "Wascheid",
+    "lat": 50.264586,
+    "lng": 6.406053
   },
   {
     "name": "Wasnes-au-Bac",
@@ -6120,6 +6730,11 @@
     "lng": 6.366703
   },
   {
+    "name": "Wazemmes",
+    "lat": 50.625487,
+    "lng": 3.048119
+  },
+  {
     "name": "Waziers",
     "lat": 50.384066,
     "lng": 3.112033
@@ -6128,6 +6743,11 @@
     "name": "Weidingen",
     "lat": 50.013913,
     "lng": 6.376006
+  },
+  {
+    "name": "Weinsfeld",
+    "lat": 50.196696,
+    "lng": 6.366124
   },
   {
     "name": "Weinsheim",
@@ -6153,6 +6773,11 @@
     "name": "Wellin",
     "lat": 50.069387,
     "lng": 5.09459
+  },
+  {
+    "name": "Wenau",
+    "lat": 50.792721,
+    "lng": 6.333131
   },
   {
     "name": "Wervicq-Sud",
@@ -6183,6 +6808,11 @@
     "name": "Wignehies",
     "lat": 50.014128,
     "lng": 4.00443
+  },
+  {
+    "name": "Wijlre",
+    "lat": 50.833761,
+    "lng": 5.888711
   },
   {
     "name": "Willems",
@@ -6230,9 +6860,19 @@
     "lng": 6.211337
   },
   {
+    "name": "Wisbecq",
+    "lat": 50.685205,
+    "lng": 4.141393
+  },
+  {
     "name": "Wißmannsdorf",
     "lat": 49.997711,
     "lng": 6.444203
+  },
+  {
+    "name": "Wittem",
+    "lat": 50.811041,
+    "lng": 5.940833
   },
   {
     "name": "Woluwe-Saint-Lambert - Sint-Lambrechts-Woluwe",

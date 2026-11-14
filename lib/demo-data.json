@@ -75,6 +75,46 @@
       "phone": "+32 67 49 31 49"
     },
     {
+      "id": "osm-1804293546-as24",
+      "name": "AS24",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.504632,
+      "lng": 4.17954,
+      "hours": "PH,Mo-Su 00:00-24:00"
+    },
+    {
+      "id": "osm-11065858019-ateliers-vanderwhalle",
+      "name": "Ateliers Vanderwhalle",
+      "category": "artisan",
+      "subcategory": "metal_construction",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.51988,
+      "lng": 4.19347
+    },
+    {
+      "id": "osm-11102651999-bhe",
+      "name": "BHE",
+      "category": "artisan",
+      "subcategory": "estate_agent",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.489544,
+      "lng": 4.203439
+    },
+    {
       "id": "osm-654330848-boucherie-de-wolf",
       "name": "Boucherie De Wolf",
       "category": "alimentation",
@@ -86,6 +126,46 @@
       "postalCode": "7100",
       "lat": 50.510386,
       "lng": 4.195229
+    },
+    {
+      "id": "osm-11032815322-boulangerie-louise",
+      "name": "Boulangerie Louise",
+      "category": "alimentation",
+      "subcategory": "bakery",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.486117,
+      "lng": 4.198063,
+      "hours": "Mo-Sa 07:30-19:00; Su 07:30-12:00"
+    },
+    {
+      "id": "osm-11065807772-catherine-durieux",
+      "name": "Catherine Durieux",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.516393,
+      "lng": 4.199084
+    },
+    {
+      "id": "osm-1202325192-centre-de-competence-logistique-forem",
+      "name": "Centre de compétence logistique Forem",
+      "category": "artisan",
+      "subcategory": "employment_agency",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "1 Boulevard de la Technicité",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.507045,
+      "lng": 4.181808
     },
     {
       "id": "osm-11028488571-charles-van-mieghem",
@@ -101,6 +181,242 @@
       "lng": 4.185639
     },
     {
+      "id": "osm-11065807769-chez-pene",
+      "name": "Chez Pené",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.512094,
+      "lng": 4.196516
+    },
+    {
+      "id": "osm-11065807761-coiffure-nicole",
+      "name": "Coiffure Nicole",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.510935,
+      "lng": 4.19277
+    },
+    {
+      "id": "osm-11146387253-consultic",
+      "name": "ConsulTIC",
+      "category": "artisan",
+      "subcategory": "it",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.507409,
+      "lng": 4.174316
+    },
+    {
+      "id": "osm-447829947-cook-n-frites",
+      "name": "Cook'n Frites",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.490741,
+      "lng": 4.204869
+    },
+    {
+      "id": "osm-11239707897-dilan-gures",
+      "name": "Dilan Gures",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.528041,
+      "lng": 4.153006
+    },
+    {
+      "id": "osm-11065602061-enzo-giovanardi",
+      "name": "Enzo Giovanardi",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.510571,
+      "lng": 4.166471
+    },
+    {
+      "id": "osm-11065807763-estelle-feys",
+      "name": "Estelle Feys",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511542,
+      "lng": 4.202233
+    },
+    {
+      "id": "osm-1220080264-etablissements-herman-delbruyere-et-fils",
+      "name": "Établissements Herman Delbruyere et Fils",
+      "category": "artisan",
+      "subcategory": "hardware",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.518343,
+      "lng": 4.211868
+    },
+    {
+      "id": "osm-11032815321-famiglia-chiolo",
+      "name": "Famiglia Chiolo",
+      "category": "alimentation",
+      "subcategory": "deli",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.486054,
+      "lng": 4.198184,
+      "hours": "Mo-Sa 07:00-19:00"
+    },
+    {
+      "id": "osm-11239706342-guy-waterlot",
+      "name": "Guy Waterlot",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.528375,
+      "lng": 4.153623
+    },
+    {
+      "id": "osm-11239705061-herman-et-augustine",
+      "name": "Herman et Augustine",
+      "category": "alimentation",
+      "subcategory": "deli",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.528665,
+      "lng": 4.152296
+    },
+    {
+      "id": "osm-11065539151-il-pescatore",
+      "name": "Il Pescatore",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.485367,
+      "lng": 4.197051
+    },
+    {
+      "id": "osm-1202325164-janssen-pharmaceutica",
+      "name": "Janssen Pharmaceutica",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.501953,
+      "lng": 4.173573
+    },
+    {
+      "id": "osm-11065807765-jeremie-drugmand",
+      "name": "Jérémie Drugmand",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.509105,
+      "lng": 4.199249
+    },
+    {
+      "id": "osm-11065807766-justine-sohier",
+      "name": "Justine Sohier",
+      "category": "artisan",
+      "subcategory": "veterinary",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.508907,
+      "lng": 4.198867
+    },
+    {
+      "id": "osm-12313954301-kinesitherapeute-amelie-savage",
+      "name": "Kinésithérapeute — Amélie Savage",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "1 Place Albert 1er",
+      "town": "Besonrieux",
+      "postalCode": "7070",
+      "lat": 50.528044,
+      "lng": 4.152989,
+      "website": "https://www.kine-savage.be/"
+    },
+    {
+      "id": "osm-13202439926-l-astrid",
+      "name": "L'Astrid",
+      "category": "horeca",
+      "subcategory": "cafe",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.493684,
+      "lng": 4.20155
+    },
+    {
+      "id": "osm-11239706274-l-univ-hair-de-julie",
+      "name": "L'Univ'Hair de Julie",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.529816,
+      "lng": 4.150376
+    },
+    {
       "id": "osm-11065807775-la-mediterranee",
       "name": "La Méditerranée",
       "category": "alimentation",
@@ -112,6 +428,242 @@
       "postalCode": "7100",
       "lat": 50.512451,
       "lng": 4.195055
+    },
+    {
+      "id": "osm-11065807774-la-superette-chez-marie-claire-et-bruno",
+      "name": "La Supérette chez Marie-Claire et Bruno",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511255,
+      "lng": 4.195047
+    },
+    {
+      "id": "osm-12902094764-le-bois-d-haigne",
+      "name": "Le Bois d'Haigne",
+      "category": "horeca",
+      "subcategory": "bar",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.502574,
+      "lng": 4.217033
+    },
+    {
+      "id": "osm-11966302281-le-nautic-lodge",
+      "name": "Le Nautic Lodge",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.51694,
+      "lng": 4.223264,
+      "website": "https://www.nauticlodge-restosympa.me/"
+    },
+    {
+      "id": "osm-11239686823-le-petit-strepy",
+      "name": "Le Petit Strépy",
+      "category": "alimentation",
+      "subcategory": "bakery",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.526995,
+      "lng": 4.150801
+    },
+    {
+      "id": "osm-4448937968-le-pre-corbeau",
+      "name": "Le Pré Corbeau",
+      "category": "horeca",
+      "subcategory": "bar",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.490719,
+      "lng": 4.204769
+    },
+    {
+      "id": "osm-11032171612-louis-delhaize",
+      "name": "Louis Delhaize",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.494783,
+      "lng": 4.204475
+    },
+    {
+      "id": "osm-6122319820-maison-du-peuple",
+      "name": "Maison du Peuple",
+      "category": "horeca",
+      "subcategory": "cafe",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511162,
+      "lng": 4.195389
+    },
+    {
+      "id": "osm-11065807767-marco-s-barbershop",
+      "name": "Marco's Barbershop",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.510305,
+      "lng": 4.197364
+    },
+    {
+      "id": "osm-11065807762-nadine-carlier",
+      "name": "Nadine Carlier",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511873,
+      "lng": 4.193248
+    },
+    {
+      "id": "osm-5818421079-nautic-service",
+      "name": "Nautic Service",
+      "category": "artisan",
+      "subcategory": "boatbuilder",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511826,
+      "lng": 4.214241
+    },
+    {
+      "id": "osm-11169307083-o-bois-zen",
+      "name": "Ô Bois Zen",
+      "category": "artisan",
+      "subcategory": "beauty",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.493452,
+      "lng": 4.208272
+    },
+    {
+      "id": "osm-6010840347-pharmacie-de-besonrieux",
+      "name": "Pharmacie de Besonrieux",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.511092,
+      "lng": 4.196992
+    },
+    {
+      "id": "osm-11102651919-pharmacie-de-l-appel",
+      "name": "Pharmacie de l'Appel",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.489382,
+      "lng": 4.203221
+    },
+    {
+      "id": "osm-13106017247-pharmacie-wilquin",
+      "name": "Pharmacie Wilquin",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.494251,
+      "lng": 4.203432
+    },
+    {
+      "id": "osm-167562865-q8-easy",
+      "name": "Q8 Easy",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.485744,
+      "lng": 4.200152,
+      "hours": "24/7"
+    },
+    {
+      "id": "osm-11065807760-roverphoto",
+      "name": "Roverphoto",
+      "category": "artisan",
+      "subcategory": "photographer",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.507005,
+      "lng": 4.199905
+    },
+    {
+      "id": "osm-11239708869-sarah-style",
+      "name": "Sarah Style",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.528755,
+      "lng": 4.155196
+    },
+    {
+      "id": "osm-11065807764-sophie-degalant",
+      "name": "Sophie Degalant",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Besonrieux",
+      "postalCode": "",
+      "lat": 50.509406,
+      "lng": 4.201356
     },
     {
       "id": "osm-10177729568-presse-express-shop",
@@ -12269,19 +12821,6 @@
       "lng": 4.139119
     },
     {
-      "id": "osm-11239708869-sarah-style",
-      "name": "Sarah Style",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Écaussinnes",
-      "postalCode": "",
-      "lat": 50.528755,
-      "lng": 4.155196
-    },
-    {
       "id": "osm-5902250736-shop-coco",
       "name": "Shop Coco",
       "category": "alimentation",
@@ -16969,20 +17508,6 @@
       "lng": 4.157348
     },
     {
-      "id": "osm-1804293546-as24",
-      "name": "AS24",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.504632,
-      "lng": 4.17954,
-      "hours": "PH,Mo-Su 00:00-24:00"
-    },
-    {
       "id": "osm-11032712854-asap-be",
       "name": "ASAP.be",
       "category": "artisan",
@@ -18170,19 +18695,6 @@
       "lng": 4.183177
     },
     {
-      "id": "osm-1202325192-centre-de-competence-logistique-forem",
-      "name": "Centre de compétence logistique Forem",
-      "category": "artisan",
-      "subcategory": "employment_agency",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Boulevard de la Technicité",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.507045,
-      "lng": 4.181808
-    },
-    {
       "id": "osm-11032712706-centre-l-odyssee",
       "name": "Centre L'Odyssée",
       "category": "artisan",
@@ -18848,19 +19360,6 @@
       "hours": "Mo-Fr 08:30-12:30,13:30-16:30"
     },
     {
-      "id": "osm-11146387253-consultic",
-      "name": "ConsulTIC",
-      "category": "artisan",
-      "subcategory": "it",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.507409,
-      "lng": 4.174316
-    },
-    {
       "id": "osm-4357227018-contre-point",
       "name": "Contre Point",
       "category": "artisan",
@@ -19346,19 +19845,6 @@
       "lat": 50.477189,
       "lng": 4.186282,
       "phone": "+32 472 90 90 15"
-    },
-    {
-      "id": "osm-11065602061-enzo-giovanardi",
-      "name": "Enzo Giovanardi",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.510571,
-      "lng": 4.166471
     },
     {
       "id": "osm-11033217880-epi-louve",
@@ -20332,19 +20818,6 @@
       "postalCode": "",
       "lat": 50.477381,
       "lng": 4.192679
-    },
-    {
-      "id": "osm-1202325164-janssen-pharmaceutica",
-      "name": "Janssen Pharmaceutica",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.501953,
-      "lng": 4.173573
     },
     {
       "id": "osm-11122005093-jc-soins",
@@ -25113,19 +25586,6 @@
       "lng": 4.111423
     },
     {
-      "id": "osm-11239707897-dilan-gures",
-      "name": "Dilan Gures",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.528041,
-      "lng": 4.153006
-    },
-    {
       "id": "osm-11263981340-entreprise-hayez-fils",
       "name": "Entreprise Hayez & Fils",
       "category": "artisan",
@@ -25232,32 +25692,6 @@
       "lng": 4.115965
     },
     {
-      "id": "osm-11239706342-guy-waterlot",
-      "name": "Guy Waterlot",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.528375,
-      "lng": 4.153623
-    },
-    {
-      "id": "osm-11239705061-herman-et-augustine",
-      "name": "Herman et Augustine",
-      "category": "alimentation",
-      "subcategory": "deli",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.528665,
-      "lng": 4.152296
-    },
-    {
       "id": "osm-13504491621-immo-lenoir",
       "name": "Immo Lenoir",
       "category": "artisan",
@@ -25336,20 +25770,6 @@
       "lng": 4.110051
     },
     {
-      "id": "osm-12313954301-kinesitherapeute-amelie-savage",
-      "name": "Kinésithérapeute — Amélie Savage",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Place Albert 1er",
-      "town": "Le Rœulx",
-      "postalCode": "7070",
-      "lat": 50.528044,
-      "lng": 4.152989,
-      "website": "https://www.kine-savage.be/"
-    },
-    {
       "id": "osm-11264195818-l-artisan",
       "name": "L'Artisan",
       "category": "alimentation",
@@ -25374,19 +25794,6 @@
       "postalCode": "",
       "lat": 50.497926,
       "lng": 4.12761
-    },
-    {
-      "id": "osm-11239706274-l-univ-hair-de-julie",
-      "name": "L'Univ'Hair de Julie",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.529816,
-      "lng": 4.150376
     },
     {
       "id": "osm-11264195827-la-cigale",
@@ -25494,19 +25901,6 @@
       "postalCode": "",
       "lat": 50.501241,
       "lng": 4.108839
-    },
-    {
-      "id": "osm-11239686823-le-petit-strepy",
-      "name": "Le Petit Strépy",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.526995,
-      "lng": 4.150801
     },
     {
       "id": "osm-1682980124-le-xviiieme-siecle",
@@ -26840,19 +27234,6 @@
       "lng": 4.210905
     },
     {
-      "id": "osm-11065858019-ateliers-vanderwhalle",
-      "name": "Ateliers Vanderwhalle",
-      "category": "artisan",
-      "subcategory": "metal_construction",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.51988,
-      "lng": 4.19347
-    },
-    {
       "id": "osm-12474927759-au-89z",
       "name": "Au 89z",
       "category": "horeca",
@@ -26923,19 +27304,6 @@
       "hours": "Mo-Sa 10:00-20:00"
     },
     {
-      "id": "osm-11102651999-bhe",
-      "name": "BHE",
-      "category": "artisan",
-      "subcategory": "estate_agent",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.489544,
-      "lng": 4.203439
-    },
-    {
       "id": "osm-11163069945-blue-chili",
       "name": "Blue Chili",
       "category": "horeca",
@@ -26973,20 +27341,6 @@
       "postalCode": "",
       "lat": 50.503532,
       "lng": 4.236298
-    },
-    {
-      "id": "osm-11032815322-boulangerie-louise",
-      "name": "Boulangerie Louise",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.486117,
-      "lng": 4.198063,
-      "hours": "Mo-Sa 07:30-19:00; Su 07:30-12:00"
     },
     {
       "id": "osm-11165471104-brasserie-des-arts",
@@ -27107,19 +27461,6 @@
       "hours": "Mo-Su 08:00-20:00"
     },
     {
-      "id": "osm-11065807772-catherine-durieux",
-      "name": "Catherine Durieux",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.516393,
-      "lng": 4.199084
-    },
-    {
       "id": "osm-11163068803-centre-de-medecine-de-la-hestre",
       "name": "Centre de médecine de la Hestre",
       "category": "artisan",
@@ -27170,19 +27511,6 @@
       "postalCode": "",
       "lat": 50.503507,
       "lng": 4.235822
-    },
-    {
-      "id": "osm-11065807769-chez-pene",
-      "name": "Chez Pené",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.512094,
-      "lng": 4.196516
     },
     {
       "id": "osm-11049468098-chez-sonia",
@@ -27301,32 +27629,6 @@
       "postalCode": "",
       "lat": 50.504023,
       "lng": 4.236728
-    },
-    {
-      "id": "osm-11065807761-coiffure-nicole",
-      "name": "Coiffure Nicole",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.510935,
-      "lng": 4.19277
-    },
-    {
-      "id": "osm-447829947-cook-n-frites",
-      "name": "Cook'n Frites",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.490741,
-      "lng": 4.204869
     },
     {
       "id": "osm-12566001999-dahmani-fils",
@@ -27461,32 +27763,6 @@
       "hours": "Mo-Su 04:30-24:00"
     },
     {
-      "id": "osm-11065807763-estelle-feys",
-      "name": "Estelle Feys",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511542,
-      "lng": 4.202233
-    },
-    {
-      "id": "osm-1220080264-etablissements-herman-delbruyere-et-fils",
-      "name": "Établissements Herman Delbruyere et Fils",
-      "category": "artisan",
-      "subcategory": "hardware",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.518343,
-      "lng": 4.211868
-    },
-    {
       "id": "osm-11077332674-etienne-payen",
       "name": "Étienne Payen",
       "category": "artisan",
@@ -27498,20 +27774,6 @@
       "postalCode": "",
       "lat": 50.474065,
       "lng": 4.218872
-    },
-    {
-      "id": "osm-11032815321-famiglia-chiolo",
-      "name": "Famiglia Chiolo",
-      "category": "alimentation",
-      "subcategory": "deli",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.486054,
-      "lng": 4.198184,
-      "hours": "Mo-Sa 07:00-19:00"
     },
     {
       "id": "osm-11169307079-fb-immobilier",
@@ -27683,19 +27945,6 @@
       "lng": 4.218547
     },
     {
-      "id": "osm-11065539151-il-pescatore",
-      "name": "Il Pescatore",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.485367,
-      "lng": 4.197051
-    },
-    {
       "id": "osm-11102651437-il-vecchio-mulino",
       "name": "Il Vecchio Mulino",
       "category": "alimentation",
@@ -27813,19 +28062,6 @@
       "lng": 4.1995
     },
     {
-      "id": "osm-11065807765-jeremie-drugmand",
-      "name": "Jérémie Drugmand",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.509105,
-      "lng": 4.199249
-    },
-    {
       "id": "osm-11049409400-jolimontoit-sprl",
       "name": "Jolimontoit SPRL",
       "category": "artisan",
@@ -27852,19 +28088,6 @@
       "lng": 4.214394
     },
     {
-      "id": "osm-11065807766-justine-sohier",
-      "name": "Justine Sohier",
-      "category": "artisan",
-      "subcategory": "veterinary",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.508907,
-      "lng": 4.198867
-    },
-    {
       "id": "osm-11049510881-karibu-afro-shop",
       "name": "Karibu Afro Shop",
       "category": "alimentation",
@@ -27876,19 +28099,6 @@
       "postalCode": "",
       "lat": 50.477586,
       "lng": 4.223683
-    },
-    {
-      "id": "osm-13202439926-l-astrid",
-      "name": "L'Astrid",
-      "category": "horeca",
-      "subcategory": "cafe",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.493684,
-      "lng": 4.20155
     },
     {
       "id": "osm-11077334316-l-atelier-du-tonsor",
@@ -28074,19 +28284,6 @@
       "lng": 4.222855
     },
     {
-      "id": "osm-11065807774-la-superette-chez-marie-claire-et-bruno",
-      "name": "La Supérette chez Marie-Claire et Bruno",
-      "category": "alimentation",
-      "subcategory": "convenience",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511255,
-      "lng": 4.195047
-    },
-    {
       "id": "osm-11049411273-la-table-d-or",
       "name": "La Table d'Or",
       "category": "horeca",
@@ -28163,19 +28360,6 @@
       "postalCode": "",
       "lat": 50.481337,
       "lng": 4.251721
-    },
-    {
-      "id": "osm-12902094764-le-bois-d-haigne",
-      "name": "Le Bois d'Haigne",
-      "category": "horeca",
-      "subcategory": "bar",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.502574,
-      "lng": 4.217033
     },
     {
       "id": "osm-13238909124-le-break",
@@ -28296,20 +28480,6 @@
       "lng": 4.235108
     },
     {
-      "id": "osm-11966302281-le-nautic-lodge",
-      "name": "Le Nautic Lodge",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.51694,
-      "lng": 4.223264,
-      "website": "https://www.nauticlodge-restosympa.me/"
-    },
-    {
       "id": "osm-11271487394-le-petit-cellier",
       "name": "Le Petit Cellier",
       "category": "horeca",
@@ -28334,19 +28504,6 @@
       "postalCode": "",
       "lat": 50.476957,
       "lng": 4.222356
-    },
-    {
-      "id": "osm-4448937968-le-pre-corbeau",
-      "name": "Le Pré Corbeau",
-      "category": "horeca",
-      "subcategory": "bar",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.490719,
-      "lng": 4.204769
     },
     {
       "id": "osm-11162749560-le-saint-laurent",
@@ -28454,19 +28611,6 @@
       "lng": 4.199393
     },
     {
-      "id": "osm-11032171612-louis-delhaize",
-      "name": "Louis Delhaize",
-      "category": "alimentation",
-      "subcategory": "convenience",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.494783,
-      "lng": 4.204475
-    },
-    {
       "id": "osm-11034135563-louv-croc",
       "name": "Louv'Croc",
       "category": "horeca",
@@ -28506,19 +28650,6 @@
       "lng": 4.221601
     },
     {
-      "id": "osm-6122319820-maison-du-peuple",
-      "name": "Maison du Peuple",
-      "category": "horeca",
-      "subcategory": "cafe",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511162,
-      "lng": 4.195389
-    },
-    {
       "id": "osm-11049511594-malvina-saiu",
       "name": "Malvina Saiu",
       "category": "artisan",
@@ -28543,19 +28674,6 @@
       "postalCode": "",
       "lat": 50.473476,
       "lng": 4.233948
-    },
-    {
-      "id": "osm-11065807767-marco-s-barbershop",
-      "name": "Marco's Barbershop",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.510305,
-      "lng": 4.197364
     },
     {
       "id": "osm-1208259478-mat-inox",
@@ -28670,19 +28788,6 @@
       "lng": 4.229623
     },
     {
-      "id": "osm-11065807762-nadine-carlier",
-      "name": "Nadine Carlier",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511873,
-      "lng": 4.193248
-    },
-    {
       "id": "osm-11165482338-nancy-philippi",
       "name": "Nancy Philippi",
       "category": "artisan",
@@ -28694,19 +28799,6 @@
       "postalCode": "",
       "lat": 50.48783,
       "lng": 4.227648
-    },
-    {
-      "id": "osm-5818421079-nautic-service",
-      "name": "Nautic Service",
-      "category": "artisan",
-      "subcategory": "boatbuilder",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511826,
-      "lng": 4.214241
     },
     {
       "id": "osm-11163071540-new-cut-pierre",
@@ -28773,19 +28865,6 @@
       "postalCode": "",
       "lat": 50.504071,
       "lng": 4.236768
-    },
-    {
-      "id": "osm-11169307083-o-bois-zen",
-      "name": "Ô Bois Zen",
-      "category": "artisan",
-      "subcategory": "beauty",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.493452,
-      "lng": 4.208272
     },
     {
       "id": "osm-11169307077-o-p-tit-bouchi",
@@ -28906,19 +28985,6 @@
       "lng": 4.20201
     },
     {
-      "id": "osm-6010840347-pharmacie-de-besonrieux",
-      "name": "Pharmacie de Besonrieux",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511092,
-      "lng": 4.196992
-    },
-    {
       "id": "osm-11169307081-pharmacie-de-bois-d-haine",
       "name": "Pharmacie de Bois-d'Haine",
       "category": "artisan",
@@ -28930,19 +28996,6 @@
       "postalCode": "",
       "lat": 50.49386,
       "lng": 4.2113
-    },
-    {
-      "id": "osm-11102651919-pharmacie-de-l-appel",
-      "name": "Pharmacie de l'Appel",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.489382,
-      "lng": 4.203221
     },
     {
       "id": "osm-11162751145-pharmacie-de-la-grand-rue",
@@ -28969,19 +29022,6 @@
       "postalCode": "",
       "lat": 50.479498,
       "lng": 4.234562
-    },
-    {
-      "id": "osm-13106017247-pharmacie-wilquin",
-      "name": "Pharmacie Wilquin",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.494251,
-      "lng": 4.203432
     },
     {
       "id": "osm-11049411468-press-market",
@@ -29023,20 +29063,6 @@
       "lng": 4.220486
     },
     {
-      "id": "osm-167562865-q8-easy",
-      "name": "Q8 Easy",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.485744,
-      "lng": 4.200152,
-      "hours": "24/7"
-    },
-    {
       "id": "osm-11163066352-quentin-bury",
       "name": "Quentin Bury",
       "category": "artisan",
@@ -29048,19 +29074,6 @@
       "postalCode": "",
       "lat": 50.476224,
       "lng": 4.238479
-    },
-    {
-      "id": "osm-11065807760-roverphoto",
-      "name": "Roverphoto",
-      "category": "artisan",
-      "subcategory": "photographer",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.507005,
-      "lng": 4.199905
     },
     {
       "id": "osm-11034137629-royal-sushi",
@@ -29218,19 +29231,6 @@
       "lat": 50.483674,
       "lng": 4.203656,
       "hours": "Mo-Fr 08:00-18:00; Sa 09:30-14:00"
-    },
-    {
-      "id": "osm-11065807764-sophie-degalant",
-      "name": "Sophie Degalant",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.509406,
-      "lng": 4.201356
     },
     {
       "id": "osm-11163066541-star-frite",
