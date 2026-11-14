@@ -1,11 +1,16 @@
 "use client";
 
+import { useMemo, useState } from "react";
+import communesJson from "@/lib/communes.json";
 import { ChevronDown, Database, LocateFixed, MapPin, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { BASE_POINTS, RADIUS_OPTIONS } from "@/lib/seed";
 import type { GeoState } from "@/lib/types";
+
+const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
 
 interface HeaderBarProps {
   geo: GeoState;
@@ -15,6 +20,7 @@ interface HeaderBarProps {
   count: number;
   onBaseChange: (key: string) => void;
   onRadiusChange: (radius: number) => void;
+  onCitySelect: (city: { name: string; lat: number; lng: number }) => void;
 }
 
 export function HeaderBar({
@@ -25,19 +31,38 @@ export function HeaderBar({
   count,
   onBaseChange,
   onRadiusChange,
+  onCitySelect,
 }: HeaderBarProps) {
   const sliderIndex = Math.max(0, RADIUS_OPTIONS.indexOf(radius));
+  const [cityQuery, setCityQuery] = useState("");
+
+  const cityMatches = useMemo(() => {
+    const q = cityQuery.trim().toLowerCase();
+    if (q.length < 2) return [];
+    return COMMUNES.filter((c) => c.name.toLowerCase().startsWith(q)).slice(0, 8);
+  }, [cityQuery]);
+
+  const pickCity = (name: string) => {
+    const c = COMMUNES.find((x) => x.name === name);
+    if (c) {
+      onCitySelect(c);
+      setCityQuery("");
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 backdrop-blur">
       <div className="mx-auto w-full max-w-3xl px-4 py-3">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-forest text-white shadow-sm">
-              <Users className="size-5" />
+            <div className="flex size-10 items-center justify-center rounded-xl bg-anthracite shadow-sm">
+              <Users className="size-5 text-accent" />
             </div>
             <div>
-              <h1 className="text-lg font-bold leading-tight text-neutral-900">Voisins &amp; Co</h1>
-              <p className="text-xs text-neutral-500">Économie locale &amp; entraide</p>
+              <h1 className="text-lg font-bold leading-tight text-ink">Voisins &amp; Co</h1>
+              <p className="text-xs text-neutral-500">
+                Économie locale &amp; entraide
+              </p>
             </div>
           </div>
           {demo && (
@@ -61,6 +86,9 @@ export function HeaderBar({
                   Camp de base : {p.label}
                 </option>
               ))}
+              {baseKey === "__city" && (
+                <option value="__city">Ville : {geo.shortLabel}</option>
+              )}
               <option value="__geo">📍 Position actuelle</option>
             </select>
             <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
@@ -74,6 +102,28 @@ export function HeaderBar({
           >
             <LocateFixed className="size-4" />
           </Button>
+        </div>
+
+        <div className="mt-2 flex items-center gap-2">
+          <div className="relative flex-1">
+            <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-accent-dark" />
+            <Input
+              list="communes-list"
+              value={cityQuery}
+              onChange={(e) => setCityQuery(e.target.value)}
+              onBlur={() => {
+                if (cityMatches.length > 0) pickCity(cityMatches[0].name);
+              }}
+              placeholder="Visiter une ville wallonne (ex. Dinant, Namur…)"
+              className="h-10 pl-9 text-sm font-medium"
+              aria-label="Rechercher une ville"
+            />
+            <datalist id="communes-list">
+              {cityMatches.map((c) => (
+                <option key={c.name} value={c.name} />
+              ))}
+            </datalist>
+          </div>
         </div>
 
         <div className="mt-2.5 rounded-xl border border-neutral-200 bg-paper px-3 py-2.5">

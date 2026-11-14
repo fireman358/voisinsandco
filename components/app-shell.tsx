@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import {
   BadgePercent,
   Loader2,
@@ -68,6 +69,14 @@ export function AppShell() {
     void load();
   }, [load]);
 
+  const handleCitySelect = useCallback(
+    (city: { name: string; lat: number; lng: number }) => {
+      setGeo({ lat: city.lat, lng: city.lng, label: city.name, shortLabel: city.name, isGeo: false });
+      setBaseKey("__city");
+    },
+    [],
+  );
+
   const handleBaseChange = useCallback(
     (key: string) => {
       if (key === GEO_KEY) {
@@ -109,6 +118,7 @@ export function AppShell() {
         count={businesses.length}
         onBaseChange={handleBaseChange}
         onRadiusChange={setRadius}
+        onCitySelect={handleCitySelect}
       />
       <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4">
         {loading && businesses.length === 0 && needs.length === 0 ? (
@@ -162,6 +172,35 @@ export function AppShell() {
           </Tabs>
         )}
       </main>
+      <footer className="border-t border-neutral-200 bg-anthracite px-4 py-4 text-center text-xs text-neutral-300">
+        <p>
+          Une réalisation{" "}
+          <a
+            href="https://edukisto.win/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-accent underline-offset-2 hover:underline"
+          >
+            Edukisto
+          </a>{" "}
+          — votre informaticien de proximité
+        </p>
+        <p className="mt-1">
+          Données © les{" "}
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent underline-offset-2 hover:underline"
+          >
+            contributeurs d&apos;OpenStreetMap
+          </a>{" "}
+          (ODbL) ·{" "}
+          <Link href="/legal" className="text-accent underline-offset-2 hover:underline">
+            Mentions légales &amp; confidentialité
+          </Link>
+        </p>
+      </footer>
     </div>
   );
 }

@@ -19,7 +19,19 @@ d'OpenStreetMap (Overpass) par [`scripts/fetch-osm-pois.mjs`](scripts/fetch-osm-
 rafraîches chaque mois par [`.github/workflows/update-osm-data.yml`](.github/workflows/update-osm-data.yml).
 Le fallback de démo embarqué (`lib/demo-data.json`) reste limité au périmètre de référence pour
 ne pas alourdir le bundle du Worker. Packs : Visibilité 9 €/mois, Pro 29 €/mois (activation
-manuelle après contact téléphone/WhatsApp, pas de prélèvement automatique).
+manuelle après contact, pas de prélèvement automatique), mise en avant exclusive de secteur
++5 €/mois (premier demandeur servi), formule annuelle 12 mois pour le prix de 10.
+Recherche par texte + sous-catégories (pharmacie, boulangerie, garage…), liste limitée à 50
+avec « afficher plus », et recherche par ville wallonne (`lib/communes.json`, géocodage local).
+
+## Console d'administration
+
+`/admin` : revendications reçues + bascule des tiers (Standard / Vérifiée / Pro). Protégée par
+un token : `npx wrangler secret put ADMIN_TOKEN` (même valeur que saisie dans `/admin`).
+
+## Légal
+
+Mentions légales, RGPD et crédit OpenStreetMap (ODbL) : page `/legal` + pied de page.
 
 ## Scripts
 

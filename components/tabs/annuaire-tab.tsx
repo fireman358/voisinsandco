@@ -11,17 +11,24 @@ import {
   Megaphone,
   Navigation,
   Phone,
+  Search,
   SearchX,
   Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BusinessMap } from "@/components/business-map";
 import { ClaimDialog } from "@/components/claim-dialog";
 import { formatDistance } from "@/lib/format";
-import { CATEGORY_LABELS, type Business, type BusinessCategory } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import {
+  CATEGORY_LABELS,
+  subcategoryLabel,
+  type Business,
+  type BusinessCategory,
+} from "@/lib/types";
+import { cn, normalizeText } from "@/lib/utils";
 
 const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
   { key: "all", label: "Tous" },
@@ -30,6 +37,8 @@ const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
   { key: "horeca", label: "Horeca" },
   { key: "distributeur", label: "Distributeurs 24/7" },
 ];
+
+const PAGE_SIZE = 50;
 
 function TierBadge({ tier }: { tier: Business["tier"] }) {
   if (tier === "pro") {
@@ -77,6 +86,11 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
             <Clock className="size-3.5 text-forest" />
             {b.hours}
           </p>
+        )}
+        {b.subcategory && (
+          <span className="inline-flex w-fit rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
+            {subcategoryLabel(b.subcategory)}
+          </span>
         )}
         {b.news && b.tier === "pro" && (
           <p className="flex items-start gap-1.5 rounded-lg bg-accent-light px-2.5 py-1.5 text-xs font-medium text-accent-dark">
@@ -129,12 +143,37 @@ export function AnnuaireTab({
   const [view, setView] = useState<"list" | "map">("list");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
+  const [query, setQuery] = useState("");
+  const [subcat, setSubcat] = useState<string>("all");
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
-  const filtered = useMemo(
+  const byCategory = useMemo(
     () => (category === "all" ? businesses : businesses.filter((b) => b.category === category)),
     [businesses, category],
   );
+
+  const subcats = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const b of byCategory) {
+      if (b.subcategory) counts.set(b.subcategory, (counts.get(b.subcategory) ?? 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 14);
+  }, [byCategory]);
+
+  const filtered = useMemo(() => {
+    const needle = normalizeText(query.trim());
+    return byCategory.filter(
+      (b) =>
+        (subcat === "all" || b.subcategory === subcat) &&
+        (needle === "" ||
+          normalizeText(b.name).includes(needle) ||
+          normalizeText(b.town).includes(needle) ||
+          normalizeText(b.address).includes(needle)),
+    );
+  }, [byCategory, subcat, query]);
+
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
+  const visibleItems = filtered.slice(0, visible);
 
   return (
     <div className="space-y-3">
@@ -164,12 +203,29 @@ export function AnnuaireTab({
         </div>
       </div>
 
+      <div className="relative">
+        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+        <Input
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setVisible(PAGE_SIZE);
+          }}
+          placeholder="Rechercher : pharmacie, boulangerie, nom, Rue…"
+          className="pl-9"
+        />
+      </div>
+
       <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
         {CATEGORIES.map((c) => (
           <button
             key={c.key}
             type="button"
-            onClick={() => setCategory(c.key)}
+            onClick={() => {
+              setCategory(c.key);
+              setSubcat("all");
+              setVisible(PAGE_SIZE);
+            }}
             className={cn(
               "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
               category === c.key
@@ -181,6 +237,44 @@ export function AnnuaireTab({
           </button>
         ))}
       </div>
+
+      {subcats.length > 0 && (
+        <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
+          <button
+            type="button"
+            onClick={() => {
+              setSubcat("all");
+              setVisible(PAGE_SIZE);
+            }}
+            className={cn(
+              "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+              subcat === "all"
+                ? "border-accent-dark bg-accent-dark text-white"
+                : "border-neutral-200 bg-white text-neutral-600 hover:border-accent-dark/40",
+            )}
+          >
+            Toutes activités
+          </button>
+          {subcats.map(([key, count]) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => {
+                setSubcat(key);
+                setVisible(PAGE_SIZE);
+              }}
+              className={cn(
+                "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                subcat === key
+                  ? "border-accent-dark bg-accent-dark text-white"
+                  : "border-neutral-200 bg-white text-neutral-600 hover:border-accent-dark/40",
+              )}
+            >
+              {subcategoryLabel(key)} ({count})
+            </button>
+          ))}
+        </div>
+      )}
 
       {loading ? (
         <p className="py-8 text-center text-sm text-neutral-400">Mise à jour du périmètre…</p>
@@ -203,9 +297,14 @@ export function AnnuaireTab({
         </div>
       ) : (
         <div className="space-y-3">
-          {filtered.map((b) => (
+          {visibleItems.map((b) => (
             <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
           ))}
+          {filtered.length > visibleItems.length && (
+            <Button variant="outline" className="w-full" onClick={() => setVisible((v) => v + PAGE_SIZE)}>
+              Afficher 50 de plus ({filtered.length - visibleItems.length} restantes)
+            </Button>
+          )}
         </div>
       )}
 

@@ -14,14 +14,14 @@ export async function POST(req: NextRequest) {
   const name = body.name?.trim();
   const phone = body.phone?.trim();
   const email = body.email?.trim();
-  if (!businessId || !name || !phone) {
-    return NextResponse.json({ error: "businessId, name et phone sont requis" }, { status: 400 });
+  if (!businessId || !name || !email || !email.includes("@")) {
+    return NextResponse.json({ error: "businessId, name et un e-mail valide sont requis" }, { status: 400 });
   }
   const { ok, demo } = await createClaim({
     businessId,
     name,
-    phone,
-    email: email || undefined,
+    email,
+    phone: phone || undefined,
     message: body.message?.trim(),
   });
   return NextResponse.json({ ok, demo }, { status: 201 });

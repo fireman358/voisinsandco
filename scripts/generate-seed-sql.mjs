@@ -26,8 +26,8 @@ lines.push("");
 
 for (const b of data.businesses) {
   lines.push(
-    `INSERT OR REPLACE INTO businesses (id, name, category, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES (${[
-      q(b.id), q(b.name), q(b.category), q(b.tier), q(b.description), q(b.address), q(b.town),
+    `INSERT OR REPLACE INTO businesses (id, name, category, subcategory, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES (${[
+      q(b.id), q(b.name), q(b.category), q(b.subcategory ?? ""), q(b.tier), q(b.description), q(b.address), q(b.town),
       q(b.postalCode), q(b.lat), q(b.lng), q(b.phone ?? null), q(b.website ?? null),
       q(b.hours ?? null), q(b.bce ?? null), q(b.news ?? null),
     ].join(", ")});`,

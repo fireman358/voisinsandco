@@ -35,8 +35,8 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
   if (!business) return null;
 
   const submit = async () => {
-    if (!name.trim() || !phone.trim()) {
-      toast("Nom et téléphone requis", "error");
+    if (!name.trim() || !email.trim() || !email.includes("@")) {
+      toast("Nom et e-mail valides requis", "error");
       return;
     }
     setSending(true);
@@ -70,8 +70,8 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
           <DialogDescription>
             Justifiez que vous êtes le gérant (n° BCE, appel ou passage en boutique) : la fiche
             passe en <span className="font-medium text-forest">Vérifiée</span> gratuitement après
-            validation sous 48h. Ensuite, si vous le souhaitez, nous vous rappelons pour activer un
-            pack payant — paiement simple par virement, aucun prélèvement automatique.
+            validation sous 48h. Un e-mail (même personnel, aucun domaine exigé) est nécessaire :
+            c&apos;est par e-mail que vous recevrez le QR code de paiement et les rappels d&apos;échéance.
           </DialogDescription>
         </DialogHeader>
         {done ? (
@@ -79,13 +79,16 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
             <CheckCircle2 className="size-12 text-forest" />
             <p className="font-semibold text-neutral-800">Merci {name.split(" ")[0]} !</p>
             <p className="text-sm text-neutral-500">
-              Votre demande est enregistrée. Nous vous contactons au {phone} (appel ou WhatsApp)
-              pour vérifier votre fiche — aucun e-mail de domaine n&rsquo;est exigé.
+              Votre demande est enregistrée. Nous vous contactons à {email} (et par téléphone si
+              fourni) pour vérifier votre fiche.
             </p>
             <div className="mt-2 space-y-1 rounded-lg bg-green-50 px-3 py-2 text-left text-xs text-neutral-700">
               <p><span className="font-semibold">Fiche Vérifiée</span> — gratuite après vérification.</p>
               <p><span className="font-semibold">Pack Visibilité</span> — 9 €/mois sans engagement : horaires, photo de vitrine, actualités.</p>
               <p><span className="font-semibold">Pack Pro</span> — 29 €/mois sans engagement : lien site/réseaux, offres flash à 10 km, tête de liste, badge Vérifié.</p>
+              <p><span className="font-semibold">Mise en avant exclusive de secteur</span> — +5 €/mois : un seul commerce par catégorie et secteur, premier demandeur servi.</p>
+              <p><span className="font-semibold">Formule annuelle</span> — 12 mois pour le prix de 10 (2 mois offerts).</p>
+              <p><span className="font-semibold">Paiement</span> — par virement : unique, permanent, ou annuel. QR code de paiement envoyé par e-mail, rappel automatique avant échéance. Aucun prélèvement automatique.</p>
             </div>
           </div>
         ) : (
@@ -100,22 +103,22 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="claim-phone">Téléphone / WhatsApp</Label>
-              <Input
-                id="claim-phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+32 4xx xx xx xx"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="claim-email">E-mail (optionnel)</Label>
+              <Label htmlFor="claim-email">E-mail (requis, même personnel)</Label>
               <Input
                 id="claim-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="jean@exemple.be"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-phone">Téléphone / WhatsApp (optionnel)</Label>
+              <Input
+                id="claim-phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+32 4xx xx xx xx"
               />
             </div>
             <div className="space-y-1.5">

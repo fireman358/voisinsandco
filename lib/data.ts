@@ -1,7 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, DEFAULT_BASE, EVENTS, NEEDS, TOOLS } from "./seed";
-import type { AgendaEvent, Business, Deal, Need, Tool } from "./types";
+import type { AgendaEvent, Business, BusinessTier, Deal, Need, Tool } from "./types";
 import { normalizeText } from "./utils";
 
 export interface GeoQuery {
@@ -57,7 +57,7 @@ export async function listBusinesses(
     try {
       const { results } = await conn
         .prepare(
-          `SELECT id, name, category, tier, description, address, town,
+          `SELECT id, name, category, subcategory, tier, description, address, town,
                   postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
            FROM businesses
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
@@ -288,8 +288,8 @@ export async function createReservation(input: {
 export async function createClaim(input: {
   businessId: string;
   name: string;
-  phone: string;
-  email?: string;
+  email: string;
+  phone?: string;
   message?: string;
 }): Promise<{ ok: boolean; demo: boolean }> {
   const conn = getDB();
@@ -304,8 +304,8 @@ export async function createClaim(input: {
           crypto.randomUUID(),
           input.businessId,
           input.name,
-          input.email ?? null,
-          input.phone,
+          input.email,
+          input.phone ?? null,
           input.message ?? null,
           new Date().toISOString(),
         )
@@ -347,4 +347,67 @@ export async function createLoanRequest(input: {
     }
   }
   return { ok: true, demo: true };
+}
+
+export interface AdminClaim {
+  id: string;
+  businessId: string;
+  businessName: string | null;
+  name: string;
+  email: string | null;
+  phone: string | null;
+  message: string | null;
+  createdAt: string;
+}
+
+function getAdminToken(): string | null {
+  try {
+    const { env } = getCloudflareContext();
+    return env.ADMIN_TOKEN ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export function isAdmin(token: string | null | undefined): boolean {
+  const expected = getAdminToken();
+  return Boolean(expected && token && token === expected);
+}
+
+export async function listClaims(): Promise<AdminClaim[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  const { results } = await conn
+    .prepare(
+      `SELECT c.id, c.business_id AS businessId, b.name AS businessName, c.name,
+              c.email, c.phone, c.message, c.created_at AS createdAt
+       FROM claims c LEFT JOIN businesses b ON b.id = c.business_id
+       ORDER BY c.created_at DESC LIMIT 200`,
+    )
+    .all<AdminClaim>();
+  return results ?? [];
+}
+
+export async function adminSearchBusinesses(q: string): Promise<Business[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  const like = `%${q}%`;
+  const { results } = await conn
+    .prepare(
+      `SELECT id, name, category, subcategory, tier, description, address, town,
+              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+       FROM businesses
+       WHERE name LIKE ?1 OR town LIKE ?1
+       ORDER BY name LIMIT 50`,
+    )
+    .bind(like)
+    .all<Business>();
+  return results ?? [];
+}
+
+export async function setBusinessTier(id: string, tier: BusinessTier): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`UPDATE businesses SET tier = ? WHERE id = ?`).bind(tier, id).run();
+  return true;
 }

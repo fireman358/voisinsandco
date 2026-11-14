@@ -185,6 +185,7 @@ for (const el of poiElements) {
     id: slug(el.id, name),
     name,
     category,
+    subcategory: tags.shop || tags.craft || tags.amenity || "",
     tier: "standard",
     description: CATEGORY_DESCRIPTIONS[category],
     address: address ?? "Adresse à compléter",
@@ -233,5 +234,11 @@ fs.writeFileSync(
     2,
   )}\n`,
 );
+
+// Liste des communes pour la recherche par ville (géocodage local, sans API externe).
+const communesList = [...new Map(communes.map((c) => [c.name, c])).values()]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((c) => ({ name: c.name, lat: Math.round(c.lat * 1e6) / 1e6, lng: Math.round(c.lng * 1e6) / 1e6 }));
+fs.writeFileSync(path.join(root, "lib", "communes.json"), `${JSON.stringify(communesList, null, 2)}\n`);
 
 console.log(`OK ${businesses.length} sociétés réelles en Wallonie (dont ${demoBusinesses.length} dans le périmètre de démo)`);

@@ -6,6 +6,7 @@ export interface Business {
   id: string;
   name: string;
   category: BusinessCategory;
+  subcategory?: string;
   tier: BusinessTier;
   description: string;
   address: string;
@@ -86,6 +87,112 @@ export const CATEGORY_LABELS: Record<BusinessCategory, string> = {
   horeca: "Horeca",
   distributeur: "Distributeurs 24/7",
 };
+
+export const SUBCATEGORY_LABELS: Record<string, string> = {
+  bakery: "Boulangerie",
+  pastry: "Pâtisserie",
+  confectionery: "Confiserie",
+  chocolate: "Chocolaterie",
+  butcher: "Boucherie",
+  deli: "Traiteur",
+  cheese: "Fromagerie",
+  seafood: "Poissonnerie",
+  greengrocer: "Primeurs",
+  farm: "Ferme",
+  supermarket: "Supermarché",
+  convenience: "Épicerie",
+  frozen_food: "Surgelés",
+  nutrition: "Diététique",
+  pasta: "Pâtes fraîches",
+  alcohol: "Alcools",
+  beverages: "Boissons",
+  wine: "Vins",
+  beer: "Bières",
+  tea: "Thé & café",
+  coffee: "Café de spécialité",
+  restaurant: "Restaurant",
+  fast_food: "Restauration rapide",
+  cafe: "Café",
+  bar: "Bar",
+  pub: "Pub",
+  ice_cream: "Glacier",
+  pharmacy: "Pharmacie",
+  doctors: "Médecin",
+  dentist: "Dentiste",
+  veterinary: "Vétérinaire",
+  hairdresser: "Coiffeur",
+  beauty: "Esthétique & bien-être",
+  massage: "Massage",
+  florist: "Fleuriste",
+  hardware: "Quincaillerie",
+  doityourself: "Bricolage",
+  garden_centre: "Jardinage",
+  pet: "Animalerie",
+  pet_grooming: "Toiletteur animalier",
+  bicycle: "Réparateur vélo",
+  car_repair: "Garage",
+  car_parts: "Pièces auto",
+  fuel: "Station-service",
+  charging_station: "Borne de recharge",
+  vending_machine: "Distributeur",
+  atm: "Distributeur de billets",
+  bank: "Banque",
+  insurance: "Assurance",
+  estate_agent: "Agence immobilière",
+  funeral_directors: "Pompes funèbres",
+  laundry: "Laverie",
+  tailor: "Tailleur",
+  dressmaker: "Couture",
+  shoemaker: "Cordonnier",
+  locksmith: "Serrurier",
+  jeweller: "Bijouterie",
+  jewellery: "Bijouterie",
+  watchmaker: "Horloger",
+  optician: "Opticien",
+  hearing_aids: "Appareils auditifs",
+  photo: "Photographe",
+  photographer: "Photographe",
+  copyshop: "Reprographie",
+  carpenter: "Menuisier",
+  joiner: "Menuisier",
+  window_construction: "Châssis & menuiserie",
+  stairs: "Escalierier",
+  furniture_maker: "Ébéniste",
+  plumber: "Plombier",
+  electrician: "Électricien",
+  roofer: "Couvreur",
+  gardener: "Jardinier",
+  painter: "Peintre",
+  plasterer: "Plâtrier",
+  tiler: "Carreleur",
+  floorer: "Poseur de sols",
+  bricklayer: "Maçon",
+  mason: "Maçon",
+  concrete_construction: "Béton",
+  metal_construction: "Construction métallique",
+  heating_construction: "Chauffage",
+  heat_pumps: "Pompes à chaleur",
+  hvac: "Chauffage & ventilation",
+  solar_installation: "Panneaux solaires",
+  insulation: "Isolation",
+  building: "Gros œuvre",
+  excavator: "Terrassement",
+  landscaper: "Paysagiste",
+  cleaning: "Nettoyage",
+  chimney_sweep: "Ramoneur",
+  pest_control: "Désinsectisation",
+  security: "Sécurité",
+  moving_company: "Déménagement",
+};
+
+export function subcategoryLabel(value?: string): string {
+  if (!value) return "";
+  const known = SUBCATEGORY_LABELS[value];
+  if (known) return known.trim();
+  return value
+    .replace(/_/g, " ")
+    .replace(/^\w/, (c) => c.toUpperCase());
+}
 
 export interface GeoState {
   lat: number;
