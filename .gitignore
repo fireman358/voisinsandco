@@ -9,3 +9,7 @@ next-env.d.ts
 .dev.vars
 .DS_Store
 npm-debug.log*
+
+# Régénéré dans les workflows (dépasse la limite de 100 Mo avec les fiches BCE)
+seed.sql
+lib/bce-data.json

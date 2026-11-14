@@ -7,9 +7,10 @@ const data = JSON.parse(fs.readFileSync(path.join(root, "lib", "seed-data.json")
 
 // Fiches issues de la BCE Open Data (croisées/dédoublonnées contre OSM par
 // scripts/import-bce.mjs). Fichier absent tant que le premier import n'a pas tourné.
-const bcePath = path.join(root, "lib", "bce-data.json");
+const bcePath = path.join(root, "lib", "bce-data.json.gz");
 if (fs.existsSync(bcePath)) {
-  const bce = JSON.parse(fs.readFileSync(bcePath, "utf8"));
+  const zlib = await import("node:zlib");
+  const bce = JSON.parse(zlib.gunzipSync(fs.readFileSync(bcePath)).toString("utf8"));
   data.businesses = [...data.businesses, ...bce.businesses];
 }
 

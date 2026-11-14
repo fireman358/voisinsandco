@@ -20,6 +20,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import readline from "node:readline";
+import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -334,7 +335,10 @@ const naceOf = new Map();
   const csv = openCsv("activity.csv");
   if (csv) {
     for await (const r of csv) {
-      if ((r.ActivityGroup ?? "") !== "001") continue;
+      // L'activité principale est marquée par Classification = "MAIN"
+      // (une entité peut en avoir plusieurs ; ActivityGroup varie selon le type
+      // d'entité : 001 pour une entreprise, 003 pour une unité d'établissement).
+      if ((r.Classification ?? "").toUpperCase() !== "MAIN") continue;
       let ent = r.EntityNumber ?? "";
       if (estToEnt.has(ent)) ent = estToEnt.get(ent);
       if (!addrOf.has(ent)) continue;
@@ -411,7 +415,7 @@ for (const ent of activeEnt) {
   if (osmKeys.has(key) || seenKeys.has(key)) { skippedDup++; continue; }
   seenKeys.add(key);
   const digits = ent.replace(/\D/g, "");
-  const bce = digits.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1.$2.$3");
+  const bce = digits.replace(/^(\d{4})(\d{3})(\d{3})$/, "$1.$2.$3");
   const contact = contactOf.get(ent) ?? {};
   const category = categoryForGroup(group);
   out.push({
@@ -435,6 +439,9 @@ for (const ent of activeEnt) {
 }
 
 out.sort((a, b) => a.town.localeCompare(b.town, "fr") || a.name.localeCompare(b.name, "fr"));
-fs.writeFileSync(path.join(root, "lib", "bce-data.json"), `${JSON.stringify({ businesses: out }, null, 2)}\n`);
+fs.writeFileSync(
+  path.join(root, "lib", "bce-data.json.gz"),
+  zlib.gzipSync(Buffer.from(JSON.stringify({ businesses: out }))),
+);
 console.log(`OK ${out.length} fiches BCE ajoutées (${skippedDup} doublons OSM évités, ${skippedUnmapped} sans activité pertinente)`);
 console.log(`Diagnostic : ${addrOf.size} entités wallonnes, ${nameOf.size} avec nom, ${naceOf.size} avec activité`);
