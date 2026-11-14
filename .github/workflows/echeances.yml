@@ -50,6 +50,27 @@ jobs:
             console.log(soon.length + " échéance(s) à notifier");
           '
 
+      - name: E-mail le résumé via Resend
+        if: ${{ env.RESEND_API_KEY != '' }}
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          NOTIF_EMAIL: ${{ secrets.NOTIF_EMAIL }}
+        run: |
+          COUNT=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("/tmp/soon.json","utf8")).length)')
+          if [ "$COUNT" = "0" ] || [ -z "$NOTIF_EMAIL" ]; then
+            echo "Rien à envoyer ou destinataire non défini."
+            exit 0
+          fi
+          TEXT=$(node -e '
+            const rows = JSON.parse(require("fs").readFileSync("/tmp/soon.json","utf8"));
+            console.log(rows.map(r => `- ${r.name} (${r.town}) — ${r.tier === "pro" ? "Pack Pro" : "Vérifiée"} — échéance ${r.paidUntil}`).join("\n"));
+          ')
+          curl -s -X POST https://api.resend.com/emails \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"from\": \"$RESEND_FROM\", \"to\": [\"$NOTIF_EMAIL\"], \"subject\": \"[Voisins & Co] Échéances d'abonnements à traiter\", \"text\": \"Échéances à traiter (console /admin, canevas prêts) :\n$TEXT\"}"
+
       - name: Ouvre ou met à jour l'issue de rappel
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

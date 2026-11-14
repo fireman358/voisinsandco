@@ -110,6 +110,8 @@ export default function AdminPage() {
   const [target, setTarget] = useState<Business | null>(null);
   const [targetClaim, setTargetClaim] = useState<Claim | null>(null);
   const [copied, setCopied] = useState("");
+  const [recipient, setRecipient] = useState("");
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("admin-token");
@@ -195,6 +197,33 @@ export default function AdminPage() {
     setTimeout(() => setCopied(""), 1500);
   };
 
+  const sendEmail = async () => {
+    if (!recipient.trim().includes("@")) {
+      setError("Renseigne une adresse e-mail valide.");
+      return;
+    }
+    setSending(true);
+    setError("");
+    try {
+      await api("/api/admin/send-email", {
+        method: "POST",
+        body: JSON.stringify({ to: recipient.trim(), subject: subjectLine, text: bodyLines.join("\n\n") }),
+      });
+      setCopied("sent");
+      setTimeout(() => setCopied(""), 2500);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const pickTarget = (b: Business | null, c: Claim | null = null) => {
+    setTarget(b);
+    setTargetClaim(c);
+    setRecipient(c?.email ?? "");
+  };
+
   return (
     <div className="min-h-dvh bg-paper px-4 py-6">
       <div className="mx-auto w-full max-w-3xl space-y-5">
@@ -255,8 +284,7 @@ export default function AdminPage() {
                           variant="outline"
                           onClick={() => {
                             const b = subs.find((x) => x.id === c.businessId) ?? results.find((x) => x.id === c.businessId) ?? null;
-                            setTarget(b);
-                            setTargetClaim(c);
+                            pickTarget(b, c);
                             setTemplateKey("verified");
                           }}
                         >
@@ -307,8 +335,7 @@ export default function AdminPage() {
                             size="sm"
                             variant="outline"
                             onClick={() => {
-                              setTarget(b);
-                              setTargetClaim(null);
+                              pickTarget(b);
                               setTemplateKey(d !== null && d < 0 ? "retard" : d !== null && d <= 7 ? "echeance" : b.tier === "pro" ? "pro" : "visibilite");
                             }}
                           >
@@ -379,8 +406,9 @@ export default function AdminPage() {
                 <select
                   value={target?.id ?? ""}
                   onChange={(e) => {
-                    setTarget(subs.find((x) => x.id === e.target.value) ?? results.find((x) => x.id === e.target.value) ?? null);
-                    setTargetClaim(null);
+                    pickTarget(
+                      subs.find((x) => x.id === e.target.value) ?? results.find((x) => x.id === e.target.value) ?? null,
+                    );
                   }}
                   className="h-10 rounded-xl border border-neutral-200 bg-white px-3 text-sm"
                   aria-label="Fiche concernée"
@@ -390,6 +418,19 @@ export default function AdminPage() {
                     <option key={b.id} value={b.id}>{b.name} ({b.town})</option>
                   ))}
                 </select>
+              </div>
+              <div className="flex gap-2">
+                <Input
+                  type="email"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                  placeholder="destinataire@exemple.be"
+                  aria-label="Destinataire"
+                />
+                <Button onClick={sendEmail} disabled={sending || !recipient.trim()} className="whitespace-nowrap">
+                  {sending ? <Loader2 className="size-4 animate-spin" /> : <Mail className="size-4" />}
+                  {copied === "sent" ? "Envoyé !" : "Envoyer"}
+                </Button>
               </div>
               <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded-xl bg-neutral-50 p-3 text-xs text-neutral-700">
                 {preview}

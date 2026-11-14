@@ -26,8 +26,15 @@ avec « afficher plus », et recherche par ville wallonne (`lib/communes.json`, 
 
 ## Console d'administration
 
-`/admin` : revendications reçues + bascule des tiers (Standard / Vérifiée / Pro). Protégée par
-un token : `npx wrangler secret put ADMIN_TOKEN` (même valeur que saisie dans `/admin`).
+`/admin` : revendications reçues + bascule des tiers (Standard / Vérifiée / Pro), abonnements
+avec échéances, canevas d'e-mails/WhatsApp (envoi direct via Resend ou mailto/copie).
+
+Secrets GitHub à définir (Settings → Secrets and variables → Actions), puis lancer le workflow
+« Définit le mot de passe admin » qui les pousse vers Cloudflare :
+- `ADMIN_PASSWORD` : mot de passe de la console `/admin` (→ `ADMIN_TOKEN` Cloudflare)
+- `RESEND_API_KEY` : clé API Resend (envoi d'e-mails depuis la console et le cron)
+- `RESEND_FROM` : expéditeur vérifié Resend, ex. `Voisins & Co <contact@tondomaine.be>`
+- `NOTIF_EMAIL` : ta boîte pour le résumé quotidien des échéances (cron 06:00 UTC)
 
 ## Légal
 
