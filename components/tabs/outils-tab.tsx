@@ -292,9 +292,16 @@ export function OutilsTab({
       {loading && tools.length === 0 ? (
         <p className="py-6 text-center text-sm text-neutral-400">Chargement de la boîte à outils…</p>
       ) : filtered.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-neutral-300 bg-white py-8 text-center text-sm text-neutral-500">
-          Aucun outil ne correspond à « {query} » dans ce rayon.
-        </p>
+        <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-8 text-center">
+          <p className="text-sm font-medium text-neutral-600">
+            {query.trim()
+              ? `Aucun outil ne correspond à « ${query} » dans ce rayon.`
+              : "Aucun outil proposé dans ce rayon pour le moment."}
+          </p>
+          <p className="mx-auto mt-1 max-w-xs text-xs text-neutral-400">
+            Un Kärcher, une échelle, une remorque qui dorment au garage ? Propose-les à tes voisins.
+          </p>
+        </div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
           {filtered.map((tool) => (

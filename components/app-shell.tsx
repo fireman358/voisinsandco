@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   BadgePercent,
@@ -111,7 +111,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
       setGeo({ lat: city.lat, lng: city.lng, label: city.name, shortLabel: city.name, isGeo: false });
       toast(`Rayon recentré sur ${city.name}`, "success");
     },
-    [toast],
+    [setGeo, toast],
   );
 
   const handleUseGps = useCallback(() => {
@@ -133,7 +133,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
       () => toast("GPS indisponible ou refusé — cherche ta ville ci-dessus", "error"),
       { enableHighAccuracy: true, timeout: 8000 },
     );
-  }, [toast]);
+  }, [setGeo, toast]);
 
   return (
     <div className="min-h-dvh bg-paper">

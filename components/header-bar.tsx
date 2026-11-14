@@ -147,7 +147,7 @@ export function HeaderBar({
         </div>
 
         <p className="mt-2 text-xs text-neutral-500">
-          {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances en ligne droite (Haversine)
+          {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
         </p>
       </div>
     </header>

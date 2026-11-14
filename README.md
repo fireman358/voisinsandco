@@ -40,6 +40,22 @@ Secrets GitHub à définir (Settings → Secrets and variables → Actions), pui
 
 Mentions légales, RGPD et crédit OpenStreetMap (ODbL) : page `/legal` + pied de page.
 
+## Sécurité, modération & SEO
+
+- **Propriété du contenu** : chaque besoin, événement ou objet publié reçoit un jeton de propriété
+  (`owner_token`, conservé en localStorage côté auteur). Seul l'auteur peut supprimer sa publication
+  (DELETE `403` sinon).
+- **Modération** : bouton « Signaler » sur les publications → console `/admin` (section
+  « Signalements ») avec masquage (`hidden = 1`, exclu des listes publiques).
+- **Anti-abus** : rate-limit en mémoire (`429`) + bornes de longueur sur toutes les routes d'écriture
+  publiques. Compléter par une règle WAF Cloudflare pour une protection stricte.
+- **Anti-survente** : la réservation décrémente `remaining` de façon atomique (`WHERE remaining > 0`).
+- **SEO** : `/sitemap.xml` généré, JSON-LD `LocalBusiness`, rendu serveur (`force-dynamic`) et
+  métadonnées OpenGraph. `/robots.txt` est servi par l'hébergeur : y ajouter une ligne
+  `Sitemap: https://voisinsandco.edukisto.win/sitemap.xml`.
+- **Bundle allégé** : constantes extraites dans `lib/constants.ts`, `demo-data.json` ne charge plus
+  côté client (page `/` ≈ 80 kB au lieu de ~1,3 Mo).
+
 ## Scripts
 
 ```bash

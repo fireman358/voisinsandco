@@ -6,6 +6,7 @@ import {
   ChevronDown,
   Clock,
   Globe,
+  Hammer,
   List,
   Map as MapIcon,
   MapPin,
@@ -14,7 +15,11 @@ import {
   Phone,
   Search,
   SearchX,
+  ShoppingBasket,
+  ShoppingCart,
+  UtensilsCrossed,
   Zap,
+  type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -50,6 +55,20 @@ const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
 
 const PAGE_SIZE = 50;
 
+const CATEGORY_ICON: Record<BusinessCategory, LucideIcon> = {
+  alimentation: ShoppingBasket,
+  artisan: Hammer,
+  horeca: UtensilsCrossed,
+  distributeur: ShoppingCart,
+};
+
+const CATEGORY_TINT: Record<BusinessCategory, string> = {
+  alimentation: "bg-green-50 text-forest",
+  artisan: "bg-accent-light text-accent-dark",
+  horeca: "bg-amber-50 text-amber-600",
+  distributeur: "bg-neutral-100 text-neutral-600",
+};
+
 function TierBadge({ tier }: { tier: Business["tier"] }) {
   if (tier === "pro") {
     return (
@@ -78,14 +97,28 @@ function TierBadge({ tier }: { tier: Business["tier"] }) {
 function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => void }) {
   const telHref = b.phone ? `tel:${b.phone.replace(/[^+\d]/g, "")}` : null;
   const directions = `https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}`;
+  const Icon = CATEGORY_ICON[b.category] ?? ShoppingBasket;
   return (
-    <Card className={cn("overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
+    <Card className={cn("lift overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-base">{b.name}</CardTitle>
+          <div className="flex min-w-0 items-center gap-2.5">
+            <div
+              className={cn(
+                "flex size-10 shrink-0 items-center justify-center rounded-xl",
+                CATEGORY_TINT[b.category],
+              )}
+              aria-hidden="true"
+            >
+              <Icon className="size-5" />
+            </div>
+            <div className="min-w-0">
+              <CardTitle className="truncate text-base">{b.name}</CardTitle>
+              <CardDescription className="truncate">{b.description}</CardDescription>
+            </div>
+          </div>
           <TierBadge tier={b.tier} />
         </div>
-        <CardDescription>{b.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
@@ -439,8 +472,10 @@ export function AnnuaireTab({
       ) : filtered.length === 0 ? (
         <div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-neutral-300 bg-white py-10 text-center">
           <SearchX className="size-8 text-neutral-300" />
-          <p className="text-sm text-neutral-500">
-            Aucune adresse dans ce rayon — essayez 10 ou 15 km.
+          <p className="text-sm font-medium text-neutral-600">Aucune adresse dans ce rayon.</p>
+          <p className="max-w-xs text-xs text-neutral-400">
+            Élargis le rayon, ou tape une ville plus grande (Nivelles, La Louvière…) dans la barre du
+            haut.
           </p>
         </div>
       ) : view === "map" ? (

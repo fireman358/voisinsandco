@@ -28,3 +28,42 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Micro-interactions douces sur les éléments interactifs. */
+button,
+a,
+select,
+input,
+textarea,
+[role="button"] {
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    opacity 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Surélévation douce au survol (desktop) pour les cartes interactives. */
+.lift {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+@media (hover: hover) {
+  .lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -12px rgb(15 17 21 / 0.18);
+  }
+}

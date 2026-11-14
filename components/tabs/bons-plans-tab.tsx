@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CalendarDays, Clock, Flag, Hammer, Loader2, MapPin, PackageOpen, ShoppingBasket, ShoppingCart, Store, Tag, Trash2, UtensilsCrossed } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -293,6 +293,11 @@ export function BonsPlansTab({
   const onReserved = (dealId: string) =>
     setLocalDeals((ds) => ds.map((d) => (d.id === dealId ? { ...d, remaining: Math.max(0, d.remaining - 1) } : d)));
 
+  const heroDeal = useMemo(() => {
+    if (localDeals.length === 0) return null;
+    return [...localDeals].sort((a, b) => a.remaining - b.remaining || a.price - b.price)[0];
+  }, [localDeals]);
+
   const handleCreated = (e: AgendaEvent, ownerToken: string) => {
     setLocalEvents((prev) => [e, ...prev]);
     if (ownerToken) {
@@ -345,15 +350,63 @@ export function BonsPlansTab({
         {loading && localDeals.length === 0 ? (
           <p className="py-6 text-center text-sm text-neutral-400">Chargement des bons plans…</p>
         ) : localDeals.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-neutral-300 bg-white py-8 text-center text-sm text-neutral-500">
-            Aucun panier invendu dans ce rayon pour le moment.
-          </p>
+          <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-8 text-center">
+            <p className="text-sm font-medium text-neutral-600">Aucun panier invendu dans ce rayon pour le moment.</p>
+            <p className="mx-auto mt-1 max-w-xs text-xs text-neutral-400">
+              Commerçant·e du coin ? Contacte l&apos;équipe Voisins &amp; Co pour publier tes invendus.
+            </p>
+          </div>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2">
-            {localDeals.map((deal) => {
-              const Icon = DEAL_ICONS[deal.category] ?? Store;
-              return (
-                <Card key={deal.id} className="overflow-hidden">
+          <div className="space-y-3">
+            {heroDeal && (
+              <Card className="lift overflow-hidden border-accent/40 bg-gradient-to-br from-amber-50 to-accent-light/40">
+                <CardContent className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-accent-dark">
+                        <Tag className="size-3" /> Anti-gaspi du jour
+                      </p>
+                      <CardTitle className="mt-1 text-lg">{heroDeal.title}</CardTitle>
+                      <CardDescription className="mt-0.5">
+                        {heroDeal.businessName} · {heroDeal.pickup}
+                      </CardDescription>
+                    </div>
+                    {heroDeal.remaining <= 2 && heroDeal.remaining > 0 && (
+                      <Badge variant="amber" className="whitespace-nowrap text-[10px]">
+                        Plus que {heroDeal.remaining}
+                      </Badge>
+                    )}
+                  </div>
+                  <p className="mt-2 text-sm text-neutral-600">{heroDeal.description}</p>
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-accent-dark">{formatPrice(heroDeal.price)}</span>
+                      {heroDeal.originalPrice && (
+                        <span className="text-sm text-neutral-400 line-through">
+                          {formatPrice(heroDeal.originalPrice)}
+                        </span>
+                      )}
+                    </div>
+                    <Button
+                      variant="amber"
+                      size="sm"
+                      disabled={heroDeal.remaining <= 0}
+                      onClick={() => setReserveTarget(heroDeal)}
+                    >
+                      <PackageOpen className="size-4" />
+                      {heroDeal.remaining > 0 ? "Réserver (paiement sur place)" : "Épuisé"}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+            <div className="grid gap-3 sm:grid-cols-2">
+              {localDeals
+                .filter((d) => !heroDeal || d.id !== heroDeal.id)
+                .map((deal) => {
+                  const Icon = DEAL_ICONS[deal.category] ?? Store;
+                  return (
+                    <Card key={deal.id} className="lift overflow-hidden">
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2.5">
@@ -411,6 +464,7 @@ export function BonsPlansTab({
                 </Card>
               );
             })}
+            </div>
           </div>
         )}
       </section>
@@ -424,9 +478,12 @@ export function BonsPlansTab({
           <CalendarDays className="size-3.5" /> Proposer un événement
         </Button>
         {localEvents.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-neutral-300 bg-white py-6 text-center text-sm text-neutral-500">
-            Aucun événement gratuit dans ce rayon pour le moment.
-          </p>
+          <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-6 text-center">
+            <p className="text-sm font-medium text-neutral-600">Aucun événement gratuit dans ce rayon pour le moment.</p>
+            <p className="mt-1 text-xs text-neutral-400">
+              Asso, brocante, kermesse ? Publie ton événement en un clic ci-dessus.
+            </p>
+          </div>
         ) : (
           <div className="space-y-2.5">
             {localEvents.map((e) => (
