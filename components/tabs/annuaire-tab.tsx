@@ -19,12 +19,20 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { BusinessMap } from "@/components/business-map";
 import { ClaimDialog } from "@/components/claim-dialog";
 import { formatDistance } from "@/lib/format";
 import {
   CATEGORY_LABELS,
-  subcategoryLabel,
+  activityKey,
+  activityLabel,
   type Business,
   type BusinessCategory,
 } from "@/lib/types";
@@ -89,7 +97,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
         )}
         {b.subcategory && (
           <span className="inline-flex w-fit rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
-            {subcategoryLabel(b.subcategory)}
+            {activityLabel(b.subcategory)}
           </span>
         )}
         {b.news && b.tier === "pro" && (
@@ -146,6 +154,8 @@ export function AnnuaireTab({
   const [query, setQuery] = useState("");
   const [subcat, setSubcat] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [catDialog, setCatDialog] = useState(false);
+  const [catSearch, setCatSearch] = useState("");
 
   const byCategory = useMemo(
     () => (category === "all" ? businesses : businesses.filter((b) => b.category === category)),
@@ -155,21 +165,41 @@ export function AnnuaireTab({
   const subcats = useMemo(() => {
     const counts = new Map<string, number>();
     for (const b of byCategory) {
-      if (b.subcategory) counts.set(b.subcategory, (counts.get(b.subcategory) ?? 0) + 1);
+      const key = activityKey(b.subcategory);
+      if (key) counts.set(key, (counts.get(key) ?? 0) + 1);
     }
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  }, [byCategory]);
+
+  const groupedSubcats = useMemo(() => {
+    const byMain = new Map<BusinessCategory, { key: string; label: string; count: number }[]>();
+    const counts = new Map<string, number>();
+    for (const b of byCategory) {
+      const key = activityKey(b.subcategory);
+      if (!key) continue;
+      const composite = `${b.category}|${key}`;
+      counts.set(composite, (counts.get(composite) ?? 0) + 1);
+    }
+    for (const [composite, count] of counts) {
+      const [cat, key] = composite.split("|") as [BusinessCategory, string];
+      const list = byMain.get(cat) ?? [];
+      list.push({ key, label: activityLabel(key), count });
+      byMain.set(cat, list);
+    }
+    for (const list of byMain.values()) list.sort((a, b) => a.label.localeCompare(b.label, "fr"));
+    return byMain;
   }, [byCategory]);
 
   const filtered = useMemo(() => {
     const needle = normalizeText(query.trim());
     return byCategory.filter(
       (b) =>
-        (subcat === "all" || b.subcategory === subcat) &&
+        (subcat === "all" || activityKey(b.subcategory) === subcat) &&
         (needle === "" ||
           normalizeText(b.name).includes(needle) ||
           normalizeText(b.town).includes(needle) ||
           normalizeText(b.address).includes(needle) ||
-          normalizeText(subcategoryLabel(b.subcategory)).includes(needle) ||
+          normalizeText(activityLabel(b.subcategory)).includes(needle) ||
           normalizeText(CATEGORY_LABELS[b.category]).includes(needle)),
     );
   }, [byCategory, subcat, query]);
@@ -241,7 +271,7 @@ export function AnnuaireTab({
       </div>
 
       {subcats.length > 0 && (
-        <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
+        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1">
           <button
             type="button"
             onClick={() => {
@@ -257,7 +287,7 @@ export function AnnuaireTab({
           >
             Toutes activités
           </button>
-          {subcats.map(([key, count]) => (
+          {subcats.slice(0, 10).map(([key, count]) => (
             <button
               key={key}
               type="button"
@@ -272,11 +302,87 @@ export function AnnuaireTab({
                   : "border-neutral-200 bg-white text-neutral-600 hover:border-accent-dark/40",
               )}
             >
-              {subcategoryLabel(key)} ({count})
+              {activityLabel(key)} ({count})
             </button>
           ))}
+          <button
+            type="button"
+            onClick={() => setCatDialog(true)}
+            className="whitespace-nowrap rounded-full border border-accent-dark/40 bg-accent-light px-3 py-1.5 text-xs font-semibold text-accent-dark"
+          >
+            Toutes les catégories ({subcats.length}) ▾
+          </button>
         </div>
       )}
+
+      <Dialog open={catDialog} onOpenChange={setCatDialog}>
+        <DialogContent className="max-h-[80dvh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Choisir une activité</DialogTitle>
+            <DialogDescription>
+              Toutes les activités du périmètre, groupées par famille. Coche-en une pour filtrer.
+            </DialogDescription>
+          </DialogHeader>
+          <Input
+            value={catSearch}
+            onChange={(e) => setCatSearch(e.target.value)}
+            placeholder="Filtrer les activités…"
+          />
+          <div className="space-y-4">
+            {[...groupedSubcats.entries()]
+              .filter(([, list]) =>
+                category === "all" ||
+                list.some((a) => normalizeText(a.label).includes(normalizeText(catSearch.trim()))),
+              )
+              .map(([cat, list]) => {
+                const shown = list.filter((a) =>
+                  normalizeText(a.label).includes(normalizeText(catSearch.trim())),
+                );
+                if (shown.length === 0) return null;
+                return (
+                  <div key={cat} className="space-y-1.5">
+                    <p className="text-xs font-bold uppercase tracking-wide text-neutral-400">
+                      {CATEGORY_LABELS[cat]}
+                    </p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSubcat("all");
+                          setVisible(PAGE_SIZE);
+                          setCatDialog(false);
+                        }}
+                        className="col-span-2 rounded-lg border border-neutral-200 px-2.5 py-2 text-left text-xs font-semibold text-neutral-700 hover:border-accent-dark/40"
+                      >
+                        Toutes les activités
+                      </button>
+                      {shown.map((a) => (
+                        <button
+                          key={a.key}
+                          type="button"
+                          onClick={() => {
+                            setSubcat(a.key);
+                            setVisible(PAGE_SIZE);
+                            setCatDialog(false);
+                          }}
+                          className={cn(
+                            "rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-colors",
+                            subcat === a.key
+                              ? "border-accent-dark bg-accent-dark text-white"
+                              : "border-neutral-200 bg-white text-neutral-700 hover:border-accent-dark/40",
+                          )}
+                        >
+                          {a.label}
+                          <span className="ml-1 text-[10px] text-neutral-400">({a.count})</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {loading ? (
         <p className="py-8 text-center text-sm text-neutral-400">Mise à jour du périmètre…</p>

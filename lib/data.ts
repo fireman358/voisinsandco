@@ -54,25 +54,44 @@ export async function listBusinesses(
   const box = boundingBox(q.lat, q.lng, q.radius);
   const conn = getDB();
   if (conn) {
+    const args = [box.minLat, box.maxLat, box.minLng, box.maxLng];
+    let results: Business[] = [];
     try {
-      const { results } = await conn
-        .prepare(
-          `SELECT id, name, category, subcategory, tier, description, address, town,
-                  postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-                  paid_until AS paidUntil
-           FROM businesses
-           WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
-        )
-        .bind(box.minLat, box.maxLat, box.minLng, box.maxLng)
-        .all<Business>();
-      if (results.length > 0) {
-        const items = withDistance(q, results)
-          .filter((b) => category === "all" || b.category === category)
-          .sort(byProThenDistance);
-        return { items, demo: false };
-      }
+      results = (
+        await conn
+          .prepare(
+            `SELECT id, name, category, subcategory, tier, description, address, town,
+                    postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                    paid_until AS paidUntil
+             FROM businesses
+             WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
+          )
+          .bind(...args)
+          .all<Business>()
+      ).results;
     } catch {
-      // repli sur les données de démonstration
+      // migrations pas encore appliquées : requête sans les colonnes récentes
+      try {
+        results = (
+          await conn
+            .prepare(
+              `SELECT id, name, category, tier, description, address, town,
+                      postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+               FROM businesses
+               WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
+            )
+            .bind(...args)
+            .all<Business>()
+        ).results;
+      } catch {
+        results = [];
+      }
+    }
+    if (results.length > 0) {
+      const items = withDistance(q, results)
+        .filter((b) => category === "all" || b.category === category)
+        .sort(byProThenDistance);
+      return { items, demo: false };
     }
   }
   const items = withDistance(q, BUSINESSES)
@@ -380,33 +399,42 @@ export function isAdmin(token: string | null | undefined): boolean {
 export async function listClaims(): Promise<AdminClaim[]> {
   const conn = getDB();
   if (!conn) return [];
-  const { results } = await conn
-    .prepare(
-      `SELECT c.id, c.business_id AS businessId, b.name AS businessName, c.name,
-              c.email, c.phone, c.message, c.created_at AS createdAt
-       FROM claims c LEFT JOIN businesses b ON b.id = c.business_id
-       ORDER BY c.created_at DESC LIMIT 200`,
-    )
-    .all<AdminClaim>();
-  return results ?? [];
+  const query = (bce: boolean) =>
+    `SELECT c.id, c.business_id AS businessId, b.name AS businessName, c.name,
+            c.email, c.phone, ${bce ? "c.bce" : "NULL AS bce"}, c.message, c.created_at AS createdAt
+     FROM claims c LEFT JOIN businesses b ON b.id = c.business_id
+     ORDER BY c.created_at DESC LIMIT 200`;
+  try {
+    return (await conn.prepare(query(true)).all<AdminClaim>()).results ?? [];
+  } catch {
+    try {
+      return (await conn.prepare(query(false)).all<AdminClaim>()).results ?? [];
+    } catch {
+      return [];
+    }
+  }
 }
 
 export async function adminSearchBusinesses(q: string): Promise<Business[]> {
   const conn = getDB();
   if (!conn) return [];
   const like = `%${q}%`;
-  const { results } = await conn
-    .prepare(
-      `SELECT id, name, category, subcategory, tier, description, address, town,
-              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-              paid_until AS paidUntil
-       FROM businesses
-       WHERE name LIKE ?1 OR town LIKE ?1
-       ORDER BY name LIMIT 50`,
-    )
-    .bind(like)
-    .all<Business>();
-  return results ?? [];
+  const query = (full: boolean) =>
+    `SELECT id, name, category, ${full ? "subcategory, " : ""}tier, description, address, town,
+            postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+            ${full ? "paid_until AS paidUntil" : "'' AS paidUntil"}
+     FROM businesses
+     WHERE name LIKE ?1 OR town LIKE ?1
+     ORDER BY name LIMIT 50`;
+  try {
+    return (await conn.prepare(query(true)).bind(like).all<Business>()).results ?? [];
+  } catch {
+    try {
+      return (await conn.prepare(query(false)).bind(like).all<Business>()).results ?? [];
+    } catch {
+      return [];
+    }
+  }
 }
 
 export async function setBusinessTier(
@@ -426,17 +454,36 @@ export async function setBusinessTier(
 export async function listSubscriptions(): Promise<Business[]> {
   const conn = getDB();
   if (!conn) return [];
-  const { results } = await conn
-    .prepare(
-      `SELECT id, name, category, subcategory, tier, description, address, town,
-              postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-              paid_until AS paidUntil
-       FROM businesses
-       WHERE tier != 'standard'
-       ORDER BY paid_until ASC NULLS LAST LIMIT 100`,
-    )
-    .all<Business>();
-  return results ?? [];
+  try {
+    return (
+      await conn
+        .prepare(
+          `SELECT id, name, category, subcategory, tier, description, address, town,
+                  postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                  paid_until AS paidUntil
+           FROM businesses
+           WHERE tier != 'standard'
+           ORDER BY paid_until ASC NULLS LAST LIMIT 100`,
+        )
+        .all<Business>()
+    ).results ?? [];
+  } catch {
+    try {
+      return (
+        await conn
+          .prepare(
+            `SELECT id, name, category, tier, description, address, town,
+                    postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+             FROM businesses
+             WHERE tier != 'standard'
+             LIMIT 100`,
+          )
+          .all<Business>()
+      ).results ?? [];
+    } catch {
+      return [];
+    }
+  }
 }
 
 export interface NewEvent {
