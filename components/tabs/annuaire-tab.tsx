@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import {
   BadgeCheck,
+  ChevronDown,
   Clock,
   Globe,
   List,
@@ -277,46 +278,49 @@ export function AnnuaireTab({
       </div>
 
       {subcats.length > 0 && (
-        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1">
-          <button
-            type="button"
-            onClick={() => {
-              setSubcat("all");
-              setVisible(PAGE_SIZE);
-            }}
-            className={cn(
-              "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-              subcat === "all"
-                ? "border-accent-dark bg-accent-dark text-white"
-                : "border-neutral-200 bg-white text-neutral-600 hover:border-accent-dark/40",
-            )}
-          >
-            Toutes activités
-          </button>
-          {subcats.slice(0, 10).map(([key, count]) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => {
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1">
+            <select
+              value={subcat}
+              onChange={(e) => {
+                const key = e.target.value;
+                if (key !== "all" && !subcats.some(([k]) => k === key)) {
+                  setCategory("all");
+                }
                 setSubcat(key);
                 setVisible(PAGE_SIZE);
               }}
-              className={cn(
-                "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-                subcat === key
-                  ? "border-accent-dark bg-accent-dark text-white"
-                  : "border-neutral-200 bg-white text-neutral-600 hover:border-accent-dark/40",
-              )}
+              className="h-10 w-full appearance-none rounded-xl border border-accent-dark/40 bg-accent-light pl-3 pr-9 text-sm font-semibold text-accent-dark"
+              aria-label="Filtrer par activité"
             >
-              {activityLabel(key)} ({count})
-            </button>
-          ))}
+              <option value="all">Toutes les activités ({byCategory.length})</option>
+              {subcats.length > 0 && (
+                <optgroup label="Dans ton périmètre">
+                  {subcats.map(([key, count]) => (
+                    <option key={key} value={key}>
+                      {SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)} ({count})
+                    </option>
+                  ))}
+                </optgroup>
+              )}
+              {groupedSubcats.catalog.length > 0 && (
+                <optgroup label="Autres activités (aucune société dans le périmètre)">
+                  {groupedSubcats.catalog.map((a) => (
+                    <option key={a.key} value={a.key}>
+                      {a.label}
+                    </option>
+                  ))}
+                </optgroup>
+              )}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-accent-dark" />
+          </div>
           <button
             type="button"
             onClick={() => setCatDialog(true)}
-            className="whitespace-nowrap rounded-full border border-accent-dark/40 bg-accent-light px-3 py-1.5 text-xs font-semibold text-accent-dark"
+            className="shrink-0 whitespace-nowrap rounded-xl border border-neutral-200 bg-white px-3 py-2 text-xs font-semibold text-neutral-600 hover:border-accent-dark/40"
           >
-            Toutes les catégories ({subcats.length}) ▾
+            Catalogue ▾
           </button>
         </div>
       )}
