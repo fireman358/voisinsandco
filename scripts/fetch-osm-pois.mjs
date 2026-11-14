@@ -38,11 +38,23 @@ const POI_QUERY_BBOX = `[out:json][timeout:300];
 );
 out center tags;`;
 
-// Centroïdes des communes (admin_level=8) ET des villages/sections (admin_level=10)
-// pour rattacher chaque POI à la localité la plus proche — un village comme Arquennes
-// (commune de Seneffe) est ainsi correctement localisé, pas renvoyé au centre de Seneffe.
+// Centroïdes des communes (admin_level=8), villages/sections (admin_level=10) ET
+// lieux-dits OSM (place=city/town/village/hamlet) pour rattacher chaque POI à la
+// localité la plus proche — un village comme Arquennes (commune de Seneffe) est
+// ainsi correctement localisé, pas renvoyé au centre de Seneffe.
 const COMMUNES_QUERY = `[out:json][timeout:120];
-rel["boundary"="administrative"]["admin_level"~"^(8|10)$"](${BBOX.join(",")});
+area["boundary"="administrative"]["admin_level"="4"]["name"~"^(Wallonie|Région wallonne|Walloon Region)$"]->.wal;
+(
+  rel["boundary"="administrative"]["admin_level"~"^(8|10)$"](area.wal);
+  nwr["place"~"^(city|town|village|hamlet)$"]["name"](area.wal);
+);
+out center tags;`;
+
+const COMMUNES_QUERY_BBOX = `[out:json][timeout:120];
+(
+  rel["boundary"="administrative"]["admin_level"~"^(8|10)$"](${BBOX.join(",")});
+  nwr["place"~"^(city|town|village|hamlet)$"]["name"](${BBOX.join(",")});
+);
 out center tags;`;
 
 const ALIMENTATION_SHOPS = new Set([
@@ -167,15 +179,35 @@ try {
 if (poiElements.length === 0) {
   poiElements = await fetchOverpass(POI_QUERY_BBOX, "POI Wallonie (boîte)");
 }
-const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes et villages");
-const communes = communeElements
-  .filter((e) => e.type === "relation" && e.tags?.name && e.center)
-  .map((e) => ({
-    name: e.tags.name,
-    level: Number(e.tags.admin_level),
-    lat: e.center.lat,
-    lng: e.center.lon,
-  }));
+let communeElements = [];
+try {
+  communeElements = await fetchOverpass(COMMUNES_QUERY, "communes et villages (Wallonie)");
+  if (communeElements.length < 200) {
+    console.warn(`Filtre Région wallonne trop pauvre (${communeElements.length}) — repli sur la boîte englobante.`);
+    communeElements = [];
+  }
+} catch {
+  communeElements = [];
+}
+if (communeElements.length === 0) {
+  communeElements = await fetchOverpass(COMMUNES_QUERY_BBOX, "communes et villages (boîte)");
+}
+const communes = [];
+const communeNames = new Set();
+for (const e of communeElements) {
+  const name = e.tags?.name?.trim();
+  const lat = e.lat ?? e.center?.lat;
+  const lng = e.lon ?? e.center?.lon;
+  if (!name || lat === undefined || lng === undefined) continue;
+  if (communeNames.has(name)) continue;
+  communeNames.add(name);
+  communes.push({
+    name,
+    level: e.tags.admin_level ? Number(e.tags.admin_level) : 10,
+    lat,
+    lng,
+  });
+}
 console.log(`${communes.length} communes chargées`);
 if (communes.length === 0) throw new Error("aucune commune récupérée");
 

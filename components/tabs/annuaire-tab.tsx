@@ -31,6 +31,7 @@ import { ClaimDialog } from "@/components/claim-dialog";
 import { formatDistance } from "@/lib/format";
 import {
   CATEGORY_LABELS,
+  SUBCATEGORY_GROUP_LABELS,
   activityKey,
   activityLabel,
   type Business,
@@ -115,7 +116,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               </a>
             </Button>
           )}
-          {b.website && (
+          {b.website && b.tier === "pro" && (
             <Button asChild variant="secondary" size="sm">
               <a href={b.website} target="_blank" rel="noreferrer">
                 <Globe className="size-3.5" /> Site web
@@ -172,23 +173,28 @@ export function AnnuaireTab({
   }, [byCategory]);
 
   const groupedSubcats = useMemo(() => {
-    const byMain = new Map<BusinessCategory, { key: string; label: string; count: number }[]>();
     const counts = new Map<string, number>();
-    for (const b of byCategory) {
+    const catOf = new Map<string, BusinessCategory>();
+    for (const b of businesses) {
       const key = activityKey(b.subcategory);
       if (!key) continue;
-      const composite = `${b.category}|${key}`;
-      counts.set(composite, (counts.get(composite) ?? 0) + 1);
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+      if (!catOf.has(key)) catOf.set(key, b.category);
     }
-    for (const [composite, count] of counts) {
-      const [cat, key] = composite.split("|") as [BusinessCategory, string];
+    const byMain = new Map<BusinessCategory, { key: string; label: string; count: number }[]>();
+    for (const [key, count] of counts) {
+      const cat = catOf.get(key) as BusinessCategory;
       const list = byMain.get(cat) ?? [];
-      list.push({ key, label: activityLabel(key), count });
+      list.push({ key, label: SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key), count });
       byMain.set(cat, list);
     }
     for (const list of byMain.values()) list.sort((a, b) => a.label.localeCompare(b.label, "fr"));
-    return byMain;
-  }, [byCategory]);
+    const catalog = Object.keys(SUBCATEGORY_GROUP_LABELS)
+      .filter((k) => !counts.has(k))
+      .map((k) => ({ key: k, label: SUBCATEGORY_GROUP_LABELS[k], count: 0 }))
+      .sort((a, b) => a.label.localeCompare(b.label, "fr"));
+    return { byMain, catalog };
+  }, [businesses]);
 
   const filtered = useMemo(() => {
     const needle = normalizeText(query.trim());
@@ -320,7 +326,7 @@ export function AnnuaireTab({
           <DialogHeader>
             <DialogTitle>Choisir une activité</DialogTitle>
             <DialogDescription>
-              Toutes les activités du périmètre, groupées par famille. Coche-en une pour filtrer.
+              Catalogue complet des activités, groupées par famille. Le nombre entre parenthèses compte les sociétés du périmètre actuel.
             </DialogDescription>
           </DialogHeader>
           <Input
@@ -329,11 +335,8 @@ export function AnnuaireTab({
             placeholder="Filtrer les activités…"
           />
           <div className="space-y-4">
-            {[...groupedSubcats.entries()]
-              .filter(([, list]) =>
-                category === "all" ||
-                list.some((a) => normalizeText(a.label).includes(normalizeText(catSearch.trim()))),
-              )
+            {[...groupedSubcats.byMain.entries()]
+              .filter(([cat]) => category === "all" || cat === category)
               .map(([cat, list]) => {
                 const shown = list.filter((a) =>
                   normalizeText(a.label).includes(normalizeText(catSearch.trim())),
@@ -348,6 +351,7 @@ export function AnnuaireTab({
                       <button
                         type="button"
                         onClick={() => {
+                          setCategory(cat);
                           setSubcat("all");
                           setVisible(PAGE_SIZE);
                           setCatDialog(false);
@@ -380,6 +384,41 @@ export function AnnuaireTab({
                   </div>
                 );
               })}
+            {(() => {
+              const shown = groupedSubcats.catalog.filter((a) =>
+                normalizeText(a.label).includes(normalizeText(catSearch.trim())),
+              );
+              if (shown.length === 0) return null;
+              return (
+                <div className="space-y-1.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-neutral-400">
+                    Autres activités (aucune société dans le périmètre)
+                  </p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {shown.map((a) => (
+                      <button
+                        key={a.key}
+                        type="button"
+                        onClick={() => {
+                          setCategory("all");
+                          setSubcat(a.key);
+                          setVisible(PAGE_SIZE);
+                          setCatDialog(false);
+                        }}
+                        className={cn(
+                          "rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-colors",
+                          subcat === a.key
+                            ? "border-accent-dark bg-accent-dark text-white"
+                            : "border-dashed border-neutral-200 bg-white text-neutral-500 hover:border-accent-dark/40",
+                        )}
+                      >
+                        {a.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </DialogContent>
       </Dialog>
