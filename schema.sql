@@ -1,14 +1,15 @@
 -- Voisins & Co — schéma Cloudflare D1 (SQLite)
+-- État final après toutes les migrations (0001 → 0010).
 -- Appliquer en local :  wrangler d1 execute voisins-and-co-db --local --file=schema.sql
 -- Appliquer en prod :   wrangler d1 execute voisins-and-co-db --remote --file=schema.sql
 -- (ou via les migrations : wrangler d1 migrations apply voisins-and-co-db --remote)
--- Le seed est dans seed.sql (voir migrations/0002_seed.sql).
+-- Le seed est dans seed.sql (généré depuis lib/seed-data.json).
 
 CREATE TABLE IF NOT EXISTS businesses (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
   category TEXT NOT NULL CHECK (category IN ('alimentation', 'artisan', 'horeca', 'distributeur')),
-  tier TEXT NOT NULL DEFAULT 'standard' CHECK (tier IN ('standard', 'verified', 'pro')),
+  tier TEXT NOT NULL DEFAULT 'standard' CHECK (tier IN ('standard', 'verified', 'visibility', 'pro')),
   description TEXT NOT NULL DEFAULT '',
   address TEXT NOT NULL DEFAULT '',
   town TEXT NOT NULL DEFAULT '',
@@ -20,6 +21,8 @@ CREATE TABLE IF NOT EXISTS businesses (
   hours TEXT,
   bce TEXT,
   news TEXT,
+  subcategory TEXT NOT NULL DEFAULT '',
+  paid_until TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_businesses_lat ON businesses (lat);
@@ -55,7 +58,9 @@ CREATE TABLE IF NOT EXISTS events (
   location TEXT NOT NULL DEFAULT '',
   town TEXT NOT NULL DEFAULT '',
   lat REAL NOT NULL,
-  lng REAL NOT NULL
+  lng REAL NOT NULL,
+  owner_token TEXT,
+  hidden INTEGER NOT NULL DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_events_date ON events (date);
 CREATE INDEX IF NOT EXISTS idx_events_lat ON events (lat);
@@ -72,6 +77,8 @@ CREATE TABLE IF NOT EXISTS needs (
   lat REAL NOT NULL,
   lng REAL NOT NULL,
   status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'taken')),
+  owner_token TEXT,
+  hidden INTEGER NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_needs_lat ON needs (lat);
@@ -86,6 +93,8 @@ CREATE TABLE IF NOT EXISTS tools (
   lat REAL NOT NULL,
   lng REAL NOT NULL,
   available INTEGER NOT NULL DEFAULT 1,
+  owner_token TEXT,
+  hidden INTEGER NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_tools_lat ON tools (lat);
@@ -107,6 +116,7 @@ CREATE TABLE IF NOT EXISTS claims (
   name TEXT NOT NULL DEFAULT '',
   email TEXT NOT NULL DEFAULT '',
   phone TEXT,
+  bce TEXT,
   message TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -119,3 +129,12 @@ CREATE TABLE IF NOT EXISTS loan_requests (
   message TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+CREATE TABLE IF NOT EXISTS reports (
+  id TEXT PRIMARY KEY,
+  content_type TEXT NOT NULL CHECK (content_type IN ('need', 'event', 'tool')),
+  content_id TEXT NOT NULL,
+  reason TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_reports_created ON reports (created_at);

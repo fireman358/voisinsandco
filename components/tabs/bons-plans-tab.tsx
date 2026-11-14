@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CalendarDays, Clock, Hammer, Loader2, MapPin, PackageOpen, ShoppingBasket, ShoppingCart, Store, Tag, Trash2, UtensilsCrossed } from "lucide-react";
+import { CalendarDays, Clock, Flag, Hammer, Loader2, MapPin, PackageOpen, ShoppingBasket, ShoppingCart, Store, Tag, Trash2, UtensilsCrossed } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +19,7 @@ import { useToast } from "@/components/toast";
 import { Textarea } from "@/components/ui/textarea";
 import communesJson from "@/lib/communes.json";
 import { formatDateFr, formatDistance, formatPrice } from "@/lib/format";
+import { getOwnerToken, loadOwnedIds, removeOwnerToken, saveOwnerToken } from "@/lib/ownership";
 import type { AgendaEvent, BusinessCategory, Deal } from "@/lib/types";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
@@ -61,6 +62,10 @@ function ReserveDialog({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ dealId: deal.id, name, phone }),
       });
+      if (res.status === 409) {
+        toast("Ce panier vient d'être réservé par quelqu'un d'autre", "error");
+        return;
+      }
       if (!res.ok) throw new Error("bad status");
       const data = (await res.json()) as { code: string };
       setCode(data.code);
@@ -151,7 +156,7 @@ function EventDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
   geo: { lat: number; lng: number; shortLabel: string };
-  onCreated: (e: AgendaEvent) => void;
+  onCreated: (e: AgendaEvent, ownerToken: string) => void;
 }) {
   const toast = useToast();
   const [title, setTitle] = useState("");
@@ -192,8 +197,8 @@ function EventDialog({
         }),
       });
       if (!res.ok) throw new Error("bad status");
-      const data = (await res.json()) as { event: AgendaEvent };
-      onCreated(data.event);
+      const data = (await res.json()) as { event: AgendaEvent; ownerToken?: string };
+      onCreated(data.event, data.ownerToken ?? "");
       toast("Événement publié dans l'agenda du quartier", "success");
       onOpenChange(false);
       setTitle("");
@@ -278,6 +283,8 @@ export function BonsPlansTab({
   const [reserveTarget, setReserveTarget] = useState<Deal | null>(null);
   const [localEvents, setLocalEvents] = useState<AgendaEvent[]>(events);
   const [eventOpen, setEventOpen] = useState(false);
+  const [owned, setOwned] = useState<Set<string>>(() => loadOwnedIds());
+  const toast = useToast();
 
   useEffect(() => setLocalEvents(events), [events]);
 
@@ -286,13 +293,45 @@ export function BonsPlansTab({
   const onReserved = (dealId: string) =>
     setLocalDeals((ds) => ds.map((d) => (d.id === dealId ? { ...d, remaining: Math.max(0, d.remaining - 1) } : d)));
 
+  const handleCreated = (e: AgendaEvent, ownerToken: string) => {
+    setLocalEvents((prev) => [e, ...prev]);
+    if (ownerToken) {
+      saveOwnerToken(e.id, ownerToken);
+      setOwned((prev) => new Set(prev).add(e.id));
+    }
+  };
+
   const removeEvent = async (id: string) => {
     if (!confirm("Supprimer cet événement de l'agenda ?")) return;
     setLocalEvents((es) => es.filter((e) => e.id !== id));
+    setOwned((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
     try {
-      await fetch(`/api/events?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+      const res = await fetch(`/api/events?id=${encodeURIComponent(id)}`, {
+        method: "DELETE",
+        headers: { "x-owner-token": getOwnerToken(id) ?? "" },
+      });
+      if (res.ok) removeOwnerToken(id);
     } catch {
       // mode démo : suppression locale uniquement
+    }
+  };
+
+  const reportEvent = async (id: string) => {
+    if (!confirm("Signaler cet événement au gestionnaire du site ?")) return;
+    try {
+      const res = await fetch("/api/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contentType: "event", contentId: id, reason: "" }),
+      });
+      if (res.ok) toast("Merci : l'événement a été signalé.", "success");
+      else toast("Signalement impossible, réessayez", "error");
+    } catch {
+      toast("Signalement impossible, réessayez", "error");
     }
   };
 
@@ -414,15 +453,27 @@ export function BonsPlansTab({
                       {formatDistance(e.distanceKm)} • {e.town}
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => removeEvent(e.id)}
-                    title="Supprimer"
-                    aria-label="Supprimer cet événement"
-                    className="self-start rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
-                  >
-                    <Trash2 className="size-4" />
-                  </button>
+                  {owned.has(e.id) ? (
+                    <button
+                      type="button"
+                      onClick={() => removeEvent(e.id)}
+                      title="Supprimer"
+                      aria-label="Supprimer cet événement"
+                      className="self-start rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
+                    >
+                      <Trash2 className="size-4" />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => reportEvent(e.id)}
+                      title="Signaler"
+                      aria-label="Signaler cet événement"
+                      className="self-start rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-amber-500"
+                    >
+                      <Flag className="size-4" />
+                    </button>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -430,7 +481,7 @@ export function BonsPlansTab({
         )}
       </section>
 
-      <EventDialog open={eventOpen} onOpenChange={setEventOpen} geo={geo} onCreated={(e) => setLocalEvents((prev) => [e, ...prev])} />
+      <EventDialog open={eventOpen} onOpenChange={setEventOpen} geo={geo} onCreated={handleCreated} />
       <ReserveDialog
         deal={reserveTarget}
         open={reserveTarget !== null}

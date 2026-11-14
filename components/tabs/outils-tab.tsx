@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HandHeart, Loader2, MapPin, Plus, Search, Trash2, Wrench } from "lucide-react";
+import { Flag, HandHeart, Loader2, MapPin, Plus, Search, Trash2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/toast";
 import { formatDistance } from "@/lib/format";
+import { getOwnerToken, loadOwnedIds, removeOwnerToken, saveOwnerToken } from "@/lib/ownership";
 import type { Tool } from "@/lib/types";
 import { normalizeText } from "@/lib/utils";
 
@@ -121,7 +122,7 @@ function AddToolDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
   geo: { lat: number; lng: number; shortLabel: string };
-  onCreated: (t: Tool) => void;
+  onCreated: (t: Tool, ownerToken: string) => void;
 }) {
   const toast = useToast();
   const [name, setName] = useState("");
@@ -143,8 +144,8 @@ function AddToolDialog({
         body: JSON.stringify({ name, description, owner, town, lat: geo.lat, lng: geo.lng }),
       });
       if (!res.ok) throw new Error("bad status");
-      const data = (await res.json()) as { tool: Tool };
-      onCreated(data.tool);
+      const data = (await res.json()) as { tool: Tool; ownerToken?: string };
+      onCreated(data.tool, data.ownerToken ?? "");
       toast("Objet proposé à la boîte à outils du quartier", "success");
       onOpenChange(false);
       setName("");
@@ -212,13 +213,48 @@ export function OutilsTab({
   onCreated: (t: Tool) => void;
 }) {
   const [addOpen, setAddOpen] = useState(false);
+  const [owned, setOwned] = useState<Set<string>>(() => loadOwnedIds());
+  const toast = useToast();
+
+  const handleCreated = (t: Tool, ownerToken: string) => {
+    onCreated(t);
+    if (ownerToken) {
+      saveOwnerToken(t.id, ownerToken);
+      setOwned((prev) => new Set(prev).add(t.id));
+    }
+  };
+
   const remove = async (id: string) => {
     if (!confirm("Retirer cet objet de la boîte à outils ?")) return;
     onDeleted(id);
+    setOwned((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
     try {
-      await fetch(`/api/tools?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+      const res = await fetch(`/api/tools?id=${encodeURIComponent(id)}`, {
+        method: "DELETE",
+        headers: { "x-owner-token": getOwnerToken(id) ?? "" },
+      });
+      if (res.ok) removeOwnerToken(id);
     } catch {
       // mode démo : suppression locale uniquement
+    }
+  };
+
+  const report = async (id: string) => {
+    if (!confirm("Signaler cet objet au gestionnaire du site ?")) return;
+    try {
+      const res = await fetch("/api/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contentType: "tool", contentId: id, reason: "" }),
+      });
+      if (res.ok) toast("Merci : l'objet a été signalé.", "success");
+      else toast("Signalement impossible, réessayez", "error");
+    } catch {
+      toast("Signalement impossible, réessayez", "error");
     }
   };
   const [query, setQuery] = useState("");
@@ -302,22 +338,34 @@ export function OutilsTab({
                     <HandHeart className="size-4" />
                     {tool.available ? "Demander le prêt" : "Indisponible"}
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => remove(tool.id)}
-                    title="Supprimer"
-                    aria-label="Supprimer cet objet"
-                  >
-                    <Trash2 className="size-4 text-neutral-300 hover:text-red-500" />
-                  </Button>
+                  {owned.has(tool.id) ? (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => remove(tool.id)}
+                      title="Supprimer"
+                      aria-label="Supprimer cet objet"
+                    >
+                      <Trash2 className="size-4 text-neutral-300 hover:text-red-500" />
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => report(tool.id)}
+                      title="Signaler"
+                      aria-label="Signaler cet objet"
+                    >
+                      <Flag className="size-4 text-neutral-300 hover:text-amber-500" />
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
-      <AddToolDialog open={addOpen} onOpenChange={setAddOpen} geo={geo} onCreated={onCreated} />
+      <AddToolDialog open={addOpen} onOpenChange={setAddOpen} geo={geo} onCreated={handleCreated} />
       <LoanDialog
         tool={loanTarget}
         open={loanTarget !== null}

@@ -1,24 +1,9 @@
 import raw from "./demo-data.json";
 import type { AgendaEvent, Business, Deal, Need, Tool } from "./types";
 
-export interface BasePoint {
-  key: string;
-  label: string;
-  shortLabel: string;
-  lat: number;
-  lng: number;
-}
-
-export const BASE_POINTS: BasePoint[] = [
-  { key: "arquennes", label: "Arquennes 7181", shortLabel: "Arquennes", lat: 50.568, lng: 4.2746 },
-  { key: "seneffe", label: "Seneffe 7180", shortLabel: "Seneffe", lat: 50.5293, lng: 4.2567 },
-  { key: "feluy", label: "Feluy 7181", shortLabel: "Feluy", lat: 50.5608, lng: 4.2535 },
-  { key: "nivelles", label: "Nivelles 1400", shortLabel: "Nivelles", lat: 50.5928, lng: 4.3244 },
-  { key: "baulers", label: "Baulers 1401", shortLabel: "Baulers", lat: 50.579, lng: 4.305 },
-];
-
-export const DEFAULT_BASE = BASE_POINTS[0];
-export const RADIUS_OPTIONS = [2, 5, 10, 15];
+// Les constantes de base (points, rayon, plafond) vivent désormais dans
+// lib/constants.ts afin que les composants clients n'importent pas ce module
+// (qui embarque demo-data.json, ~1,3 Mo, dans le bundle navigateur).
 
 const HOUR = 3600_000;
 const DAY = 24 * HOUR;

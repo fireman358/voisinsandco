@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createEvent, deleteRow } from "@/lib/data";
+import { clientIp, LIMITS, overLimit, rateLimited } from "@/lib/security";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
+  if (rateLimited(clientIp(req), 10)) {
+    return NextResponse.json({ error: "Trop de requêtes, réessayez dans une minute" }, { status: 429 });
+  }
   let body: {
     title?: string;
     organizer?: string;
@@ -19,6 +23,16 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: "JSON invalide" }, { status: 400 });
   }
+  const tooLong = overLimit(body, {
+    title: LIMITS.title,
+    organizer: LIMITS.organizer,
+    type: LIMITS.type,
+    date: LIMITS.date,
+    location: LIMITS.location,
+    town: LIMITS.town,
+  });
+  if (tooLong) return NextResponse.json({ error: tooLong }, { status: 400 });
+
   const title = body.title?.trim();
   const organizer = body.organizer?.trim();
   const date = body.date?.trim();
@@ -31,7 +45,7 @@ export async function POST(req: NextRequest) {
       { status: 400 },
     );
   }
-  const { event, demo } = await createEvent({
+  const { event, ownerToken, demo } = await createEvent({
     title,
     organizer,
     type: body.type?.trim() || "Asso",
@@ -41,12 +55,19 @@ export async function POST(req: NextRequest) {
     lat,
     lng,
   });
-  return NextResponse.json({ event, demo }, { status: 201 });
+  return NextResponse.json({ event, ownerToken, demo }, { status: 201 });
 }
 
 export async function DELETE(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id")?.trim();
   if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
-  const ok = await deleteRow("events", id);
-  return NextResponse.json({ ok }, { status: ok ? 200 : 503 });
+  const token = req.headers.get("x-owner-token");
+  const result = await deleteRow("events", id, token);
+  if (result === "forbidden") {
+    return NextResponse.json({ error: "Non autorisé à supprimer cet événement" }, { status: 403 });
+  }
+  if (result === "unavailable") {
+    return NextResponse.json({ error: "base indisponible" }, { status: 503 });
+  }
+  return NextResponse.json({ ok: true });
 }

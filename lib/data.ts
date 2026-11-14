@@ -1,6 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
-import { BUSINESSES, DEALS, DEFAULT_BASE, EVENTS, NEEDS, TOOLS } from "./seed";
+import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
+import { DEFAULT_BASE, MAX_BUSINESS_RESULTS } from "./constants";
 import type { AgendaEvent, Business, BusinessTier, Deal, Need, Tool } from "./types";
 import { normalizeText } from "./utils";
 
@@ -50,7 +51,7 @@ function byProThenDistance(a: Business, b: Business): number {
 export async function listBusinesses(
   q: GeoQuery,
   category: string,
-): Promise<{ items: Business[]; demo: boolean }> {
+): Promise<{ items: Business[]; demo: boolean; total: number }> {
   const box = boundingBox(q.lat, q.lng, q.radius);
   const conn = getDB();
   if (conn) {
@@ -88,16 +89,17 @@ export async function listBusinesses(
       }
     }
     if (results.length > 0) {
-      const items = withDistance(q, results)
+      const matched = withDistance(q, results)
         .filter((b) => category === "all" || b.category === category)
         .sort(byProThenDistance);
-      return { items, demo: false };
+      // Borne la charge utile : on ne renvoie que les N plus proches (Pro en tête).
+      return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: false, total: matched.length };
     }
   }
-  const items = withDistance(q, BUSINESSES)
+  const matched = withDistance(q, BUSINESSES)
     .filter((b) => category === "all" || b.category === category)
     .sort(byProThenDistance);
-  return { items, demo: true };
+  return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: true, total: matched.length };
 }
 
 export async function listDealsAndEvents(
@@ -122,6 +124,7 @@ export async function listDealsAndEvents(
           `SELECT id, title, organizer, type, date, location, town, lat, lng
            FROM events
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
+             AND hidden = 0
            ORDER BY date ASC`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng)
@@ -157,6 +160,7 @@ export async function listNeeds(q: GeoQuery): Promise<{ items: Need[]; demo: boo
                   town, lat, lng, status, created_at AS createdAt
            FROM needs
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
+             AND hidden = 0
            ORDER BY created_at DESC`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng)
@@ -186,6 +190,7 @@ export async function listTools(
           `SELECT id, name, description, owner, town, lat, lng, available
            FROM tools
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
+             AND hidden = 0
              AND (lower(name) LIKE ? OR lower(description) LIKE ? OR lower(owner) LIKE ?)`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng, needle, needle, needle)
@@ -225,7 +230,9 @@ export interface NewNeed {
   lng: number;
 }
 
-export async function createNeed(input: NewNeed): Promise<{ need: Need; demo: boolean }> {
+export async function createNeed(
+  input: NewNeed,
+): Promise<{ need: Need; ownerToken: string; demo: boolean }> {
   const need: Need = {
     id: crypto.randomUUID(),
     title: input.title,
@@ -239,13 +246,16 @@ export async function createNeed(input: NewNeed): Promise<{ need: Need; demo: bo
     status: "open",
     createdAt: new Date().toISOString(),
   };
+  // Jeton de propriété : seul l'auteur (qui le conserve en localStorage) peut
+  // supprimer sa publication. Il n'est jamais renvoyé par les routes de liste.
+  const ownerToken = crypto.randomUUID();
   const conn = getDB();
   if (conn) {
     try {
       await conn
         .prepare(
-          `INSERT INTO needs (id, title, description, kind, artisan_category, author, town, lat, lng, status, created_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'open', ?)`,
+          `INSERT INTO needs (id, title, description, kind, artisan_category, author, town, lat, lng, status, owner_token, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'open', ?, ?)`,
         )
         .bind(
           need.id,
@@ -257,15 +267,16 @@ export async function createNeed(input: NewNeed): Promise<{ need: Need; demo: bo
           need.town,
           need.lat,
           need.lng,
+          ownerToken,
           need.createdAt,
         )
         .run();
-      return { need, demo: false };
+      return { need, ownerToken, demo: false };
     } catch {
       // mode démo
     }
   }
-  return { need, demo: true };
+  return { need, ownerToken, demo: true };
 }
 
 function makePickupCode(): string {
@@ -281,21 +292,26 @@ export async function createReservation(input: {
   dealId: string;
   name: string;
   phone?: string;
-}): Promise<{ code: string; demo: boolean }> {
+}): Promise<{ code: string; demo: boolean } | { error: "soldout"; demo: boolean }> {
   const code = makePickupCode();
   const conn = getDB();
   if (conn) {
     try {
+      // Décrément conditionnel : on ne réserve que s'il reste un panier.
+      // `meta.changes === 0` signale l'épuisement (y compris en cas de course).
+      const dec = await conn
+        .prepare(`UPDATE deals SET remaining = remaining - 1 WHERE id = ? AND remaining > 0`)
+        .bind(input.dealId)
+        .run();
+      if (!dec.meta?.changes) {
+        return { error: "soldout", demo: false };
+      }
       await conn
         .prepare(
           `INSERT INTO reservations (id, deal_id, name, phone, code, created_at)
            VALUES (?, ?, ?, ?, ?, ?)`,
         )
         .bind(crypto.randomUUID(), input.dealId, input.name, input.phone ?? null, code, new Date().toISOString())
-        .run();
-      await conn
-        .prepare(`UPDATE deals SET remaining = MAX(0, remaining - 1) WHERE id = ?`)
-        .bind(input.dealId)
         .run();
       return { code, demo: false };
     } catch {
@@ -534,7 +550,9 @@ export interface NewEvent {
   lng: number;
 }
 
-export async function createEvent(input: NewEvent): Promise<{ event: AgendaEvent; demo: boolean }> {
+export async function createEvent(
+  input: NewEvent,
+): Promise<{ event: AgendaEvent; ownerToken: string; demo: boolean }> {
   const event: AgendaEvent = {
     id: crypto.randomUUID(),
     title: input.title,
@@ -546,13 +564,14 @@ export async function createEvent(input: NewEvent): Promise<{ event: AgendaEvent
     lat: input.lat,
     lng: input.lng,
   };
+  const ownerToken = crypto.randomUUID();
   const conn = getDB();
   if (conn) {
     try {
       await conn
         .prepare(
-          `INSERT INTO events (id, title, organizer, type, date, location, town, lat, lng)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO events (id, title, organizer, type, date, location, town, lat, lng, owner_token)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         )
         .bind(
           event.id,
@@ -564,21 +583,97 @@ export async function createEvent(input: NewEvent): Promise<{ event: AgendaEvent
           event.town,
           event.lat,
           event.lng,
+          ownerToken,
         )
         .run();
-      return { event, demo: false };
+      return { event, ownerToken, demo: false };
     } catch {
       // mode démo
     }
   }
-  return { event, demo: true };
+  return { event, ownerToken, demo: true };
 }
 
-export async function deleteRow(table: "needs" | "tools" | "events" | "deals", id: string): Promise<boolean> {
+export type DeleteResult = "ok" | "forbidden" | "unavailable";
+
+export async function deleteRow(
+  table: "needs" | "tools" | "events" | "deals",
+  id: string,
+  ownerToken?: string | null,
+): Promise<DeleteResult> {
+  const conn = getDB();
+  if (!conn) return "unavailable";
+  // Pour les tables communautaires, on exige le jeton de propriété.
+  if (table === "needs" || table === "tools" || table === "events") {
+    if (!ownerToken) return "forbidden";
+    const res = await conn
+      .prepare(`DELETE FROM ${table} WHERE id = ? AND owner_token = ?`)
+      .bind(id, ownerToken)
+      .run();
+    return res.meta?.changes ? "ok" : "forbidden";
+  }
+  await conn.prepare(`DELETE FROM ${table} WHERE id = ?`).bind(id).run();
+  return "ok";
+}
+
+export async function setContentHidden(
+  table: "needs" | "tools" | "events",
+  id: string,
+  hidden: boolean,
+): Promise<boolean> {
   const conn = getDB();
   if (!conn) return false;
-  await conn.prepare(`DELETE FROM ${table} WHERE id = ?`).bind(id).run();
+  await conn.prepare(`UPDATE ${table} SET hidden = ? WHERE id = ?`).bind(hidden ? 1 : 0, id).run();
   return true;
+}
+
+export interface Report {
+  id: string;
+  contentType: "need" | "event" | "tool";
+  contentId: string;
+  reason: string;
+  createdAt: string;
+}
+
+export async function createReport(input: {
+  contentType: "need" | "event" | "tool";
+  contentId: string;
+  reason?: string;
+}): Promise<{ ok: boolean; demo: boolean }> {
+  const conn = getDB();
+  if (conn) {
+    try {
+      await conn
+        .prepare(
+          `INSERT INTO reports (id, content_type, content_id, reason, created_at)
+           VALUES (?, ?, ?, ?, ?)`,
+        )
+        .bind(crypto.randomUUID(), input.contentType, input.contentId, input.reason ?? "", new Date().toISOString())
+        .run();
+      return { ok: true, demo: false };
+    } catch {
+      // mode démo
+    }
+  }
+  return { ok: true, demo: true };
+}
+
+export async function listReports(): Promise<Report[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  try {
+    const { results } = await conn
+      .prepare(
+        `SELECT id, content_type AS contentType, content_id AS contentId, reason, created_at AS createdAt
+         FROM reports
+         ORDER BY created_at DESC
+         LIMIT 200`,
+      )
+      .all<Report>();
+    return results ?? [];
+  } catch {
+    return [];
+  }
 }
 
 export async function takeNeed(id: string): Promise<boolean> {
@@ -597,7 +692,7 @@ export interface NewTool {
   lng: number;
 }
 
-export async function createTool(input: NewTool): Promise<{ tool: Tool; demo: boolean }> {
+export async function createTool(input: NewTool): Promise<{ tool: Tool; ownerToken: string; demo: boolean }> {
   const tool: Tool = {
     id: crypto.randomUUID(),
     name: input.name,
@@ -608,20 +703,21 @@ export async function createTool(input: NewTool): Promise<{ tool: Tool; demo: bo
     lng: input.lng,
     available: true,
   };
+  const ownerToken = crypto.randomUUID();
   const conn = getDB();
   if (conn) {
     try {
       await conn
         .prepare(
-          `INSERT INTO tools (id, name, description, owner, town, lat, lng, available)
-           VALUES (?, ?, ?, ?, ?, ?, ?, 1)`,
+          `INSERT INTO tools (id, name, description, owner, town, lat, lng, available, owner_token)
+           VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)`,
         )
-        .bind(tool.id, tool.name, tool.description, tool.owner, tool.town, tool.lat, tool.lng)
+        .bind(tool.id, tool.name, tool.description, tool.owner, tool.town, tool.lat, tool.lng, ownerToken)
         .run();
-      return { tool, demo: false };
+      return { tool, ownerToken, demo: false };
     } catch {
       // mode démo
     }
   }
-  return { tool, demo: true };
+  return { tool, ownerToken, demo: true };
 }

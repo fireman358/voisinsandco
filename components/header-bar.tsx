@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { RADIUS_OPTIONS } from "@/lib/seed";
+import { RADIUS_OPTIONS } from "@/lib/constants";
 import type { GeoState } from "@/lib/types";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];

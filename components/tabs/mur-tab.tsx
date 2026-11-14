@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HandHeart, HeartHandshake, Loader2, MapPin, Megaphone, Plus, Trash2, Wrench, Zap } from "lucide-react";
+import { Flag, HandHeart, HeartHandshake, Loader2, MapPin, Megaphone, Plus, Trash2, Wrench, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/toast";
 import { formatDistance, relativeTime } from "@/lib/format";
+import { getOwnerToken, loadOwnedIds, removeOwnerToken, saveOwnerToken } from "@/lib/ownership";
 import { ARTISAN_CATEGORIES, type GeoState, type Need, type NeedKind } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +33,7 @@ function PublishNeedDialog({
   onOpenChange: (open: boolean) => void;
   geo: GeoState;
   radius: number;
-  onCreated: (need: Need) => void;
+  onCreated: (need: Need, ownerToken: string) => void;
 }) {
   const toast = useToast();
   const [kind, setKind] = useState<NeedKind | null>(null);
@@ -71,8 +72,8 @@ function PublishNeedDialog({
         }),
       });
       if (!res.ok) throw new Error("bad status");
-      const data = (await res.json()) as { need: Need };
-      onCreated(data.need);
+      const data = (await res.json()) as { need: Need; ownerToken?: string };
+      onCreated(data.need, data.ownerToken ?? "");
       reset();
       onOpenChange(false);
       toast(
@@ -264,6 +265,17 @@ export function MurTab({
   onDeleted: (id: string) => void;
   onTaken: (id: string) => void;
 }) {
+  const [owned, setOwned] = useState<Set<string>>(() => loadOwnedIds());
+  const toast = useToast();
+
+  const handleCreated = (need: Need, ownerToken: string) => {
+    onCreated(need);
+    if (ownerToken) {
+      saveOwnerToken(need.id, ownerToken);
+      setOwned((prev) => new Set(prev).add(need.id));
+    }
+  };
+
   const take = async (id: string) => {
     onTaken(id);
     try {
@@ -280,10 +292,34 @@ export function MurTab({
   const remove = async (id: string) => {
     if (!confirm("Supprimer cette publication du mur ?")) return;
     onDeleted(id);
+    setOwned((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
     try {
-      await fetch(`/api/needs?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+      const res = await fetch(`/api/needs?id=${encodeURIComponent(id)}`, {
+        method: "DELETE",
+        headers: { "x-owner-token": getOwnerToken(id) ?? "" },
+      });
+      if (res.ok) removeOwnerToken(id);
     } catch {
       // mode démo : suppression locale uniquement
+    }
+  };
+
+  const report = async (id: string) => {
+    if (!confirm("Signaler cette publication au gestionnaire du site ?")) return;
+    try {
+      const res = await fetch("/api/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contentType: "need", contentId: id, reason: "" }),
+      });
+      if (res.ok) toast("Merci : la publication a été signalée.", "success");
+      else toast("Signalement impossible, réessayez", "error");
+    } catch {
+      toast("Signalement impossible, réessayez", "error");
     }
   };
   const [open, setOpen] = useState(false);
@@ -311,20 +347,32 @@ export function MurTab({
           {needs.map((n) => (
             <div key={n.id} className="relative">
               <NeedCard need={n} onTake={take} />
-              <button
-                type="button"
-                onClick={() => remove(n.id)}
-                title="Supprimer"
-                aria-label="Supprimer cette publication"
-                className="absolute right-2 top-2 rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
-              >
-                <Trash2 className="size-4" />
-              </button>
+              {owned.has(n.id) ? (
+                <button
+                  type="button"
+                  onClick={() => remove(n.id)}
+                  title="Supprimer"
+                  aria-label="Supprimer cette publication"
+                  className="absolute right-2 top-2 rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-red-500"
+                >
+                  <Trash2 className="size-4" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => report(n.id)}
+                  title="Signaler"
+                  aria-label="Signaler cette publication"
+                  className="absolute right-2 top-2 rounded-lg p-1.5 text-neutral-300 hover:bg-neutral-100 hover:text-amber-500"
+                >
+                  <Flag className="size-4" />
+                </button>
+              )}
             </div>
           ))}
         </div>
       )}
-      <PublishNeedDialog open={open} onOpenChange={setOpen} geo={geo} radius={radius} onCreated={onCreated} />
+      <PublishNeedDialog open={open} onOpenChange={setOpen} geo={geo} radius={radius} onCreated={handleCreated} />
     </div>
   );
 }

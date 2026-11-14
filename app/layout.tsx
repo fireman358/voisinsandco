@@ -5,10 +5,26 @@ import { ToastProvider } from "@/components/toast";
 import { PwaRegister } from "@/components/pwa-register";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://voisinsandco.edukisto.win"),
   title: "Voisins & Co — Économie locale & entraide de voisinage",
   description:
     "Annuaire des commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier autour d'Arquennes, Seneffe, Nivelles et Lillois.",
   manifest: "/manifest.json",
+  openGraph: {
+    type: "website",
+    locale: "fr_BE",
+    url: "/",
+    siteName: "Voisins & Co",
+    title: "Voisins & Co — Économie locale & entraide",
+    description:
+      "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Voisins & Co — Économie locale & entraide",
+    description:
+      "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
+  },
   appleWebApp: {
     capable: true,
     title: "Voisins & Co",
@@ -19,8 +35,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: "#15803D",
 };
 

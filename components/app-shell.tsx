@@ -16,11 +16,17 @@ import { BonsPlansTab } from "@/components/tabs/bons-plans-tab";
 import { MurTab } from "@/components/tabs/mur-tab";
 import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
-import { DEFAULT_BASE } from "@/lib/seed";
+import { DEFAULT_BASE } from "@/lib/constants";
 import type { AgendaEvent, Business, Deal, GeoState, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
 
-export function AppShell() {
+export interface AppShellInitialData {
+  items: Business[];
+  total: number;
+  demo: boolean;
+}
+
+export function AppShell({ initialData }: { initialData?: AppShellInitialData }) {
   const toast = useToast();
   const [geo, setGeoState] = useState<GeoState>(() => {
     try {
@@ -47,8 +53,9 @@ export function AppShell() {
   const [radius, setRadius] = useState(10);
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
-  const [demo, setDemo] = useState(false);
-  const [businesses, setBusinesses] = useState<Business[]>([]);
+  const [demo, setDemo] = useState(initialData?.demo ?? false);
+  const [businesses, setBusinesses] = useState<Business[]>(initialData?.items ?? []);
+  const [total, setTotal] = useState(initialData?.total ?? initialData?.items?.length ?? 0);
   const [deals, setDeals] = useState<Deal[]>([]);
   const [events, setEvents] = useState<AgendaEvent[]>([]);
   const [needs, setNeeds] = useState<Need[]>([]);
@@ -59,12 +66,13 @@ export function AppShell() {
     const qs = `lat=${geo.lat}&lng=${geo.lng}&radius=${radius}`;
     try {
       const [b, d, n, t] = await Promise.all([
-        fetchJSON<{ items: Business[]; demo: boolean }>(`/api/businesses?${qs}`),
+        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}`),
         fetchJSON<{ deals: Deal[]; events: AgendaEvent[]; demo: boolean }>(`/api/deals?${qs}`),
         fetchJSON<{ items: Need[]; demo: boolean }>(`/api/needs?${qs}`),
         fetchJSON<{ items: Tool[]; demo: boolean }>(`/api/tools?${qs}`),
       ]);
       setBusinesses(b.items ?? []);
+      setTotal(b.total ?? b.items?.length ?? 0);
       setDemo(Boolean(b.demo));
       setDeals(d.deals ?? []);
       setEvents(d.events ?? []);
@@ -133,7 +141,7 @@ export function AppShell() {
         geo={geo}
         radius={radius}
         demo={demo}
-        count={businesses.length}
+        count={total}
         onRadiusChange={setRadius}
         onCitySelect={handleCitySelect}
         onUseGps={handleUseGps}

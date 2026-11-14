@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, CalendarClock, Copy, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search, Trash2 } from "lucide-react";
+import { ArrowLeft, CalendarClock, Copy, EyeOff, Flag, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +20,14 @@ interface Claim {
   phone: string | null;
   bce: string | null;
   message: string | null;
+  createdAt: string;
+}
+
+interface Report {
+  id: string;
+  contentType: "need" | "event" | "tool";
+  contentId: string;
+  reason: string;
   createdAt: string;
 }
 
@@ -104,6 +112,7 @@ export default function AdminPage() {
   const [token, setToken] = useState("");
   const [authed, setAuthed] = useState(false);
   const [claims, setClaims] = useState<Claim[] | null>(null);
+  const [reports, setReports] = useState<Report[] | null>(null);
   const [subs, setSubs] = useState<Business[]>([]);
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Business[]>([]);
@@ -141,16 +150,19 @@ export default function AdminPage() {
   const loadAll = useCallback(async () => {
     setError("");
     try {
-      const [c, s] = await Promise.all([
+      const [c, s, r] = await Promise.all([
         api<{ claims?: Claim[] }>("/api/admin/claims"),
         api<{ items?: Business[] }>("/api/admin/subscriptions"),
+        api<{ reports?: Report[] }>("/api/admin/reports"),
       ]);
       setClaims(c.claims ?? []);
       setSubs(s.items ?? []);
+      setReports(r.reports ?? []);
     } catch (e) {
       setError((e as Error).message);
       setClaims([]);
       setSubs([]);
+      setReports([]);
     }
   }, [api]);
 
@@ -195,6 +207,24 @@ export default function AdminPage() {
     try {
       await api("/api/admin/claims", { method: "DELETE", body: JSON.stringify({ id }) });
       setClaims((prev) => (prev ? prev.filter((c) => c.id !== id) : prev));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
+  const hideContent = async (contentType: Report["contentType"], contentId: string) => {
+    setError("");
+    const tableOf: Record<Report["contentType"], "needs" | "events" | "tools"> = {
+      need: "needs",
+      event: "events",
+      tool: "tools",
+    };
+    try {
+      await api("/api/admin/moderate", {
+        method: "POST",
+        body: JSON.stringify({ table: tableOf[contentType], id: contentId, hidden: true }),
+      });
+      setReports((prev) => (prev ? prev.filter((r) => r.contentId !== contentId) : prev));
     } catch (e) {
       setError((e as Error).message);
     }
@@ -391,6 +421,35 @@ export default function AdminPage() {
                           </Button>
                         </div>
                       </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            <section className="space-y-2 rounded-2xl border border-neutral-200 bg-white p-4">
+              <h2 className="flex items-center gap-2 text-sm font-bold text-neutral-900">
+                <Flag className="size-4 text-amber-500" /> Signalements ({reports?.length ?? 0})
+              </h2>
+              {!reports ? (
+                <p className="flex items-center gap-2 text-sm text-neutral-400"><Loader2 className="size-4 animate-spin" /> Chargement…</p>
+              ) : reports.length === 0 ? (
+                <p className="text-sm text-neutral-500">Aucun signalement pour le moment.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {reports.map((r) => (
+                    <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-neutral-200 p-3 text-sm">
+                      <div>
+                        <p className="font-semibold text-neutral-800">
+                          {r.contentType === "need" ? "Besoin" : r.contentType === "event" ? "Événement" : "Outil"}{" "}
+                          · <span className="font-mono text-xs text-neutral-500">{r.contentId}</span>
+                        </p>
+                        {r.reason && <p className="mt-1 text-xs text-neutral-500">{r.reason}</p>}
+                        <p className="mt-1 text-[11px] text-neutral-400">{new Date(r.createdAt).toLocaleString("fr-BE")}</p>
+                      </div>
+                      <Button size="sm" variant="outline" onClick={() => hideContent(r.contentType, r.contentId)}>
+                        <EyeOff className="size-3.5" /> Masquer
+                      </Button>
                     </li>
                   ))}
                 </ul>
