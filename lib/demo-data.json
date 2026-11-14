@@ -1,0 +1,160 @@
+{
+  "businesses": [],
+  "deals": [],
+  "events": [
+    {
+      "id": "e-brocante",
+      "title": "Brocante annuelle d'Arquennes",
+      "organizer": "Les Amis d'Arquennes (ASBL)",
+      "type": "Brocante",
+      "dateOffsetDays": 6,
+      "location": "Place du Village",
+      "town": "Arquennes",
+      "lat": 50.5051,
+      "lng": 4.3695
+    },
+    {
+      "id": "e-soupe",
+      "title": "Soupe populaire de Seneffe",
+      "organizer": "Comité de quartier de Seneffe",
+      "type": "Soupe solidaire",
+      "dateOffsetDays": 3,
+      "location": "Salle communale, Rue de l'Église 2",
+      "town": "Seneffe",
+      "lat": 50.526,
+      "lng": 4.2605
+    },
+    {
+      "id": "e-marche",
+      "title": "Marché gourmand de Nivelles",
+      "organizer": "Ville de Nivelles",
+      "type": "Marché",
+      "dateOffsetDays": 10,
+      "location": "Grand-Place",
+      "town": "Nivelles",
+      "lat": 50.5928,
+      "lng": 4.3247
+    },
+    {
+      "id": "e-repair",
+      "title": "Repair Café de Baulers",
+      "organizer": "ASBL Baulers en transition",
+      "type": "Atelier repair",
+      "dateOffsetDays": 17,
+      "location": "Salle des fêtes",
+      "town": "Baulers",
+      "lat": 50.5795,
+      "lng": 4.304
+    }
+  ],
+  "needs": [
+    {
+      "id": "n-haie",
+      "title": "Aide pour tailler une haie de 20 m",
+      "description": "Haie de thuyas devenue très haute : besoin de bras (et d'une échelle) un samedi matin.",
+      "kind": "entraide",
+      "author": "Marie",
+      "town": "Arquennes",
+      "lat": 50.5047,
+      "lng": 4.369,
+      "createdOffsetHours": 2
+    },
+    {
+      "id": "n-plombier",
+      "title": "Recherche plombier : fuite sous l'évier",
+      "description": "Petite fuite continue sous l'évier de la cuisine, goutte à goutte depuis hier soir.",
+      "kind": "artisan",
+      "artisanCategory": "Plomberie",
+      "author": "Jean",
+      "town": "Seneffe",
+      "lat": 50.5265,
+      "lng": 4.2595,
+      "createdOffsetHours": 5
+    },
+    {
+      "id": "n-chien",
+      "title": "Garde de chien ce week-end",
+      "description": "Chien gentil (berger croisé, 4 ans) à garder du vendredi soir au dimanche soir à Nivelles.",
+      "kind": "entraide",
+      "author": "Sophie",
+      "town": "Nivelles",
+      "lat": 50.5935,
+      "lng": 4.3255,
+      "createdOffsetHours": 26
+    },
+    {
+      "id": "n-couvreur",
+      "title": "Recherche couvreur : gouttière qui fuit",
+      "description": "Gouttière arrière qui déborde à chaque pluie, besoin d'un pro rapidement.",
+      "kind": "artisan",
+      "artisanCategory": "Couverture",
+      "author": "Luc",
+      "town": "Baulers",
+      "lat": 50.5799,
+      "lng": 4.3001,
+      "createdOffsetHours": 50
+    }
+  ],
+  "tools": [
+    {
+      "id": "t-karcher",
+      "name": "Kärcher K4 + rotabuse",
+      "description": "Nettoyeur haute pression 130 bars, parfait pour terrasse, voiture ou façade.",
+      "owner": "Patrick",
+      "town": "Arquennes",
+      "lat": 50.5038,
+      "lng": 4.3675,
+      "available": true
+    },
+    {
+      "id": "t-echelle",
+      "name": "Échelle aluminium 6 m",
+      "description": "Échelle 3 parties télescopique, très légère : idéale pour gouttières et petit élagage.",
+      "owner": "Thomas",
+      "town": "Seneffe",
+      "lat": 50.5245,
+      "lng": 4.26,
+      "available": true
+    },
+    {
+      "id": "t-remorque",
+      "name": "Remorque double essieu",
+      "description": "Remorque freinée 750 kg : déchets verts, meubles, gravats… attelage standard.",
+      "owner": "Ferme de la Dodaine",
+      "town": "Arquennes",
+      "lat": 50.4965,
+      "lng": 4.3552,
+      "available": true
+    },
+    {
+      "id": "t-raclette",
+      "name": "Appareil à raclette 8 personnes",
+      "description": "Appareil 8 poêlons + grill raclette, avec spatules et coupelles.",
+      "owner": "Camille",
+      "town": "Nivelles",
+      "lat": 50.592,
+      "lng": 4.3238,
+      "available": true
+    },
+    {
+      "id": "t-tondeuse",
+      "name": "Tondeuse thermique",
+      "description": "Tondeuse essence avec bac, révisée chaque printemps. Actuellement prêtée.",
+      "owner": "Marc",
+      "town": "Feluy",
+      "lat": 50.5505,
+      "lng": 4.271,
+      "available": false
+    },
+    {
+      "id": "t-perceuse",
+      "name": "Perceuse-visseuse + mèches",
+      "description": "Perceuse 18V avec 2 batteries et mèches bois / métal / béton jusqu'à 13 mm.",
+      "owner": "Awa",
+      "town": "Baulers",
+      "lat": 50.5793,
+      "lng": 4.3055,
+      "available": true
+    }
+  ]
+}
