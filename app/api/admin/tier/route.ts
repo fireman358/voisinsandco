@@ -4,7 +4,7 @@ import type { BusinessTier } from "@/lib/types";
 
 export const runtime = "nodejs";
 
-const TIERS: BusinessTier[] = ["standard", "verified", "pro"];
+const TIERS: BusinessTier[] = ["standard", "verified", "visibility", "pro"];
 
 export async function POST(req: NextRequest) {
   if (!isAdmin(req.headers.get("x-admin-token"))) {

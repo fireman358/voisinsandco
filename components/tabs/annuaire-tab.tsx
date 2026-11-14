@@ -58,6 +58,13 @@ function TierBadge({ tier }: { tier: Business["tier"] }) {
       </Badge>
     );
   }
+  if (tier === "visibility") {
+    return (
+      <Badge variant="default" className="gap-1 border border-accent/60 bg-accent-light text-accent-dark">
+        <Clock className="size-3" /> Visibilité
+      </Badge>
+    );
+  }
   if (tier === "verified") {
     return (
       <Badge variant="default" className="gap-1">
@@ -91,7 +98,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
           </span>
         </div>
         <p className="text-xs text-neutral-500">{b.address}</p>
-        {b.hours && (
+        {b.hours && (b.tier === "visibility" || b.tier === "pro") && (
           <p className="flex items-center gap-1.5 text-xs text-neutral-600">
             <Clock className="size-3.5 text-forest" />
             {b.hours}
@@ -110,7 +117,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
         )}
         {b.bce && <p className="text-[11px] text-neutral-400">N° BCE : {b.bce}</p>}
         <div className="flex flex-wrap gap-2 pt-1">
-          {telHref && (
+          {telHref && b.tier !== "standard" && (
             <Button asChild variant="secondary" size="sm">
               <a href={telHref}>
                 <Phone className="size-3.5" /> Appeler

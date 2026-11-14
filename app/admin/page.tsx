@@ -24,7 +24,8 @@ interface Claim {
 const TIERS: { key: BusinessTier; label: string }[] = [
   { key: "standard", label: "Standard" },
   { key: "verified", label: "Vérifiée" },
-  { key: "pro", label: "Pro" },
+  { key: "visibility", label: "Visibilité (9 €)" },
+  { key: "pro", label: "Pro (29 €)" },
 ];
 
 interface Template {
@@ -351,7 +352,7 @@ export default function AdminPage() {
                         <div>
                           <p className="font-semibold text-neutral-800">{b.name}</p>
                           <p className="text-xs text-neutral-500">
-                            {b.town} · {b.tier === "pro" ? "Pack Pro" : "Vérifiée"}
+                            {b.town} · {b.tier === "pro" ? "Pack Pro" : b.tier === "visibility" ? "Pack Visibilité" : b.tier === "verified" ? "Vérifiée" : "Standard"}
                             {b.paidUntil ? ` · jusqu'au ${b.paidUntil}` : ""}
                           </p>
                         </div>

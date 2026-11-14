@@ -1,5 +1,5 @@
 export type BusinessCategory = "alimentation" | "artisan" | "horeca" | "distributeur";
-export type BusinessTier = "standard" | "verified" | "pro";
+export type BusinessTier = "standard" | "verified" | "visibility" | "pro";
 export type NeedKind = "entraide" | "artisan";
 
 export interface Business {
