@@ -41,11 +41,122 @@ jobs:
           find bce-extract -maxdepth 2 -name '*.csv' | head -20
           df -h .
 
+      - name: Télécharge BeST Address Wallonie (coordonnées GPS exactes)
+        run: |
+          set -e
+          sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq proj-bin >/dev/null
+          mkdir -p best
+          curl -fsSL --retry 3 --retry-delay 5 -o best/bewal.zip \
+            https://opendata.bosa.be/download/best/openaddress-bewal.zip
+          unzip -o -q best/bewal.zip -d best
+          find best -name '*.csv' | head -5
+          df -h .
+
+      - name: Normalise BeST (CSV → lat/lng GPS)
+        run: |
+          python3 - <<'PY'
+          import csv, glob, os, subprocess, sys
+
+          def cols(hdr):
+              lc = [h.lower() for h in hdr]
+              def find(*needles):
+                  for i, h in enumerate(lc):
+                      if all(n in h for n in needles):
+                          return i
+                  return None
+              return {
+                  "street": find("street") or find("rue"),
+                  "number": find("number") or find("nummer"),
+                  "postcode": find("postcode") or find("postal") or find("zip"),
+                  "lat": find("lat") if find("lat") is not None and "38" not in lc[find("lat")] else None,
+                  "lon": find("lon") if find("lon") is not None and "38" not in lc[find("lon")] else None,
+                  "x3812": find("epsg:3812_x") or find("3812_x"),
+                  "y3812": find("epsg:3812_y") or find("3812_y"),
+                  "x72": find("epsg:31370_x") or find("31370_x"),
+                  "y72": find("epsg:31370_y") or find("31370_y"),
+              }
+
+          src = None
+          for f in glob.glob("best/**/*.csv", recursive=True):
+              with open(f, newline="", encoding="utf-8-sig") as fh:
+                  try:
+                      c = cols(next(csv.reader(fh)))
+                  except StopIteration:
+                      continue
+                  if c["street"] is not None and c["number"] is not None and (
+                      c["lat"] is not None or c["x3812"] is not None or c["x72"] is not None
+                  ):
+                      src = (f, c)
+                      break
+          if not src:
+              print("Aucun CSV BeST exploitable — repli sur centroïdes de communes.")
+              open("best/best.csv", "w").write("street,number,postcode,lat,lng\n")
+              sys.exit(0)
+          f, c = src
+          print("Source BeST :", f, c)
+
+          epsg = None
+          if c["lat"] is not None:
+              epsg = None
+          elif c["x3812"] is not None:
+              epsg = "epsg:3812"
+          elif c["x72"] is not None:
+              epsg = "epsg:31370"
+
+          proc = None
+          if epsg:
+              proc = subprocess.Popen(
+                  ["cs2cs", "-f", "%.7f", f"+init={epsg}", "+to", "+init=epsg:4326"],
+                  stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True,
+              )
+
+          n = 0
+          with open(f, newline="", encoding="utf-8-sig") as fh, open("best/best.csv", "w", newline="") as out:
+              reader = csv.reader(fh)
+              next(reader)
+              w = csv.writer(out)
+              w.writerow(["street", "number", "postcode", "lat", "lng"])
+              for row in reader:
+                  try:
+                      street = row[c["street"]]
+                      number = row[c["number"]]
+                      postcode = row[c["postcode"]] if c["postcode"] is not None else ""
+                  except IndexError:
+                      continue
+                  if not street or not number:
+                      continue
+                  if proc is None:
+                      try:
+                          lon, lat = float(row[c["lon"]]), float(row[c["lat"]])
+                      except (IndexError, ValueError):
+                          continue
+                      w.writerow([street, number, postcode, lat, lon])
+                      n += 1
+                  else:
+                      try:
+                          x, y = float(row[c["x3812"] or c["x72"]]), float(row[c["y3812"] or c["y72"]])
+                      except (IndexError, ValueError):
+                          continue
+                      proc.stdin.write(f"{x} {y}\n")
+                      line = proc.stdout.readline()
+                      parts = line.split()
+                      if len(parts) >= 2:
+                          lon, lat = parts[0], parts[1]
+                          w.writerow([street, number, postcode, lat, lon])
+                          n += 1
+          if proc is not None:
+              proc.stdin.close()
+              proc.wait()
+          print(f"OK best/best.csv : {n} adresses GPS")
+          PY
+
       - name: Import BCE → lib/bce-data.json
         run: |
           CSV_DIR=$(dirname "$(find bce-extract -name 'enterprise.csv' | head -1)")
           echo "CSV dans : $CSV_DIR"
-          node scripts/import-bce.mjs "$CSV_DIR"
+          BEST=best/best.csv
+          if [ ! -s "$BEST" ]; then BEST=""; fi
+          node scripts/import-bce.mjs "$CSV_DIR" $BEST
 
       - name: Régénère seed.sql (OSM + BCE)
         run: node scripts/generate-seed-sql.mjs

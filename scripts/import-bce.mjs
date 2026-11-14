@@ -25,6 +25,8 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, "bce-extract");
+// CSV BeST Address Wallonie (coordonnées GPS exactes par adresse), optionnel.
+const bestPath = process.argv[3] ? path.resolve(process.argv[3]) : null;
 
 const norm = (s) =>
   (s ?? "")
@@ -35,7 +37,7 @@ const norm = (s) =>
 
 // ---------------------------------------------------------------- CSV stream
 function openCsv(file) {
-  const full = path.join(srcDir, file);
+  const full = path.isAbsolute(file) || file.includes("/") ? file : path.join(srcDir, file);
   if (!fs.existsSync(full)) return null;
   const rl = readline.createInterface({ input: fs.createReadStream(full, "utf8"), crlfDelay: Infinity });
   let header = null;
@@ -384,6 +386,24 @@ const activeEnt = new Set();
 }
 console.log(`   ${activeEnt.size} actives`);
 
+// Adresses officielles BeST (Wallonie) : coordonnées exactes rue + numéro.
+// Sans BeST (ou adresse introuvable), on retombe sur le centroïde de la commune.
+const bestAddr = new Map();
+if (bestPath && fs.existsSync(bestPath)) {
+  console.log("BeST Address — coordonnées exactes…");
+  const csv = openCsv(bestPath);
+  for await (const r of csv) {
+    const street = (r.street ?? "").trim();
+    const number = (r.number ?? "").trim();
+    const postcode = (r.postcode ?? "").trim();
+    const lat = Number(r.lat);
+    const lng = Number(r.lng);
+    if (!street || !number || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+    bestAddr.set(`${norm(street)}|${number}|${postcode}`, { lat, lng });
+  }
+  console.log(`   ${bestAddr.size} adresses BeST indexées`);
+}
+
 console.log("8/8 assemblage + dédoublonnage OSM…");
 const osmBusinesses = JSON.parse(fs.readFileSync(path.join(root, "lib", "seed-data.json"), "utf8")).businesses;
 const osmKeys = new Set(osmBusinesses.map((b) => `${norm(b.name)}|${norm(b.town)}`));
@@ -399,6 +419,7 @@ const out = [];
 const seenKeys = new Set();
 let skippedDup = 0;
 let skippedUnmapped = 0;
+let geoExact = 0;
 for (const ent of activeEnt) {
   const addr = addrOf.get(ent);
   const nameRec = nameOf.get(ent);
@@ -416,6 +437,19 @@ for (const ent of activeEnt) {
   seenKeys.add(key);
   const digits = ent.replace(/\D/g, "");
   const bce = digits.replace(/^(\d{4})(\d{3})(\d{3})$/, "$1.$2.$3");
+  let { lat, lng } = addr;
+  if (bestAddr.size > 0) {
+    const base = `${norm(addr.street)}|`;
+    const hit =
+      bestAddr.get(`${base}${addr.house}|${addr.zip}`) ??
+      bestAddr.get(`${base}${addr.house.replace(/[^0-9]/g, "")}|${addr.zip}`) ??
+      bestAddr.get(`${base}${addr.house.replace(/[/ ].*$/, "").replace(/[^0-9]/g, "")}|${addr.zip}`);
+    if (hit) {
+      lat = hit.lat;
+      lng = hit.lng;
+      geoExact++;
+    }
+  }
   const contact = contactOf.get(ent) ?? {};
   const category = categoryForGroup(group);
   out.push({
@@ -428,8 +462,8 @@ for (const ent of activeEnt) {
     address: [addr.street, addr.house].filter(Boolean).join(" ") || "Adresse à compléter",
     town: addr.town,
     postalCode: addr.zip,
-    lat: addr.lat,
-    lng: addr.lng,
+    lat,
+    lng,
     phone: contact.phone ?? null,
     website: contact.website ?? null,
     hours: null,
@@ -444,4 +478,4 @@ fs.writeFileSync(
   zlib.gzipSync(Buffer.from(JSON.stringify({ businesses: out }))),
 );
 console.log(`OK ${out.length} fiches BCE ajoutées (${skippedDup} doublons OSM évités, ${skippedUnmapped} sans activité pertinente)`);
-console.log(`Diagnostic : ${addrOf.size} entités wallonnes, ${nameOf.size} avec nom, ${naceOf.size} avec activité`);
+console.log(`Diagnostic : ${addrOf.size} entités wallonnes, ${nameOf.size} avec nom, ${naceOf.size} avec activité, ${geoExact} géolocalisées exactement (BeST)`);

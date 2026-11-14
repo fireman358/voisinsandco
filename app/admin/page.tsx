@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, CalendarClock, Copy, KeyRound, Loader2, Mail, MessageSquare, Search } from "lucide-react";
+import { ArrowLeft, CalendarClock, Copy, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import { subcategoryLabel, type Business, type BusinessTier } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -183,6 +185,44 @@ export default function AdminPage() {
       setResults((prev) => prev.map(patch));
       setSubs((prev) => prev.map(patch));
       if (tier === "standard") setSubs((prev) => prev.filter((x) => x.id !== b.id));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
+  const [editTarget, setEditTarget] = useState<Business | null>(null);
+  const [fPhone, setFPhone] = useState("");
+  const [fWebsite, setFWebsite] = useState("");
+  const [fHours, setFHours] = useState("");
+  const [fNews, setFNews] = useState("");
+  const openEdit = (b: Business) => {
+    setEditTarget(b);
+    setFPhone(b.phone ?? "");
+    setFWebsite(b.website ?? "");
+    setFHours(b.hours ?? "");
+    setFNews(b.news ?? "");
+  };
+  const saveDetails = async () => {
+    if (!editTarget) return;
+    setError("");
+    try {
+      await api("/api/admin/businesses", {
+        method: "PATCH",
+        body: JSON.stringify({
+          id: editTarget.id,
+          phone: fPhone,
+          website: fWebsite,
+          hours: fHours,
+          news: fNews,
+        }),
+      });
+      const patch = (x: Business): Business =>
+        x.id === editTarget.id
+          ? { ...x, phone: fPhone || undefined, website: fWebsite || undefined, hours: fHours || undefined, news: fNews || undefined }
+          : x;
+      setResults((prev) => prev.map(patch));
+      setSubs((prev) => prev.map(patch));
+      setEditTarget(null);
     } catch (e) {
       setError((e as Error).message);
     }
@@ -408,6 +448,9 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div className="flex gap-1">
+                        <Button variant="outline" size="sm" onClick={() => openEdit(b)}>
+                          <Pencil className="size-3.5" /> Modifier
+                        </Button>
                         {TIERS.map((t) => (
                           <button
                             key={t.key}
@@ -519,6 +562,36 @@ export default function AdminPage() {
           </>
         )}
       </div>
+
+      <Dialog open={editTarget !== null} onOpenChange={(o) => { if (!o) setEditTarget(null); }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Modifier « {editTarget?.name} »</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="f-phone">Téléphone (visible dès Vérifiée)</Label>
+              <Input id="f-phone" value={fPhone} onChange={(e) => setFPhone(e.target.value)} placeholder="+32 67 …" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="f-website">Site web (Pack Pro uniquement)</Label>
+              <Input id="f-website" value={fWebsite} onChange={(e) => setFWebsite(e.target.value)} placeholder="https://…" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="f-hours">Horaires (Pack Visibilité)</Label>
+              <Input id="f-hours" value={fHours} onChange={(e) => setFHours(e.target.value)} placeholder="Lu-Ve 09:00-18:00" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="f-news">Actu / offre flash (Pack Pro)</Label>
+              <Input id="f-news" value={fNews} onChange={(e) => setFNews(e.target.value)} placeholder="Pain au levain chaud dès 16h" />
+            </div>
+            <div className="flex justify-end gap-2 pt-1">
+              <Button variant="outline" size="sm" onClick={() => setEditTarget(null)}>Annuler</Button>
+              <Button size="sm" onClick={saveDetails}>Enregistrer</Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

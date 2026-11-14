@@ -451,6 +451,22 @@ export async function setBusinessTier(
   return true;
 }
 
+export async function updateBusinessDetails(
+  id: string,
+  patch: { phone?: string | null; website?: string | null; hours?: string | null; news?: string | null },
+): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn
+    .prepare(
+      `UPDATE businesses SET phone = COALESCE(?, phone), website = COALESCE(?, website),
+       hours = COALESCE(?, hours), news = COALESCE(?, news) WHERE id = ?`,
+    )
+    .bind(patch.phone ?? null, patch.website ?? null, patch.hours ?? null, patch.news ?? null, id)
+    .run();
+  return true;
+}
+
 export async function listSubscriptions(): Promise<Business[]> {
   const conn = getDB();
   if (!conn) return [];
