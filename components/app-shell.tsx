@@ -182,6 +182,10 @@ export function AppShell() {
           (ODbL) ·{" "}
           <Link href="/legal" className="text-accent underline-offset-2 hover:underline">
             Mentions légales &amp; confidentialité
+          </Link>{" "}
+          ·{" "}
+          <Link href="/admin" title="Console" className="text-neutral-500 hover:text-accent">
+            •
           </Link>
         </p>
       </footer>

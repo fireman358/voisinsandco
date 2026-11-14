@@ -438,3 +438,54 @@ export async function listSubscriptions(): Promise<Business[]> {
     .all<Business>();
   return results ?? [];
 }
+
+export interface NewEvent {
+  title: string;
+  organizer: string;
+  type: string;
+  date: string;
+  location: string;
+  town: string;
+  lat: number;
+  lng: number;
+}
+
+export async function createEvent(input: NewEvent): Promise<{ event: AgendaEvent; demo: boolean }> {
+  const event: AgendaEvent = {
+    id: crypto.randomUUID(),
+    title: input.title,
+    organizer: input.organizer,
+    type: input.type,
+    date: input.date,
+    location: input.location,
+    town: input.town,
+    lat: input.lat,
+    lng: input.lng,
+  };
+  const conn = getDB();
+  if (conn) {
+    try {
+      await conn
+        .prepare(
+          `INSERT INTO events (id, title, organizer, type, date, location, town, lat, lng)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .bind(
+          event.id,
+          event.title,
+          event.organizer,
+          event.type,
+          event.date,
+          event.location,
+          event.town,
+          event.lat,
+          event.lng,
+        )
+        .run();
+      return { event, demo: false };
+    } catch {
+      // mode démo
+    }
+  }
+  return { event, demo: true };
+}

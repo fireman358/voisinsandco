@@ -128,7 +128,7 @@ export default function AdminPage() {
         ...init,
         headers: { "x-admin-token": token, "Content-Type": "application/json", ...(init?.headers ?? {}) },
       });
-      if (res.status === 403) throw new Error("Token invalide ou non configuré (workflow « set-admin-token »)");
+      if (res.status === 403) throw new Error("Mot de passe incorrect, ou ADMIN_TOKEN non encore configuré : ajoute le secret GitHub ADMIN_PASSWORD puis lance le workflow « Définit le mot de passe admin ».");
       if (!res.ok) throw new Error(`Erreur ${res.status}`);
       return res.json();
     },
@@ -146,6 +146,8 @@ export default function AdminPage() {
       setSubs(s.items ?? []);
     } catch (e) {
       setError((e as Error).message);
+      setClaims([]);
+      setSubs([]);
     }
   }, [api]);
 

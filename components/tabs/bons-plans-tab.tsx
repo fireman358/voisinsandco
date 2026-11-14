@@ -28,8 +28,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/toast";
+import { Textarea } from "@/components/ui/textarea";
+import communesJson from "@/lib/communes.json";
 import { formatDateFr, formatDistance, formatPrice } from "@/lib/format";
 import type { AgendaEvent, BusinessCategory, Deal } from "@/lib/types";
+
+const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
 
 const DEAL_ICONS: Record<BusinessCategory, typeof ShoppingBasket> = {
   alimentation: ShoppingBasket,
@@ -149,6 +153,119 @@ function ReserveDialog({
   );
 }
 
+
+function EventDialog({
+  open,
+  onOpenChange,
+  onCreated,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onCreated: (e: AgendaEvent) => void;
+}) {
+  const toast = useToast();
+  const [title, setTitle] = useState("");
+  const [organizer, setOrganizer] = useState("");
+  const [type, setType] = useState("Asso");
+  const [date, setDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [town, setTown] = useState("");
+  const [sending, setSending] = useState(false);
+
+  const submit = async () => {
+    const commune = COMMUNES.find((c) => c.name.toLowerCase() === town.trim().toLowerCase());
+    if (!title.trim() || !organizer.trim() || !date || !commune) {
+      toast("Titre, asso, date et ville (choisie dans la liste) requis", "error");
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          organizer,
+          type,
+          date,
+          location,
+          town: commune.name,
+          lat: commune.lat,
+          lng: commune.lng,
+        }),
+      });
+      if (!res.ok) throw new Error("bad status");
+      const data = (await res.json()) as { event: AgendaEvent };
+      onCreated(data.event);
+      toast("Événement publié dans l'agenda du quartier", "success");
+      onOpenChange(false);
+      setTitle("");
+      setOrganizer("");
+      setLocation("");
+      setTown("");
+    } catch {
+      toast("Publication impossible, réessaie dans un instant", "error");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Proposer un événement gratuit</DialogTitle>
+          <DialogDescription>
+            Brocante, souper de l&apos;asso, marche, atelier… tout ce qui est gratuit et ouvert
+            au quartier. Aucune inscription requise.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-3">
+          <div className="space-y-1.5">
+            <Label htmlFor="ev-title">Titre</Label>
+            <Input id="ev-title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Brocante du village" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="ev-orga">Asso / organisateur</Label>
+              <Input id="ev-orga" value={organizer} onChange={(e) => setOrganizer(e.target.value)} placeholder="Comité des fêtes" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="ev-type">Type</Label>
+              <Input id="ev-type" value={type} onChange={(e) => setType(e.target.value)} placeholder="Asso / Brocante / Sport…" />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="ev-date">Date</Label>
+              <Input id="ev-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="ev-town">Ville</Label>
+              <Input id="ev-town" list="ev-communes" value={town} onChange={(e) => setTown(e.target.value)} placeholder="Seneffe" />
+              <datalist id="ev-communes">
+                {COMMUNES.filter((c) => c.name.toLowerCase().startsWith(town.trim().toLowerCase())).slice(0, 8).map((c) => (
+                  <option key={c.name} value={c.name} />
+                ))}
+              </datalist>
+            </div>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="ev-location">Lieu précis (optionnel)</Label>
+            <Textarea id="ev-location" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Salle communale, place du village…" />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button onClick={submit} disabled={sending} className="w-full sm:w-auto">
+            {sending && <Loader2 className="size-4 animate-spin" />}
+            Publier dans l&apos;agenda
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export function BonsPlansTab({
   deals,
   events,
@@ -160,6 +277,10 @@ export function BonsPlansTab({
 }) {
   const [localDeals, setLocalDeals] = useState<Deal[]>(deals);
   const [reserveTarget, setReserveTarget] = useState<Deal | null>(null);
+  const [localEvents, setLocalEvents] = useState<AgendaEvent[]>(events);
+  const [eventOpen, setEventOpen] = useState(false);
+
+  useEffect(() => setLocalEvents(events), [events]);
 
   useEffect(() => setLocalDeals(deals), [deals]);
 
@@ -251,13 +372,16 @@ export function BonsPlansTab({
           <CalendarDays className="size-5 text-forest" />
           <h2 className="text-base font-bold text-neutral-900">Agenda des assos &amp; brocantes</h2>
         </div>
-        {events.length === 0 ? (
+        <Button variant="outline" size="sm" onClick={() => setEventOpen(true)}>
+          <CalendarDays className="size-3.5" /> Proposer un événement
+        </Button>
+        {localEvents.length === 0 ? (
           <p className="rounded-2xl border border-dashed border-neutral-300 bg-white py-6 text-center text-sm text-neutral-500">
             Aucun événement gratuit dans ce rayon pour le moment.
           </p>
         ) : (
           <div className="space-y-2.5">
-            {events.map((e) => (
+            {localEvents.map((e) => (
               <Card key={e.id}>
                 <CardContent className="flex items-start gap-3 p-4">
                   <div className="flex size-11 shrink-0 flex-col items-center justify-center rounded-xl bg-forest text-white">
@@ -288,6 +412,7 @@ export function BonsPlansTab({
         )}
       </section>
 
+      <EventDialog open={eventOpen} onOpenChange={setEventOpen} onCreated={(e) => setLocalEvents((prev) => [e, ...prev])} />
       <ReserveDialog
         deal={reserveTarget}
         open={reserveTarget !== null}

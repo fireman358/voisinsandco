@@ -157,7 +157,7 @@ export function AnnuaireTab({
     for (const b of byCategory) {
       if (b.subcategory) counts.set(b.subcategory, (counts.get(b.subcategory) ?? 0) + 1);
     }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 14);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [byCategory]);
 
   const filtered = useMemo(() => {
