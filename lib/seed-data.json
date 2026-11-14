@@ -161508,7 +161508,7 @@
       "lat": 50.839866,
       "lng": 4.381035,
       "phone": "+32 2 687 31 20",
-      "website": "https://bruxellesschuman.cavavin.co/",
+      "website": "https://bruxelles-schuman.cavavin.be/",
       "hours": "Tu-Sa 11:00-20:00; 2027 Aug 10-15 off"
     },
     {
@@ -188654,7 +188654,7 @@
       "lng": 3.893407,
       "phone": "+32 65 78 07 71",
       "website": "https://frameries.cavavin.co/",
-      "hours": "Tu-Th 10:00-18:30; Fr 10:00-19:00; Sa 10:00-18:30; 2026 Nov 01 off; 2026 Nov 10-11 off; 2026 Nov 19 10:00-19:30"
+      "hours": "Tu-Th 10:00-18:30; Fr 10:00-19:00; Sa 10:00-18:30; 2026 Nov 19 10:00-19:30; 2026 Dec 05 10:00-21:00; 2026 Dec 17-19 10:00-21:00; 2026 Dec 20 10:00-16:00; 2026 Dec 21 10:00-18:30; 2026 Dec 24,2026 Dec 28,2026 Dec 31 10:00-15:00; 2026 Dec 25 off"
     },
     {
       "id": "osm-615906855-chez-louise",
@@ -323054,7 +323054,7 @@
       "lng": 5.570742,
       "phone": "+32 4 221 52 22",
       "website": "https://www.gustopastabar.be/",
-      "hours": "Tu-Th 08:00-14:30; Fr 08:00-14:30,18:00-21:30; Sa 11:45-14:30,18:00-21:30"
+      "hours": "Tu-Sa 12:00-14:30, Fr,Sa 18:00-21:30"
     },
     {
       "id": "osm-5471114430-h-l-coiffure",
@@ -517992,7 +517992,8 @@
       "lat": 50.830208,
       "lng": 4.344255,
       "phone": "+32 2 539 40 68",
-      "website": "http://verschu.be/"
+      "website": "http://verschu.be/",
+      "hours": "Mo-Su 08:00-23:00+"
     },
     {
       "id": "osm-13263850902-bravvo",
@@ -525370,7 +525371,8 @@
       "town": "Saint-Gilles - Sint-Gillis",
       "postalCode": "",
       "lat": 50.829705,
-      "lng": 4.344621
+      "lng": 4.344621,
+      "hours": "Tu-Su 09:00-19:00"
     },
     {
       "id": "osm-7169788515-la-fabriek",
@@ -529417,7 +529419,8 @@
       "town": "Saint-Gilles - Sint-Gillis",
       "postalCode": "",
       "lat": 50.827415,
-      "lng": 4.344561
+      "lng": 4.344561,
+      "hours": "Tu-Su 18:00-22:30, Fr-Su 12:00-14:30"
     },
     {
       "id": "osm-1138938717-mont-liban",
@@ -584894,19 +584897,6 @@
       "lat": 50.443218,
       "lng": 4.347017,
       "phone": "+32 71 45 61 47"
-    },
-    {
-      "id": "osm-278319560-boulangerie-patisserie",
-      "name": "Boulangerie Patisserie",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "12 Rue Préal",
-      "town": "Soy",
-      "postalCode": "6997",
-      "lat": 50.28663,
-      "lng": 5.514835
     },
     {
       "id": "osm-290068613-fantome",
@@ -684365,7 +684355,8 @@
       "town": "Zonnebeke",
       "postalCode": "",
       "lat": 50.847915,
-      "lng": 2.975577
+      "lng": 2.975577,
+      "website": "https://www.hetnonnebos.be/"
     },
     {
       "id": "osm-839557609-alain-els-coppenole-de-rore",
@@ -684565,7 +684556,7 @@
     },
     {
       "id": "osm-299075244-het-boswieltje",
-      "name": "het boswieltje",
+      "name": "Het Boswieltje",
       "category": "horeca",
       "subcategory": "restaurant",
       "tier": "standard",
@@ -684575,7 +684566,8 @@
       "postalCode": "8980",
       "lat": 50.848234,
       "lng": 2.979574,
-      "phone": "+32 469 18 48 18"
+      "phone": "+32 469 18 48 18",
+      "website": "https://www.hetboswieltje.be/"
     },
     {
       "id": "osm-1330913246-java-coffee-corner",
