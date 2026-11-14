@@ -1,30 +1,6302 @@
 [
-  { "name": "Arquennes", "lat": 50.5045, "lng": 4.3695 },
-  { "name": "Seneffe", "lat": 50.5293, "lng": 4.2706 },
-  { "name": "Feluy", "lat": 50.5417, "lng": 4.2419 },
-  { "name": "Nivelles", "lat": 50.5975, "lng": 4.3258 },
-  { "name": "Baulers", "lat": 50.6117, "lng": 4.3056 },
-  { "name": "Charleroi", "lat": 50.4107, "lng": 4.4446 },
-  { "name": "Mons", "lat": 50.4542, "lng": 3.9563 },
-  { "name": "Tournai", "lat": 50.6053, "lng": 3.2639 },
-  { "name": "La Louvière", "lat": 50.4739, "lng": 4.1889 },
-  { "name": "Mouscron", "lat": 50.7439, "lng": 3.2141 },
-  { "name": "Namur", "lat": 50.4674, "lng": 4.8718 },
-  { "name": "Dinant", "lat": 50.2596, "lng": 4.8734 },
-  { "name": "Liège", "lat": 50.6337, "lng": 5.5676 },
-  { "name": "Verviers", "lat": 50.5894, "lng": 5.8626 },
-  { "name": "Wavre", "lat": 50.7159, "lng": 4.6129 },
-  { "name": "Arlon", "lat": 49.6834, "lng": 5.8167 },
-  { "name": "Bastogne", "lat": 50.0035, "lng": 5.7177 },
-  { "name": "Marche-en-Famenne", "lat": 50.2266, "lng": 5.5061 },
-  { "name": "Ath", "lat": 50.6286, "lng": 3.7767 },
-  { "name": "Soignies", "lat": 50.5751, "lng": 4.0736 },
-  { "name": "Braine-l'Alleud", "lat": 50.6842, "lng": 4.3714 },
-  { "name": "Huy", "lat": 50.5195, "lng": 5.2368 },
-  { "name": "Thuin", "lat": 50.3415, "lng": 4.2869 },
-  { "name": "Waremme", "lat": 50.6987, "lng": 5.2531 },
-  { "name": "Philippeville", "lat": 50.1989, "lng": 4.5406 },
-  { "name": "Libramont-Chevigny", "lat": 49.9203, "lng": 5.3775 },
-  { "name": "Eupen", "lat": 50.6305, "lng": 6.0366 },
-  { "name": "Walcourt", "lat": 50.3136, "lng": 4.4317 }
+  {
+    "name": "Aachen",
+    "lat": 50.759687,
+    "lng": 6.096465
+  },
+  {
+    "name": "Abancourt",
+    "lat": 50.236747,
+    "lng": 3.208691
+  },
+  {
+    "name": "Abscon",
+    "lat": 50.329335,
+    "lng": 3.299265
+  },
+  {
+    "name": "Acheville",
+    "lat": 50.384725,
+    "lng": 2.881403
+  },
+  {
+    "name": "Affler",
+    "lat": 50.016919,
+    "lng": 6.149346
+  },
+  {
+    "name": "Aibes",
+    "lat": 50.232721,
+    "lng": 4.091396
+  },
+  {
+    "name": "Aiseau-Presles",
+    "lat": 50.402653,
+    "lng": 4.574006
+  },
+  {
+    "name": "Aisonville-et-Bernoville",
+    "lat": 49.931301,
+    "lng": 3.512465
+  },
+  {
+    "name": "Aix-en-Pévèle",
+    "lat": 50.497549,
+    "lng": 3.305985
+  },
+  {
+    "name": "Aizecourt-le-Bas",
+    "lat": 49.986666,
+    "lng": 3.028337
+  },
+  {
+    "name": "Aizecourt-le-Haut",
+    "lat": 49.968138,
+    "lng": 2.983562
+  },
+  {
+    "name": "Allaines",
+    "lat": 49.964029,
+    "lng": 2.936423
+  },
+  {
+    "name": "Allennes-les-Marais",
+    "lat": 50.54056,
+    "lng": 2.945995
+  },
+  {
+    "name": "Alsdorf",
+    "lat": 50.867917,
+    "lng": 6.176156
+  },
+  {
+    "name": "Altscheid",
+    "lat": 50.022526,
+    "lng": 6.38842
+  },
+  {
+    "name": "Amay",
+    "lat": 50.55409,
+    "lng": 5.306059
+  },
+  {
+    "name": "Amel",
+    "lat": 50.344791,
+    "lng": 6.177886
+  },
+  {
+    "name": "Ammeldingen bei Neuerburg",
+    "lat": 50.045213,
+    "lng": 6.271378
+  },
+  {
+    "name": "Andenne",
+    "lat": 50.489579,
+    "lng": 5.06297
+  },
+  {
+    "name": "Anderlecht",
+    "lat": 50.828691,
+    "lng": 4.291939
+  },
+  {
+    "name": "Anderlues",
+    "lat": 50.403946,
+    "lng": 4.260899
+  },
+  {
+    "name": "Anhée",
+    "lat": 50.320924,
+    "lng": 4.811642
+  },
+  {
+    "name": "Anhiers",
+    "lat": 50.403731,
+    "lng": 3.154584
+  },
+  {
+    "name": "Aniche",
+    "lat": 50.330082,
+    "lng": 3.258323
+  },
+  {
+    "name": "Annay",
+    "lat": 50.460569,
+    "lng": 2.884851
+  },
+  {
+    "name": "Anneux",
+    "lat": 50.155486,
+    "lng": 3.123088
+  },
+  {
+    "name": "Annœullin",
+    "lat": 50.527484,
+    "lng": 2.924216
+  },
+  {
+    "name": "Anor",
+    "lat": 49.996403,
+    "lng": 4.121489
+  },
+  {
+    "name": "Ans",
+    "lat": 50.686003,
+    "lng": 5.50652
+  },
+  {
+    "name": "Anstaing",
+    "lat": 50.602637,
+    "lng": 3.187726
+  },
+  {
+    "name": "Anthisnes",
+    "lat": 50.490273,
+    "lng": 5.495843
+  },
+  {
+    "name": "Antoing",
+    "lat": 50.557629,
+    "lng": 3.468303
+  },
+  {
+    "name": "Anzegem",
+    "lat": 50.82933,
+    "lng": 3.449237
+  },
+  {
+    "name": "Anzin",
+    "lat": 50.376,
+    "lng": 3.511214
+  },
+  {
+    "name": "Arleux",
+    "lat": 50.283312,
+    "lng": 3.104411
+  },
+  {
+    "name": "Armentières",
+    "lat": 50.692472,
+    "lng": 2.878753
+  },
+  {
+    "name": "Artres",
+    "lat": 50.296166,
+    "lng": 3.538768
+  },
+  {
+    "name": "Arzfeld",
+    "lat": 50.08817,
+    "lng": 6.282426
+  },
+  {
+    "name": "Assesse",
+    "lat": 50.37573,
+    "lng": 4.998368
+  },
+  {
+    "name": "Assevent",
+    "lat": 50.287947,
+    "lng": 4.020223
+  },
+  {
+    "name": "Ath",
+    "lat": 50.629962,
+    "lng": 3.784254
+  },
+  {
+    "name": "Attiches",
+    "lat": 50.509667,
+    "lng": 3.060679
+  },
+  {
+    "name": "Aubel",
+    "lat": 50.696878,
+    "lng": 5.860365
+  },
+  {
+    "name": "Aubencheul-au-Bac",
+    "lat": 50.251781,
+    "lng": 3.164128
+  },
+  {
+    "name": "Aubencheul-aux-Bois",
+    "lat": 50.02476,
+    "lng": 3.261402
+  },
+  {
+    "name": "Auberchicourt",
+    "lat": 50.33081,
+    "lng": 3.226324
+  },
+  {
+    "name": "Aubigny-au-Bac",
+    "lat": 50.266548,
+    "lng": 3.166249
+  },
+  {
+    "name": "Aubrives",
+    "lat": 50.08637,
+    "lng": 4.765985
+  },
+  {
+    "name": "Aubry-du-Hainaut",
+    "lat": 50.376853,
+    "lng": 3.452232
+  },
+  {
+    "name": "Auby",
+    "lat": 50.414233,
+    "lng": 3.061058
+  },
+  {
+    "name": "Auchy-lez-Orchies",
+    "lat": 50.482241,
+    "lng": 3.199328
+  },
+  {
+    "name": "Auderghem - Oudergem",
+    "lat": 50.8084,
+    "lng": 4.438231
+  },
+  {
+    "name": "Audignies",
+    "lat": 50.278471,
+    "lng": 3.823935
+  },
+  {
+    "name": "Aulnoy-lez-Valenciennes",
+    "lat": 50.324593,
+    "lng": 3.536126
+  },
+  {
+    "name": "Aulnoye-Aymeries",
+    "lat": 50.203662,
+    "lng": 3.831232
+  },
+  {
+    "name": "Auw bei Prüm",
+    "lat": 50.293799,
+    "lng": 6.335049
+  },
+  {
+    "name": "Avelgem",
+    "lat": 50.777498,
+    "lng": 3.456819
+  },
+  {
+    "name": "Avelin",
+    "lat": 50.539674,
+    "lng": 3.084797
+  },
+  {
+    "name": "Avesnelles",
+    "lat": 50.106568,
+    "lng": 3.953073
+  },
+  {
+    "name": "Avesnes-le-Sec",
+    "lat": 50.245985,
+    "lng": 3.372523
+  },
+  {
+    "name": "Avesnes-les-Aubert",
+    "lat": 50.193032,
+    "lng": 3.372709
+  },
+  {
+    "name": "Avesnes-sur-Helpe",
+    "lat": 50.122413,
+    "lng": 3.927048
+  },
+  {
+    "name": "Awans",
+    "lat": 50.698768,
+    "lng": 5.456129
+  },
+  {
+    "name": "Awoingt",
+    "lat": 50.153656,
+    "lng": 3.286702
+  },
+  {
+    "name": "Aywaille",
+    "lat": 50.458394,
+    "lng": 5.708502
+  },
+  {
+    "name": "Bachant",
+    "lat": 50.207847,
+    "lng": 3.875396
+  },
+  {
+    "name": "Bachy",
+    "lat": 50.544538,
+    "lng": 3.269884
+  },
+  {
+    "name": "Baelen",
+    "lat": 50.5848,
+    "lng": 6.036885
+  },
+  {
+    "name": "Baisieux",
+    "lat": 50.610058,
+    "lng": 3.237911
+  },
+  {
+    "name": "Baives",
+    "lat": 50.064706,
+    "lng": 4.201458
+  },
+  {
+    "name": "Bancourt",
+    "lat": 50.103254,
+    "lng": 2.893377
+  },
+  {
+    "name": "Banteux",
+    "lat": 50.064258,
+    "lng": 3.187037
+  },
+  {
+    "name": "Bantigny",
+    "lat": 50.23364,
+    "lng": 3.235827
+  },
+  {
+    "name": "Bantouzelle",
+    "lat": 50.058697,
+    "lng": 3.224938
+  },
+  {
+    "name": "Baralle",
+    "lat": 50.210501,
+    "lng": 3.057854
+  },
+  {
+    "name": "Barastre",
+    "lat": 50.068494,
+    "lng": 2.938652
+  },
+  {
+    "name": "Barzy-en-Thiérache",
+    "lat": 50.037777,
+    "lng": 3.75226
+  },
+  {
+    "name": "Bas-Lieu",
+    "lat": 50.142341,
+    "lng": 3.954395
+  },
+  {
+    "name": "Bassenge",
+    "lat": 50.769132,
+    "lng": 5.603237
+  },
+  {
+    "name": "Bastogne",
+    "lat": 50.013291,
+    "lng": 5.704144
+  },
+  {
+    "name": "Bauler",
+    "lat": 49.967675,
+    "lng": 6.211373
+  },
+  {
+    "name": "Baustert",
+    "lat": 49.983092,
+    "lng": 6.389315
+  },
+  {
+    "name": "Bauvin",
+    "lat": 50.517271,
+    "lng": 2.89316
+  },
+  {
+    "name": "Bavay",
+    "lat": 50.291343,
+    "lng": 3.802898
+  },
+  {
+    "name": "Bazuel",
+    "lat": 50.081951,
+    "lng": 3.596951
+  },
+  {
+    "name": "Beaucamps-Ligny",
+    "lat": 50.603651,
+    "lng": 2.915418
+  },
+  {
+    "name": "Beaudignies",
+    "lat": 50.228042,
+    "lng": 3.587985
+  },
+  {
+    "name": "Beaufort",
+    "lat": 50.219143,
+    "lng": 3.966078
+  },
+  {
+    "name": "Beaumetz-lès-Cambrai",
+    "lat": 50.128065,
+    "lng": 2.982437
+  },
+  {
+    "name": "Beaumont",
+    "lat": 50.226905,
+    "lng": 4.255504
+  },
+  {
+    "name": "Beaumont-en-Cambrésis",
+    "lat": 50.126133,
+    "lng": 3.45267
+  },
+  {
+    "name": "Beaurain",
+    "lat": 50.177634,
+    "lng": 3.551982
+  },
+  {
+    "name": "Beauraing",
+    "lat": 50.091485,
+    "lng": 4.949949
+  },
+  {
+    "name": "Beaurepaire-sur-Sambre",
+    "lat": 50.06117,
+    "lng": 3.79887
+  },
+  {
+    "name": "Beaurevoir",
+    "lat": 49.996547,
+    "lng": 3.332
+  },
+  {
+    "name": "Beaurieux",
+    "lat": 50.179757,
+    "lng": 4.133681
+  },
+  {
+    "name": "Beauvechain",
+    "lat": 50.773543,
+    "lng": 4.768268
+  },
+  {
+    "name": "Beauvois-en-Cambrésis",
+    "lat": 50.140717,
+    "lng": 3.383893
+  },
+  {
+    "name": "Becquigny",
+    "lat": 50.014558,
+    "lng": 3.457966
+  },
+  {
+    "name": "Beersel",
+    "lat": 50.747767,
+    "lng": 4.306392
+  },
+  {
+    "name": "Bellaing",
+    "lat": 50.365621,
+    "lng": 3.425796
+  },
+  {
+    "name": "Bellicourt",
+    "lat": 49.95807,
+    "lng": 3.228262
+  },
+  {
+    "name": "Bellignies",
+    "lat": 50.322315,
+    "lng": 3.762384
+  },
+  {
+    "name": "Bellonne",
+    "lat": 50.301247,
+    "lng": 3.043525
+  },
+  {
+    "name": "Belœil",
+    "lat": 50.531321,
+    "lng": 3.684563
+  },
+  {
+    "name": "Bérelles",
+    "lat": 50.209827,
+    "lng": 4.103487
+  },
+  {
+    "name": "Bergues-sur-Sambre",
+    "lat": 50.030115,
+    "lng": 3.711355
+  },
+  {
+    "name": "Berkoth",
+    "lat": 50.040476,
+    "lng": 6.35149
+  },
+  {
+    "name": "Berlaimont",
+    "lat": 50.206498,
+    "lng": 3.7939
+  },
+  {
+    "name": "Berloz",
+    "lat": 50.703624,
+    "lng": 5.200237
+  },
+  {
+    "name": "Bermerain",
+    "lat": 50.25564,
+    "lng": 3.537461
+  },
+  {
+    "name": "Bernissart",
+    "lat": 50.478439,
+    "lng": 3.684518
+  },
+  {
+    "name": "Berscheid",
+    "lat": 49.975357,
+    "lng": 6.234341
+  },
+  {
+    "name": "Bersée",
+    "lat": 50.481256,
+    "lng": 3.149934
+  },
+  {
+    "name": "Bersillies",
+    "lat": 50.32337,
+    "lng": 3.994504
+  },
+  {
+    "name": "Bertem",
+    "lat": 50.854674,
+    "lng": 4.603074
+  },
+  {
+    "name": "Bertincourt",
+    "lat": 50.089282,
+    "lng": 2.979528
+  },
+  {
+    "name": "Bertry",
+    "lat": 50.08354,
+    "lng": 3.442634
+  },
+  {
+    "name": "Béthencourt",
+    "lat": 50.142431,
+    "lng": 3.421358
+  },
+  {
+    "name": "Bettignies",
+    "lat": 50.332706,
+    "lng": 3.968731
+  },
+  {
+    "name": "Bettingen",
+    "lat": 49.94476,
+    "lng": 6.416397
+  },
+  {
+    "name": "Bettrechies",
+    "lat": 50.321914,
+    "lng": 3.740284
+  },
+  {
+    "name": "Beugnies",
+    "lat": 50.167428,
+    "lng": 3.999197
+  },
+  {
+    "name": "Beugny",
+    "lat": 50.117952,
+    "lng": 2.933636
+  },
+  {
+    "name": "Beuvrages",
+    "lat": 50.388686,
+    "lng": 3.504291
+  },
+  {
+    "name": "Beuvry-la-Forêt",
+    "lat": 50.450861,
+    "lng": 3.283218
+  },
+  {
+    "name": "Bever",
+    "lat": 50.711006,
+    "lng": 3.931746
+  },
+  {
+    "name": "Bévillers",
+    "lat": 50.157698,
+    "lng": 3.388307
+  },
+  {
+    "name": "Beyne-Heusay",
+    "lat": 50.630986,
+    "lng": 5.664765
+  },
+  {
+    "name": "Biache-Saint-Vaast",
+    "lat": 50.311403,
+    "lng": 2.941749
+  },
+  {
+    "name": "Bierbeek",
+    "lat": 50.831896,
+    "lng": 4.755341
+  },
+  {
+    "name": "Biersdorf am See",
+    "lat": 50.019766,
+    "lng": 6.450975
+  },
+  {
+    "name": "Bièvre",
+    "lat": 49.929443,
+    "lng": 5.025124
+  },
+  {
+    "name": "Billy-Montigny",
+    "lat": 50.41513,
+    "lng": 2.906602
+  },
+  {
+    "name": "Bilzen-Hoeselt",
+    "lat": 50.86819,
+    "lng": 5.527074
+  },
+  {
+    "name": "Binche",
+    "lat": 50.398101,
+    "lng": 4.15416
+  },
+  {
+    "name": "Blécourt",
+    "lat": 50.217645,
+    "lng": 3.213215
+  },
+  {
+    "name": "Blegny",
+    "lat": 50.672629,
+    "lng": 5.708704
+  },
+  {
+    "name": "Bleialf",
+    "lat": 50.246355,
+    "lng": 6.288479
+  },
+  {
+    "name": "Bohain-en-Vermandois",
+    "lat": 49.988739,
+    "lng": 3.464023
+  },
+  {
+    "name": "Boiry-Notre-Dame",
+    "lat": 50.274534,
+    "lng": 2.941358
+  },
+  {
+    "name": "Bois-Bernard",
+    "lat": 50.37602,
+    "lng": 2.914106
+  },
+  {
+    "name": "Bondues",
+    "lat": 50.706119,
+    "lng": 3.100195
+  },
+  {
+    "name": "Bony",
+    "lat": 49.989557,
+    "lng": 3.217956
+  },
+  {
+    "name": "Bouchain",
+    "lat": 50.278532,
+    "lng": 3.316631
+  },
+  {
+    "name": "Bouchavesnes-Bergen",
+    "lat": 49.993165,
+    "lng": 2.920085
+  },
+  {
+    "name": "Boué",
+    "lat": 50.010087,
+    "lng": 3.712612
+  },
+  {
+    "name": "Boulogne-sur-Helpe",
+    "lat": 50.076276,
+    "lng": 3.890137
+  },
+  {
+    "name": "Bourghelles",
+    "lat": 50.563201,
+    "lng": 3.24777
+  },
+  {
+    "name": "Bourlon",
+    "lat": 50.181112,
+    "lng": 3.123397
+  },
+  {
+    "name": "Bourscheid",
+    "lat": 49.910225,
+    "lng": 6.071531
+  },
+  {
+    "name": "Boursies",
+    "lat": 50.144213,
+    "lng": 3.044756
+  },
+  {
+    "name": "Bousbecque",
+    "lat": 50.764579,
+    "lng": 3.078255
+  },
+  {
+    "name": "Bousies",
+    "lat": 50.152063,
+    "lng": 3.61553
+  },
+  {
+    "name": "Bousignies",
+    "lat": 50.430541,
+    "lng": 3.356576
+  },
+  {
+    "name": "Bousignies-sur-Roc",
+    "lat": 50.264641,
+    "lng": 4.185448
+  },
+  {
+    "name": "Boussières-en-Cambrésis",
+    "lat": 50.161745,
+    "lng": 3.373934
+  },
+  {
+    "name": "Boussières-sur-Sambre",
+    "lat": 50.24236,
+    "lng": 3.877554
+  },
+  {
+    "name": "Boussois",
+    "lat": 50.29505,
+    "lng": 4.047233
+  },
+  {
+    "name": "Boussu",
+    "lat": 50.423614,
+    "lng": 3.801105
+  },
+  {
+    "name": "Boutersem",
+    "lat": 50.831336,
+    "lng": 4.847734
+  },
+  {
+    "name": "Bouvignies",
+    "lat": 50.433258,
+    "lng": 3.235831
+  },
+  {
+    "name": "Bouvines",
+    "lat": 50.580975,
+    "lng": 3.195522
+  },
+  {
+    "name": "Braine-l'Alleud",
+    "lat": 50.680111,
+    "lng": 4.356209
+  },
+  {
+    "name": "Braine-le-Château",
+    "lat": 50.679622,
+    "lng": 4.285604
+  },
+  {
+    "name": "Braine-le-Comte",
+    "lat": 50.616797,
+    "lng": 4.140102
+  },
+  {
+    "name": "Braives",
+    "lat": 50.610025,
+    "lng": 5.145205
+  },
+  {
+    "name": "Brakel",
+    "lat": 50.797354,
+    "lng": 3.759543
+  },
+  {
+    "name": "Brancourt-le-Grand",
+    "lat": 49.979805,
+    "lng": 3.395508
+  },
+  {
+    "name": "Brandscheid",
+    "lat": 50.212112,
+    "lng": 6.305044
+  },
+  {
+    "name": "Brebières",
+    "lat": 50.338591,
+    "lng": 3.021587
+  },
+  {
+    "name": "Brecht",
+    "lat": 49.986974,
+    "lng": 6.438222
+  },
+  {
+    "name": "Briastre",
+    "lat": 50.151061,
+    "lng": 3.489566
+  },
+  {
+    "name": "Brillon",
+    "lat": 50.433031,
+    "lng": 3.338294
+  },
+  {
+    "name": "Brimingen",
+    "lat": 49.969725,
+    "lng": 6.368248
+  },
+  {
+    "name": "Bruay-sur-l'Escaut",
+    "lat": 50.396696,
+    "lng": 3.538321
+  },
+  {
+    "name": "Brugelette",
+    "lat": 50.601737,
+    "lng": 3.865436
+  },
+  {
+    "name": "Bruille-lez-Marchiennes",
+    "lat": 50.354726,
+    "lng": 3.241322
+  },
+  {
+    "name": "Bruille-Saint-Amand",
+    "lat": 50.464023,
+    "lng": 3.506912
+  },
+  {
+    "name": "Brunehaut",
+    "lat": 50.529272,
+    "lng": 3.395936
+  },
+  {
+    "name": "Brunémont",
+    "lat": 50.273922,
+    "lng": 3.143619
+  },
+  {
+    "name": "Bruxelles - Brussel",
+    "lat": 50.855125,
+    "lng": 4.375417
+  },
+  {
+    "name": "Bry",
+    "lat": 50.316187,
+    "lng": 3.686664
+  },
+  {
+    "name": "Buchet",
+    "lat": 50.25616,
+    "lng": 6.333153
+  },
+  {
+    "name": "Bugnicourt",
+    "lat": 50.289396,
+    "lng": 3.154686
+  },
+  {
+    "name": "Buire-Courcelles",
+    "lat": 49.937388,
+    "lng": 3.007253
+  },
+  {
+    "name": "Buironfosse",
+    "lat": 49.957962,
+    "lng": 3.837039
+  },
+  {
+    "name": "Buissy",
+    "lat": 50.202526,
+    "lng": 3.029176
+  },
+  {
+    "name": "Bullecourt",
+    "lat": 50.192084,
+    "lng": 2.927017
+  },
+  {
+    "name": "Büllingen",
+    "lat": 50.403326,
+    "lng": 6.311725
+  },
+  {
+    "name": "Burdinne",
+    "lat": 50.581773,
+    "lng": 5.097186
+  },
+  {
+    "name": "Burg",
+    "lat": 49.962144,
+    "lng": 6.348735
+  },
+  {
+    "name": "Burg-Reuland",
+    "lat": 50.197045,
+    "lng": 6.100594
+  },
+  {
+    "name": "Bus",
+    "lat": 50.062732,
+    "lng": 2.966544
+  },
+  {
+    "name": "Busigny",
+    "lat": 50.041677,
+    "lng": 3.467691
+  },
+  {
+    "name": "Bussu",
+    "lat": 49.947293,
+    "lng": 2.977862
+  },
+  {
+    "name": "Bütgenbach",
+    "lat": 50.462472,
+    "lng": 6.216306
+  },
+  {
+    "name": "Cagnicourt",
+    "lat": 50.208692,
+    "lng": 2.997567
+  },
+  {
+    "name": "Cagnoncles",
+    "lat": 50.183749,
+    "lng": 3.31776
+  },
+  {
+    "name": "Cambrai",
+    "lat": 50.172322,
+    "lng": 3.241205
+  },
+  {
+    "name": "Camphin-en-Carembault",
+    "lat": 50.509089,
+    "lng": 2.989977
+  },
+  {
+    "name": "Camphin-en-Pévèle",
+    "lat": 50.592389,
+    "lng": 3.25573
+  },
+  {
+    "name": "Cantaing-sur-Escaut",
+    "lat": 50.142795,
+    "lng": 3.161091
+  },
+  {
+    "name": "Cantin",
+    "lat": 50.308398,
+    "lng": 3.125798
+  },
+  {
+    "name": "Capelle",
+    "lat": 50.239709,
+    "lng": 3.556624
+  },
+  {
+    "name": "Capinghem",
+    "lat": 50.647975,
+    "lng": 2.963287
+  },
+  {
+    "name": "Cappelle-en-Pévèle",
+    "lat": 50.502861,
+    "lng": 3.172155
+  },
+  {
+    "name": "Carnières",
+    "lat": 50.16359,
+    "lng": 3.341671
+  },
+  {
+    "name": "Carnin",
+    "lat": 50.519427,
+    "lng": 2.960644
+  },
+  {
+    "name": "Cartignies",
+    "lat": 50.075337,
+    "lng": 3.842063
+  },
+  {
+    "name": "Carvin",
+    "lat": 50.490293,
+    "lng": 2.95186
+  },
+  {
+    "name": "Catillon-sur-Sambre",
+    "lat": 50.073831,
+    "lng": 3.64292
+  },
+  {
+    "name": "Cattenières",
+    "lat": 50.131949,
+    "lng": 3.334978
+  },
+  {
+    "name": "Caudry",
+    "lat": 50.119087,
+    "lng": 3.417505
+  },
+  {
+    "name": "Caullery",
+    "lat": 50.081703,
+    "lng": 3.373671
+  },
+  {
+    "name": "Cauroir",
+    "lat": 50.171459,
+    "lng": 3.298198
+  },
+  {
+    "name": "Celles",
+    "lat": 50.705377,
+    "lng": 3.44938
+  },
+  {
+    "name": "Cerfontaine",
+    "lat": 50.181231,
+    "lng": 4.440291
+  },
+  {
+    "name": "Chapelle-lez-Herlaimont",
+    "lat": 50.465805,
+    "lng": 4.294395
+  },
+  {
+    "name": "Charleroi",
+    "lat": 50.422586,
+    "lng": 4.427808
+  },
+  {
+    "name": "Charnois",
+    "lat": 50.098706,
+    "lng": 4.828926
+  },
+  {
+    "name": "Chastre",
+    "lat": 50.595744,
+    "lng": 4.62317
+  },
+  {
+    "name": "Château-l'Abbaye",
+    "lat": 50.485137,
+    "lng": 3.472235
+  },
+  {
+    "name": "Châtelet",
+    "lat": 50.40591,
+    "lng": 4.522963
+  },
+  {
+    "name": "Chaudfontaine",
+    "lat": 50.582245,
+    "lng": 5.634591
+  },
+  {
+    "name": "Chaumont-Gistoux",
+    "lat": 50.687892,
+    "lng": 4.697608
+  },
+  {
+    "name": "Chemy",
+    "lat": 50.531521,
+    "lng": 2.995564
+  },
+  {
+    "name": "Chéreng",
+    "lat": 50.610845,
+    "lng": 3.210973
+  },
+  {
+    "name": "Chérisy",
+    "lat": 50.234603,
+    "lng": 2.91209
+  },
+  {
+    "name": "Chièvres",
+    "lat": 50.570165,
+    "lng": 3.77561
+  },
+  {
+    "name": "Chigny",
+    "lat": 49.928344,
+    "lng": 3.772927
+  },
+  {
+    "name": "Chimay",
+    "lat": 50.035839,
+    "lng": 4.321377
+  },
+  {
+    "name": "Choisies",
+    "lat": 50.212915,
+    "lng": 4.046903
+  },
+  {
+    "name": "Chooz",
+    "lat": 50.092571,
+    "lng": 4.799643
+  },
+  {
+    "name": "Ciney",
+    "lat": 50.274448,
+    "lng": 5.132004
+  },
+  {
+    "name": "Clairfayts",
+    "lat": 50.153014,
+    "lng": 4.128592
+  },
+  {
+    "name": "Clairfontaine",
+    "lat": 49.968992,
+    "lng": 3.991899
+  },
+  {
+    "name": "Clary",
+    "lat": 50.068822,
+    "lng": 3.396193
+  },
+  {
+    "name": "Clavier",
+    "lat": 50.413203,
+    "lng": 5.325259
+  },
+  {
+    "name": "Clervaux",
+    "lat": 50.067707,
+    "lng": 6.047378
+  },
+  {
+    "name": "Cléry-sur-Somme",
+    "lat": 49.961827,
+    "lng": 2.884682
+  },
+  {
+    "name": "Cobrieux",
+    "lat": 50.538846,
+    "lng": 3.239958
+  },
+  {
+    "name": "Colfontaine",
+    "lat": 50.406929,
+    "lng": 3.842965
+  },
+  {
+    "name": "Colleret",
+    "lat": 50.260943,
+    "lng": 4.087279
+  },
+  {
+    "name": "Comblain-au-Pont",
+    "lat": 50.485528,
+    "lng": 5.585491
+  },
+  {
+    "name": "Combles",
+    "lat": 50.00815,
+    "lng": 2.874443
+  },
+  {
+    "name": "Comines",
+    "lat": 50.749598,
+    "lng": 3.013639
+  },
+  {
+    "name": "Comines-Warneton - Komen-Waasten",
+    "lat": 50.751574,
+    "lng": 2.935937
+  },
+  {
+    "name": "Condé-sur-l'Escaut",
+    "lat": 50.466132,
+    "lng": 3.611346
+  },
+  {
+    "name": "Corbehem",
+    "lat": 50.33562,
+    "lng": 3.048188
+  },
+  {
+    "name": "Courcelles",
+    "lat": 50.475627,
+    "lng": 4.346076
+  },
+  {
+    "name": "Courcelles-lès-Lens",
+    "lat": 50.414608,
+    "lng": 3.015029
+  },
+  {
+    "name": "Courchelettes",
+    "lat": 50.342111,
+    "lng": 3.059517
+  },
+  {
+    "name": "Courrières",
+    "lat": 50.453789,
+    "lng": 2.944267
+  },
+  {
+    "name": "Court-Saint-Etienne",
+    "lat": 50.62709,
+    "lng": 4.56237
+  },
+  {
+    "name": "Cousolre",
+    "lat": 50.236097,
+    "lng": 4.157803
+  },
+  {
+    "name": "Coutiches",
+    "lat": 50.44929,
+    "lng": 3.190614
+  },
+  {
+    "name": "Couvin",
+    "lat": 50.038412,
+    "lng": 4.495434
+  },
+  {
+    "name": "Crespin",
+    "lat": 50.421057,
+    "lng": 3.650765
+  },
+  {
+    "name": "Crèvecœur-sur-l'Escaut",
+    "lat": 50.082028,
+    "lng": 3.269845
+  },
+  {
+    "name": "Crisnée",
+    "lat": 50.710271,
+    "lng": 5.397398
+  },
+  {
+    "name": "Croisilles",
+    "lat": 50.196117,
+    "lng": 2.881152
+  },
+  {
+    "name": "Croix",
+    "lat": 50.675405,
+    "lng": 3.155078
+  },
+  {
+    "name": "Croix-Caluyau",
+    "lat": 50.151676,
+    "lng": 3.585538
+  },
+  {
+    "name": "Croix-Fonsomme",
+    "lat": 49.932887,
+    "lng": 3.393715
+  },
+  {
+    "name": "Cuincy",
+    "lat": 50.374578,
+    "lng": 3.031347
+  },
+  {
+    "name": "Curgies",
+    "lat": 50.32523,
+    "lng": 3.607763
+  },
+  {
+    "name": "Cuvillers",
+    "lat": 50.221342,
+    "lng": 3.238346
+  },
+  {
+    "name": "Cysoing",
+    "lat": 50.563212,
+    "lng": 3.208097
+  },
+  {
+    "name": "Dackscheid",
+    "lat": 50.118545,
+    "lng": 6.395313
+  },
+  {
+    "name": "Dahlem",
+    "lat": 50.389484,
+    "lng": 6.510029
+  },
+  {
+    "name": "Dahnen",
+    "lat": 50.089396,
+    "lng": 6.145566
+  },
+  {
+    "name": "Daleiden",
+    "lat": 50.056826,
+    "lng": 6.182017
+  },
+  {
+    "name": "Dalhem",
+    "lat": 50.718188,
+    "lng": 5.760119
+  },
+  {
+    "name": "Damousies",
+    "lat": 50.218426,
+    "lng": 4.008224
+  },
+  {
+    "name": "Dasburg",
+    "lat": 50.053313,
+    "lng": 6.140281
+  },
+  {
+    "name": "Dauwelshausen",
+    "lat": 50.004338,
+    "lng": 6.184243
+  },
+  {
+    "name": "Daverdisse",
+    "lat": 50.003356,
+    "lng": 5.062542
+  },
+  {
+    "name": "Dechy",
+    "lat": 50.351715,
+    "lng": 3.128754
+  },
+  {
+    "name": "Deerlijk",
+    "lat": 50.839351,
+    "lng": 3.35934
+  },
+  {
+    "name": "Dehéries",
+    "lat": 50.049337,
+    "lng": 3.343134
+  },
+  {
+    "name": "Denain",
+    "lat": 50.328986,
+    "lng": 3.392148
+  },
+  {
+    "name": "Deûlémont",
+    "lat": 50.727419,
+    "lng": 2.972316
+  },
+  {
+    "name": "Dilbeek",
+    "lat": 50.851688,
+    "lng": 4.227925
+  },
+  {
+    "name": "Dimechaux",
+    "lat": 50.196587,
+    "lng": 4.046159
+  },
+  {
+    "name": "Dimont",
+    "lat": 50.187006,
+    "lng": 4.021964
+  },
+  {
+    "name": "Dinant",
+    "lat": 50.242458,
+    "lng": 4.951173
+  },
+  {
+    "name": "Dingdorf",
+    "lat": 50.146749,
+    "lng": 6.431054
+  },
+  {
+    "name": "Dison",
+    "lat": 50.615286,
+    "lng": 5.876216
+  },
+  {
+    "name": "Doignies",
+    "lat": 50.133427,
+    "lng": 3.015373
+  },
+  {
+    "name": "Doische",
+    "lat": 50.151071,
+    "lng": 4.690712
+  },
+  {
+    "name": "Dompierre-sur-Helpe",
+    "lat": 50.142421,
+    "lng": 3.854027
+  },
+  {
+    "name": "Don",
+    "lat": 50.544932,
+    "lng": 2.915622
+  },
+  {
+    "name": "Donceel",
+    "lat": 50.650311,
+    "lng": 5.328977
+  },
+  {
+    "name": "Dorengt",
+    "lat": 49.965608,
+    "lng": 3.701364
+  },
+  {
+    "name": "Douai",
+    "lat": 50.379898,
+    "lng": 3.100531
+  },
+  {
+    "name": "Douchy-les-Mines",
+    "lat": 50.300447,
+    "lng": 3.388696
+  },
+  {
+    "name": "Dour",
+    "lat": 50.386826,
+    "lng": 3.788748
+  },
+  {
+    "name": "Dourges",
+    "lat": 50.437784,
+    "lng": 2.985095
+  },
+  {
+    "name": "Dourlers",
+    "lat": 50.173135,
+    "lng": 3.951733
+  },
+  {
+    "name": "Driencourt",
+    "lat": 49.958778,
+    "lng": 3.006897
+  },
+  {
+    "name": "Drocourt",
+    "lat": 50.390121,
+    "lng": 2.932317
+  },
+  {
+    "name": "Drogenbos",
+    "lat": 50.796377,
+    "lng": 4.307172
+  },
+  {
+    "name": "Durbuy",
+    "lat": 50.364799,
+    "lng": 5.489501
+  },
+  {
+    "name": "Düren",
+    "lat": 50.799292,
+    "lng": 6.462023
+  },
+  {
+    "name": "Dury",
+    "lat": 50.249755,
+    "lng": 3.00263
+  },
+  {
+    "name": "Écaillon",
+    "lat": 50.346954,
+    "lng": 3.218012
+  },
+  {
+    "name": "Écaussinnes",
+    "lat": 50.560802,
+    "lng": 4.176404
+  },
+  {
+    "name": "Eccles",
+    "lat": 50.198838,
+    "lng": 4.09826
+  },
+  {
+    "name": "Echtershausen",
+    "lat": 50.026293,
+    "lng": 6.409399
+  },
+  {
+    "name": "Éclaibes",
+    "lat": 50.201845,
+    "lng": 3.937001
+  },
+  {
+    "name": "Écourt-Saint-Quentin",
+    "lat": 50.260568,
+    "lng": 3.064649
+  },
+  {
+    "name": "Écoust-Saint-Mein",
+    "lat": 50.17583,
+    "lng": 2.901532
+  },
+  {
+    "name": "Écuélin",
+    "lat": 50.192503,
+    "lng": 3.893121
+  },
+  {
+    "name": "Eghezée",
+    "lat": 50.587191,
+    "lng": 4.888406
+  },
+  {
+    "name": "Ehlenz",
+    "lat": 50.045897,
+    "lng": 6.467145
+  },
+  {
+    "name": "Eijsden-Margraten",
+    "lat": 50.805028,
+    "lng": 5.773053
+  },
+  {
+    "name": "Eilscheid",
+    "lat": 50.1316,
+    "lng": 6.391008
+  },
+  {
+    "name": "Élesmes",
+    "lat": 50.306383,
+    "lng": 4.013216
+  },
+  {
+    "name": "Élincourt",
+    "lat": 50.047706,
+    "lng": 3.368925
+  },
+  {
+    "name": "Ellezelles",
+    "lat": 50.728706,
+    "lng": 3.702239
+  },
+  {
+    "name": "Émerchicourt",
+    "lat": 50.312529,
+    "lng": 3.254878
+  },
+  {
+    "name": "Emmelbaum",
+    "lat": 50.054868,
+    "lng": 6.264716
+  },
+  {
+    "name": "Emmerin",
+    "lat": 50.59066,
+    "lng": 3.006182
+  },
+  {
+    "name": "Enghien - Edingen",
+    "lat": 50.672116,
+    "lng": 4.037684
+  },
+  {
+    "name": "Engis",
+    "lat": 50.562483,
+    "lng": 5.387104
+  },
+  {
+    "name": "Englefontaine",
+    "lat": 50.193339,
+    "lng": 3.640127
+  },
+  {
+    "name": "Englos",
+    "lat": 50.626665,
+    "lng": 2.95641
+  },
+  {
+    "name": "Ennetières-en-Weppes",
+    "lat": 50.642261,
+    "lng": 2.931007
+  },
+  {
+    "name": "Ennevelin",
+    "lat": 50.536424,
+    "lng": 3.130884
+  },
+  {
+    "name": "Épehy",
+    "lat": 50.006342,
+    "lng": 3.133645
+  },
+  {
+    "name": "Épinoy",
+    "lat": 50.232219,
+    "lng": 3.161638
+  },
+  {
+    "name": "Eppe-Sauvage",
+    "lat": 50.11472,
+    "lng": 4.160275
+  },
+  {
+    "name": "Équancourt",
+    "lat": 50.035429,
+    "lng": 3.013029
+  },
+  {
+    "name": "Erchin",
+    "lat": 50.314165,
+    "lng": 3.170991
+  },
+  {
+    "name": "Érezée",
+    "lat": 50.294563,
+    "lng": 5.547961
+  },
+  {
+    "name": "Erquelinnes",
+    "lat": 50.303059,
+    "lng": 4.131379
+  },
+  {
+    "name": "Erquinghem-le-Sec",
+    "lat": 50.610916,
+    "lng": 2.933604
+  },
+  {
+    "name": "Erre",
+    "lat": 50.367375,
+    "lng": 3.32076
+  },
+  {
+    "name": "Escarmain",
+    "lat": 50.22361,
+    "lng": 3.551342
+  },
+  {
+    "name": "Escaudain",
+    "lat": 50.332989,
+    "lng": 3.338967
+  },
+  {
+    "name": "Escaudœuvres",
+    "lat": 50.193887,
+    "lng": 3.271098
+  },
+  {
+    "name": "Escautpont",
+    "lat": 50.42395,
+    "lng": 3.550997
+  },
+  {
+    "name": "Eschfeld",
+    "lat": 50.105756,
+    "lng": 6.19306
+  },
+  {
+    "name": "Eschweiler",
+    "lat": 50.831166,
+    "lng": 6.265712
+  },
+  {
+    "name": "Escobecques",
+    "lat": 50.621983,
+    "lng": 2.932654
+  },
+  {
+    "name": "Esnes",
+    "lat": 50.088838,
+    "lng": 3.312624
+  },
+  {
+    "name": "Esneux",
+    "lat": 50.542258,
+    "lng": 5.557022
+  },
+  {
+    "name": "Esquéhéries",
+    "lat": 49.977971,
+    "lng": 3.758419
+  },
+  {
+    "name": "Esquerchin",
+    "lat": 50.387012,
+    "lng": 3.006456
+  },
+  {
+    "name": "Estaimpuis",
+    "lat": 50.687521,
+    "lng": 3.28998
+  },
+  {
+    "name": "Estevelles",
+    "lat": 50.479099,
+    "lng": 2.908361
+  },
+  {
+    "name": "Estinnes",
+    "lat": 50.380138,
+    "lng": 4.106535
+  },
+  {
+    "name": "Estourmel",
+    "lat": 50.151181,
+    "lng": 3.321377
+  },
+  {
+    "name": "Estrées",
+    "lat": 49.968592,
+    "lng": 3.280139
+  },
+  {
+    "name": "Estreux",
+    "lat": 50.3524,
+    "lng": 3.598987
+  },
+  {
+    "name": "Estrun",
+    "lat": 50.24507,
+    "lng": 3.292396
+  },
+  {
+    "name": "Eswars",
+    "lat": 50.215576,
+    "lng": 3.263589
+  },
+  {
+    "name": "Étaing",
+    "lat": 50.270501,
+    "lng": 2.997799
+  },
+  {
+    "name": "Étaves-et-Bocquiaux",
+    "lat": 49.93077,
+    "lng": 3.451881
+  },
+  {
+    "name": "Éterpigny",
+    "lat": 50.256486,
+    "lng": 2.981849
+  },
+  {
+    "name": "Eth",
+    "lat": 50.324439,
+    "lng": 3.668132
+  },
+  {
+    "name": "Étreux",
+    "lat": 49.998451,
+    "lng": 3.655387
+  },
+  {
+    "name": "Étricourt-Manancourt",
+    "lat": 50.03254,
+    "lng": 2.979637
+  },
+  {
+    "name": "Étrœungt",
+    "lat": 50.058144,
+    "lng": 3.943034
+  },
+  {
+    "name": "Etterbeek",
+    "lat": 50.833571,
+    "lng": 4.39559
+  },
+  {
+    "name": "Eupen",
+    "lat": 50.610447,
+    "lng": 6.137224
+  },
+  {
+    "name": "Euscheid",
+    "lat": 50.137083,
+    "lng": 6.300591
+  },
+  {
+    "name": "Évin-Malmaison",
+    "lat": 50.434397,
+    "lng": 3.030933
+  },
+  {
+    "name": "Faches-Thumesnil",
+    "lat": 50.595517,
+    "lng": 3.071395
+  },
+  {
+    "name": "Faimes",
+    "lat": 50.646857,
+    "lng": 5.239496
+  },
+  {
+    "name": "Famars",
+    "lat": 50.308944,
+    "lng": 3.52618
+  },
+  {
+    "name": "Farciennes",
+    "lat": 50.432331,
+    "lng": 4.548975
+  },
+  {
+    "name": "Faumont",
+    "lat": 50.450258,
+    "lng": 3.133473
+  },
+  {
+    "name": "Féchain",
+    "lat": 50.269192,
+    "lng": 3.213412
+  },
+  {
+    "name": "Feignies",
+    "lat": 50.291012,
+    "lng": 3.911924
+  },
+  {
+    "name": "Feilsdorf",
+    "lat": 49.995442,
+    "lng": 6.402535
+  },
+  {
+    "name": "Felleries",
+    "lat": 50.141199,
+    "lng": 4.058554
+  },
+  {
+    "name": "Fenain",
+    "lat": 50.365626,
+    "lng": 3.299791
+  },
+  {
+    "name": "Fépin",
+    "lat": 50.022703,
+    "lng": 4.708671
+  },
+  {
+    "name": "Férin",
+    "lat": 50.329919,
+    "lng": 3.082725
+  },
+  {
+    "name": "Fernelmont",
+    "lat": 50.561671,
+    "lng": 4.985681
+  },
+  {
+    "name": "Féron",
+    "lat": 50.047573,
+    "lng": 4.016852
+  },
+  {
+    "name": "Ferrière-la-Grande",
+    "lat": 50.243847,
+    "lng": 3.989454
+  },
+  {
+    "name": "Ferrière-la-Petite",
+    "lat": 50.24183,
+    "lng": 4.02896
+  },
+  {
+    "name": "Ferrières",
+    "lat": 50.412757,
+    "lng": 5.613993
+  },
+  {
+    "name": "Fesmy-le-Sart",
+    "lat": 50.047641,
+    "lng": 3.697209
+  },
+  {
+    "name": "Feuerscheid",
+    "lat": 50.099188,
+    "lng": 6.451045
+  },
+  {
+    "name": "Fexhe-le-Haut-Clocher",
+    "lat": 50.665493,
+    "lng": 5.39458
+  },
+  {
+    "name": "Fins",
+    "lat": 50.037639,
+    "lng": 3.045337
+  },
+  {
+    "name": "Fischbach-Oberraden",
+    "lat": 50.009258,
+    "lng": 6.336517
+  },
+  {
+    "name": "Flaumont-Waudrechies",
+    "lat": 50.130966,
+    "lng": 3.96841
+  },
+  {
+    "name": "Flémalle",
+    "lat": 50.593226,
+    "lng": 5.434746
+  },
+  {
+    "name": "Fléron",
+    "lat": 50.617446,
+    "lng": 5.679531
+  },
+  {
+    "name": "Flers-en-Escrebieux",
+    "lat": 50.403113,
+    "lng": 3.049654
+  },
+  {
+    "name": "Flesquières",
+    "lat": 50.1256,
+    "lng": 3.119435
+  },
+  {
+    "name": "Fleurus",
+    "lat": 50.490179,
+    "lng": 4.539464
+  },
+  {
+    "name": "Flines-lès-Mortagne",
+    "lat": 50.508731,
+    "lng": 3.484984
+  },
+  {
+    "name": "Flines-lez-Raches",
+    "lat": 50.415772,
+    "lng": 3.183287
+  },
+  {
+    "name": "Flobecq",
+    "lat": 50.75559,
+    "lng": 3.731477
+  },
+  {
+    "name": "Floreffe",
+    "lat": 50.432398,
+    "lng": 4.762397
+  },
+  {
+    "name": "Florennes",
+    "lat": 50.260323,
+    "lng": 4.6464
+  },
+  {
+    "name": "Floursies",
+    "lat": 50.185583,
+    "lng": 3.96976
+  },
+  {
+    "name": "Floyon",
+    "lat": 50.038028,
+    "lng": 3.880233
+  },
+  {
+    "name": "Foisches",
+    "lat": 50.129149,
+    "lng": 4.775568
+  },
+  {
+    "name": "Fontaine-au-Bois",
+    "lat": 50.136006,
+    "lng": 3.640256
+  },
+  {
+    "name": "Fontaine-au-Pire",
+    "lat": 50.13079,
+    "lng": 3.367944
+  },
+  {
+    "name": "Fontaine-l'Évêque",
+    "lat": 50.406768,
+    "lng": 4.323348
+  },
+  {
+    "name": "Fontaine-lès-Croisilles",
+    "lat": 50.215076,
+    "lng": 2.903256
+  },
+  {
+    "name": "Fontaine-Notre-Dame",
+    "lat": 50.166186,
+    "lng": 3.172669
+  },
+  {
+    "name": "Fontenelle",
+    "lat": 50.029894,
+    "lng": 3.848908
+  },
+  {
+    "name": "Forest - Vorst",
+    "lat": 50.81403,
+    "lng": 4.327813
+  },
+  {
+    "name": "Forest-en-Cambrésis",
+    "lat": 50.144498,
+    "lng": 3.578835
+  },
+  {
+    "name": "Forest-sur-Marque",
+    "lat": 50.632499,
+    "lng": 3.186783
+  },
+  {
+    "name": "Fosses-la-Ville",
+    "lat": 50.393261,
+    "lng": 4.691391
+  },
+  {
+    "name": "Fouquières-lès-Lens",
+    "lat": 50.428435,
+    "lng": 2.906663
+  },
+  {
+    "name": "Fourmies",
+    "lat": 50.006379,
+    "lng": 4.05947
+  },
+  {
+    "name": "Fournes-en-Weppes",
+    "lat": 50.593492,
+    "lng": 2.896825
+  },
+  {
+    "name": "Frameries",
+    "lat": 50.383253,
+    "lng": 3.893592
+  },
+  {
+    "name": "Frasnes-lez-Anvaing",
+    "lat": 50.680322,
+    "lng": 3.609214
+  },
+  {
+    "name": "Frasnoy",
+    "lat": 50.275637,
+    "lng": 3.669428
+  },
+  {
+    "name": "Frelinghien",
+    "lat": 50.704338,
+    "lng": 2.952425
+  },
+  {
+    "name": "Frémicourt",
+    "lat": 50.112149,
+    "lng": 2.903934
+  },
+  {
+    "name": "Fresnes-lès-Montauban",
+    "lat": 50.335462,
+    "lng": 2.929629
+  },
+  {
+    "name": "Fresnes-sur-Escaut",
+    "lat": 50.432097,
+    "lng": 3.579908
+  },
+  {
+    "name": "Fresnoy-en-Gohelle",
+    "lat": 50.368747,
+    "lng": 2.896109
+  },
+  {
+    "name": "Fresnoy-le-Grand",
+    "lat": 49.955321,
+    "lng": 3.416982
+  },
+  {
+    "name": "Fressain",
+    "lat": 50.283466,
+    "lng": 3.190665
+  },
+  {
+    "name": "Fressies",
+    "lat": 50.246057,
+    "lng": 3.190539
+  },
+  {
+    "name": "Fretin",
+    "lat": 50.567623,
+    "lng": 3.130608
+  },
+  {
+    "name": "Froidchapelle",
+    "lat": 50.163025,
+    "lng": 4.341568
+  },
+  {
+    "name": "Froidestrées",
+    "lat": 49.943032,
+    "lng": 3.90969
+  },
+  {
+    "name": "Fromelennes",
+    "lat": 50.113828,
+    "lng": 4.870215
+  },
+  {
+    "name": "Fumay",
+    "lat": 49.970472,
+    "lng": 4.661116
+  },
+  {
+    "name": "Gavrelle",
+    "lat": 50.32664,
+    "lng": 2.881906
+  },
+  {
+    "name": "Gedinne",
+    "lat": 49.984274,
+    "lng": 4.899795
+  },
+  {
+    "name": "Geer",
+    "lat": 50.670836,
+    "lng": 5.183432
+  },
+  {
+    "name": "Geichlingen",
+    "lat": 49.95227,
+    "lng": 6.262804
+  },
+  {
+    "name": "Gembloux",
+    "lat": 50.553721,
+    "lng": 4.715964
+  },
+  {
+    "name": "Gemünd",
+    "lat": 49.991201,
+    "lng": 6.168015
+  },
+  {
+    "name": "Genappe",
+    "lat": 50.60635,
+    "lng": 4.458586
+  },
+  {
+    "name": "Genech",
+    "lat": 50.528936,
+    "lng": 3.225347
+  },
+  {
+    "name": "Geraardsbergen",
+    "lat": 50.782251,
+    "lng": 3.903754
+  },
+  {
+    "name": "Gergny",
+    "lat": 49.933911,
+    "lng": 3.930388
+  },
+  {
+    "name": "Gerpinnes",
+    "lat": 50.347102,
+    "lng": 4.525974
+  },
+  {
+    "name": "Gesves",
+    "lat": 50.417776,
+    "lng": 5.052317
+  },
+  {
+    "name": "Ghissignies",
+    "lat": 50.226439,
+    "lng": 3.617829
+  },
+  {
+    "name": "Giesdorf",
+    "lat": 50.177847,
+    "lng": 6.456174
+  },
+  {
+    "name": "Gingelom",
+    "lat": 50.732837,
+    "lng": 5.172744
+  },
+  {
+    "name": "Givet",
+    "lat": 50.147252,
+    "lng": 4.837597
+  },
+  {
+    "name": "Glabbeek",
+    "lat": 50.866218,
+    "lng": 4.949484
+  },
+  {
+    "name": "Glageon",
+    "lat": 50.04719,
+    "lng": 4.063885
+  },
+  {
+    "name": "Goesdorf",
+    "lat": 49.934268,
+    "lng": 5.982869
+  },
+  {
+    "name": "Gœulzin",
+    "lat": 50.316008,
+    "lng": 3.102314
+  },
+  {
+    "name": "Gognies-Chaussée",
+    "lat": 50.324563,
+    "lng": 3.943597
+  },
+  {
+    "name": "Gommegnies",
+    "lat": 50.264238,
+    "lng": 3.708531
+  },
+  {
+    "name": "Gondecourt",
+    "lat": 50.547384,
+    "lng": 2.981541
+  },
+  {
+    "name": "Gondenbrett",
+    "lat": 50.244658,
+    "lng": 6.403291
+  },
+  {
+    "name": "Gonnelieu",
+    "lat": 50.060281,
+    "lng": 3.156096
+  },
+  {
+    "name": "Gouvy",
+    "lat": 50.190284,
+    "lng": 5.911241
+  },
+  {
+    "name": "Gouy",
+    "lat": 49.993761,
+    "lng": 3.261764
+  },
+  {
+    "name": "Gouy-sous-Bellonne",
+    "lat": 50.315586,
+    "lng": 3.059405
+  },
+  {
+    "name": "Gouzeaucourt",
+    "lat": 50.053382,
+    "lng": 3.118878
+  },
+  {
+    "name": "Grâce-Hollogne",
+    "lat": 50.637342,
+    "lng": 5.431064
+  },
+  {
+    "name": "Graincourt-lès-Havrincourt",
+    "lat": 50.144171,
+    "lng": 3.10224
+  },
+  {
+    "name": "Grand-Fayt",
+    "lat": 50.111533,
+    "lng": 3.797673
+  },
+  {
+    "name": "Grand-Verly",
+    "lat": 49.944544,
+    "lng": 3.581447
+  },
+  {
+    "name": "Grez-Doiceau",
+    "lat": 50.749968,
+    "lng": 4.685304
+  },
+  {
+    "name": "Großkampenberg",
+    "lat": 50.163585,
+    "lng": 6.205309
+  },
+  {
+    "name": "Großlangenfeld",
+    "lat": 50.215019,
+    "lng": 6.261648
+  },
+  {
+    "name": "Grougis",
+    "lat": 49.950063,
+    "lng": 3.528017
+  },
+  {
+    "name": "Gruson",
+    "lat": 50.592536,
+    "lng": 3.215646
+  },
+  {
+    "name": "Gué-d'Hossus",
+    "lat": 49.956055,
+    "lng": 4.541588
+  },
+  {
+    "name": "Guémappe",
+    "lat": 50.251664,
+    "lng": 2.894977
+  },
+  {
+    "name": "Guesnain",
+    "lat": 50.348584,
+    "lng": 3.147978
+  },
+  {
+    "name": "Gulpen-Wittem",
+    "lat": 50.799628,
+    "lng": 5.901469
+  },
+  {
+    "name": "Gussignies",
+    "lat": 50.34139,
+    "lng": 3.749225
+  },
+  {
+    "name": "Guyencourt-Saulcourt",
+    "lat": 49.995633,
+    "lng": 3.08041
+  },
+  {
+    "name": "Habscheid",
+    "lat": 50.17751,
+    "lng": 6.271993
+  },
+  {
+    "name": "Halle",
+    "lat": 50.73382,
+    "lng": 4.241975
+  },
+  {
+    "name": "Hallennes-lez-Haubourdin",
+    "lat": 50.613064,
+    "lng": 2.955236
+  },
+  {
+    "name": "Hallschlag",
+    "lat": 50.36118,
+    "lng": 6.427889
+  },
+  {
+    "name": "Halluin",
+    "lat": 50.7759,
+    "lng": 3.125703
+  },
+  {
+    "name": "Ham-sur-Heure-Nalinnes",
+    "lat": 50.325784,
+    "lng": 4.4116
+  },
+  {
+    "name": "Ham-sur-Meuse",
+    "lat": 50.086991,
+    "lng": 4.784069
+  },
+  {
+    "name": "Hamblain-les-Prés",
+    "lat": 50.291111,
+    "lng": 2.958538
+  },
+  {
+    "name": "Hamel",
+    "lat": 50.282765,
+    "lng": 3.06929
+  },
+  {
+    "name": "Hamm",
+    "lat": 50.016623,
+    "lng": 6.421382
+  },
+  {
+    "name": "Hamoir",
+    "lat": 50.436134,
+    "lng": 5.563903
+  },
+  {
+    "name": "Hamois",
+    "lat": 50.337007,
+    "lng": 5.131166
+  },
+  {
+    "name": "Hannapes",
+    "lat": 49.97621,
+    "lng": 3.616074
+  },
+  {
+    "name": "Hannut",
+    "lat": 50.657316,
+    "lng": 5.074732
+  },
+  {
+    "name": "Haplincourt",
+    "lat": 50.092409,
+    "lng": 2.938122
+  },
+  {
+    "name": "Harelbeke",
+    "lat": 50.862663,
+    "lng": 3.308276
+  },
+  {
+    "name": "Hargarten",
+    "lat": 50.100488,
+    "lng": 6.411516
+  },
+  {
+    "name": "Hargicourt",
+    "lat": 49.966765,
+    "lng": 3.188414
+  },
+  {
+    "name": "Hargnies",
+    "lat": 50.00174,
+    "lng": 4.795388
+  },
+  {
+    "name": "Harnes",
+    "lat": 50.452314,
+    "lng": 2.903586
+  },
+  {
+    "name": "Harspelt",
+    "lat": 50.135854,
+    "lng": 6.172454
+  },
+  {
+    "name": "Hasnon",
+    "lat": 50.413159,
+    "lng": 3.386536
+  },
+  {
+    "name": "Haspres",
+    "lat": 50.264165,
+    "lng": 3.412
+  },
+  {
+    "name": "Hasselt",
+    "lat": 50.894684,
+    "lng": 5.331131
+  },
+  {
+    "name": "Hastière",
+    "lat": 50.197856,
+    "lng": 4.826356
+  },
+  {
+    "name": "Haubourdin",
+    "lat": 50.600184,
+    "lng": 2.989343
+  },
+  {
+    "name": "Haucourt",
+    "lat": 50.236844,
+    "lng": 2.969733
+  },
+  {
+    "name": "Haucourt-en-Cambrésis",
+    "lat": 50.103336,
+    "lng": 3.342189
+  },
+  {
+    "name": "Haulchin",
+    "lat": 50.311082,
+    "lng": 3.421918
+  },
+  {
+    "name": "Haussy",
+    "lat": 50.224918,
+    "lng": 3.479389
+  },
+  {
+    "name": "Haut-Lieu",
+    "lat": 50.104471,
+    "lng": 3.902499
+  },
+  {
+    "name": "Hautmont",
+    "lat": 50.247979,
+    "lng": 3.920224
+  },
+  {
+    "name": "Havelange",
+    "lat": 50.355679,
+    "lng": 5.246579
+  },
+  {
+    "name": "Haveluy",
+    "lat": 50.356033,
+    "lng": 3.401712
+  },
+  {
+    "name": "Havrincourt",
+    "lat": 50.1016,
+    "lng": 3.072229
+  },
+  {
+    "name": "Haybes",
+    "lat": 49.993967,
+    "lng": 4.727867
+  },
+  {
+    "name": "Haynecourt",
+    "lat": 50.208555,
+    "lng": 3.156225
+  },
+  {
+    "name": "Heckhuscheid",
+    "lat": 50.180327,
+    "lng": 6.201485
+  },
+  {
+    "name": "Hecq",
+    "lat": 50.178938,
+    "lng": 3.651926
+  },
+  {
+    "name": "Heerlen",
+    "lat": 50.877507,
+    "lng": 5.960865
+  },
+  {
+    "name": "Heers",
+    "lat": 50.753486,
+    "lng": 5.31828
+  },
+  {
+    "name": "Heilbach",
+    "lat": 50.060649,
+    "lng": 6.298105
+  },
+  {
+    "name": "Heilenbach",
+    "lat": 50.074675,
+    "lng": 6.460791
+  },
+  {
+    "name": "Heimbach",
+    "lat": 50.630788,
+    "lng": 6.479499
+  },
+  {
+    "name": "Heisdorf",
+    "lat": 50.129287,
+    "lng": 6.425928
+  },
+  {
+    "name": "Hélécine",
+    "lat": 50.74663,
+    "lng": 4.973068
+  },
+  {
+    "name": "Hélesmes",
+    "lat": 50.374038,
+    "lng": 3.358479
+  },
+  {
+    "name": "Hellenthal",
+    "lat": 50.418366,
+    "lng": 6.448736
+  },
+  {
+    "name": "Hem",
+    "lat": 50.653056,
+    "lng": 3.191356
+  },
+  {
+    "name": "Hem-Lenglet",
+    "lat": 50.252598,
+    "lng": 3.225916
+  },
+  {
+    "name": "Hendecourt-lès-Cagnicourt",
+    "lat": 50.214243,
+    "lng": 2.9505
+  },
+  {
+    "name": "Hénin-Beaumont",
+    "lat": 50.418917,
+    "lng": 2.958374
+  },
+  {
+    "name": "Hensies",
+    "lat": 50.438104,
+    "lng": 3.718172
+  },
+  {
+    "name": "Herbstmühle",
+    "lat": 50.005395,
+    "lng": 6.226957
+  },
+  {
+    "name": "Hergnies",
+    "lat": 50.478588,
+    "lng": 3.527906
+  },
+  {
+    "name": "Hérin",
+    "lat": 50.359319,
+    "lng": 3.448907
+  },
+  {
+    "name": "Hermies",
+    "lat": 50.108678,
+    "lng": 3.035032
+  },
+  {
+    "name": "Héron",
+    "lat": 50.54136,
+    "lng": 5.103361
+  },
+  {
+    "name": "Herrin",
+    "lat": 50.549706,
+    "lng": 2.962517
+  },
+  {
+    "name": "Herstal",
+    "lat": 50.678714,
+    "lng": 5.606493
+  },
+  {
+    "name": "Herstappe",
+    "lat": 50.726769,
+    "lng": 5.425856
+  },
+  {
+    "name": "Herve",
+    "lat": 50.649212,
+    "lng": 5.795379
+  },
+  {
+    "name": "Herzele",
+    "lat": 50.86989,
+    "lng": 3.893397
+  },
+  {
+    "name": "Herzfeld",
+    "lat": 50.131148,
+    "lng": 6.206143
+  },
+  {
+    "name": "Herzogenrath",
+    "lat": 50.860588,
+    "lng": 6.101433
+  },
+  {
+    "name": "Hesbécourt",
+    "lat": 49.945174,
+    "lng": 3.144208
+  },
+  {
+    "name": "Hestrud",
+    "lat": 50.203488,
+    "lng": 4.140143
+  },
+  {
+    "name": "Heudicourt",
+    "lat": 50.029112,
+    "lng": 3.093611
+  },
+  {
+    "name": "Heuvelland",
+    "lat": 50.767801,
+    "lng": 2.836745
+  },
+  {
+    "name": "Hierges",
+    "lat": 50.099945,
+    "lng": 4.735012
+  },
+  {
+    "name": "Hirson",
+    "lat": 49.937917,
+    "lng": 4.113132
+  },
+  {
+    "name": "Hoegaarden",
+    "lat": 50.778103,
+    "lng": 4.877173
+  },
+  {
+    "name": "Hoeilaart",
+    "lat": 50.758922,
+    "lng": 4.458368
+  },
+  {
+    "name": "Hon-Hergies",
+    "lat": 50.331872,
+    "lng": 3.823531
+  },
+  {
+    "name": "Honnechy",
+    "lat": 50.068502,
+    "lng": 3.479746
+  },
+  {
+    "name": "Honnecourt-sur-Escaut",
+    "lat": 50.034515,
+    "lng": 3.205715
+  },
+  {
+    "name": "Honnelles",
+    "lat": 50.343874,
+    "lng": 3.748352
+  },
+  {
+    "name": "Hordain",
+    "lat": 50.260983,
+    "lng": 3.329541
+  },
+  {
+    "name": "Horebeke",
+    "lat": 50.830332,
+    "lng": 3.694149
+  },
+  {
+    "name": "Hornaing",
+    "lat": 50.369334,
+    "lng": 3.337266
+  },
+  {
+    "name": "Hotton",
+    "lat": 50.267673,
+    "lng": 5.436458
+  },
+  {
+    "name": "Houdain-lez-Bavay",
+    "lat": 50.328181,
+    "lng": 3.789336
+  },
+  {
+    "name": "Houffalize",
+    "lat": 50.148871,
+    "lng": 5.773702
+  },
+  {
+    "name": "Houplin-Ancoisne",
+    "lat": 50.56853,
+    "lng": 2.994204
+  },
+  {
+    "name": "Houplines",
+    "lat": 50.683158,
+    "lng": 2.927084
+  },
+  {
+    "name": "Houyet",
+    "lat": 50.191764,
+    "lng": 4.986228
+  },
+  {
+    "name": "Huldenberg",
+    "lat": 50.788119,
+    "lng": 4.605286
+  },
+  {
+    "name": "Hürtgenwald",
+    "lat": 50.712656,
+    "lng": 6.371647
+  },
+  {
+    "name": "Hütten",
+    "lat": 50.013159,
+    "lng": 6.252488
+  },
+  {
+    "name": "Hütterscheid",
+    "lat": 49.997023,
+    "lng": 6.38578
+  },
+  {
+    "name": "Huy",
+    "lat": 50.503269,
+    "lng": 5.226365
+  },
+  {
+    "name": "Ieper",
+    "lat": 50.866158,
+    "lng": 2.872778
+  },
+  {
+    "name": "Inchy",
+    "lat": 50.122471,
+    "lng": 3.472009
+  },
+  {
+    "name": "Inchy-en-Artois",
+    "lat": 50.17248,
+    "lng": 3.04006
+  },
+  {
+    "name": "Incourt",
+    "lat": 50.701712,
+    "lng": 4.791623
+  },
+  {
+    "name": "Inden",
+    "lat": 50.864801,
+    "lng": 6.374521
+  },
+  {
+    "name": "Iron",
+    "lat": 49.951607,
+    "lng": 3.665478
+  },
+  {
+    "name": "Irrhausen",
+    "lat": 50.081344,
+    "lng": 6.222909
+  },
+  {
+    "name": "Ittre",
+    "lat": 50.646298,
+    "lng": 4.260718
+  },
+  {
+    "name": "Iwuy",
+    "lat": 50.233432,
+    "lng": 3.336267
+  },
+  {
+    "name": "Ixelles - Elsene",
+    "lat": 50.820692,
+    "lng": 4.37538
+  },
+  {
+    "name": "Izel-lès-Équerchin",
+    "lat": 50.363063,
+    "lng": 2.944615
+  },
+  {
+    "name": "Jalhay",
+    "lat": 50.530213,
+    "lng": 5.975599
+  },
+  {
+    "name": "Jemeppe-sur-Sambre",
+    "lat": 50.466964,
+    "lng": 4.676801
+  },
+  {
+    "name": "Jenlain",
+    "lat": 50.306684,
+    "lng": 3.63106
+  },
+  {
+    "name": "Jeumont",
+    "lat": 50.29,
+    "lng": 4.102571
+  },
+  {
+    "name": "Jodoigne",
+    "lat": 50.725587,
+    "lng": 4.860891
+  },
+  {
+    "name": "Jolimetz",
+    "lat": 50.227594,
+    "lng": 3.678716
+  },
+  {
+    "name": "Joncourt",
+    "lat": 49.960404,
+    "lng": 3.304229
+  },
+  {
+    "name": "Jucken",
+    "lat": 50.048477,
+    "lng": 6.229117
+  },
+  {
+    "name": "Juprelle",
+    "lat": 50.713956,
+    "lng": 5.539025
+  },
+  {
+    "name": "Jurbise",
+    "lat": 50.521967,
+    "lng": 3.898126
+  },
+  {
+    "name": "Karlshausen",
+    "lat": 50.024753,
+    "lng": 6.222836
+  },
+  {
+    "name": "Kelmis - La Calamine",
+    "lat": 50.722898,
+    "lng": 6.021652
+  },
+  {
+    "name": "Keppeshausen",
+    "lat": 49.972717,
+    "lng": 6.178642
+  },
+  {
+    "name": "Kerkrade",
+    "lat": 50.874723,
+    "lng": 6.044335
+  },
+  {
+    "name": "Kesfeld",
+    "lat": 50.153932,
+    "lng": 6.237793
+  },
+  {
+    "name": "Kickeshausen",
+    "lat": 50.066947,
+    "lng": 6.244886
+  },
+  {
+    "name": "Kiischpelt",
+    "lat": 49.97846,
+    "lng": 6.012346
+  },
+  {
+    "name": "Kinzenburg",
+    "lat": 50.117597,
+    "lng": 6.334959
+  },
+  {
+    "name": "Kluisbergen",
+    "lat": 50.784416,
+    "lng": 3.523438
+  },
+  {
+    "name": "Körperich",
+    "lat": 49.922185,
+    "lng": 6.262521
+  },
+  {
+    "name": "Kortenaken",
+    "lat": 50.889056,
+    "lng": 5.030616
+  },
+  {
+    "name": "Kortrijk",
+    "lat": 50.802835,
+    "lng": 3.279923
+  },
+  {
+    "name": "Koxhausen",
+    "lat": 49.997038,
+    "lng": 6.241329
+  },
+  {
+    "name": "Kraainem",
+    "lat": 50.842741,
+    "lng": 4.471066
+  },
+  {
+    "name": "Krautscheid",
+    "lat": 50.069998,
+    "lng": 6.340007
+  },
+  {
+    "name": "Kreuzau",
+    "lat": 50.737912,
+    "lng": 6.483831
+  },
+  {
+    "name": "Kuurne",
+    "lat": 50.859736,
+    "lng": 3.270976
+  },
+  {
+    "name": "L'Orée de Mormal",
+    "lat": 50.282391,
+    "lng": 3.746749
+  },
+  {
+    "name": "La Bruyère",
+    "lat": 50.530115,
+    "lng": 4.821542
+  },
+  {
+    "name": "La Capelle",
+    "lat": 49.97056,
+    "lng": 3.914497
+  },
+  {
+    "name": "La Chapelle-d'Armentières",
+    "lat": 50.664081,
+    "lng": 2.894385
+  },
+  {
+    "name": "La Flamengrie",
+    "lat": 50.002144,
+    "lng": 3.920489
+  },
+  {
+    "name": "La Groise",
+    "lat": 50.07879,
+    "lng": 3.681833
+  },
+  {
+    "name": "La Hulpe",
+    "lat": 50.736376,
+    "lng": 4.468218
+  },
+  {
+    "name": "La Longueville",
+    "lat": 50.298405,
+    "lng": 3.876493
+  },
+  {
+    "name": "La Louvière",
+    "lat": 50.479124,
+    "lng": 4.149957
+  },
+  {
+    "name": "La Madeleine",
+    "lat": 50.654065,
+    "lng": 3.06991
+  },
+  {
+    "name": "La Neuville",
+    "lat": 50.498334,
+    "lng": 3.053411
+  },
+  {
+    "name": "La Neuville-aux-Joûtes",
+    "lat": 49.932527,
+    "lng": 4.242879
+  },
+  {
+    "name": "La Neuville-lès-Dorengt",
+    "lat": 49.983204,
+    "lng": 3.685104
+  },
+  {
+    "name": "La Roche-en-Ardenne",
+    "lat": 50.160238,
+    "lng": 5.601978
+  },
+  {
+    "name": "La Sentinelle",
+    "lat": 50.350159,
+    "lng": 3.476645
+  },
+  {
+    "name": "La Vallée-Mulâtre",
+    "lat": 50.025879,
+    "lng": 3.560955
+  },
+  {
+    "name": "Lac de la Haute-Sûre",
+    "lat": 49.931559,
+    "lng": 5.855179
+  },
+  {
+    "name": "Lagnicourt-Marcel",
+    "lat": 50.156831,
+    "lng": 2.959266
+  },
+  {
+    "name": "Lahr",
+    "lat": 49.954901,
+    "lng": 6.280138
+  },
+  {
+    "name": "Lallaing",
+    "lat": 50.386785,
+    "lng": 3.17199
+  },
+  {
+    "name": "Lambersart",
+    "lat": 50.65379,
+    "lng": 3.024849
+  },
+  {
+    "name": "Lambertsberg",
+    "lat": 50.089009,
+    "lng": 6.396211
+  },
+  {
+    "name": "Lambres-lez-Douai",
+    "lat": 50.354712,
+    "lng": 3.054352
+  },
+  {
+    "name": "Lanaken",
+    "lat": 50.888888,
+    "lng": 5.647538
+  },
+  {
+    "name": "Landas",
+    "lat": 50.470771,
+    "lng": 3.294755
+  },
+  {
+    "name": "Landen",
+    "lat": 50.749066,
+    "lng": 5.052692
+  },
+  {
+    "name": "Landrecies",
+    "lat": 50.116936,
+    "lng": 3.684037
+  },
+  {
+    "name": "Landrichamps",
+    "lat": 50.079894,
+    "lng": 4.828052
+  },
+  {
+    "name": "Langerwehe",
+    "lat": 50.795992,
+    "lng": 6.358405
+  },
+  {
+    "name": "Lannoy",
+    "lat": 50.666036,
+    "lng": 3.210369
+  },
+  {
+    "name": "Larouillies",
+    "lat": 50.037898,
+    "lng": 3.931433
+  },
+  {
+    "name": "Lascheid",
+    "lat": 50.109702,
+    "lng": 6.403993
+  },
+  {
+    "name": "Lasel",
+    "lat": 50.115285,
+    "lng": 6.451032
+  },
+  {
+    "name": "Lasne",
+    "lat": 50.684059,
+    "lng": 4.460612
+  },
+  {
+    "name": "Lauperath",
+    "lat": 50.085709,
+    "lng": 6.330415
+  },
+  {
+    "name": "Lauwin-Planque",
+    "lat": 50.391536,
+    "lng": 3.030379
+  },
+  {
+    "name": "Lavaqueresse",
+    "lat": 49.945231,
+    "lng": 3.716482
+  },
+  {
+    "name": "Le Cateau-Cambrésis",
+    "lat": 50.087385,
+    "lng": 3.535239
+  },
+  {
+    "name": "Le Catelet",
+    "lat": 50.000781,
+    "lng": 3.2425
+  },
+  {
+    "name": "Le Favril",
+    "lat": 50.094022,
+    "lng": 3.720334
+  },
+  {
+    "name": "Le Nouvion-en-Thiérache",
+    "lat": 50.009708,
+    "lng": 3.807874
+  },
+  {
+    "name": "Le Quesnoy",
+    "lat": 50.249262,
+    "lng": 3.623405
+  },
+  {
+    "name": "Le Rœulx",
+    "lat": 50.504832,
+    "lng": 4.112716
+  },
+  {
+    "name": "Le Transloy",
+    "lat": 50.05064,
+    "lng": 2.892639
+  },
+  {
+    "name": "Lebucquière",
+    "lat": 50.108709,
+    "lng": 2.954731
+  },
+  {
+    "name": "Lecelles",
+    "lat": 50.476552,
+    "lng": 3.396369
+  },
+  {
+    "name": "Léchelle",
+    "lat": 50.054497,
+    "lng": 2.978034
+  },
+  {
+    "name": "Lécluse",
+    "lat": 50.275803,
+    "lng": 3.032993
+  },
+  {
+    "name": "Ledegem",
+    "lat": 50.870148,
+    "lng": 3.15167
+  },
+  {
+    "name": "Leers",
+    "lat": 50.679425,
+    "lng": 3.239742
+  },
+  {
+    "name": "Leforest",
+    "lat": 50.440632,
+    "lng": 3.058747
+  },
+  {
+    "name": "Leidenborn",
+    "lat": 50.138018,
+    "lng": 6.220597
+  },
+  {
+    "name": "Leimbach",
+    "lat": 50.026519,
+    "lng": 6.25757
+  },
+  {
+    "name": "Lempire",
+    "lat": 49.997617,
+    "lng": 3.17523
+  },
+  {
+    "name": "Lennik",
+    "lat": 50.811436,
+    "lng": 4.160425
+  },
+  {
+    "name": "Lens",
+    "lat": 50.577929,
+    "lng": 3.903148
+  },
+  {
+    "name": "Lerzy",
+    "lat": 49.950372,
+    "lng": 3.883054
+  },
+  {
+    "name": "Les Bons Villers",
+    "lat": 50.520345,
+    "lng": 4.443082
+  },
+  {
+    "name": "Les Hautes-Rivières",
+    "lat": 49.901421,
+    "lng": 4.848025
+  },
+  {
+    "name": "Les Rues-des-Vignes",
+    "lat": 50.065794,
+    "lng": 3.224816
+  },
+  {
+    "name": "Leschelle",
+    "lat": 49.962813,
+    "lng": 3.773847
+  },
+  {
+    "name": "Lesdain",
+    "lat": 50.087954,
+    "lng": 3.275413
+  },
+  {
+    "name": "Lesquielles-Saint-Germain",
+    "lat": 49.931038,
+    "lng": 3.627709
+  },
+  {
+    "name": "Lesquin",
+    "lat": 50.59029,
+    "lng": 3.113206
+  },
+  {
+    "name": "Lessines",
+    "lat": 50.710504,
+    "lng": 3.829288
+  },
+  {
+    "name": "Leuven",
+    "lat": 50.884141,
+    "lng": 4.705366
+  },
+  {
+    "name": "Leuze-en-Hainaut",
+    "lat": 50.596761,
+    "lng": 3.631
+  },
+  {
+    "name": "Leval",
+    "lat": 50.18032,
+    "lng": 3.832466
+  },
+  {
+    "name": "Levergies",
+    "lat": 49.934223,
+    "lng": 3.312161
+  },
+  {
+    "name": "Lewarde",
+    "lat": 50.336369,
+    "lng": 3.168163
+  },
+  {
+    "name": "Lez-Fontaine",
+    "lat": 50.172849,
+    "lng": 4.05973
+  },
+  {
+    "name": "Lezennes",
+    "lat": 50.610012,
+    "lng": 3.117418
+  },
+  {
+    "name": "Libercourt",
+    "lat": 50.483465,
+    "lng": 3.002864
+  },
+  {
+    "name": "Libin",
+    "lat": 49.976786,
+    "lng": 5.227109
+  },
+  {
+    "name": "Libramont-Chevigny",
+    "lat": 49.95017,
+    "lng": 5.422338
+  },
+  {
+    "name": "Lichtenborn",
+    "lat": 50.111612,
+    "lng": 6.304852
+  },
+  {
+    "name": "Liedekerke",
+    "lat": 50.869266,
+    "lng": 4.092654
+  },
+  {
+    "name": "Liège",
+    "lat": 50.624608,
+    "lng": 5.599323
+  },
+  {
+    "name": "Liéramont",
+    "lat": 49.994143,
+    "lng": 3.050563
+  },
+  {
+    "name": "Lierde",
+    "lat": 50.806483,
+    "lng": 3.83265
+  },
+  {
+    "name": "Lierfeld",
+    "lat": 50.137068,
+    "lng": 6.371012
+  },
+  {
+    "name": "Lierneux",
+    "lat": 50.309449,
+    "lng": 5.7921
+  },
+  {
+    "name": "Liessies",
+    "lat": 50.108487,
+    "lng": 4.080454
+  },
+  {
+    "name": "Lieu-Saint-Amand",
+    "lat": 50.272317,
+    "lng": 3.347992
+  },
+  {
+    "name": "Ligny-en-Cambrésis",
+    "lat": 50.101004,
+    "lng": 3.377399
+  },
+  {
+    "name": "Lille",
+    "lat": 50.631048,
+    "lng": 3.046846
+  },
+  {
+    "name": "Limbourg",
+    "lat": 50.614715,
+    "lng": 5.941125
+  },
+  {
+    "name": "Limont-Fontaine",
+    "lat": 50.212501,
+    "lng": 3.924439
+  },
+  {
+    "name": "Lincent",
+    "lat": 50.724623,
+    "lng": 5.026692
+  },
+  {
+    "name": "Linkebeek",
+    "lat": 50.76808,
+    "lng": 4.344583
+  },
+  {
+    "name": "Linselles",
+    "lat": 50.736726,
+    "lng": 3.072387
+  },
+  {
+    "name": "Linter",
+    "lat": 50.82216,
+    "lng": 5.042985
+  },
+  {
+    "name": "Lobbes",
+    "lat": 50.353923,
+    "lng": 4.24366
+  },
+  {
+    "name": "Locquignol",
+    "lat": 50.202472,
+    "lng": 3.743161
+  },
+  {
+    "name": "Loffre",
+    "lat": 50.35407,
+    "lng": 3.171952
+  },
+  {
+    "name": "Lompret",
+    "lat": 50.663711,
+    "lng": 2.994928
+  },
+  {
+    "name": "Longavesnes",
+    "lat": 49.972588,
+    "lng": 3.062124
+  },
+  {
+    "name": "Lontzen",
+    "lat": 50.676738,
+    "lng": 6.013707
+  },
+  {
+    "name": "Loos",
+    "lat": 50.607894,
+    "lng": 3.021513
+  },
+  {
+    "name": "Lourches",
+    "lat": 50.310696,
+    "lng": 3.357941
+  },
+  {
+    "name": "Louvignies-Quesnoy",
+    "lat": 50.216088,
+    "lng": 3.641404
+  },
+  {
+    "name": "Louvil",
+    "lat": 50.555688,
+    "lng": 3.188289
+  },
+  {
+    "name": "Louvroil",
+    "lat": 50.259758,
+    "lng": 3.951694
+  },
+  {
+    "name": "Lünebach",
+    "lat": 50.135641,
+    "lng": 6.336158
+  },
+  {
+    "name": "Lützkampen",
+    "lat": 50.156313,
+    "lng": 6.166781
+  },
+  {
+    "name": "Luzoir",
+    "lat": 49.931528,
+    "lng": 3.959636
+  },
+  {
+    "name": "Lys-lez-Lannoy",
+    "lat": 50.672964,
+    "lng": 3.218585
+  },
+  {
+    "name": "Maarkedal",
+    "lat": 50.797438,
+    "lng": 3.645025
+  },
+  {
+    "name": "Maastricht",
+    "lat": 50.857904,
+    "lng": 5.700896
+  },
+  {
+    "name": "Maing",
+    "lat": 50.3041,
+    "lng": 3.489198
+  },
+  {
+    "name": "Mairieux",
+    "lat": 50.313542,
+    "lng": 3.971901
+  },
+  {
+    "name": "Malincourt",
+    "lat": 50.035804,
+    "lng": 3.325944
+  },
+  {
+    "name": "Malmedy",
+    "lat": 50.434678,
+    "lng": 6.041643
+  },
+  {
+    "name": "Manage",
+    "lat": 50.493368,
+    "lng": 4.242941
+  },
+  {
+    "name": "Manderscheid",
+    "lat": 50.100725,
+    "lng": 6.328892
+  },
+  {
+    "name": "Manhay",
+    "lat": 50.296025,
+    "lng": 5.661367
+  },
+  {
+    "name": "Marbaix",
+    "lat": 50.129222,
+    "lng": 3.83669
+  },
+  {
+    "name": "Marche-en-Famenne",
+    "lat": 50.218137,
+    "lng": 5.339851
+  },
+  {
+    "name": "Marchiennes",
+    "lat": 50.4128,
+    "lng": 3.248213
+  },
+  {
+    "name": "Marchin",
+    "lat": 50.467404,
+    "lng": 5.2407
+  },
+  {
+    "name": "Marcoing",
+    "lat": 50.112112,
+    "lng": 3.175132
+  },
+  {
+    "name": "Marcq-en-Barœul",
+    "lat": 50.679313,
+    "lng": 3.100616
+  },
+  {
+    "name": "Marcq-en-Ostrevent",
+    "lat": 50.288872,
+    "lng": 3.233462
+  },
+  {
+    "name": "Maresches",
+    "lat": 50.292472,
+    "lng": 3.573678
+  },
+  {
+    "name": "Maretz",
+    "lat": 50.045256,
+    "lng": 3.420984
+  },
+  {
+    "name": "Marly",
+    "lat": 50.34646,
+    "lng": 3.547808
+  },
+  {
+    "name": "Maroilles",
+    "lat": 50.130194,
+    "lng": 3.766449
+  },
+  {
+    "name": "Marpent",
+    "lat": 50.291311,
+    "lng": 4.075055
+  },
+  {
+    "name": "Marquaix",
+    "lat": 49.948659,
+    "lng": 3.075199
+  },
+  {
+    "name": "Marquette-en-Ostrevant",
+    "lat": 50.293277,
+    "lng": 3.274451
+  },
+  {
+    "name": "Marquette-lez-Lille",
+    "lat": 50.674593,
+    "lng": 3.053852
+  },
+  {
+    "name": "Marquion",
+    "lat": 50.206172,
+    "lng": 3.100472
+  },
+  {
+    "name": "Masnières",
+    "lat": 50.104817,
+    "lng": 3.201728
+  },
+  {
+    "name": "Masny",
+    "lat": 50.344028,
+    "lng": 3.194223
+  },
+  {
+    "name": "Mastaing",
+    "lat": 50.307598,
+    "lng": 3.301218
+  },
+  {
+    "name": "Masthorn",
+    "lat": 50.154838,
+    "lng": 6.295205
+  },
+  {
+    "name": "Matzerath",
+    "lat": 50.142602,
+    "lng": 6.390643
+  },
+  {
+    "name": "Maubeuge",
+    "lat": 50.28344,
+    "lng": 3.961089
+  },
+  {
+    "name": "Mauel",
+    "lat": 50.066826,
+    "lng": 6.397829
+  },
+  {
+    "name": "Maulde",
+    "lat": 50.496528,
+    "lng": 3.424055
+  },
+  {
+    "name": "Maurois",
+    "lat": 50.071696,
+    "lng": 3.458414
+  },
+  {
+    "name": "Mazinghien",
+    "lat": 50.049638,
+    "lng": 3.598667
+  },
+  {
+    "name": "Mecquignies",
+    "lat": 50.269818,
+    "lng": 3.803653
+  },
+  {
+    "name": "Menen",
+    "lat": 50.793756,
+    "lng": 3.150121
+  },
+  {
+    "name": "Mennevret",
+    "lat": 49.992495,
+    "lng": 3.556757
+  },
+  {
+    "name": "Merbes-le-Château",
+    "lat": 50.323977,
+    "lng": 4.200014
+  },
+  {
+    "name": "Mérignies",
+    "lat": 50.504872,
+    "lng": 3.122187
+  },
+  {
+    "name": "Merlscheid",
+    "lat": 50.123575,
+    "lng": 6.361544
+  },
+  {
+    "name": "Mesen",
+    "lat": 50.759884,
+    "lng": 2.896087
+  },
+  {
+    "name": "Mesnil-en-Arrouaise",
+    "lat": 50.034996,
+    "lng": 2.951777
+  },
+  {
+    "name": "Mettendorf",
+    "lat": 49.955273,
+    "lng": 6.334569
+  },
+  {
+    "name": "Mettet",
+    "lat": 50.320639,
+    "lng": 4.675133
+  },
+  {
+    "name": "Metz-en-Couture",
+    "lat": 50.060726,
+    "lng": 3.062904
+  },
+  {
+    "name": "Meurchin",
+    "lat": 50.495027,
+    "lng": 2.897222
+  },
+  {
+    "name": "Millonfosse",
+    "lat": 50.427232,
+    "lng": 3.378244
+  },
+  {
+    "name": "Modave",
+    "lat": 50.471743,
+    "lng": 5.295123
+  },
+  {
+    "name": "Mœuvres",
+    "lat": 50.158985,
+    "lng": 3.067813
+  },
+  {
+    "name": "Moislains",
+    "lat": 49.993753,
+    "lng": 2.968816
+  },
+  {
+    "name": "Molain",
+    "lat": 50.032004,
+    "lng": 3.529983
+  },
+  {
+    "name": "Molenbeek-Saint-Jean - Sint-Jans-Molenbeek",
+    "lat": 50.857667,
+    "lng": 4.315754
+  },
+  {
+    "name": "Momignies",
+    "lat": 50.008657,
+    "lng": 4.224909
+  },
+  {
+    "name": "Monceau-Saint-Waast",
+    "lat": 50.17513,
+    "lng": 3.855036
+  },
+  {
+    "name": "Monchaux-sur-Écaillon",
+    "lat": 50.284764,
+    "lng": 3.458655
+  },
+  {
+    "name": "Moncheaux",
+    "lat": 50.456891,
+    "lng": 3.091552
+  },
+  {
+    "name": "Monchecourt",
+    "lat": 50.306999,
+    "lng": 3.211093
+  },
+  {
+    "name": "Monchy-le-Preux",
+    "lat": 50.266869,
+    "lng": 2.892701
+  },
+  {
+    "name": "Mondrepuis",
+    "lat": 49.962854,
+    "lng": 4.0587
+  },
+  {
+    "name": "Mons",
+    "lat": 50.445763,
+    "lng": 3.969833
+  },
+  {
+    "name": "Mons-en-Barœul",
+    "lat": 50.64362,
+    "lng": 3.109095
+  },
+  {
+    "name": "Mons-en-Pévèle",
+    "lat": 50.482484,
+    "lng": 3.103249
+  },
+  {
+    "name": "Monschau",
+    "lat": 50.55303,
+    "lng": 6.277135
+  },
+  {
+    "name": "Mont-de-l'Enclus",
+    "lat": 50.737393,
+    "lng": 3.500441
+  },
+  {
+    "name": "Mont-Saint-Guibert",
+    "lat": 50.634884,
+    "lng": 4.627629
+  },
+  {
+    "name": "Montay",
+    "lat": 50.123671,
+    "lng": 3.531813
+  },
+  {
+    "name": "Montbrehain",
+    "lat": 49.963518,
+    "lng": 3.356226
+  },
+  {
+    "name": "Montigny-en-Cambrésis",
+    "lat": 50.089349,
+    "lng": 3.411001
+  },
+  {
+    "name": "Montigny-en-Gohelle",
+    "lat": 50.426526,
+    "lng": 2.930922
+  },
+  {
+    "name": "Montigny-en-Ostrevent",
+    "lat": 50.368467,
+    "lng": 3.183236
+  },
+  {
+    "name": "Montigny-le-Tilleul",
+    "lat": 50.379779,
+    "lng": 4.376173
+  },
+  {
+    "name": "Montigny-sur-Meuse",
+    "lat": 50.049123,
+    "lng": 4.710007
+  },
+  {
+    "name": "Montrécourt",
+    "lat": 50.226646,
+    "lng": 3.448233
+  },
+  {
+    "name": "Moorslede",
+    "lat": 50.882502,
+    "lng": 3.081324
+  },
+  {
+    "name": "Morchies",
+    "lat": 50.136774,
+    "lng": 2.95682
+  },
+  {
+    "name": "Morlanwelz",
+    "lat": 50.448348,
+    "lng": 4.240047
+  },
+  {
+    "name": "Mortagne-du-Nord",
+    "lat": 50.499465,
+    "lng": 3.453348
+  },
+  {
+    "name": "Mouchin",
+    "lat": 50.517409,
+    "lng": 3.290386
+  },
+  {
+    "name": "Mouscron",
+    "lat": 50.737909,
+    "lng": 3.253819
+  },
+  {
+    "name": "Moustier-en-Fagne",
+    "lat": 50.094386,
+    "lng": 4.199024
+  },
+  {
+    "name": "Mouvaux",
+    "lat": 50.704363,
+    "lng": 3.136862
+  },
+  {
+    "name": "Mülbach",
+    "lat": 49.96895,
+    "lng": 6.40041
+  },
+  {
+    "name": "Mützenich",
+    "lat": 50.25338,
+    "lng": 6.251967
+  },
+  {
+    "name": "Muxerath",
+    "lat": 49.991907,
+    "lng": 6.267053
+  },
+  {
+    "name": "Namur",
+    "lat": 50.459192,
+    "lng": 4.853705
+  },
+  {
+    "name": "Nandrin",
+    "lat": 50.516175,
+    "lng": 5.405601
+  },
+  {
+    "name": "Nasingen",
+    "lat": 49.977122,
+    "lng": 6.261813
+  },
+  {
+    "name": "Nassogne",
+    "lat": 50.139176,
+    "lng": 5.354399
+  },
+  {
+    "name": "Nauroy",
+    "lat": 49.951422,
+    "lng": 3.258699
+  },
+  {
+    "name": "Naves",
+    "lat": 50.204666,
+    "lng": 3.316245
+  },
+  {
+    "name": "Neuendorf",
+    "lat": 50.29569,
+    "lng": 6.463291
+  },
+  {
+    "name": "Neuerburg",
+    "lat": 50.004814,
+    "lng": 6.293051
+  },
+  {
+    "name": "Neuf-Mesnil",
+    "lat": 50.265515,
+    "lng": 3.910808
+  },
+  {
+    "name": "Neupré",
+    "lat": 50.545934,
+    "lng": 5.488699
+  },
+  {
+    "name": "Neuville-Bourjonval",
+    "lat": 50.068806,
+    "lng": 3.023943
+  },
+  {
+    "name": "Neuville-en-Avesnois",
+    "lat": 50.199622,
+    "lng": 3.579643
+  },
+  {
+    "name": "Neuville-en-Ferrain",
+    "lat": 50.755868,
+    "lng": 3.161382
+  },
+  {
+    "name": "Neuville-lez-Beaulieu",
+    "lat": 49.90456,
+    "lng": 4.356442
+  },
+  {
+    "name": "Neuville-Saint-Rémy",
+    "lat": 50.186998,
+    "lng": 3.220188
+  },
+  {
+    "name": "Neuville-sur-Escaut",
+    "lat": 50.292256,
+    "lng": 3.349182
+  },
+  {
+    "name": "Neuvilly",
+    "lat": 50.133784,
+    "lng": 3.513851
+  },
+  {
+    "name": "Neuvireuil",
+    "lat": 50.353586,
+    "lng": 2.915418
+  },
+  {
+    "name": "Nideggen",
+    "lat": 50.674116,
+    "lng": 6.486756
+  },
+  {
+    "name": "Niederlauch",
+    "lat": 50.159453,
+    "lng": 6.428478
+  },
+  {
+    "name": "Niederpierscheid",
+    "lat": 50.076339,
+    "lng": 6.373025
+  },
+  {
+    "name": "Niederraden",
+    "lat": 49.985275,
+    "lng": 6.328256
+  },
+  {
+    "name": "Niederweiler",
+    "lat": 50.031919,
+    "lng": 6.437888
+  },
+  {
+    "name": "Niederzier",
+    "lat": 50.896909,
+    "lng": 6.474469
+  },
+  {
+    "name": "Niehl",
+    "lat": 49.952128,
+    "lng": 6.364315
+  },
+  {
+    "name": "Niergnies",
+    "lat": 50.141162,
+    "lng": 3.255589
+  },
+  {
+    "name": "Nimsreuland",
+    "lat": 50.132346,
+    "lng": 6.451236
+  },
+  {
+    "name": "Ninove",
+    "lat": 50.82149,
+    "lng": 3.996769
+  },
+  {
+    "name": "Nivelle",
+    "lat": 50.468123,
+    "lng": 3.464465
+  },
+  {
+    "name": "Nivelles",
+    "lat": 50.589231,
+    "lng": 4.326112
+  },
+  {
+    "name": "Nomain",
+    "lat": 50.503922,
+    "lng": 3.242638
+  },
+  {
+    "name": "Noreuil",
+    "lat": 50.168861,
+    "lng": 2.939931
+  },
+  {
+    "name": "Noyelles-Godault",
+    "lat": 50.41749,
+    "lng": 2.996255
+  },
+  {
+    "name": "Noyelles-lès-Seclin",
+    "lat": 50.57158,
+    "lng": 3.014441
+  },
+  {
+    "name": "Noyelles-sous-Bellonne",
+    "lat": 50.309906,
+    "lng": 3.022006
+  },
+  {
+    "name": "Noyelles-sous-Lens",
+    "lat": 50.429472,
+    "lng": 2.876556
+  },
+  {
+    "name": "Noyelles-sur-Escaut",
+    "lat": 50.138252,
+    "lng": 3.175234
+  },
+  {
+    "name": "Noyelles-sur-Sambre",
+    "lat": 50.159428,
+    "lng": 3.797633
+  },
+  {
+    "name": "Noyelles-sur-Selle",
+    "lat": 50.279581,
+    "lng": 3.383233
+  },
+  {
+    "name": "Nurlu",
+    "lat": 50.001461,
+    "lng": 3.01852
+  },
+  {
+    "name": "Obergeckler",
+    "lat": 49.979093,
+    "lng": 6.294645
+  },
+  {
+    "name": "Oberlascheid",
+    "lat": 50.269698,
+    "lng": 6.308844
+  },
+  {
+    "name": "Oberlauch",
+    "lat": 50.165505,
+    "lng": 6.42901
+  },
+  {
+    "name": "Oberpierscheid",
+    "lat": 50.053214,
+    "lng": 6.387773
+  },
+  {
+    "name": "Oberweiler",
+    "lat": 50.047705,
+    "lng": 6.433648
+  },
+  {
+    "name": "Oberweis",
+    "lat": 49.967763,
+    "lng": 6.430057
+  },
+  {
+    "name": "Obies",
+    "lat": 50.269575,
+    "lng": 3.775189
+  },
+  {
+    "name": "Obrechies",
+    "lat": 50.21896,
+    "lng": 4.039513
+  },
+  {
+    "name": "Odomez",
+    "lat": 50.446778,
+    "lng": 3.537172
+  },
+  {
+    "name": "Ohain",
+    "lat": 50.036036,
+    "lng": 4.12974
+  },
+  {
+    "name": "Ohey",
+    "lat": 50.43829,
+    "lng": 5.156706
+  },
+  {
+    "name": "Oignies",
+    "lat": 50.463701,
+    "lng": 2.991895
+  },
+  {
+    "name": "Oisy",
+    "lat": 50.022551,
+    "lng": 3.650099
+  },
+  {
+    "name": "Oisy-le-Verger",
+    "lat": 50.24932,
+    "lng": 3.11463
+  },
+  {
+    "name": "Olmscheid",
+    "lat": 50.059117,
+    "lng": 6.217237
+  },
+  {
+    "name": "Olne",
+    "lat": 50.586999,
+    "lng": 5.7325
+  },
+  {
+    "name": "Olsdorf",
+    "lat": 49.952936,
+    "lng": 6.388175
+  },
+  {
+    "name": "Olzheim",
+    "lat": 50.275918,
+    "lng": 6.440095
+  },
+  {
+    "name": "Onhaye",
+    "lat": 50.262879,
+    "lng": 4.815123
+  },
+  {
+    "name": "Onnaing",
+    "lat": 50.385579,
+    "lng": 3.596882
+  },
+  {
+    "name": "Oppy",
+    "lat": 50.348548,
+    "lng": 2.889918
+  },
+  {
+    "name": "Orchies",
+    "lat": 50.46834,
+    "lng": 3.239731
+  },
+  {
+    "name": "Oreye",
+    "lat": 50.723691,
+    "lng": 5.3492
+  },
+  {
+    "name": "Orlenbach",
+    "lat": 50.164614,
+    "lng": 6.391974
+  },
+  {
+    "name": "Ormont",
+    "lat": 50.318579,
+    "lng": 6.452133
+  },
+  {
+    "name": "Orp-Jauche",
+    "lat": 50.690648,
+    "lng": 4.964294
+  },
+  {
+    "name": "Ors",
+    "lat": 50.106058,
+    "lng": 3.633902
+  },
+  {
+    "name": "Orsinval",
+    "lat": 50.272557,
+    "lng": 3.630372
+  },
+  {
+    "name": "Ostricourt",
+    "lat": 50.457218,
+    "lng": 3.03296
+  },
+  {
+    "name": "Ottignies-Louvain-la-Neuve",
+    "lat": 50.672853,
+    "lng": 4.569972
+  },
+  {
+    "name": "Oud-Heverlee",
+    "lat": 50.821562,
+    "lng": 4.689334
+  },
+  {
+    "name": "Oudenaarde",
+    "lat": 50.84695,
+    "lng": 3.619284
+  },
+  {
+    "name": "Ouffet",
+    "lat": 50.445186,
+    "lng": 5.46058
+  },
+  {
+    "name": "Oupeye",
+    "lat": 50.717258,
+    "lng": 5.642566
+  },
+  {
+    "name": "Overijse",
+    "lat": 50.768026,
+    "lng": 4.532535
+  },
+  {
+    "name": "Paillencourt",
+    "lat": 50.248832,
+    "lng": 3.265177
+  },
+  {
+    "name": "Pajottegem",
+    "lat": 50.751903,
+    "lng": 4.041696
+  },
+  {
+    "name": "Paliseul",
+    "lat": 49.909276,
+    "lng": 5.121922
+  },
+  {
+    "name": "Palluel",
+    "lat": 50.261544,
+    "lng": 3.08939
+  },
+  {
+    "name": "Papleux",
+    "lat": 50.016647,
+    "lng": 3.879897
+  },
+  {
+    "name": "Parc Hosingen",
+    "lat": 49.996345,
+    "lng": 6.097969
+  },
+  {
+    "name": "Pecq",
+    "lat": 50.685076,
+    "lng": 3.351158
+  },
+  {
+    "name": "Pecquencourt",
+    "lat": 50.37545,
+    "lng": 3.219797
+  },
+  {
+    "name": "Pelves",
+    "lat": 50.287867,
+    "lng": 2.917357
+  },
+  {
+    "name": "Pepingen",
+    "lat": 50.747656,
+    "lng": 4.137238
+  },
+  {
+    "name": "Pepinster",
+    "lat": 50.571131,
+    "lng": 5.803172
+  },
+  {
+    "name": "Pérenchies",
+    "lat": 50.670755,
+    "lng": 2.968125
+  },
+  {
+    "name": "Péronne",
+    "lat": 49.926219,
+    "lng": 2.926026
+  },
+  {
+    "name": "Péronne-en-Mélantois",
+    "lat": 50.564421,
+    "lng": 3.170693
+  },
+  {
+    "name": "Péruwelz",
+    "lat": 50.533333,
+    "lng": 3.562761
+  },
+  {
+    "name": "Perwez",
+    "lat": 50.634334,
+    "lng": 4.792969
+  },
+  {
+    "name": "Petit-Fayt",
+    "lat": 50.098449,
+    "lng": 3.835621
+  },
+  {
+    "name": "Petit-Verly",
+    "lat": 49.960897,
+    "lng": 3.564543
+  },
+  {
+    "name": "Petite-Forêt",
+    "lat": 50.376094,
+    "lng": 3.477256
+  },
+  {
+    "name": "Phalempin",
+    "lat": 50.511366,
+    "lng": 3.020683
+  },
+  {
+    "name": "Philippeville",
+    "lat": 50.161311,
+    "lng": 4.602789
+  },
+  {
+    "name": "Pintesfeld",
+    "lat": 50.109368,
+    "lng": 6.367508
+  },
+  {
+    "name": "Pittenbach",
+    "lat": 50.177015,
+    "lng": 6.350519
+  },
+  {
+    "name": "Plascheid",
+    "lat": 50.034139,
+    "lng": 6.291266
+  },
+  {
+    "name": "Plombières",
+    "lat": 50.720492,
+    "lng": 5.952187
+  },
+  {
+    "name": "Plouvain",
+    "lat": 50.305978,
+    "lng": 2.915946
+  },
+  {
+    "name": "Plütscheid",
+    "lat": 50.079919,
+    "lng": 6.422051
+  },
+  {
+    "name": "Poix-du-Nord",
+    "lat": 50.187593,
+    "lng": 3.617702
+  },
+  {
+    "name": "Pommereuil",
+    "lat": 50.11679,
+    "lng": 3.585528
+  },
+  {
+    "name": "Pont-à-Celles",
+    "lat": 50.515408,
+    "lng": 4.381866
+  },
+  {
+    "name": "Pont-à-Marcq",
+    "lat": 50.521816,
+    "lng": 3.115631
+  },
+  {
+    "name": "Pont-à-Vendin",
+    "lat": 50.477095,
+    "lng": 2.886416
+  },
+  {
+    "name": "Pont-sur-Sambre",
+    "lat": 50.230596,
+    "lng": 3.84831
+  },
+  {
+    "name": "Pontru",
+    "lat": 49.921413,
+    "lng": 3.200687
+  },
+  {
+    "name": "Potelle",
+    "lat": 50.233712,
+    "lng": 3.66851
+  },
+  {
+    "name": "Preischeid",
+    "lat": 50.036558,
+    "lng": 6.154706
+  },
+  {
+    "name": "Prémesques",
+    "lat": 50.661043,
+    "lng": 2.948072
+  },
+  {
+    "name": "Prémont",
+    "lat": 50.015676,
+    "lng": 3.392772
+  },
+  {
+    "name": "Préseau",
+    "lat": 50.311151,
+    "lng": 3.57574
+  },
+  {
+    "name": "Preux-au-Bois",
+    "lat": 50.163524,
+    "lng": 3.652319
+  },
+  {
+    "name": "Preux-au-Sart",
+    "lat": 50.289075,
+    "lng": 3.698378
+  },
+  {
+    "name": "Prisches",
+    "lat": 50.078293,
+    "lng": 3.759189
+  },
+  {
+    "name": "Profondeville",
+    "lat": 50.376852,
+    "lng": 4.830079
+  },
+  {
+    "name": "Pronsfeld",
+    "lat": 50.175343,
+    "lng": 6.335001
+  },
+  {
+    "name": "Pronville-en-Artois",
+    "lat": 50.16686,
+    "lng": 3.008097
+  },
+  {
+    "name": "Prouvy",
+    "lat": 50.327358,
+    "lng": 3.455143
+  },
+  {
+    "name": "Proville",
+    "lat": 50.156649,
+    "lng": 3.204105
+  },
+  {
+    "name": "Provin",
+    "lat": 50.515652,
+    "lng": 2.91074
+  },
+  {
+    "name": "Prüm",
+    "lat": 50.204781,
+    "lng": 6.403215
+  },
+  {
+    "name": "Putscheid",
+    "lat": 49.953125,
+    "lng": 6.142687
+  },
+  {
+    "name": "Quaregnon",
+    "lat": 50.435349,
+    "lng": 3.856663
+  },
+  {
+    "name": "Quarouble",
+    "lat": 50.405643,
+    "lng": 3.626051
+  },
+  {
+    "name": "Quéant",
+    "lat": 50.172222,
+    "lng": 2.984826
+  },
+  {
+    "name": "Quérénaing",
+    "lat": 50.287034,
+    "lng": 3.506146
+  },
+  {
+    "name": "Quesnoy-sur-Deûle",
+    "lat": 50.713099,
+    "lng": 3.006268
+  },
+  {
+    "name": "Quévy",
+    "lat": 50.367843,
+    "lng": 3.957942
+  },
+  {
+    "name": "Quiéry-la-Motte",
+    "lat": 50.365657,
+    "lng": 2.983637
+  },
+  {
+    "name": "Quiévelon",
+    "lat": 50.234237,
+    "lng": 4.069138
+  },
+  {
+    "name": "Quiévrain",
+    "lat": 50.396158,
+    "lng": 3.706355
+  },
+  {
+    "name": "Quiévrechain",
+    "lat": 50.394487,
+    "lng": 3.658292
+  },
+  {
+    "name": "Quiévy",
+    "lat": 50.162853,
+    "lng": 3.421803
+  },
+  {
+    "name": "Râches",
+    "lat": 50.420761,
+    "lng": 3.133839
+  },
+  {
+    "name": "Radinghem-en-Weppes",
+    "lat": 50.629876,
+    "lng": 2.898728
+  },
+  {
+    "name": "Raeren",
+    "lat": 50.662173,
+    "lng": 6.150136
+  },
+  {
+    "name": "Raillencourt-Sainte-Olle",
+    "lat": 50.188314,
+    "lng": 3.176301
+  },
+  {
+    "name": "Raimbeaucourt",
+    "lat": 50.436914,
+    "lng": 3.102273
+  },
+  {
+    "name": "Rainsars",
+    "lat": 50.07051,
+    "lng": 4.00086
+  },
+  {
+    "name": "Raismes",
+    "lat": 50.411682,
+    "lng": 3.488544
+  },
+  {
+    "name": "Ramicourt",
+    "lat": 49.961145,
+    "lng": 3.334008
+  },
+  {
+    "name": "Ramillies",
+    "lat": 50.659605,
+    "lng": 4.886079
+  },
+  {
+    "name": "Ramousies",
+    "lat": 50.116173,
+    "lng": 4.035002
+  },
+  {
+    "name": "Rancennes",
+    "lat": 50.122042,
+    "lng": 4.825452
+  },
+  {
+    "name": "Rancourt",
+    "lat": 50.003815,
+    "lng": 2.902968
+  },
+  {
+    "name": "Raucourt-au-Bois",
+    "lat": 50.20649,
+    "lng": 3.656725
+  },
+  {
+    "name": "Rebecq",
+    "lat": 50.673149,
+    "lng": 4.136217
+  },
+  {
+    "name": "Récourt",
+    "lat": 50.258839,
+    "lng": 3.027032
+  },
+  {
+    "name": "Recquignies",
+    "lat": 50.276476,
+    "lng": 4.049062
+  },
+  {
+    "name": "Reiff",
+    "lat": 50.105721,
+    "lng": 6.220401
+  },
+  {
+    "name": "Reipeldingen",
+    "lat": 50.087912,
+    "lng": 6.182338
+  },
+  {
+    "name": "Rejet-de-Beaulieu",
+    "lat": 50.043843,
+    "lng": 3.635093
+  },
+  {
+    "name": "Remicourt",
+    "lat": 50.684673,
+    "lng": 5.342482
+  },
+  {
+    "name": "Rémy",
+    "lat": 50.257323,
+    "lng": 2.959162
+  },
+  {
+    "name": "Rendeux",
+    "lat": 50.214357,
+    "lng": 5.527067
+  },
+  {
+    "name": "Reumont",
+    "lat": 50.085853,
+    "lng": 3.475687
+  },
+  {
+    "name": "Revin",
+    "lat": 49.934055,
+    "lng": 4.693327
+  },
+  {
+    "name": "Ribeauville",
+    "lat": 50.036982,
+    "lng": 3.590382
+  },
+  {
+    "name": "Ribécourt-la-Tour",
+    "lat": 50.103692,
+    "lng": 3.13024
+  },
+  {
+    "name": "Riemst",
+    "lat": 50.803472,
+    "lng": 5.600868
+  },
+  {
+    "name": "Riencourt-lès-Bapaume",
+    "lat": 50.08823,
+    "lng": 2.881399
+  },
+  {
+    "name": "Riencourt-lès-Cagnicourt",
+    "lat": 50.193545,
+    "lng": 2.962402
+  },
+  {
+    "name": "Rieulay",
+    "lat": 50.386729,
+    "lng": 3.266772
+  },
+  {
+    "name": "Rieux-en-Cambrésis",
+    "lat": 50.202108,
+    "lng": 3.353296
+  },
+  {
+    "name": "Rixensart",
+    "lat": 50.721888,
+    "lng": 4.521985
+  },
+  {
+    "name": "Robersart",
+    "lat": 50.157276,
+    "lng": 3.646453
+  },
+  {
+    "name": "Rochefort",
+    "lat": 50.165863,
+    "lng": 5.169657
+  },
+  {
+    "name": "Rocquigny",
+    "lat": 50.055756,
+    "lng": 2.92419
+  },
+  {
+    "name": "Rocroi",
+    "lat": 49.927691,
+    "lng": 4.55475
+  },
+  {
+    "name": "Rodershausen",
+    "lat": 49.989852,
+    "lng": 6.197193
+  },
+  {
+    "name": "Roetgen",
+    "lat": 50.66456,
+    "lng": 6.219065
+  },
+  {
+    "name": "Rœulx",
+    "lat": 50.313756,
+    "lng": 3.328098
+  },
+  {
+    "name": "Rœux",
+    "lat": 50.301986,
+    "lng": 2.901558
+  },
+  {
+    "name": "Roisel",
+    "lat": 49.941757,
+    "lng": 3.097171
+  },
+  {
+    "name": "Rombies-et-Marchipont",
+    "lat": 50.368651,
+    "lng": 3.640828
+  },
+  {
+    "name": "Romeries",
+    "lat": 50.196233,
+    "lng": 3.541338
+  },
+  {
+    "name": "Rommersheim",
+    "lat": 50.192875,
+    "lng": 6.44454
+  },
+  {
+    "name": "Ronchin",
+    "lat": 50.603334,
+    "lng": 3.093021
+  },
+  {
+    "name": "Roncq",
+    "lat": 50.74525,
+    "lng": 3.115135
+  },
+  {
+    "name": "Ronse",
+    "lat": 50.752603,
+    "lng": 3.607743
+  },
+  {
+    "name": "Ronssoy",
+    "lat": 49.98116,
+    "lng": 3.170517
+  },
+  {
+    "name": "Roosdaal",
+    "lat": 50.835064,
+    "lng": 4.095625
+  },
+  {
+    "name": "Roost-Warendin",
+    "lat": 50.412629,
+    "lng": 3.098077
+  },
+  {
+    "name": "Roscheid",
+    "lat": 50.119826,
+    "lng": 6.179309
+  },
+  {
+    "name": "Rosult",
+    "lat": 50.454819,
+    "lng": 3.360673
+  },
+  {
+    "name": "Roth bei Prüm",
+    "lat": 50.299923,
+    "lng": 6.399817
+  },
+  {
+    "name": "Roubaix",
+    "lat": 50.688748,
+    "lng": 3.184293
+  },
+  {
+    "name": "Roucourt",
+    "lat": 50.327456,
+    "lng": 3.146039
+  },
+  {
+    "name": "Rousies",
+    "lat": 50.27168,
+    "lng": 3.998902
+  },
+  {
+    "name": "Rouvignies",
+    "lat": 50.33478,
+    "lng": 3.440566
+  },
+  {
+    "name": "Rouvroy",
+    "lat": 50.398142,
+    "lng": 2.905941
+  },
+  {
+    "name": "Ruesnes",
+    "lat": 50.263921,
+    "lng": 3.58227
+  },
+  {
+    "name": "Rumaucourt",
+    "lat": 50.238221,
+    "lng": 3.066421
+  },
+  {
+    "name": "Rumegies",
+    "lat": 50.491824,
+    "lng": 3.356935
+  },
+  {
+    "name": "Rumes",
+    "lat": 50.542552,
+    "lng": 3.321537
+  },
+  {
+    "name": "Rumilly-en-Cambrésis",
+    "lat": 50.130622,
+    "lng": 3.228486
+  },
+  {
+    "name": "Ruyaulcourt",
+    "lat": 50.082412,
+    "lng": 3.020511
+  },
+  {
+    "name": "Sailly-en-Ostrevent",
+    "lat": 50.285968,
+    "lng": 2.992402
+  },
+  {
+    "name": "Sailly-lez-Cambrai",
+    "lat": 50.1984,
+    "lng": 3.178145
+  },
+  {
+    "name": "Sailly-lez-Lannoy",
+    "lat": 50.645771,
+    "lng": 3.226912
+  },
+  {
+    "name": "Sailly-Saillisel",
+    "lat": 50.030383,
+    "lng": 2.909008
+  },
+  {
+    "name": "Sainghin-en-Mélantois",
+    "lat": 50.585622,
+    "lng": 3.16315
+  },
+  {
+    "name": "Sainghin-en-Weppes",
+    "lat": 50.556427,
+    "lng": 2.897306
+  },
+  {
+    "name": "Sains-du-Nord",
+    "lat": 50.086105,
+    "lng": 4.035549
+  },
+  {
+    "name": "Sains-lès-Marquion",
+    "lat": 50.186402,
+    "lng": 3.080123
+  },
+  {
+    "name": "Saint-Amand-les-Eaux",
+    "lat": 50.438107,
+    "lng": 3.444756
+  },
+  {
+    "name": "Saint-André-lez-Lille",
+    "lat": 50.659922,
+    "lng": 3.041429
+  },
+  {
+    "name": "Saint-Aubert",
+    "lat": 50.206535,
+    "lng": 3.421325
+  },
+  {
+    "name": "Saint-Aubin",
+    "lat": 50.173211,
+    "lng": 3.909239
+  },
+  {
+    "name": "Saint-Aybert",
+    "lat": 50.449983,
+    "lng": 3.648438
+  },
+  {
+    "name": "Saint-Benin",
+    "lat": 50.076306,
+    "lng": 3.531292
+  },
+  {
+    "name": "Saint-Georges-sur-Meuse",
+    "lat": 50.597067,
+    "lng": 5.360276
+  },
+  {
+    "name": "Saint-Ghislain",
+    "lat": 50.489843,
+    "lng": 3.80786
+  },
+  {
+    "name": "Saint-Gilles - Sint-Gillis",
+    "lat": 50.830383,
+    "lng": 4.342225
+  },
+  {
+    "name": "Saint-Hilaire-lez-Cambrai",
+    "lat": 50.179555,
+    "lng": 3.419592
+  },
+  {
+    "name": "Saint-Hilaire-sur-Helpe",
+    "lat": 50.135518,
+    "lng": 3.901599
+  },
+  {
+    "name": "Saint-Hubert",
+    "lat": 50.037833,
+    "lng": 5.344748
+  },
+  {
+    "name": "Saint-Josse-ten-Noode - Sint-Joost-ten-Node",
+    "lat": 50.853717,
+    "lng": 4.36965
+  },
+  {
+    "name": "Saint-Martin-Rivière",
+    "lat": 50.043768,
+    "lng": 3.554095
+  },
+  {
+    "name": "Saint-Martin-sur-Écaillon",
+    "lat": 50.239948,
+    "lng": 3.51617
+  },
+  {
+    "name": "Saint-Michel",
+    "lat": 49.931002,
+    "lng": 4.150038
+  },
+  {
+    "name": "Saint-Nicolas",
+    "lat": 50.632141,
+    "lng": 5.527977
+  },
+  {
+    "name": "Saint-Python",
+    "lat": 50.190835,
+    "lng": 3.476598
+  },
+  {
+    "name": "Saint-Remy-Chaussée",
+    "lat": 50.177942,
+    "lng": 3.878632
+  },
+  {
+    "name": "Saint-Remy-du-Nord",
+    "lat": 50.22815,
+    "lng": 3.903019
+  },
+  {
+    "name": "Saint-Saulve",
+    "lat": 50.379482,
+    "lng": 3.568736
+  },
+  {
+    "name": "Saint-Souplet",
+    "lat": 50.052565,
+    "lng": 3.520469
+  },
+  {
+    "name": "Saint-Vaast-en-Cambrésis",
+    "lat": 50.194715,
+    "lng": 3.428618
+  },
+  {
+    "name": "Saint-Waast",
+    "lat": 50.303298,
+    "lng": 3.74718
+  },
+  {
+    "name": "Sainte-Ode",
+    "lat": 50.016562,
+    "lng": 5.522253
+  },
+  {
+    "name": "Salesches",
+    "lat": 50.208288,
+    "lng": 3.595944
+  },
+  {
+    "name": "Sambreville",
+    "lat": 50.446374,
+    "lng": 4.621478
+  },
+  {
+    "name": "Saméon",
+    "lat": 50.477099,
+    "lng": 3.331413
+  },
+  {
+    "name": "Sancourt",
+    "lat": 50.213149,
+    "lng": 3.190661
+  },
+  {
+    "name": "Sankt Vith",
+    "lat": 50.291473,
+    "lng": 6.143845
+  },
+  {
+    "name": "Santes",
+    "lat": 50.587826,
+    "lng": 2.956104
+  },
+  {
+    "name": "Sars-et-Rosières",
+    "lat": 50.447316,
+    "lng": 3.329482
+  },
+  {
+    "name": "Sars-Poteries",
+    "lat": 50.162795,
+    "lng": 4.0487
+  },
+  {
+    "name": "Sassegnies",
+    "lat": 50.176162,
+    "lng": 3.795547
+  },
+  {
+    "name": "Sauchy-Cauchy",
+    "lat": 50.235738,
+    "lng": 3.093895
+  },
+  {
+    "name": "Sauchy-Lestrée",
+    "lat": 50.218568,
+    "lng": 3.114335
+  },
+  {
+    "name": "Saudemont",
+    "lat": 50.237654,
+    "lng": 3.03063
+  },
+  {
+    "name": "Saultain",
+    "lat": 50.335871,
+    "lng": 3.583293
+  },
+  {
+    "name": "Saulzoir",
+    "lat": 50.240556,
+    "lng": 3.442256
+  },
+  {
+    "name": "Schaerbeek - Schaarbeek",
+    "lat": 50.862236,
+    "lng": 4.385107
+  },
+  {
+    "name": "Scheid",
+    "lat": 50.368306,
+    "lng": 6.40846
+  },
+  {
+    "name": "Scheitenkorb",
+    "lat": 50.008543,
+    "lng": 6.205179
+  },
+  {
+    "name": "Scheuern",
+    "lat": 50.022446,
+    "lng": 6.31737
+  },
+  {
+    "name": "Schleiden",
+    "lat": 50.558562,
+    "lng": 6.453768
+  },
+  {
+    "name": "Schönecken",
+    "lat": 50.151288,
+    "lng": 6.474001
+  },
+  {
+    "name": "Seboncourt",
+    "lat": 49.96515,
+    "lng": 3.493475
+  },
+  {
+    "name": "Sebourg",
+    "lat": 50.345342,
+    "lng": 3.645923
+  },
+  {
+    "name": "Seclin",
+    "lat": 50.5452,
+    "lng": 3.026783
+  },
+  {
+    "name": "Sellerich",
+    "lat": 50.225698,
+    "lng": 6.354778
+  },
+  {
+    "name": "Sémeries",
+    "lat": 50.104542,
+    "lng": 3.985216
+  },
+  {
+    "name": "Semousies",
+    "lat": 50.163463,
+    "lng": 3.969472
+  },
+  {
+    "name": "Seneffe",
+    "lat": 50.548943,
+    "lng": 4.261321
+  },
+  {
+    "name": "Sengerich",
+    "lat": 50.120178,
+    "lng": 6.226307
+  },
+  {
+    "name": "Sepmeries",
+    "lat": 50.277381,
+    "lng": 3.560179
+  },
+  {
+    "name": "Sequedin",
+    "lat": 50.625238,
+    "lng": 2.988658
+  },
+  {
+    "name": "Serain",
+    "lat": 50.023826,
+    "lng": 3.364814
+  },
+  {
+    "name": "Seraing",
+    "lat": 50.587922,
+    "lng": 5.51772
+  },
+  {
+    "name": "Séranvillers-Forenville",
+    "lat": 50.128847,
+    "lng": 3.274698
+  },
+  {
+    "name": "Sevenig (Our)",
+    "lat": 50.122194,
+    "lng": 6.151473
+  },
+  {
+    "name": "Sevenig bei Neuerburg",
+    "lat": 50.016704,
+    "lng": 6.182085
+  },
+  {
+    "name": "Signy-le-Petit",
+    "lat": 49.930682,
+    "lng": 4.293991
+  },
+  {
+    "name": "Silly",
+    "lat": 50.642834,
+    "lng": 3.97159
+  },
+  {
+    "name": "Simmerath",
+    "lat": 50.607951,
+    "lng": 6.332719
+  },
+  {
+    "name": "Simpelveld",
+    "lat": 50.83083,
+    "lng": 5.989137
+  },
+  {
+    "name": "Sin-le-Noble",
+    "lat": 50.367234,
+    "lng": 3.12147
+  },
+  {
+    "name": "Sinspelt",
+    "lat": 49.976636,
+    "lng": 6.320138
+  },
+  {
+    "name": "Sint-Genesius-Rode - Rhode-Saint-Genèse",
+    "lat": 50.744237,
+    "lng": 4.372548
+  },
+  {
+    "name": "Sint-Pieters-Leeuw",
+    "lat": 50.788522,
+    "lng": 4.243529
+  },
+  {
+    "name": "Sint-Truiden",
+    "lat": 50.813108,
+    "lng": 5.196729
+  },
+  {
+    "name": "Sivry-Rance",
+    "lat": 50.168022,
+    "lng": 4.215706
+  },
+  {
+    "name": "Soignies",
+    "lat": 50.567104,
+    "lng": 4.041472
+  },
+  {
+    "name": "Solesmes",
+    "lat": 50.173003,
+    "lng": 3.514462
+  },
+  {
+    "name": "Solre-le-Château",
+    "lat": 50.169781,
+    "lng": 4.101764
+  },
+  {
+    "name": "Solrinnes",
+    "lat": 50.204486,
+    "lng": 4.073537
+  },
+  {
+    "name": "Somain",
+    "lat": 50.359491,
+    "lng": 3.271692
+  },
+  {
+    "name": "Sombreffe",
+    "lat": 50.526894,
+    "lng": 4.601159
+  },
+  {
+    "name": "Sommaing",
+    "lat": 50.265562,
+    "lng": 3.496053
+  },
+  {
+    "name": "Somme-Leuze",
+    "lat": 50.313684,
+    "lng": 5.30847
+  },
+  {
+    "name": "Sommeron",
+    "lat": 49.957411,
+    "lng": 3.943172
+  },
+  {
+    "name": "Sorel",
+    "lat": 50.029086,
+    "lng": 3.049838
+  },
+  {
+    "name": "Soumagne",
+    "lat": 50.632904,
+    "lng": 5.729088
+  },
+  {
+    "name": "Spa",
+    "lat": 50.472844,
+    "lng": 5.873555
+  },
+  {
+    "name": "Spiere-Helkijn",
+    "lat": 50.728859,
+    "lng": 3.364028
+  },
+  {
+    "name": "Sprimont",
+    "lat": 50.516103,
+    "lng": 5.673277
+  },
+  {
+    "name": "Stavelot",
+    "lat": 50.415912,
+    "lng": 5.940762
+  },
+  {
+    "name": "Stolberg",
+    "lat": 50.745136,
+    "lng": 6.270083
+  },
+  {
+    "name": "Stoumont",
+    "lat": 50.410177,
+    "lng": 5.800536
+  },
+  {
+    "name": "Strickscheid",
+    "lat": 50.137936,
+    "lng": 6.315547
+  },
+  {
+    "name": "Taisnières-en-Thiérache",
+    "lat": 50.145763,
+    "lng": 3.810843
+  },
+  {
+    "name": "Taisnières-sur-Hon",
+    "lat": 50.323412,
+    "lng": 3.84794
+  },
+  {
+    "name": "Tellin",
+    "lat": 50.067997,
+    "lng": 5.234516
+  },
+  {
+    "name": "Templemars",
+    "lat": 50.570515,
+    "lng": 3.058958
+  },
+  {
+    "name": "Templeuve-en-Pévèle",
+    "lat": 50.532217,
+    "lng": 3.171605
+  },
+  {
+    "name": "Templeux-la-Fosse",
+    "lat": 49.971948,
+    "lng": 3.024887
+  },
+  {
+    "name": "Templeux-le-Guérard",
+    "lat": 49.964424,
+    "lng": 3.144026
+  },
+  {
+    "name": "Tenneville",
+    "lat": 50.099632,
+    "lng": 5.493793
+  },
+  {
+    "name": "Ternat",
+    "lat": 50.86522,
+    "lng": 4.156453
+  },
+  {
+    "name": "Tervuren",
+    "lat": 50.830825,
+    "lng": 4.516872
+  },
+  {
+    "name": "Theux",
+    "lat": 50.500599,
+    "lng": 5.829929
+  },
+  {
+    "name": "Thiant",
+    "lat": 50.296227,
+    "lng": 3.439505
+  },
+  {
+    "name": "Thilay",
+    "lat": 49.903031,
+    "lng": 4.809639
+  },
+  {
+    "name": "Thimister-Clermont",
+    "lat": 50.662364,
+    "lng": 5.871924
+  },
+  {
+    "name": "Thivencelle",
+    "lat": 50.445801,
+    "lng": 3.626036
+  },
+  {
+    "name": "Thuin",
+    "lat": 50.32196,
+    "lng": 4.310589
+  },
+  {
+    "name": "Thumeries",
+    "lat": 50.472391,
+    "lng": 3.065655
+  },
+  {
+    "name": "Thun-l'Évêque",
+    "lat": 50.222076,
+    "lng": 3.280012
+  },
+  {
+    "name": "Thun-Saint-Amand",
+    "lat": 50.485622,
+    "lng": 3.447987
+  },
+  {
+    "name": "Thun-Saint-Martin",
+    "lat": 50.218753,
+    "lng": 3.302533
+  },
+  {
+    "name": "Tienen",
+    "lat": 50.80821,
+    "lng": 4.935796
+  },
+  {
+    "name": "Tilloy-lez-Cambrai",
+    "lat": 50.201037,
+    "lng": 3.213318
+  },
+  {
+    "name": "Tilloy-lez-Marchiennes",
+    "lat": 50.431331,
+    "lng": 3.327709
+  },
+  {
+    "name": "Tincourt-Boucly",
+    "lat": 49.93775,
+    "lng": 3.047566
+  },
+  {
+    "name": "Tinlot",
+    "lat": 50.476417,
+    "lng": 5.376806
+  },
+  {
+    "name": "Tongeren-Borgloon",
+    "lat": 50.782792,
+    "lng": 5.401665
+  },
+  {
+    "name": "Tortequesne",
+    "lat": 50.292967,
+    "lng": 3.028089
+  },
+  {
+    "name": "Toufflers",
+    "lat": 50.660753,
+    "lng": 3.232404
+  },
+  {
+    "name": "Tourcoing",
+    "lat": 50.721049,
+    "lng": 3.157679
+  },
+  {
+    "name": "Tourmignies",
+    "lat": 50.504908,
+    "lng": 3.085548
+  },
+  {
+    "name": "Tournai",
+    "lat": 50.620626,
+    "lng": 3.410453
+  },
+  {
+    "name": "Trélon",
+    "lat": 50.06847,
+    "lng": 4.12611
+  },
+  {
+    "name": "Trescault",
+    "lat": 50.090521,
+    "lng": 3.094873
+  },
+  {
+    "name": "Tressin",
+    "lat": 50.619598,
+    "lng": 3.189675
+  },
+  {
+    "name": "Trith-Saint-Léger",
+    "lat": 50.329471,
+    "lng": 3.4879
+  },
+  {
+    "name": "Trois-Ponts",
+    "lat": 50.355409,
+    "lng": 5.881135
+  },
+  {
+    "name": "Troisvierges",
+    "lat": 50.144669,
+    "lng": 6.002791
+  },
+  {
+    "name": "Troisvilles",
+    "lat": 50.1013,
+    "lng": 3.47257
+  },
+  {
+    "name": "Trooz",
+    "lat": 50.571108,
+    "lng": 5.70722
+  },
+  {
+    "name": "Tubize",
+    "lat": 50.690603,
+    "lng": 4.188626
+  },
+  {
+    "name": "Tupigny",
+    "lat": 49.977515,
+    "lng": 3.598292
+  },
+  {
+    "name": "Übereisenbach",
+    "lat": 50.003136,
+    "lng": 6.151491
+  },
+  {
+    "name": "Uccle - Ukkel",
+    "lat": 50.790308,
+    "lng": 4.362206
+  },
+  {
+    "name": "Uppershausen",
+    "lat": 50.046317,
+    "lng": 6.3187
+  },
+  {
+    "name": "Utscheid",
+    "lat": 49.993624,
+    "lng": 6.351239
+  },
+  {
+    "name": "Üttfeld",
+    "lat": 50.130256,
+    "lng": 6.258101
+  },
+  {
+    "name": "Vaals",
+    "lat": 50.7781,
+    "lng": 5.974235
+  },
+  {
+    "name": "Valenciennes",
+    "lat": 50.362061,
+    "lng": 3.514263
+  },
+  {
+    "name": "Valkenburg aan de Geul",
+    "lat": 50.860888,
+    "lng": 5.818648
+  },
+  {
+    "name": "Vaulx-Vraucourt",
+    "lat": 50.142649,
+    "lng": 2.903189
+  },
+  {
+    "name": "Vaux-Andigny",
+    "lat": 50.009003,
+    "lng": 3.524801
+  },
+  {
+    "name": "Vaux-sur-Sûre",
+    "lat": 49.939388,
+    "lng": 5.604311
+  },
+  {
+    "name": "Vélu",
+    "lat": 50.102067,
+    "lng": 2.973757
+  },
+  {
+    "name": "Vendegies-au-Bois",
+    "lat": 50.180155,
+    "lng": 3.58156
+  },
+  {
+    "name": "Vendegies-sur-Écaillon",
+    "lat": 50.260357,
+    "lng": 3.505362
+  },
+  {
+    "name": "Vendeville",
+    "lat": 50.573072,
+    "lng": 3.080567
+  },
+  {
+    "name": "Vendhuile",
+    "lat": 50.012409,
+    "lng": 3.207571
+  },
+  {
+    "name": "Vénérolles",
+    "lat": 49.989792,
+    "lng": 3.628685
+  },
+  {
+    "name": "Verchain-Maugré",
+    "lat": 50.264909,
+    "lng": 3.459711
+  },
+  {
+    "name": "Verlaine",
+    "lat": 50.605652,
+    "lng": 5.300076
+  },
+  {
+    "name": "Verlinghem",
+    "lat": 50.682013,
+    "lng": 2.996498
+  },
+  {
+    "name": "Vertain",
+    "lat": 50.212278,
+    "lng": 3.525674
+  },
+  {
+    "name": "Verviers",
+    "lat": 50.587608,
+    "lng": 5.869274
+  },
+  {
+    "name": "Vianden",
+    "lat": 49.93901,
+    "lng": 6.188145
+  },
+  {
+    "name": "Vicq",
+    "lat": 50.41491,
+    "lng": 3.605959
+  },
+  {
+    "name": "Vielsalm",
+    "lat": 50.283595,
+    "lng": 5.863476
+  },
+  {
+    "name": "Viesly",
+    "lat": 50.15825,
+    "lng": 3.456318
+  },
+  {
+    "name": "Vieux-Condé",
+    "lat": 50.473175,
+    "lng": 3.561388
+  },
+  {
+    "name": "Vieux-Mesnil",
+    "lat": 50.260803,
+    "lng": 3.869261
+  },
+  {
+    "name": "Vieux-Reng",
+    "lat": 50.323261,
+    "lng": 4.044274
+  },
+  {
+    "name": "Villeneuve-d'Ascq",
+    "lat": 50.635917,
+    "lng": 3.161828
+  },
+  {
+    "name": "Villereau",
+    "lat": 50.247964,
+    "lng": 3.679393
+  },
+  {
+    "name": "Villeret",
+    "lat": 49.950191,
+    "lng": 3.185999
+  },
+  {
+    "name": "Villers-au-Flos",
+    "lat": 50.080518,
+    "lng": 2.904478
+  },
+  {
+    "name": "Villers-au-Tertre",
+    "lat": 50.300114,
+    "lng": 3.173362
+  },
+  {
+    "name": "Villers-en-Cauchies",
+    "lat": 50.226575,
+    "lng": 3.390255
+  },
+  {
+    "name": "Villers-Faucon",
+    "lat": 49.978065,
+    "lng": 3.107212
+  },
+  {
+    "name": "Villers-Guislain",
+    "lat": 50.035313,
+    "lng": 3.146847
+  },
+  {
+    "name": "Villers-la-Ville",
+    "lat": 50.563448,
+    "lng": 4.521153
+  },
+  {
+    "name": "Villers-le-Bouillet",
+    "lat": 50.590542,
+    "lng": 5.243455
+  },
+  {
+    "name": "Villers-lès-Cagnicourt",
+    "lat": 50.224684,
+    "lng": 3.009971
+  },
+  {
+    "name": "Villers-Outréaux",
+    "lat": 50.030437,
+    "lng": 3.291479
+  },
+  {
+    "name": "Villers-Plouich",
+    "lat": 50.079105,
+    "lng": 3.13765
+  },
+  {
+    "name": "Villers-Pol",
+    "lat": 50.289695,
+    "lng": 3.61841
+  },
+  {
+    "name": "Villers-Sire-Nicole",
+    "lat": 50.340709,
+    "lng": 4.012047
+  },
+  {
+    "name": "Vireux-Molhain",
+    "lat": 50.077208,
+    "lng": 4.703751
+  },
+  {
+    "name": "Vireux-Wallerand",
+    "lat": 50.056397,
+    "lng": 4.751155
+  },
+  {
+    "name": "Viroinval",
+    "lat": 50.049642,
+    "lng": 4.624192
+  },
+  {
+    "name": "Vis-en-Artois",
+    "lat": 50.245758,
+    "lng": 2.934443
+  },
+  {
+    "name": "Visé",
+    "lat": 50.741646,
+    "lng": 5.686747
+  },
+  {
+    "name": "Vitry-en-Artois",
+    "lat": 50.32544,
+    "lng": 2.981236
+  },
+  {
+    "name": "Voeren - Fourons",
+    "lat": 50.746555,
+    "lng": 5.796641
+  },
+  {
+    "name": "Voerendaal",
+    "lat": 50.872252,
+    "lng": 5.915427
+  },
+  {
+    "name": "Vred",
+    "lat": 50.394238,
+    "lng": 3.231035
+  },
+  {
+    "name": "Wahagnies",
+    "lat": 50.484829,
+    "lng": 3.028364
+  },
+  {
+    "name": "Waimes",
+    "lat": 50.472302,
+    "lng": 6.148741
+  },
+  {
+    "name": "Walcourt",
+    "lat": 50.272483,
+    "lng": 4.415457
+  },
+  {
+    "name": "Waldhof-Falkenstein",
+    "lat": 49.962614,
+    "lng": 6.192165
+  },
+  {
+    "name": "Walhain",
+    "lat": 50.629625,
+    "lng": 4.686702
+  },
+  {
+    "name": "Walincourt-Selvigny",
+    "lat": 50.076416,
+    "lng": 3.338563
+  },
+  {
+    "name": "Wallers",
+    "lat": 50.374498,
+    "lng": 3.394412
+  },
+  {
+    "name": "Wallers-en-Fagne",
+    "lat": 50.064427,
+    "lng": 4.166691
+  },
+  {
+    "name": "Wambaix",
+    "lat": 50.12955,
+    "lng": 3.311271
+  },
+  {
+    "name": "Wambrechies",
+    "lat": 50.698292,
+    "lng": 3.044831
+  },
+  {
+    "name": "Wandignies-Hamage",
+    "lat": 50.397804,
+    "lng": 3.321832
+  },
+  {
+    "name": "Wannehain",
+    "lat": 50.570754,
+    "lng": 3.270787
+  },
+  {
+    "name": "Wanze",
+    "lat": 50.545597,
+    "lng": 5.199019
+  },
+  {
+    "name": "Waregem",
+    "lat": 50.878187,
+    "lng": 3.398318
+  },
+  {
+    "name": "Waremme",
+    "lat": 50.692264,
+    "lng": 5.26352
+  },
+  {
+    "name": "Wargnies-le-Grand",
+    "lat": 50.307544,
+    "lng": 3.66532
+  },
+  {
+    "name": "Wargnies-le-Petit",
+    "lat": 50.299012,
+    "lng": 3.683105
+  },
+  {
+    "name": "Warlaing",
+    "lat": 50.408726,
+    "lng": 3.324577
+  },
+  {
+    "name": "Warneton",
+    "lat": 50.74661,
+    "lng": 2.965827
+  },
+  {
+    "name": "Wasnes-au-Bac",
+    "lat": 50.269594,
+    "lng": 3.252768
+  },
+  {
+    "name": "Wasquehal",
+    "lat": 50.672621,
+    "lng": 3.129689
+  },
+  {
+    "name": "Wasseiges",
+    "lat": 50.617252,
+    "lng": 5.020555
+  },
+  {
+    "name": "Wassigny",
+    "lat": 50.017596,
+    "lng": 3.601819
+  },
+  {
+    "name": "Waterloo",
+    "lat": 50.703272,
+    "lng": 4.398153
+  },
+  {
+    "name": "Watermael-Boitsfort - Watermaal-Bosvoorde",
+    "lat": 50.793679,
+    "lng": 4.431275
+  },
+  {
+    "name": "Watigny",
+    "lat": 49.919308,
+    "lng": 4.198898
+  },
+  {
+    "name": "Wattignies",
+    "lat": 50.586163,
+    "lng": 3.039038
+  },
+  {
+    "name": "Wattignies-la-Victoire",
+    "lat": 50.201019,
+    "lng": 4.005574
+  },
+  {
+    "name": "Wattrelos",
+    "lat": 50.712774,
+    "lng": 3.216423
+  },
+  {
+    "name": "Watzerath",
+    "lat": 50.186858,
+    "lng": 6.349553
+  },
+  {
+    "name": "Wavre",
+    "lat": 50.723189,
+    "lng": 4.588293
+  },
+  {
+    "name": "Wavrechain-sous-Denain",
+    "lat": 50.333685,
+    "lng": 3.42175
+  },
+  {
+    "name": "Wavrechain-sous-Faulx",
+    "lat": 50.26845,
+    "lng": 3.284399
+  },
+  {
+    "name": "Wavrin",
+    "lat": 50.573487,
+    "lng": 2.935425
+  },
+  {
+    "name": "Waxweiler",
+    "lat": 50.099451,
+    "lng": 6.366703
+  },
+  {
+    "name": "Waziers",
+    "lat": 50.384066,
+    "lng": 3.112033
+  },
+  {
+    "name": "Weidingen",
+    "lat": 50.013913,
+    "lng": 6.376006
+  },
+  {
+    "name": "Weinsheim",
+    "lat": 50.239617,
+    "lng": 6.474343
+  },
+  {
+    "name": "Weiswampach",
+    "lat": 50.133167,
+    "lng": 6.0656
+  },
+  {
+    "name": "Welkenraedt",
+    "lat": 50.662947,
+    "lng": 5.942379
+  },
+  {
+    "name": "Wellen",
+    "lat": 50.839675,
+    "lng": 5.318514
+  },
+  {
+    "name": "Wellin",
+    "lat": 50.069387,
+    "lng": 5.09459
+  },
+  {
+    "name": "Wervicq-Sud",
+    "lat": 50.760199,
+    "lng": 3.049513
+  },
+  {
+    "name": "Wervik",
+    "lat": 50.811879,
+    "lng": 3.052691
+  },
+  {
+    "name": "Wevelgem",
+    "lat": 50.829819,
+    "lng": 3.162681
+  },
+  {
+    "name": "Wezembeek-Oppem",
+    "lat": 50.84399,
+    "lng": 4.493858
+  },
+  {
+    "name": "Wiersdorf",
+    "lat": 50.00905,
+    "lng": 6.454386
+  },
+  {
+    "name": "Wignehies",
+    "lat": 50.014128,
+    "lng": 4.00443
+  },
+  {
+    "name": "Willems",
+    "lat": 50.632172,
+    "lng": 3.231418
+  },
+  {
+    "name": "Willies",
+    "lat": 50.120914,
+    "lng": 4.106508
+  },
+  {
+    "name": "Wiltz",
+    "lat": 49.983382,
+    "lng": 5.929032
+  },
+  {
+    "name": "Wimy",
+    "lat": 49.94853,
+    "lng": 3.997067
+  },
+  {
+    "name": "Wincrange",
+    "lat": 50.058773,
+    "lng": 5.92538
+  },
+  {
+    "name": "Winringen",
+    "lat": 50.150048,
+    "lng": 6.414659
+  },
+  {
+    "name": "Winseler",
+    "lat": 49.968025,
+    "lng": 5.864944
+  },
+  {
+    "name": "Winterscheid",
+    "lat": 50.240687,
+    "lng": 6.241096
+  },
+  {
+    "name": "Winterspelt",
+    "lat": 50.21794,
+    "lng": 6.211337
+  },
+  {
+    "name": "Wißmannsdorf",
+    "lat": 49.997711,
+    "lng": 6.444203
+  },
+  {
+    "name": "Woluwe-Saint-Lambert - Sint-Lambrechts-Woluwe",
+    "lat": 50.848409,
+    "lng": 4.430914
+  },
+  {
+    "name": "Woluwe-Saint-Pierre - Sint-Pieters-Woluwe",
+    "lat": 50.833683,
+    "lng": 4.440547
+  },
+  {
+    "name": "Wortegem-Petegem",
+    "lat": 50.846029,
+    "lng": 3.52033
+  },
+  {
+    "name": "Würselen",
+    "lat": 50.829257,
+    "lng": 6.148257
+  },
+  {
+    "name": "Ytres",
+    "lat": 50.063695,
+    "lng": 2.995682
+  },
+  {
+    "name": "Yvoir",
+    "lat": 50.322499,
+    "lng": 4.939242
+  },
+  {
+    "name": "Zaventem",
+    "lat": 50.868381,
+    "lng": 4.47863
+  },
+  {
+    "name": "Zonnebeke",
+    "lat": 50.864483,
+    "lng": 3.003903
+  },
+  {
+    "name": "Zottegem",
+    "lat": 50.864206,
+    "lng": 3.807066
+  },
+  {
+    "name": "Zoutleeuw",
+    "lat": 50.831864,
+    "lng": 5.09787
+  },
+  {
+    "name": "Zwalm",
+    "lat": 50.872566,
+    "lng": 3.717558
+  },
+  {
+    "name": "Zweifelscheid",
+    "lat": 50.037415,
+    "lng": 6.25219
+  },
+  {
+    "name": "Zwevegem",
+    "lat": 50.782801,
+    "lng": 3.381355
+  }
 ]
