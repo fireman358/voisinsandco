@@ -140,20 +140,6 @@
       "lng": 4.187099
     },
     {
-      "id": "osm-12995505492-wagner-bazin-wb",
-      "name": "Wagner Bazin WB",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "49 Rue Cense de la Motte",
-      "town": "Bois-d'Haine",
-      "postalCode": "7170",
-      "lat": 50.495966,
-      "lng": 4.218037,
-      "website": "https://www.wagner-bazin-wb.com/"
-    },
-    {
       "id": "osm-4494813649-huggys-braine-l-alleud",
       "name": "HUGGYS Braine l'Alleud",
       "category": "horeca",
@@ -228,21 +214,6 @@
       "lng": 4.362724,
       "phone": "+32 2 387 55 17",
       "website": "https://www.airclim.be/"
-    },
-    {
-      "id": "osm-53612016-aisin-europe-sa",
-      "name": "AISIN Europe SA",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "19 Avenue de l'Industrie",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.688341,
-      "lng": 4.329903,
-      "phone": "+32 2 389 12 00",
-      "website": "https://www.aisin-europe.com/"
     },
     {
       "id": "osm-11429301457-akoya-sushi",
@@ -558,22 +529,6 @@
       "phone": "+32 494 11 68 43",
       "website": "https://resto-beitna.be/",
       "hours": "Mo-Sa 11:30-22:00"
-    },
-    {
-      "id": "osm-13446641699-belga-films",
-      "name": "Belga Films",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.669072,
-      "lng": 4.386214,
-      "phone": "+32 2 335 65 00",
-      "website": "https://www.belgafilms.be/",
-      "hours": "Mo-Fr 09:00-17:00; Sa-Su off; PH off"
     },
     {
       "id": "osm-12420270701-belgian-consultancy-company-acc",
@@ -2121,21 +2076,6 @@
       "website": "http://www.florilege.be"
     },
     {
-      "id": "osm-13379160128-fountain",
-      "name": "Fountain",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.695547,
-      "lng": 4.364181,
-      "phone": "+32 2 385 15 62",
-      "website": "https://fountain.eu"
-    },
-    {
       "id": "osm-13149542877-fourmizlab-be",
       "name": "Fourmizlab.be",
       "category": "artisan",
@@ -3391,21 +3331,6 @@
       "lng": 4.360011
     },
     {
-      "id": "osm-12603390970-lookup",
-      "name": "Lookup",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "35 Rue du Cuisinier",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.699676,
-      "lng": 4.346939,
-      "phone": "+32 474 97 00 21",
-      "website": "https://www.lookup.green"
-    },
-    {
       "id": "osm-729003818-lou-soleou",
       "name": "Lou Soleou",
       "category": "horeca",
@@ -4062,20 +3987,6 @@
       "website": "https://boulangerie-passion-tradition.be/"
     },
     {
-      "id": "osm-11099362139-peanut-management",
-      "name": "Peanut Management",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "3 Clos des Épinoches",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.673438,
-      "lng": 4.37643,
-      "website": "https://www.peanutmanagement.com/"
-    },
-    {
       "id": "osm-7486486829-peau-de-peche",
       "name": "Peau De Pêche",
       "category": "artisan",
@@ -4481,19 +4392,6 @@
       "phone": "+32 2 387 37 87",
       "website": "https://saigonbistro.be/",
       "hours": "Tu-Fr 11:45-14:00,17:30-22:00; Sa 17:30-22:00; Su-Mo off"
-    },
-    {
-      "id": "osm-13346556121-sartix",
-      "name": "Sartix",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.682953,
-      "lng": 4.379167
     },
     {
       "id": "osm-13348228724-secretariat-paroissial-saint-etienne",
@@ -4977,34 +4875,6 @@
       "hours": "Tu-Fr 11:30-15:00,17:30-21:00; Sa 17:30-21:00; Su-Mo,PH off"
     },
     {
-      "id": "osm-13149452627-the-french-cake-company",
-      "name": "The French Cake Company",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.689048,
-      "lng": 4.321874,
-      "website": "https://www.thefrenchcakecompany.com/"
-    },
-    {
-      "id": "osm-13149519944-the-friends",
-      "name": "The Friends",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.6886,
-      "lng": 4.326426,
-      "website": "https://www.thefriends.be/"
-    },
-    {
       "id": "osm-11429344818-the-hill",
       "name": "The Hill",
       "category": "horeca",
@@ -5318,20 +5188,6 @@
       "lng": 4.260022
     },
     {
-      "id": "osm-13149424232-amim-sprl",
-      "name": "AMIM SPRL",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-le-Château",
-      "postalCode": "",
-      "lat": 50.687534,
-      "lng": 4.314512,
-      "website": "https://amim.be/"
-    },
-    {
       "id": "osm-9329342436-assurances-2000",
       "name": "Assurances 2000",
       "category": "artisan",
@@ -5428,20 +5284,6 @@
       "lat": 50.68159,
       "lng": 4.273135,
       "website": "https://www.bistroracine.be"
-    },
-    {
-      "id": "osm-13149604096-boost-up",
-      "name": "Boost up",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-le-Château",
-      "postalCode": "",
-      "lat": 50.684625,
-      "lng": 4.307988,
-      "website": "https://boostup.eu/"
     },
     {
       "id": "osm-11510480432-boucherie-a-la-ferme-du-bois-d-apechau",
@@ -5786,20 +5628,6 @@
       "website": "https://dg-drink.be/"
     },
     {
-      "id": "osm-13149424230-diffusion-nord-sud",
-      "name": "Diffusion Nord-Sud",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-le-Château",
-      "postalCode": "",
-      "lat": 50.687692,
-      "lng": 4.315198,
-      "website": "https://www.diffusion-nord-sud.be/"
-    },
-    {
       "id": "osm-166999900-docteur-demolin-a",
       "name": "Docteur Demolin A.",
       "category": "artisan",
@@ -6035,20 +5863,6 @@
       "postalCode": "",
       "lat": 50.689479,
       "lng": 4.30448
-    },
-    {
-      "id": "osm-13149424237-hiab",
-      "name": "Hiab",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-le-Château",
-      "postalCode": "",
-      "lat": 50.685716,
-      "lng": 4.309652,
-      "website": "https://www.hiab.com"
     },
     {
       "id": "osm-12944726412-immotheker",
@@ -6484,20 +6298,6 @@
       "lng": 4.274003,
       "website": "https://www.saporidellabasilicata.be/",
       "hours": "Tu-Sa 10:00-18:30"
-    },
-    {
-      "id": "osm-13149424229-sodimas",
-      "name": "Sodimas",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-le-Château",
-      "postalCode": "",
-      "lat": 50.687149,
-      "lng": 4.315143,
-      "website": "https://www.sodimas.com/"
     },
     {
       "id": "osm-7626136168-sophie-vanheste",
@@ -8762,21 +8562,6 @@
       "lng": 4.441241
     },
     {
-      "id": "osm-11431891102-armabeton",
-      "name": "Armabeton",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "6 Rue de la Sambre",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.401336,
-      "lng": 4.405896,
-      "website": "https://armabeton.be/",
-      "hours": "Mo-Th 07:30-16:30; Fr 07:30-16:00"
-    },
-    {
       "id": "osm-576956878-au-grand-bol-nouilles-de-hong-kong",
       "name": "Au grand bol - Nouilles de Hong-Kong",
       "category": "horeca",
@@ -8909,19 +8694,6 @@
       "postalCode": "",
       "lat": 50.416248,
       "lng": 4.452345
-    },
-    {
-      "id": "osm-11730435976-bertoncello",
-      "name": "Bertoncello",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "39 Rue de Venise",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.45213,
-      "lng": 4.446608
     },
     {
       "id": "osm-149171585-boucherie-traiteur-yvan",
@@ -9184,22 +8956,6 @@
       "hours": "Tu-Sa 10:00-18:00"
     },
     {
-      "id": "osm-10280119176-cebeo",
-      "name": "CEBEO",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.456024,
-      "lng": 4.454905,
-      "phone": "+32 71 29 73 73",
-      "website": "https://www.cebeo.be/fr-be/filiales/jumet",
-      "hours": "Mo-Th 06:30-12:00,13:00-17:00; Fr 06:30-12:00,13:00-16:00"
-    },
-    {
       "id": "osm-4883440315-centre-d-etudes-en-habitat-durable",
       "name": "Centre d'Etudes en Habitat Durable",
       "category": "artisan",
@@ -9240,21 +8996,6 @@
       "postalCode": "",
       "lat": 50.417662,
       "lng": 4.449978
-    },
-    {
-      "id": "osm-395900575-cetic",
-      "name": "Cetic",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "28 Avenue Jean Mermoz",
-      "town": "Charleroi",
-      "postalCode": "6041",
-      "lat": 50.47513,
-      "lng": 4.475965,
-      "website": "https://www.cetic.be",
-      "hours": "Mo-Fr 09:00-17:00"
     },
     {
       "id": "osm-9356781156-chez-adem",
@@ -9444,21 +9185,6 @@
       "lng": 4.44146
     },
     {
-      "id": "osm-11432118119-daxi",
-      "name": "Daxi",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "20 Zoning Industriel Deuxième Rue",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.453859,
-      "lng": 4.459927,
-      "phone": "+32 71 37 22 20",
-      "website": "http://www.daxi.be/"
-    },
-    {
       "id": "osm-570891776-delhaize",
       "name": "Delhaize",
       "category": "alimentation",
@@ -9483,21 +9209,6 @@
       "postalCode": "",
       "lat": 50.466435,
       "lng": 4.417465
-    },
-    {
-      "id": "osm-10280119175-deltaplastics",
-      "name": "Deltaplastics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.455895,
-      "lng": 4.454315,
-      "phone": "+32 71 25 79 84",
-      "website": "https://www.deltaplastics.be"
     },
     {
       "id": "osm-7334614858-depil-tech",
@@ -9527,19 +9238,6 @@
       "lng": 4.444455
     },
     {
-      "id": "osm-13190165517-design-innovation",
-      "name": "Design Innovation",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.429559,
-      "lng": 4.460893
-    },
-    {
       "id": "osm-9356781145-doner-gold",
       "name": "Doner Gold",
       "category": "horeca",
@@ -9552,22 +9250,6 @@
       "lat": 50.412517,
       "lng": 4.443216,
       "hours": "Mo-Su 10:00-23:00"
-    },
-    {
-      "id": "osm-13572836669-doumont",
-      "name": "Doumont",
-      "category": "artisan",
-      "subcategory": "motorcycle",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.451416,
-      "lng": 4.444356,
-      "phone": "+32 71 32 21 62",
-      "website": "https://www.doumont.be/",
-      "hours": "Mo-Th 08:00-12:00,13:00-17:00; Fr 08:00-12:00"
     },
     {
       "id": "osm-12460906061-ds-orthopedie",
@@ -9595,19 +9277,6 @@
       "lat": 50.415758,
       "lng": 4.425424,
       "hours": "Mo-Su 09:30-22:30"
-    },
-    {
-      "id": "osm-93791231-eriks-baudoin-jumet",
-      "name": "Eriks Baudoin Jumet",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "8 Allée centrale",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.4533,
-      "lng": 4.457855
     },
     {
       "id": "osm-3534079537-esso",
@@ -9931,37 +9600,6 @@
       "lng": 4.457315
     },
     {
-      "id": "osm-10980737837-idcas",
-      "name": "iDcas",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.451088,
-      "lng": 4.449691,
-      "website": "https://www.idcas.eu/",
-      "hours": "Mo-Fr 09:00-17:00"
-    },
-    {
-      "id": "osm-13190165516-ifapme-service-alternance",
-      "name": "IFAPME - Service Alternance",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.429569,
-      "lng": 4.460749,
-      "phone": "+32 71 27 02 00",
-      "website": "https://www.ifapme.be/services",
-      "hours": "Mo-Fr 08:30-12:30,13:30-17:00"
-    },
-    {
       "id": "osm-10309503844-il-duomo",
       "name": "Il Duomo",
       "category": "horeca",
@@ -9973,22 +9611,6 @@
       "postalCode": "",
       "lat": 50.418073,
       "lng": 4.458936
-    },
-    {
-      "id": "osm-11368065659-industrial-cleaning-service-compagny",
-      "name": "Industrial Cleaning & Service Compagny",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Zoning Industriel Allée Centrale",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.453635,
-      "lng": 4.456528,
-      "phone": "+32 800 11 711",
-      "website": "https://ic-sc.be/",
-      "hours": "24/7"
     },
     {
       "id": "osm-3514439408-institut-d-enseignement-technique-second",
@@ -10041,19 +9663,6 @@
       "postalCode": "",
       "lat": 50.417048,
       "lng": 4.456812
-    },
-    {
-      "id": "osm-11730412311-jacques-remy",
-      "name": "Jacques Remy",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "70 Rue d'Edimbourg",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.450744,
-      "lng": 4.444588
     },
     {
       "id": "osm-13302110935-jardin-d-alep",
@@ -11154,22 +10763,6 @@
       "lng": 4.436897
     },
     {
-      "id": "osm-11432168486-s-mi",
-      "name": "S-MI",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2 Zoning Industriel Première Rue",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.456456,
-      "lng": 4.454156,
-      "phone": "+32 71 33 43 31",
-      "website": "https://smi-sambre-et-meuse-industries.business.site/",
-      "hours": "Mo-Th 08:00-12:30,13:00-16:30; Fr 08:00-12:30,13:00-15:30; PH off"
-    },
-    {
       "id": "osm-14065690676-schamp",
       "name": "Schamp",
       "category": "alimentation",
@@ -11220,20 +10813,6 @@
       "postalCode": "",
       "lat": 50.418348,
       "lng": 4.458446
-    },
-    {
-      "id": "osm-4165141090-shareif-s-p-r-l",
-      "name": "Shareif S.P.R.L",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1E Avenue Général Michel",
-      "town": "Charleroi",
-      "postalCode": "6000",
-      "lat": 50.411193,
-      "lng": 4.451855,
-      "website": "https://shareif.com/"
     },
     {
       "id": "osm-1367342097-shell",
@@ -11302,19 +10881,6 @@
       "postalCode": "",
       "lat": 50.458887,
       "lng": 4.437799
-    },
-    {
-      "id": "osm-7717925957-sonaca-green",
-      "name": "Sonaca Green",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.460028,
-      "lng": 4.438995
     },
     {
       "id": "osm-2505157029-spar",
@@ -11701,19 +11267,6 @@
       "lng": 4.330597
     },
     {
-      "id": "osm-380414726-chiapparo",
-      "name": "Chiapparo",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Courcelles",
-      "postalCode": "",
-      "lat": 50.462668,
-      "lng": 4.350004
-    },
-    {
       "id": "osm-1146806360-colruyt",
       "name": "Colruyt",
       "category": "alimentation",
@@ -11742,19 +11295,6 @@
       "lat": 50.441596,
       "lng": 4.343804,
       "hours": "Mo-Th 09:00-12:00, Mo-Th 13:30-16:00, Fr 09:00-12:00, Fr 13:30-15:00"
-    },
-    {
-      "id": "osm-3665686274-credit-social",
-      "name": "Crédit Social",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Courcelles",
-      "postalCode": "",
-      "lat": 50.463378,
-      "lng": 4.333858
     },
     {
       "id": "osm-3577508252-dats-24",
@@ -11847,19 +11387,6 @@
       "postalCode": "",
       "lat": 50.462798,
       "lng": 4.330219
-    },
-    {
-      "id": "osm-11703515685-l-artisane",
-      "name": "L'Artisane",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "8 Rue de Charleroi",
-      "town": "Courcelles",
-      "postalCode": "",
-      "lat": 50.478577,
-      "lng": 4.353371
     },
     {
       "id": "osm-3659481267-l-orange",
@@ -12009,21 +11536,6 @@
       "postalCode": "",
       "lat": 50.480177,
       "lng": 4.349121
-    },
-    {
-      "id": "osm-7288248900-milioni-food-sa",
-      "name": "Milioni Food SA",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "4A Rue de Liège",
-      "town": "Courcelles",
-      "postalCode": "",
-      "lat": 50.470359,
-      "lng": 4.366512,
-      "phone": "+32 71 36 52 91",
-      "website": "https://www.milioni.be/"
     },
     {
       "id": "osm-14233583584-mr-moustache",
@@ -12259,19 +11771,6 @@
       "hours": "Su-Th 17:00-22:00; Fr-Sa 17:00-23:00"
     },
     {
-      "id": "osm-380414730-sopura-s-a",
-      "name": "Sopura s.a.",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "199 Rue de Trazegnies",
-      "town": "Courcelles",
-      "postalCode": "6180",
-      "lat": 50.462675,
-      "lng": 4.34842
-    },
-    {
       "id": "osm-262602367-station-du-lido",
       "name": "Station du Lido",
       "category": "distributeur",
@@ -12362,19 +11861,6 @@
       "lat": 50.454973,
       "lng": 4.379404,
       "hours": "We-Fr 09:00-18:00; Mo,Tu off; Sa 08:30-18:00; Su 07:30-15:00"
-    },
-    {
-      "id": "osm-11703618222-wekt-logistics",
-      "name": "WEKT Logistics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "11 Rue de Charleroi",
-      "town": "Courcelles",
-      "postalCode": "",
-      "lat": 50.477902,
-      "lng": 4.354928
     },
     {
       "id": "osm-250206974-colruyt",
@@ -12917,19 +12403,6 @@
       "lng": 4.207567
     },
     {
-      "id": "osm-1220079839-dsv-logistics",
-      "name": "DSV Logistics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "12 Rue de Courrière",
-      "town": "Familleureux",
-      "postalCode": "7181",
-      "lat": 50.528697,
-      "lng": 4.204064
-    },
-    {
       "id": "osm-1220080081-maison-medicale-du-centre",
       "name": "Maison Médicale du Centre",
       "category": "artisan",
@@ -12954,19 +12427,6 @@
       "postalCode": "7181",
       "lat": 50.512562,
       "lng": 4.211643
-    },
-    {
-      "id": "osm-1220079887-unilin",
-      "name": "Unilin",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "24 Rue Zénobe Gramme",
-      "town": "Familleureux",
-      "postalCode": "7181",
-      "lat": 50.533886,
-      "lng": 4.208848
     },
     {
       "id": "osm-14302955234-asbl-le-foyer-retrouve",
@@ -13202,19 +12662,6 @@
       "lng": 4.250664
     },
     {
-      "id": "osm-10889621933-adecco",
-      "name": "Adecco",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "47 Rue Adrienne Bolland",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471503,
-      "lng": 4.471524
-    },
-    {
       "id": "osm-11155763066-airport-bar",
       "name": "Airport Bar",
       "category": "horeca",
@@ -13306,19 +12753,6 @@
       "lng": 4.470419
     },
     {
-      "id": "osm-11730446105-centrale-des-jeux",
-      "name": "Centrale des Jeux",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "25 Avenue de Heppignies",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.468535,
-      "lng": 4.486849
-    },
-    {
       "id": "osm-11468733068-charles-liegeois",
       "name": "Charles Liégeois",
       "category": "horeca",
@@ -13343,90 +12777,6 @@
       "postalCode": "",
       "lat": 50.46953,
       "lng": 4.470303
-    },
-    {
-      "id": "osm-12185006083-conduite-et-entreprise",
-      "name": "Conduite et Entreprise",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.475653,
-      "lng": 4.473931
-    },
-    {
-      "id": "osm-13484133358-delfood",
-      "name": "Delfood",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471652,
-      "lng": 4.516744,
-      "phone": "+32 71 20 42 11",
-      "website": "https://delfood.be",
-      "hours": "Mo-Fr 08:00-17:00"
-    },
-    {
-      "id": "osm-1418087277-eole",
-      "name": "Eole",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471037,
-      "lng": 4.470763
-    },
-    {
-      "id": "osm-10889621936-epics-therapeutics",
-      "name": "Epics Therapeutics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "47 Rue Adrienne Bolland",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471687,
-      "lng": 4.471269
-    },
-    {
-      "id": "osm-10889621935-euroscreen",
-      "name": "Euroscreen",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "47 Rue Adrienne Bolland",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471622,
-      "lng": 4.47136
-    },
-    {
-      "id": "osm-11417263517-fendoors",
-      "name": "Fendoors",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "30 Avenue de Heppignies",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.467674,
-      "lng": 4.485751,
-      "phone": "+32 71 45 32 20",
-      "website": "https://fendoors.be",
-      "hours": "Mo-Fr 08:00-16:30; PH off"
     },
     {
       "id": "osm-1814545636-gate-four",
@@ -13455,37 +12805,6 @@
       "lng": 4.469547
     },
     {
-      "id": "osm-11416877915-isothermic",
-      "name": "Isothermic",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "34 Avenue de Heppignies",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.468565,
-      "lng": 4.486054,
-      "phone": "+32 71 37 20 94",
-      "website": "https://www.isothermic.be",
-      "hours": "Mo-Fr 08:30-17:00; PH off"
-    },
-    {
-      "id": "osm-11730443893-isotrim",
-      "name": "Isotrim",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "27 Avenue de Heppignies",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.468893,
-      "lng": 4.487073,
-      "phone": "+32 71 34 32 64",
-      "website": "https://www.isotrim.be/fr/"
-    },
-    {
       "id": "osm-11468733067-la-belgique-gourmande",
       "name": "La Belgique Gourmande",
       "category": "alimentation",
@@ -13497,19 +12816,6 @@
       "postalCode": "",
       "lat": 50.469458,
       "lng": 4.47009
-    },
-    {
-      "id": "osm-12185006081-leonard",
-      "name": "Léonard",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.475691,
-      "lng": 4.474123
     },
     {
       "id": "osm-6794430661-leonidas",
@@ -13551,32 +12857,6 @@
       "lng": 4.532197
     },
     {
-      "id": "osm-12185006082-microwall",
-      "name": "Microwall",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.475709,
-      "lng": 4.473998
-    },
-    {
-      "id": "osm-10889621932-ncardia",
-      "name": "Ncardia",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "47 Rue Adrienne Bolland",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471428,
-      "lng": 4.471623
-    },
-    {
       "id": "osm-11360443799-panos",
       "name": "Panos",
       "category": "horeca",
@@ -13603,19 +12883,6 @@
       "lng": 4.471079
     },
     {
-      "id": "osm-12185006085-provera-belux",
-      "name": "Provera Belux",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.475499,
-      "lng": 4.474038
-    },
-    {
       "id": "osm-485558145-q8",
       "name": "Q8",
       "category": "distributeur",
@@ -13627,47 +12894,6 @@
       "postalCode": "",
       "lat": 50.470787,
       "lng": 4.484288
-    },
-    {
-      "id": "osm-11416847434-rui-demenagements",
-      "name": "Rui Déménagements",
-      "category": "artisan",
-      "subcategory": "storage_rental",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "36 Avenue de Heppignies",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.469093,
-      "lng": 4.486516,
-      "website": "https://www.rui-demenagements.be/",
-      "hours": "Mo-Sa 07:00-19:00; PH off"
-    },
-    {
-      "id": "osm-10889621934-select-human-ressources-projects",
-      "name": "Select - Human Ressources Projects",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "47 Rue Adrienne Bolland",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.471568,
-      "lng": 4.471449
-    },
-    {
-      "id": "osm-12185006084-siraga",
-      "name": "Siraga",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fleurus",
-      "postalCode": "",
-      "lat": 50.475543,
-      "lng": 4.473887
     },
     {
       "id": "osm-6794430665-starbucks",
@@ -14043,20 +13269,6 @@
       "lng": 4.326918
     },
     {
-      "id": "osm-12620411220-oplusr-salle-blanche",
-      "name": "Oplusr salle blanche",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fontaine-l'Évêque",
-      "postalCode": "",
-      "lat": 50.409369,
-      "lng": 4.315631,
-      "website": "https://oplusr-salle-blanche.com/"
-    },
-    {
       "id": "osm-2178128721-perle-d-o",
       "name": "Perle d'Ô",
       "category": "artisan",
@@ -14148,35 +13360,6 @@
       "lng": 4.337139,
       "phone": "+32 71 12 68 88",
       "hours": "Mo-Sa 06:00-17:30; Su 07:00-16:00; PH 07:00-16:00"
-    },
-    {
-      "id": "osm-12620617230-toiture-aldo",
-      "name": "Toiture Aldo",
-      "category": "artisan",
-      "subcategory": "roofer",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fontaine-l'Évêque",
-      "postalCode": "",
-      "lat": 50.408349,
-      "lng": 4.314225,
-      "phone": "+32 71 54 34 44",
-      "website": "https://www.aldotoiturefontaineleveque.be"
-    },
-    {
-      "id": "osm-12620615972-vdspools",
-      "name": "VDSpools",
-      "category": "artisan",
-      "subcategory": "swimming_pool",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Fontaine-l'Évêque",
-      "postalCode": "",
-      "lat": 50.408294,
-      "lng": 4.314949,
-      "website": "https://vdspools.be"
     },
     {
       "id": "osm-391134051-chez-dominique",
@@ -15569,21 +14752,6 @@
       "hours": "Mo-Sa 09:00-18:30"
     },
     {
-      "id": "osm-1278477784-aurea-acoustics",
-      "name": "Aurea Acoustics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "22 Avenue Jean Mermoz",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.475554,
-      "lng": 4.473753,
-      "phone": "+32 71 37 18 31",
-      "website": "http://www.aurea.be"
-    },
-    {
       "id": "osm-826625340-bella-tavola",
       "name": "Bella Tavola",
       "category": "horeca",
@@ -15621,19 +14789,6 @@
       "postalCode": "6041",
       "lat": 50.4679,
       "lng": 4.433212
-    },
-    {
-      "id": "osm-4666751587-cegelec",
-      "name": "Cegelec",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "3 Avenue Jean Mermoz",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.475644,
-      "lng": 4.473767
     },
     {
       "id": "osm-101544492-clinivet",
@@ -15678,37 +14833,6 @@
       "lat": 50.459661,
       "lng": 4.435847,
       "website": "https://dats24.be/fr/particulier/sdp/stationservice_Gosselies_23"
-    },
-    {
-      "id": "osm-1283416264-enercon-services-belgium",
-      "name": "Enercon Services Belgium",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "29 Avenue Jean Mermoz",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.47604,
-      "lng": 4.477101,
-      "phone": "+32 71 34 47 35",
-      "website": "https://www.enercon.de/"
-    },
-    {
-      "id": "osm-1283416267-facotherm-cosanit",
-      "name": "FaCoTherm - Cosanit",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "29f Avenue Jean Mermoz",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.476306,
-      "lng": 4.476233,
-      "phone": "+32 71 35 06 66",
-      "website": "http://www.facotherm.be",
-      "hours": "Mo-Th 08:00-12:00, 13:00-17:00; Fr 08:00-12:00, 13:00-15:00"
     },
     {
       "id": "osm-1178067902-foody-s-corner",
@@ -15852,21 +14976,6 @@
       "lng": 4.451409,
       "phone": "+32 71 88 53 43",
       "website": "https://www.librairie.be/"
-    },
-    {
-      "id": "osm-1291703457-otis",
-      "name": "Otis",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "22 Avenue Jean Mermoz",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.475718,
-      "lng": 4.473845,
-      "phone": "+32 71 34 95 90",
-      "website": "https://www.otis.com/"
     },
     {
       "id": "osm-894293923-philippe-et-pascaline-dupuis",
@@ -16168,22 +15277,6 @@
       "lat": 50.473439,
       "lng": 4.215909,
       "hours": "Mo-Sa 08:00-18:00"
-    },
-    {
-      "id": "osm-6577181919-id-projects",
-      "name": "ID'Projects",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "60 Chaussée de Jolimont",
-      "town": "Haine-Saint-Paul",
-      "postalCode": "7100",
-      "lat": 50.476476,
-      "lng": 4.220652,
-      "phone": "+32 64 28 20 21;+32 477 26 96 08",
-      "website": "https://id-projects.be",
-      "hours": "Mo-Fr 08:00-18:00"
     },
     {
       "id": "osm-12539490199-l-artisanale",
@@ -16567,19 +15660,6 @@
       "lng": 4.162442
     },
     {
-      "id": "osm-338679769-abb",
-      "name": "ABB",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "8 Boulevard Millenium",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.50662,
-      "lng": 4.176546
-    },
-    {
       "id": "osm-1195870414-boulangerie-louise",
       "name": "Boulangerie Louise",
       "category": "alimentation",
@@ -16632,19 +15712,6 @@
       "lng": 4.16454
     },
     {
-      "id": "osm-169257206-cfp-net",
-      "name": "CFP Net",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "12 Boulevard de la Technicité",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.503962,
-      "lng": 4.17951
-    },
-    {
       "id": "osm-1199971033-citystock",
       "name": "CityStock",
       "category": "artisan",
@@ -16671,34 +15738,6 @@
       "lng": 4.16212
     },
     {
-      "id": "osm-1202325214-dtlo-transport",
-      "name": "DTLO Transport",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Rue Athéna",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.508661,
-      "lng": 4.178091
-    },
-    {
-      "id": "osm-1202325220-ets-augustin-marichal",
-      "name": "Éts Augustin Marichal",
-      "category": "artisan",
-      "subcategory": "florist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "26 Boulevard de la Technicité",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.503894,
-      "lng": 4.175697,
-      "phone": "+32 64 84 17 76",
-      "website": "https://www.augustin-marichal.com/"
-    },
-    {
       "id": "osm-1202325188-febetra-hainaut",
       "name": "Febetra Hainaut",
       "category": "artisan",
@@ -16723,32 +15762,6 @@
       "postalCode": "7110",
       "lat": 50.483187,
       "lng": 4.1621
-    },
-    {
-      "id": "osm-169257219-ingram-micro",
-      "name": "Ingram Micro",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "7 Boulevard Millenium",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.506481,
-      "lng": 4.178821
-    },
-    {
-      "id": "osm-1202325215-inter-logistics",
-      "name": "Inter Logistics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "17 Boulevard Millenium",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.509843,
-      "lng": 4.178428
     },
     {
       "id": "osm-165239797-intermarche-super",
@@ -16779,19 +15792,6 @@
       "phone": "+32 64 26 35 21"
     },
     {
-      "id": "osm-1202325203-logitoys",
-      "name": "Logitoys",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "5 Rue Athéna",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.50858,
-      "lng": 4.180769
-    },
-    {
       "id": "osm-3686482171-mathieu-nayis",
       "name": "Mathieu Nayis",
       "category": "artisan",
@@ -16806,19 +15806,6 @@
       "phone": "+32 470 13 13 82",
       "website": "https://www.mathieunayis.com/",
       "hours": "Tu-Sa 09:00-18:00"
-    },
-    {
-      "id": "osm-1202325218-michel-logistics",
-      "name": "Michel Logistics",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "3 Rue Cronos",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.508671,
-      "lng": 4.175279
     },
     {
       "id": "osm-1195870479-night-day",
@@ -16845,19 +15832,6 @@
       "postalCode": "7110",
       "lat": 50.508198,
       "lng": 4.185122
-    },
-    {
-      "id": "osm-169260018-schoeps",
-      "name": "Schoeps",
-      "category": "alimentation",
-      "subcategory": "frozen_food",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "5 Boulevard de la Technicité",
-      "town": "Houdeng-Gœgnies",
-      "postalCode": "7110",
-      "lat": 50.505505,
-      "lng": 4.180496
     },
     {
       "id": "osm-1195870082-taverne-des-maitres-fromagers",
@@ -18394,21 +17368,6 @@
       "lng": 4.172726
     },
     {
-      "id": "osm-11125088784-bbk-s-a",
-      "name": "BBK S.A.",
-      "category": "artisan",
-      "subcategory": "machines",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "160 Chaussée Paul Houtart",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.484571,
-      "lng": 4.162188,
-      "phone": "+32 64 23 92 11",
-      "website": "https://www.biebuyck.com/"
-    },
-    {
       "id": "osm-10013010515-beautika",
       "name": "Beautika",
       "category": "artisan",
@@ -18596,19 +17555,6 @@
       "postalCode": "",
       "lat": 50.48185,
       "lng": 4.145982
-    },
-    {
-      "id": "osm-11240507625-besoin-d-ailes",
-      "name": "Besoin d'Ailes",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.478863,
-      "lng": 4.187145
     },
     {
       "id": "osm-11128517442-bevet",
@@ -21245,21 +20191,6 @@
       "lng": 4.186031
     },
     {
-      "id": "osm-1122648402-industrie-nouvelles-technologies",
-      "name": "Industrie Nouvelles Technologies",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "357 Avenue Léopold III",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.442492,
-      "lng": 4.167884,
-      "phone": "+32 64 21 45 67",
-      "website": "https://www.intsa.be/"
-    },
-    {
       "id": "osm-6090655199-institut-de-beaute-stephanie",
       "name": "Institut de Beauté Stéphanie",
       "category": "artisan",
@@ -22129,20 +21060,6 @@
       "lng": 4.187246
     },
     {
-      "id": "osm-11048259177-la-loup-in",
-      "name": "La Loup'In",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.474709,
-      "lng": 4.1852,
-      "website": "https://www.laloupin.com/"
-    },
-    {
       "id": "osm-11105103188-la-main-d-argent",
       "name": "La Main d'Argent",
       "category": "artisan",
@@ -22154,19 +21071,6 @@
       "postalCode": "",
       "lat": 50.467291,
       "lng": 4.185225
-    },
-    {
-      "id": "osm-452868952-la-maison-de-l-entreprise",
-      "name": "La Maison de l'Entreprise",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "5 Rue Arthur Delaby",
-      "town": "La Louvière",
-      "postalCode": "7100",
-      "lat": 50.484539,
-      "lng": 4.184085
     },
     {
       "id": "osm-1744507117-la-maison-du-dessert",
@@ -24145,19 +23049,6 @@
       "lng": 4.175864
     },
     {
-      "id": "osm-169260023-partner-logistic",
-      "name": "Partner-Logistic",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.506176,
-      "lng": 4.181323
-    },
-    {
       "id": "osm-11082010761-pastella",
       "name": "Pastella",
       "category": "horeca",
@@ -25909,21 +24800,6 @@
       "lng": 4.421647
     },
     {
-      "id": "osm-12335214416-powersky-energy",
-      "name": "PowerSky Energy",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Lasne",
-      "postalCode": "",
-      "lat": 50.65628,
-      "lng": 4.412302,
-      "phone": "+32 2 633 21 31",
-      "website": "https://www.powersky.com/"
-    },
-    {
       "id": "osm-1223607515-totalenergies",
       "name": "TotalEnergies",
       "category": "distributeur",
@@ -26119,19 +24995,6 @@
       "lng": 4.127393
     },
     {
-      "id": "osm-11077482167-buro-business-du-centre",
-      "name": "Buro Business du Centre",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.494374,
-      "lng": 4.135417
-    },
-    {
       "id": "osm-11071070830-carrelages-shop",
       "name": "Carrelages Shop",
       "category": "artisan",
@@ -26276,21 +25139,6 @@
       "lng": 4.112969
     },
     {
-      "id": "osm-11399843683-espaces-verts",
-      "name": "Espaces Verts",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "10 Rue de la Croix du Maïeur",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.486634,
-      "lng": 4.113023,
-      "phone": "+32 64 67 38 48",
-      "website": "https://www.espaces-verts.net/"
-    },
-    {
       "id": "osm-10277638076-esso",
       "name": "Esso",
       "category": "alimentation",
@@ -26328,19 +25176,6 @@
       "postalCode": "",
       "lat": 50.50338,
       "lng": 4.109407
-    },
-    {
-      "id": "osm-12194229345-falco",
-      "name": "Falco",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.488053,
-      "lng": 4.11289
     },
     {
       "id": "osm-11264194797-fleur-capucine",
@@ -26766,19 +25601,6 @@
       "lng": 4.11648
     },
     {
-      "id": "osm-1192633984-metubel",
-      "name": "Metubel",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Le Rœulx",
-      "postalCode": "",
-      "lat": 50.49297,
-      "lng": 4.127082
-    },
-    {
       "id": "osm-161110986-o-bord-de-l-eau",
       "name": "Ô bord de l’eau",
       "category": "horeca",
@@ -27149,19 +25971,6 @@
       "lng": 4.442147
     },
     {
-      "id": "osm-12855469270-bureaux-administratifs-d-ing",
-      "name": "Bureaux administratifs d'ING",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Les Bons Villers",
-      "postalCode": "",
-      "lat": 50.470449,
-      "lng": 4.463389
-    },
-    {
       "id": "osm-244859016-centre-veterinaire-anivet",
       "name": "Centre Vétérinaire Anivet",
       "category": "artisan",
@@ -27462,22 +26271,6 @@
       "lng": 4.455941
     },
     {
-      "id": "osm-10548425891-servhydro",
-      "name": "Servhydro",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "5 Rue Robesse",
-      "town": "Les Bons Villers",
-      "postalCode": "",
-      "lat": 50.483453,
-      "lng": 4.448822,
-      "phone": "+32 71 37 11 10",
-      "website": "https://www.servhydro.com/",
-      "hours": "Mo-Fr 08:00-17:30"
-    },
-    {
       "id": "osm-12465492518-sushi-world",
       "name": "Sushi World",
       "category": "horeca",
@@ -27505,20 +26298,6 @@
       "postalCode": "",
       "lat": 50.531828,
       "lng": 4.446096
-    },
-    {
-      "id": "osm-11158545394-terracap",
-      "name": "Terracap",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "44 Rue de Thiméon",
-      "town": "Les Bons Villers",
-      "postalCode": "",
-      "lat": 50.491738,
-      "lng": 4.424819,
-      "website": "https://www.terracap.be"
     },
     {
       "id": "osm-1223600404-total",
@@ -27572,19 +26351,6 @@
       "lat": 50.630626,
       "lng": 4.353921,
       "phone": "+32 67 21 65 33"
-    },
-    {
-      "id": "osm-813592378-anaprosy",
-      "name": "Anaprosy",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "10 Rue du Cours d'Eau",
-      "town": "Lillois-Witterzée",
-      "postalCode": "1428",
-      "lat": 50.637513,
-      "lng": 4.360951
     },
     {
       "id": "osm-813592380-ateliers-creatifs-de-lillois",
@@ -27993,19 +26759,6 @@
       "postalCode": "",
       "lat": 50.502265,
       "lng": 4.235771
-    },
-    {
-      "id": "osm-11207551733-air-liquide-site-service-canalisations-s",
-      "name": "Air Liquide site - Service canalisations Sud Belgique",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1Bis Rue Adolphe Quételet",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.502584,
-      "lng": 4.262512
     },
     {
       "id": "osm-125193770-aldi",
@@ -28641,34 +27394,6 @@
       "lng": 4.209857
     },
     {
-      "id": "osm-13587144097-dow-silicones-belgium",
-      "name": "Dow Silicones Belgium",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.511172,
-      "lng": 4.260433,
-      "website": "https://www.dow.com/"
-    },
-    {
-      "id": "osm-13002590392-doyen",
-      "name": "Doyen",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.505235,
-      "lng": 4.25967,
-      "website": "https://doyen-auto.com"
-    },
-    {
       "id": "osm-12466043733-dung-nga",
       "name": "Dung Nga",
       "category": "artisan",
@@ -28680,19 +27405,6 @@
       "postalCode": "",
       "lat": 50.506149,
       "lng": 4.238351
-    },
-    {
-      "id": "osm-1208258978-egouttage-fragapane-adriano",
-      "name": "Égouttage Fragapane Adriano",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "7 Rue des Brasseries",
-      "town": "Manage",
-      "postalCode": "7170",
-      "lat": 50.496409,
-      "lng": 4.233629
     },
     {
       "id": "osm-11187596436-elitars",
@@ -28802,19 +27514,6 @@
       "hours": "Mo-Sa 07:00-19:00"
     },
     {
-      "id": "osm-10264909985-fastral",
-      "name": "Fastral",
-      "category": "artisan",
-      "subcategory": "window_construction",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "61 Rue de Manage",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.520495,
-      "lng": 4.214441
-    },
-    {
       "id": "osm-11169307079-fb-immobilier",
       "name": "FB Immobilier",
       "category": "artisan",
@@ -28891,19 +27590,6 @@
       "postalCode": "",
       "lat": 50.479374,
       "lng": 4.244663
-    },
-    {
-      "id": "osm-1208258799-gtm",
-      "name": "GTM",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.496934,
-      "lng": 4.234358
     },
     {
       "id": "osm-11162749399-guy-brasseur",
@@ -29728,19 +28414,6 @@
       "lng": 4.236484
     },
     {
-      "id": "osm-1208260022-lexar-technics-sa",
-      "name": "Lexar Technics SA",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "9 Rue des Brasseries",
-      "town": "Manage",
-      "postalCode": "7170",
-      "lat": 50.496075,
-      "lng": 4.235903
-    },
-    {
       "id": "osm-238575857-lidl",
       "name": "Lidl",
       "category": "alimentation",
@@ -29833,19 +28506,6 @@
       "lng": 4.221601
     },
     {
-      "id": "osm-1208258836-m-i-g-n-o-n-e-sa",
-      "name": "M.I.G.N.O.N.E -sa -",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "7 Avenue de Landrecies",
-      "town": "Manage",
-      "postalCode": "7170",
-      "lat": 50.497725,
-      "lng": 4.233986
-    },
-    {
       "id": "osm-6122319820-maison-du-peuple",
       "name": "Maison du Peuple",
       "category": "horeca",
@@ -29896,22 +28556,6 @@
       "postalCode": "",
       "lat": 50.510305,
       "lng": 4.197364
-    },
-    {
-      "id": "osm-10680695969-masquelier",
-      "name": "Masquelier",
-      "category": "artisan",
-      "subcategory": "printer",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "40 Rue Parmentier",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.504458,
-      "lng": 4.228008,
-      "phone": "+32 64 52 06 20",
-      "website": "https://masquelier.be/",
-      "hours": "Mo-Th 08:00-16:00; Fr 08:00-15:30"
     },
     {
       "id": "osm-1208259478-mat-inox",
@@ -30131,19 +28775,6 @@
       "lng": 4.236768
     },
     {
-      "id": "osm-8361102940-novasep",
-      "name": "Novasep",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "14 Rue de la Marlette",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.507777,
-      "lng": 4.268803
-    },
-    {
       "id": "osm-11169307083-o-bois-zen",
       "name": "Ô Bois Zen",
       "category": "artisan",
@@ -30168,21 +28799,6 @@
       "postalCode": "",
       "lat": 50.496827,
       "lng": 4.211945
-    },
-    {
-      "id": "osm-13120757612-o-skill",
-      "name": "O-Skill",
-      "category": "artisan",
-      "subcategory": "builder",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "113 Rue Joseph Wauters",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.486545,
-      "lng": 4.212256,
-      "phone": "+32 64 22 83 36",
-      "website": "https://www.oskill.eu/"
     },
     {
       "id": "osm-10989299884-omega-group",
@@ -30760,19 +29376,6 @@
       "lng": 4.234253
     },
     {
-      "id": "osm-3642099282-unitech",
-      "name": "Unitech",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Manage",
-      "postalCode": "",
-      "lat": 50.508639,
-      "lng": 4.263074
-    },
-    {
       "id": "osm-11049510952-veronique-bomal",
       "name": "Véronique Bomal",
       "category": "artisan",
@@ -30908,20 +29511,6 @@
       "lng": 4.407381
     },
     {
-      "id": "osm-3898517509-bemis-monceau",
-      "name": "Bemis Monceau",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Rue des Piges",
-      "town": "Monceau",
-      "postalCode": "",
-      "lat": 50.415615,
-      "lng": 4.378431,
-      "hours": "07:30-18:00"
-    },
-    {
       "id": "osm-220774541-lidl",
       "name": "Lidl",
       "category": "alimentation",
@@ -30960,21 +29549,6 @@
       "lat": 50.408342,
       "lng": 4.383426,
       "website": "https://store.totalenergies.be/fr_BE/NB000840"
-    },
-    {
-      "id": "osm-1188899444-lb-toiture",
-      "name": "LB Toiture",
-      "category": "artisan",
-      "subcategory": "roofer",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "62 Rue de Cronfestu",
-      "town": "Mont-Sainte-Aldegonde",
-      "postalCode": "7141",
-      "lat": 50.440519,
-      "lng": 4.218304,
-      "phone": "+32 485 79 57 42",
-      "website": "https://lb-toiture.be/"
     },
     {
       "id": "osm-1997115445-pharmacie-marcq",
@@ -31915,19 +30489,6 @@
       "lat": 50.466232,
       "lng": 4.210336,
       "phone": "+32 64 22 96 23"
-    },
-    {
-      "id": "osm-11191496774-eric-de-bodt",
-      "name": "Eric de Bodt",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Morlanwelz",
-      "postalCode": "",
-      "lat": 50.434469,
-      "lng": 4.218854
     },
     {
       "id": "osm-11130702291-eric-vandoorne-faes",
@@ -33662,21 +32223,6 @@
       "hours": "Mo-Fr 08:30-12:15, 13:15-17:30"
     },
     {
-      "id": "osm-10789956433-acemal",
-      "name": "Acemal",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "61 Avenue Thomas Edison",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.579715,
-      "lng": 4.361173,
-      "phone": "+32 2 356 67 82",
-      "website": "https://www.acemal.com"
-    },
-    {
       "id": "osm-939537048-aclot-pharma",
       "name": "Aclot Pharma",
       "category": "artisan",
@@ -34048,19 +32594,6 @@
       "lat": 50.597853,
       "lng": 4.325988,
       "phone": "+32 67 84 04 30"
-    },
-    {
-      "id": "osm-12391386570-balou-pirot",
-      "name": "Balou & Pirot",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "12A Rue du Bosquet",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.580844,
-      "lng": 4.359333
     },
     {
       "id": "osm-9886586554-bancontact-cash",
@@ -34814,21 +33347,6 @@
       "hours": "\"sur rendez-vous\""
     },
     {
-      "id": "osm-9960821535-ctc-distributions-sprl",
-      "name": "CTC Distributions SPRL",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Chaussée de Namur",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.59955,
-      "lng": 4.342622,
-      "phone": "+32 67 86 60 00",
-      "website": "https://www.azzaworld.com/"
-    },
-    {
       "id": "osm-6430253917-damasquino",
       "name": "Damasquino",
       "category": "horeca",
@@ -35071,21 +33589,6 @@
       "lng": 4.348662
     },
     {
-      "id": "osm-13024987001-dune-architecture-srl",
-      "name": "DUNE ARCHITECTURE SRL",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "34 Faubourg de Charleroi",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.593263,
-      "lng": 4.327305,
-      "phone": "+32 496 48 64 93",
-      "website": "https://www.dune-architecture.be/"
-    },
-    {
       "id": "osm-13725780348-dvv-assurfina",
       "name": "DVV Assurfina",
       "category": "artisan",
@@ -35099,21 +33602,6 @@
       "lng": 4.323332,
       "phone": "+32 67 87 43 87",
       "website": "https://www.assurfina.com/"
-    },
-    {
-      "id": "osm-166279617-easi",
-      "name": "EASI",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "12 Avenue Robert Schuman",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.620216,
-      "lng": 4.328374,
-      "phone": "+32 67 28 10 00",
-      "website": "https://www.easi.net/"
     },
     {
       "id": "osm-7484418381-elite-sun",
@@ -35260,20 +33748,6 @@
       "website": "https://www.exalaw.be/"
     },
     {
-      "id": "osm-166279577-exeko",
-      "name": "Exeko",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "29 Avenue Konrad Adenauer",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.621865,
-      "lng": 4.329339,
-      "website": "https://www.exeko.be"
-    },
-    {
       "id": "osm-7514027564-exki",
       "name": "Exki",
       "category": "horeca",
@@ -35391,19 +33865,6 @@
       "lng": 4.358557
     },
     {
-      "id": "osm-751571658-fh-service",
-      "name": "Fh service",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.622153,
-      "lng": 4.328984
-    },
-    {
       "id": "osm-9831241380-flacon",
       "name": "flacon",
       "category": "horeca",
@@ -35505,21 +33966,6 @@
       "phone": "+32 67 33 31 12"
     },
     {
-      "id": "osm-6076488427-freedelity",
-      "name": "Freedelity",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "70 Rue du Panier Vert",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.592419,
-      "lng": 4.305086,
-      "website": "https://www.freedelity.be",
-      "hours": "Mo-Fr 09:00-18:00"
-    },
-    {
       "id": "osm-6782329089-futurell",
       "name": "Futurell",
       "category": "artisan",
@@ -35559,20 +34005,6 @@
       "postalCode": "",
       "lat": 50.600273,
       "lng": 4.308989
-    },
-    {
-      "id": "osm-7488982980-godeau-freres",
-      "name": "Godeau Frères",
-      "category": "artisan",
-      "subcategory": "roofer",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.59892,
-      "lng": 4.312969,
-      "website": "https://www.godeau-toitures.be/"
     },
     {
       "id": "osm-2634272030-gout-et-passion",
@@ -35629,20 +34061,6 @@
       "lat": 50.599476,
       "lng": 4.331401,
       "phone": "+32 67 78 07 15"
-    },
-    {
-      "id": "osm-98169825-hms-industrial-networks-sa",
-      "name": "HMS Industrial Networks SA",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "22 Avenue Robert Schuman",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.620712,
-      "lng": 4.327688,
-      "website": "https://www.hms-networks.com"
     },
     {
       "id": "osm-9906035881-home-patisserie",
@@ -36750,21 +35168,6 @@
       "postalCode": "",
       "lat": 50.595593,
       "lng": 4.337457
-    },
-    {
-      "id": "osm-13185581603-lisam",
-      "name": "Lisam",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.580871,
-      "lng": 4.355765,
-      "phone": "+32 67 49 00 03",
-      "website": "https://www.lisam.com"
     },
     {
       "id": "osm-1780933184-lonbois",
@@ -38320,21 +36723,6 @@
       "website": "https://www.tapafaim.com"
     },
     {
-      "id": "osm-9424766710-taup-green",
-      "name": "Taup’Green",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "102 Avenue du Monde",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.589504,
-      "lng": 4.318102,
-      "phone": "+32 495 22 09 22",
-      "website": "https://www.taupegreenbelgique.be/contact.php"
-    },
-    {
       "id": "osm-1780914716-taverne-restaurant-de-l-union",
       "name": "Taverne Restaurant de l'Union",
       "category": "horeca",
@@ -39336,21 +37724,6 @@
       "website": "https://damimmoegiovanna.be"
     },
     {
-      "id": "osm-13813368833-gmg-plafonnage",
-      "name": "GMG PLAFONNAGE",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "113 Rue de la Cayauderie",
-      "town": "Ransart",
-      "postalCode": "6043",
-      "lat": 50.445382,
-      "lng": 4.483767,
-      "phone": "+32489392777",
-      "website": "https://gmgplafonnage.be"
-    },
-    {
       "id": "osm-1155781025-il-trulletto",
       "name": "Il Trulletto",
       "category": "horeca",
@@ -39513,21 +37886,6 @@
       "phone": "+32 64 33 27 09",
       "website": "https://www.boulangeriethirion.com/",
       "hours": "Mo-Su 07:30-18:30"
-    },
-    {
-      "id": "osm-9367379831-contraste-decor-sprl",
-      "name": "Contraste Decor sprl",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "78 Rue Sart-Haut",
-      "town": "Rèves",
-      "postalCode": "6210",
-      "lat": 50.552412,
-      "lng": 4.394022,
-      "phone": "+32 475 46 86 33",
-      "website": "https://www.contrastedecorsprl.be"
     },
     {
       "id": "osm-383656617-bell-arrivo",
@@ -39720,19 +38078,6 @@
       "phone": "+32 10 84 56 74",
       "website": "https://magasins.carrefour.be/fr/s/carrefour/carrefour-express-arquennes/1281",
       "hours": "Mo-Su 08:00-20:00"
-    },
-    {
-      "id": "osm-3642049531-certech",
-      "name": "Certech",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2 Rue Jules Bordet",
-      "town": "Seneffe",
-      "postalCode": "7180",
-      "lat": 50.508238,
-      "lng": 4.263797
     },
     {
       "id": "osm-4725744189-chez-mario",
@@ -40002,20 +38347,6 @@
       "lng": 4.270756
     },
     {
-      "id": "osm-11649256705-ready",
-      "name": "Ready",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "30 Parc industriel paysager de Tyberchamps",
-      "town": "Seneffe",
-      "postalCode": "",
-      "lat": 50.524423,
-      "lng": 4.238871,
-      "website": "https://www.reddy.be/"
-    },
-    {
       "id": "osm-2021486150-shell",
       "name": "Shell",
       "category": "distributeur",
@@ -40027,34 +38358,6 @@
       "postalCode": "",
       "lat": 50.521868,
       "lng": 4.251611
-    },
-    {
-      "id": "osm-11118825824-sotraba",
-      "name": "Sotraba",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "121 Chaussée de Nivelles",
-      "town": "Seneffe",
-      "postalCode": "",
-      "lat": 50.566988,
-      "lng": 4.282512,
-      "phone": "+32 67 87 85 01",
-      "website": "https://sotraba.be/"
-    },
-    {
-      "id": "osm-11649255582-thermo-fisher-scientific",
-      "name": "Thermo Fisher Scientific",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "17 Parc Industriel Paysager de Tyberchamps",
-      "town": "Seneffe",
-      "postalCode": "",
-      "lat": 50.526269,
-      "lng": 4.238602
     },
     {
       "id": "osm-11118825823-trixxo",
@@ -40251,21 +38554,6 @@
       "lat": 50.443218,
       "lng": 4.347017,
       "phone": "+32 71 45 61 47"
-    },
-    {
-      "id": "osm-1307994789-snk-s-a",
-      "name": "SNK s.a.",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "42 Rue de l'Avenir",
-      "town": "Souvret",
-      "postalCode": "6182",
-      "lat": 50.441377,
-      "lng": 4.34735,
-      "phone": "+32 71 46 30 37",
-      "website": "https://www.snk.be"
     },
     {
       "id": "osm-1201516498-bella-sicilia",
@@ -40489,19 +38777,6 @@
       "postalCode": "7110",
       "lat": 50.474852,
       "lng": 4.127564
-    },
-    {
-      "id": "osm-1192633975-thermibel",
-      "name": "Thermibel",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "445 Pavé du Roeulx",
-      "town": "Strépy-Bracquegnies",
-      "postalCode": "7110",
-      "lat": 50.491975,
-      "lng": 4.115982
     },
     {
       "id": "osm-1201516863-veranda-climat",
@@ -41344,21 +39619,6 @@
       "hours": "Mo-Fr 08:00-17:00"
     },
     {
-      "id": "osm-13322024579-partena-professional",
-      "name": "Partena Professional",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Waterloo",
-      "postalCode": "",
-      "lat": 50.684935,
-      "lng": 4.40203,
-      "website": "https://www.partena-professional.be/fr/agences/braine-lalleud",
-      "hours": "Mo-Fr 08:00-17:00; Sa-Su off"
-    },
-    {
       "id": "osm-1222412799-peanuts-republic",
       "name": "Peanuts Republic",
       "category": "horeca",
@@ -41373,21 +39633,6 @@
       "phone": "+32 2 389 49 04",
       "website": "http://www.peanutsrepublic.be/",
       "hours": "We 13:30-06:00; Th 18:00-06:00; Fr 16:00-06:00; Sa-Su 13:00-06:00"
-    },
-    {
-      "id": "osm-13322166388-seco",
-      "name": "SECO",
-      "category": "artisan",
-      "subcategory": "company",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Waterloo",
-      "postalCode": "",
-      "lat": 50.68555,
-      "lng": 4.402546,
-      "phone": "+32 2 389 09 60",
-      "website": "https://www.secotools.com"
     },
     {
       "id": "osm-1774014617-shell",
