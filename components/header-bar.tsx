@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import communesJson from "@/lib/communes.json";
-import { Database, LocateFixed, MapPin, Users } from "lucide-react";
+import { Database, LocateFixed, MapPin, Search, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,12 +40,19 @@ export function HeaderBar({
     return COMMUNES.filter((c) => c.name.toLowerCase().startsWith(q)).slice(0, 8);
   }, [cityQuery]);
 
-  const pickCity = (name: string) => {
-    const c = COMMUNES.find((x) => x.name === name);
+  const pickCity = (raw?: string) => {
+    const q = (raw ?? cityQuery).trim().toLowerCase();
+    if (!q) return false;
+    const c =
+      COMMUNES.find((x) => x.name.toLowerCase() === q) ??
+      cityMatches[0] ??
+      COMMUNES.find((x) => x.name.toLowerCase().includes(q));
     if (c) {
       onCitySelect(c);
       setCityQuery("");
+      return true;
     }
+    return false;
   };
 
   return (
@@ -77,8 +84,11 @@ export function HeaderBar({
               list="communes-list"
               value={cityQuery}
               onChange={(e) => setCityQuery(e.target.value)}
-              onBlur={() => {
-                if (cityMatches.length > 0) pickCity(cityMatches[0].name);
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  pickCity();
+                }
               }}
               placeholder="Ta ville (ex. Seneffe, Namur, Dinant…)"
               className="h-10 pl-9 text-sm font-medium"
@@ -93,6 +103,15 @@ export function HeaderBar({
           <Button
             variant="outline"
             size="icon"
+            onClick={() => pickCity()}
+            title="Rechercher cette ville"
+            aria-label="Rechercher cette ville"
+          >
+            <Search className="size-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
             onClick={onUseGps}
             title="Utiliser ma position actuelle (GPS)"
             aria-label="Utiliser ma position actuelle"
@@ -101,7 +120,7 @@ export function HeaderBar({
           </Button>
         </div>
         <p className="mt-1 text-[11px] text-neutral-400">
-          Pas de GPS (sur PC par exemple) ? Cherche ta ville ci-dessus.
+          Tape ta ville puis Entrée (ou la loupe) — pas besoin de GPS.
         </p>
 
         <div className="mt-2.5 rounded-xl border border-neutral-200 bg-paper px-3 py-2.5">

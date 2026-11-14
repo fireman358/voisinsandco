@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin } from "lucide-react";
+import { useState } from "react";
+import { Minus, Plus, MapPin } from "lucide-react";
 import type { Business } from "@/lib/types";
 import { formatDistance } from "@/lib/format";
 
@@ -28,6 +29,7 @@ function project(lat: number, lng: number, z: number) {
 }
 
 export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMapProps) {
+  const [zoomOffset, setZoomOffset] = useState(0);
   if (items.length === 0) {
     return (
       <div className="flex h-72 items-center justify-center rounded-2xl border border-neutral-200 bg-white text-sm text-neutral-400">
@@ -50,6 +52,7 @@ export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMap
     const p2 = project(maxLat, maxLng, z);
     if (Math.abs(p2.x - p1.x) <= 4 * TILE && Math.abs(p2.y - p1.y) <= 4 * TILE) break;
   }
+  z = Math.max(8, Math.min(18, z - zoomOffset));
 
   const p1 = project(minLat, minLng, z);
   const p2 = project(maxLat, maxLng, z);
@@ -80,7 +83,27 @@ export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMap
 
   return (
     <div>
-      <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#EDF3EC]">
+      <div className="relative overflow-hidden rounded-2xl border border-neutral-200 bg-[#EDF3EC]">
+        <div className="absolute right-2 top-2 z-10 flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+          <button
+            type="button"
+            onClick={() => setZoomOffset((o) => Math.max(o - 1, -2))}
+            className="p-2 text-neutral-600 hover:bg-neutral-50"
+            aria-label="Zoom avant"
+            title="Zoom avant"
+          >
+            <Plus className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setZoomOffset((o) => Math.min(o + 1, 4))}
+            className="border-t border-neutral-200 p-2 text-neutral-600 hover:bg-neutral-50"
+            aria-label="Zoom arrière"
+            title="Zoom arrière"
+          >
+            <Minus className="size-4" />
+          </button>
+        </div>
         <svg viewBox={`0 0 ${w} ${h}`} className="h-72 w-full" role="img" aria-label="Carte du périmètre">
           {tiles.map((t) => (
             <image

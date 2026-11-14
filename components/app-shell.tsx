@@ -69,8 +69,9 @@ export function AppShell() {
   const handleCitySelect = useCallback(
     (city: { name: string; lat: number; lng: number }) => {
       setGeo({ lat: city.lat, lng: city.lng, label: city.name, shortLabel: city.name, isGeo: false });
+      toast(`Rayon recentré sur ${city.name}`, "success");
     },
-    [],
+    [toast],
   );
 
   const handleUseGps = useCallback(() => {
