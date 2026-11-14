@@ -80,7 +80,7 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
             <p className="font-semibold text-neutral-800">Merci {name.split(" ")[0]} !</p>
             <p className="text-sm text-neutral-500">
               Votre demande est enregistrée. Nous vous contactons au {phone} (appel ou WhatsApp)
-              pour vérifier votre fiche — aucun e-mail de domaine n'est exigé.
+              pour vérifier votre fiche — aucun e-mail de domaine n&rsquo;est exigé.
             </p>
             <div className="mt-2 space-y-1 rounded-lg bg-green-50 px-3 py-2 text-left text-xs text-neutral-700">
               <p><span className="font-semibold">Fiche Vérifiée</span> — gratuite après vérification.</p>
