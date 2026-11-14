@@ -25,8 +25,9 @@ export async function GET() {
     // contexte Cloudflare indisponible (build local) — repli ci-dessous
   }
   let cityName: string | null = city;
-  if (cityName && !communes.some((c) => c.name.toLowerCase() === cityName.toLowerCase())) {
-    cityName = null;
+  if (cityName) {
+    const q = cityName.toLowerCase();
+    if (!communes.some((c) => c.name.toLowerCase() === q)) cityName = null;
   }
   if ((lat === null || lng === null) && cityName) {
     const q = cityName.toLowerCase();
