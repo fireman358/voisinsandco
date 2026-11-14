@@ -12,25 +12,23 @@ const OVERPASS_ENDPOINTS = [
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
-// Les 5 provinces wallonnes : le rayon de recherche de l'app (2–15 km) fait le
-// reste — aucune limite provinciale pour l'utilisateur près d'une frontière.
-const PROVINCES = ["Hainaut", "Liège", "Namur", "Luxembourg", "Brabant wallon"];
+// Boîte englobante de la Wallonie (les communes hors Wallonie récupérées en plus
+// ne gênent pas : l'app filtre par rayon autour de l'utilisateur, jamais par
+// province — aucune limite pour qui habite près d'une frontière provinciale).
+const BBOX = [49.95, 2.9, 50.85, 6.45];
 
 const POI_QUERY = `[out:json][timeout:300];
 (
-${PROVINCES.map((p) => `  area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"];`).join("\n")}
-)->.wal;
-(
-  nwr["shop"]["name"](area.wal);
-  nwr["craft"]["name"](area.wal);
-  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](area.wal);
+  nwr["shop"]["name"](${BBOX.join(",")});
+  nwr["craft"]["name"](${BBOX.join(",")});
+  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](${BBOX.join(",")});
 );
 out center tags;`;
 
-// Communes wallonnes (polygones) pour rattacher chaque POI à sa commune.
-const COMMUNES_QUERY = `[out:json][timeout:300];
-rel["boundary"="administrative"]["admin_level"="8"](49.8,2.7,50.95,6.5);
-out tags geom;`;
+// Centroïdes des communes (admin_level=8) pour rattacher chaque POI à sa commune.
+const COMMUNES_QUERY = `[out:json][timeout:120];
+rel["boundary"="administrative"]["admin_level"="8"](${BBOX.join(",")});
+out center tags;`;
 
 const ALIMENTATION_SHOPS = new Set([
   "bakery", "butcher", "supermarket", "convenience", "greengrocer", "farm", "cheese",
@@ -51,6 +49,13 @@ const CATEGORY_DESCRIPTIONS = {
 };
 
 const DEMO_RADIUS_KM = 12;
+const DEMO_TOWNS = {
+  Arquennes: [50.5033, 4.3667],
+  Seneffe: [50.5256, 4.259],
+  Feluy: [50.551, 4.27],
+  Nivelles: [50.5928, 4.3244],
+  Baulers: [50.579, 4.305],
+};
 
 function categoryFor(tags) {
   if (tags.shop && ALIMENTATION_SHOPS.has(tags.shop)) return "alimentation";
@@ -122,53 +127,6 @@ async function fetchOverpass(query, label) {
   throw new Error(`Tous les miroirs Overpass ont échoué (${label}) : ${lastError?.message}`);
 }
 
-function buildCommunes(relations) {
-  const communes = [];
-  for (const rel of relations) {
-    const name = rel.tags?.name;
-    if (!name) continue;
-    const rings = [];
-    for (const m of rel.members ?? []) {
-      if (m.role !== "outer" || !m.geometry) continue;
-      const ring = m.geometry.filter((p) => p).map((p) => [p.lon, p.lat]);
-      if (ring.length >= 4) rings.push(ring);
-    }
-    if (rings.length) {
-      let minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
-      for (const ring of rings) for (const [lon, lat] of ring) {
-        if (lon < minLon) minLon = lon;
-        if (lon > maxLon) maxLon = lon;
-        if (lat < minLat) minLat = lat;
-        if (lat > maxLat) maxLat = lat;
-      }
-      communes.push({ name, rings, minLon, maxLon, minLat, maxLat });
-    }
-  }
-  return communes;
-}
-
-function pointInRing(lon, lat, ring) {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i];
-    const [xj, yj] = ring[j];
-    if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) {
-      inside = !inside;
-    }
-  }
-  return inside;
-}
-
-function communeFor(communes, lat, lon) {
-  for (const c of communes) {
-    if (lon < c.minLon || lon > c.maxLon || lat < c.minLat || lat > c.maxLat) continue;
-    for (const ring of c.rings) {
-      if (pointInRing(lon, lat, ring)) return c.name;
-    }
-  }
-  return null;
-}
-
 const haversineKm = (lat1, lon1, lat2, lon2) => {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -181,8 +139,24 @@ const haversineKm = (lat1, lon1, lat2, lon2) => {
 
 const poiElements = await fetchOverpass(POI_QUERY, "POI Wallonie");
 const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes");
-const communes = buildCommunes(communeElements.filter((e) => e.type === "relation"));
+const communes = communeElements
+  .filter((e) => e.type === "relation" && e.tags?.name && e.center)
+  .map((e) => ({ name: e.tags.name, lat: e.center.lat, lng: e.center.lon }));
 console.log(`${communes.length} communes chargées`);
+if (communes.length === 0) throw new Error("aucune commune récupérée");
+
+function nearestCommune(lat, lng) {
+  let best = null;
+  let bestD = Infinity;
+  for (const c of communes) {
+    const d = haversineKm(lat, lng, c.lat, c.lng);
+    if (d < bestD) {
+      bestD = d;
+      best = c;
+    }
+  }
+  return best.name;
+}
 
 const businesses = [];
 const seen = new Set();
@@ -197,8 +171,7 @@ for (const el of poiElements) {
   const category = categoryFor(tags);
   if (!category) continue;
 
-  const town = tags["addr:city"] || communeFor(communes, lat, lon);
-  if (!town) continue;
+  const town = tags["addr:city"] || nearestCommune(lat, lon);
 
   const key = `${name.toLowerCase()}|${Math.round(lat * 1000)}|${Math.round(lon * 1000)}`;
   const townKey = `${name.toLowerCase()}|${town.toLowerCase()}`;
@@ -242,9 +215,8 @@ fs.writeFileSync(seedPath, `${JSON.stringify(seed, null, 2)}\n`);
 
 // Fallback de démonstration embarqué dans le Worker (bundle léger) :
 // uniquement les fiches autour des communes de référence.
-const demoTowns = { Arquennes: [50.5033, 4.3667], Seneffe: [50.5256, 4.259], Feluy: [50.551, 4.27], Nivelles: [50.5928, 4.3244], Baulers: [50.579, 4.305] };
 const demoBusinesses = businesses.filter((b) =>
-  Object.values(demoTowns).some(([lat, lng]) => haversineKm(b.lat, b.lng, lat, lng) <= DEMO_RADIUS_KM),
+  Object.values(DEMO_TOWNS).some(([lat, lng]) => haversineKm(b.lat, b.lng, lat, lng) <= DEMO_RADIUS_KM),
 );
 const demoIds = new Set(demoBusinesses.map((b) => b.id));
 fs.writeFileSync(
