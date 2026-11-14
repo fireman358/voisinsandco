@@ -5,6 +5,14 @@ import { fileURLToPath } from "node:url";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(fs.readFileSync(path.join(root, "lib", "seed-data.json"), "utf8"));
 
+// Fiches issues de la BCE Open Data (croisées/dédoublonnées contre OSM par
+// scripts/import-bce.mjs). Fichier absent tant que le premier import n'a pas tourné.
+const bcePath = path.join(root, "lib", "bce-data.json");
+if (fs.existsSync(bcePath)) {
+  const bce = JSON.parse(fs.readFileSync(bcePath, "utf8"));
+  data.businesses = [...data.businesses, ...bce.businesses];
+}
+
 const q = (v) => {
   if (v === null || v === undefined) return "NULL";
   if (typeof v === "number") return String(v);
@@ -18,6 +26,17 @@ lines.push("-- Généré depuis lib/seed-data.json — ne pas éditer à la main
 lines.push("-- Appliqué par le workflow quotidien « D1 refresh » (upsert idempotent, pas de purge");
 lines.push("-- pour préserver le contenu communautaire et le quota d'écritures D1).");
 lines.push("");
+
+// Les fiches BCE remplacées (radiées/déplacées hors Wallonie) disparaissent,
+// sauf celles revendiquées par un commerçant.
+let bceCount = 0;
+for (const b of data.businesses) if (b.id.startsWith("bce-")) bceCount++;
+if (bceCount > 0) {
+  lines.push(
+    "DELETE FROM businesses WHERE id LIKE 'bce-%' AND id NOT IN (SELECT business_id FROM claims);",
+  );
+  lines.push("");
+}
 
 for (const b of data.businesses) {
   lines.push(
@@ -68,4 +87,4 @@ lines.push("");
 
 const sql = lines.join("\n");
 fs.writeFileSync(path.join(root, "seed.sql"), sql);
-console.log(`OK seed.sql (${(sql.length / 1e6).toFixed(1)} Mo)`);
+console.log(`OK seed.sql (${(sql.length / 1e6).toFixed(1)} Mo, dont ${bceCount} fiches BCE)`);
