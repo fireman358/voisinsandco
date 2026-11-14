@@ -67,3 +67,4 @@ jobs:
             git commit -m "chore: import BCE Open Data (croisement OSM, dédoublonnage)"
             git push
           fi
+
