@@ -17,7 +17,22 @@ const OVERPASS_ENDPOINTS = [
 // province — aucune limite pour qui habite près d'une frontière provinciale).
 const BBOX = [49.95, 2.9, 50.85, 6.45];
 
-const POI_QUERY = `[out:json][timeout:300];
+// Filtre sur les 5 provinces wallonnes (zones Overpass) — exclut les POI des
+// zones étrangères/bruxelloises couvertes par la boîte englobante.
+const PROVINCES = ["Hainaut", "Liège", "Namur", "Luxembourg", "Brabant wallon"];
+
+const POI_QUERY_AREAS = `[out:json][timeout:300];
+(
+${PROVINCES.map(
+  (p) => `  nwr["shop"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
+  nwr["craft"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
+  nwr["office"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);
+  nwr["amenity"~"^(restaurant|fast_food|cafe|bar|pub|ice_cream|pharmacy|doctors|dentist|veterinary|hairdresser|car_repair|fuel|vending_machine|atm|bank)$"]["name"](area["boundary"="administrative"]["admin_level"="4"]["name"="${p}"]);`,
+).join("\n")}
+);
+out center tags;`;
+
+const POI_QUERY_BBOX = `[out:json][timeout:300];
 (
   nwr["shop"]["name"](${BBOX.join(",")});
   nwr["craft"]["name"](${BBOX.join(",")});
@@ -142,7 +157,19 @@ const haversineKm = (lat1, lon1, lat2, lon2) => {
   return 2 * R * Math.asin(Math.sqrt(a));
 };
 
-const poiElements = await fetchOverpass(POI_QUERY, "POI Wallonie");
+let poiElements = [];
+try {
+  poiElements = await fetchOverpass(POI_QUERY_AREAS, "POI Wallonie (provinces)");
+  if (poiElements.length < 1000) {
+    console.warn(`Filtre par provinces trop pauvre (${poiElements.length}) — repli sur la boîte englobante.`);
+    poiElements = [];
+  }
+} catch {
+  poiElements = [];
+}
+if (poiElements.length === 0) {
+  poiElements = await fetchOverpass(POI_QUERY_BBOX, "POI Wallonie (boîte)");
+}
 const communeElements = await fetchOverpass(COMMUNES_QUERY, "communes et villages");
 const communes = communeElements
   .filter((e) => e.type === "relation" && e.tags?.name && e.center)
