@@ -16,6 +16,7 @@ interface Claim {
   name: string;
   email: string | null;
   phone: string | null;
+  bce: string | null;
   message: string | null;
   createdAt: string;
 }
@@ -187,8 +188,16 @@ export default function AdminPage() {
   const template = TEMPLATES.find((t) => t.key === templateKey) ?? TEMPLATES[0];
   const preview = useMemo(() => fill(template, target, targetClaim), [template, target, targetClaim]);
   const [subjectLine, ...bodyLines] = preview.split("\n\n");
-  const mailto = targetClaim?.email
-    ? `mailto:${targetClaim.email}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyLines.join("\n\n"))}`
+  const [editSubject, setEditSubject] = useState<string | null>(null);
+  const [editBody, setEditBody] = useState<string | null>(null);
+  useEffect(() => {
+    setEditSubject(null);
+    setEditBody(null);
+  }, [templateKey, target?.id, targetClaim?.id]);
+  const finalSubject = editSubject ?? subjectLine;
+  const finalBody = editBody ?? bodyLines.join("\n\n");
+  const mailto = (targetClaim?.email || recipient).includes("@")
+    ? `mailto:${targetClaim?.email || recipient}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(finalBody)}`
     : null;
 
   const copy = async (text: string, what: string) => {
@@ -207,7 +216,7 @@ export default function AdminPage() {
     try {
       await api("/api/admin/send-email", {
         method: "POST",
-        body: JSON.stringify({ to: recipient.trim(), subject: subjectLine, text: bodyLines.join("\n\n") }),
+        body: JSON.stringify({ to: recipient.trim(), subject: finalSubject, text: finalBody }),
       });
       setCopied("sent");
       setTimeout(() => setCopied(""), 2500);
@@ -276,6 +285,19 @@ export default function AdminPage() {
                           <p className="text-neutral-600">
                             {c.name} — {c.email ?? ""} {c.phone ? `· ${c.phone}` : ""}
                           </p>
+                          {c.bce && (
+                            <p className="mt-1 text-xs">
+                              BCE&nbsp;
+                              <a
+                                href={`https://kbopub.economie.fgov.be/etrade/enterprise/search?enterpriseNumber=${encodeURIComponent(c.bce)}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="font-medium text-accent-dark underline"
+                              >
+                                {c.bce} — vérifier sur le registre officiel ↗
+                              </a>
+                            </p>
+                          )}
                           {c.message && <p className="mt-1 text-xs text-neutral-500">{c.message}</p>}
                           <p className="mt-1 text-[11px] text-neutral-400">{new Date(c.createdAt).toLocaleString("fr-BE")}</p>
                         </div>
@@ -432,9 +454,30 @@ export default function AdminPage() {
                   {copied === "sent" ? "Envoyé !" : "Envoyer"}
                 </Button>
               </div>
-              <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded-xl bg-neutral-50 p-3 text-xs text-neutral-700">
-                {preview}
-              </pre>
+              <div className="space-y-2">
+                <Input
+                  value={finalSubject}
+                  onChange={(e) => setEditSubject(e.target.value)}
+                  aria-label="Objet de l'e-mail (modifiable)"
+                  className="text-sm font-medium"
+                />
+                <textarea
+                  value={finalBody}
+                  onChange={(e) => setEditBody(e.target.value)}
+                  aria-label="Corps de l'e-mail (modifiable)"
+                  className="h-56 w-full rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-xs text-neutral-700"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditSubject(null);
+                    setEditBody(null);
+                  }}
+                  className="text-xs font-medium text-forest underline"
+                >
+                  Réinitialiser le canevas
+                </button>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {mailto && (
                   <Button asChild size="sm">
@@ -443,10 +486,10 @@ export default function AdminPage() {
                     </a>
                   </Button>
                 )}
-                <Button size="sm" variant="secondary" onClick={() => copy(preview, "mail")}>
+                <Button size="sm" variant="secondary" onClick={() => copy(`${finalSubject}\n\n${finalBody}`, "mail")}>
                   <Copy className="size-3.5" /> {copied === "mail" ? "Copié !" : "Copier l'e-mail"}
                 </Button>
-                <Button size="sm" variant="secondary" onClick={() => copy(bodyLines.join("\n\n"), "wa")}>
+                <Button size="sm" variant="secondary" onClick={() => copy(finalBody, "wa")}>
                   <MessageSquare className="size-3.5" /> {copied === "wa" ? "Copié !" : "Copier pour WhatsApp"}
                 </Button>
               </div>

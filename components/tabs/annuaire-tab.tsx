@@ -168,7 +168,9 @@ export function AnnuaireTab({
         (needle === "" ||
           normalizeText(b.name).includes(needle) ||
           normalizeText(b.town).includes(needle) ||
-          normalizeText(b.address).includes(needle)),
+          normalizeText(b.address).includes(needle) ||
+          normalizeText(subcategoryLabel(b.subcategory)).includes(needle) ||
+          normalizeText(CATEGORY_LABELS[b.category]).includes(needle)),
     );
   }, [byCategory, subcat, query]);
 

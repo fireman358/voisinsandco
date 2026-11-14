@@ -174,6 +174,9 @@ for (const el of poiElements) {
   const category = categoryFor(tags);
   if (!category) continue;
 
+  // office=company est trop générique (holding sans activité publique identifiable)
+  if (tags.office === "company") continue;
+
   const town = tags["addr:city"] || nearestCommune(lat, lon);
 
   const key = `${name.toLowerCase()}|${Math.round(lat * 1000)}|${Math.round(lon * 1000)}`;

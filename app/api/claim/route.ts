@@ -4,7 +4,7 @@ import { createClaim } from "@/lib/data";
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
-  let body: { businessId?: string; name?: string; email?: string; phone?: string; message?: string };
+  let body: { businessId?: string; name?: string; email?: string; phone?: string; bce?: string; message?: string };
   try {
     body = await req.json();
   } catch {
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
     name,
     email,
     phone: phone || undefined,
+    bce: body.bce?.trim() || undefined,
     message: body.message?.trim(),
   });
   return NextResponse.json({ ok, demo }, { status: 201 });

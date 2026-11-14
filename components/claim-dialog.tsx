@@ -28,6 +28,7 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [bce, setBce] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
@@ -44,7 +45,7 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
       const res = await fetch("/api/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ businessId: business.id, name, email, phone, message }),
+        body: JSON.stringify({ businessId: business.id, name, email, phone, bce, message }),
       });
       if (!res.ok) throw new Error("bad status");
       setDone(true);
@@ -110,6 +111,15 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="jean@exemple.be"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="claim-bce">N° BCE de la société (accélère la vérification)</Label>
+              <Input
+                id="claim-bce"
+                value={bce}
+                onChange={(e) => setBce(e.target.value)}
+                placeholder="0XXX.XXX.XXX"
               />
             </div>
             <div className="space-y-1.5">

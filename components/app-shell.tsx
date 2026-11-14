@@ -156,7 +156,6 @@ export function AppShell() {
             </TabsList>
           </Tabs>
         )}
-      </main>
       <footer className="border-t border-neutral-200 bg-anthracite px-4 py-4 text-center text-xs text-neutral-300">
         <p>
           Une réalisation{" "}
@@ -186,6 +185,7 @@ export function AppShell() {
           </Link>
         </p>
       </footer>
+      </main>
     </div>
   );
 }

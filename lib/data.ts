@@ -291,6 +291,7 @@ export async function createClaim(input: {
   name: string;
   email: string;
   phone?: string;
+  bce?: string;
   message?: string;
 }): Promise<{ ok: boolean; demo: boolean }> {
   const conn = getDB();
@@ -298,8 +299,8 @@ export async function createClaim(input: {
     try {
       await conn
         .prepare(
-          `INSERT INTO claims (id, business_id, name, email, phone, message, created_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO claims (id, business_id, name, email, phone, bce, message, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         )
         .bind(
           crypto.randomUUID(),
@@ -307,6 +308,7 @@ export async function createClaim(input: {
           input.name,
           input.email,
           input.phone ?? null,
+          input.bce ?? null,
           input.message ?? null,
           new Date().toISOString(),
         )
