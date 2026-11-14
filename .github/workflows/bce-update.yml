@@ -58,22 +58,42 @@ jobs:
           import csv, glob, os, subprocess, sys
 
           def cols(hdr):
-              lc = [h.lower() for h in hdr]
-              def find(*needles):
+              lc = [h.lower().strip() for h in hdr]
+              def exact(name):
+                  return lc.index(name) if name in lc else None
+              def contains(needle, exclude=()):
                   for i, h in enumerate(lc):
-                      if all(n in h for n in needles):
+                      if needle in h and not any(x in h for x in exclude):
                           return i
                   return None
+              street = (
+                  exact("streetname_fr")
+                  or contains("streetname_fr")
+                  or contains("streetname_nl")
+                  or contains("streetname")
+                  or contains("street", exclude=("_id",))
+              )
+              number = (
+                  exact("house_number")
+                  or contains("house_number")
+                  or contains("housenumber")
+                  or contains("number", exclude=("box",))
+              )
+              postcode = exact("postcode") or contains("postcode")
+              lat = exact("epsg:4326_lat") or contains("4326_lat") or contains("lat", exclude=("3812", "31370"))
+              lon = exact("epsg:4326_lon") or contains("4326_lon") or contains("lon", exclude=("3812", "31370"))
+              status = exact("status") or contains("status")
               return {
-                  "street": find("street") or find("rue"),
-                  "number": find("number") or find("nummer"),
-                  "postcode": find("postcode") or find("postal") or find("zip"),
-                  "lat": find("lat") if find("lat") is not None and "38" not in lc[find("lat")] else None,
-                  "lon": find("lon") if find("lon") is not None and "38" not in lc[find("lon")] else None,
-                  "x3812": find("epsg:3812_x") or find("3812_x"),
-                  "y3812": find("epsg:3812_y") or find("3812_y"),
-                  "x72": find("epsg:31370_x") or find("31370_x"),
-                  "y72": find("epsg:31370_y") or find("31370_y"),
+                  "street": street,
+                  "number": number,
+                  "postcode": postcode,
+                  "lat": lat,
+                  "lon": lon,
+                  "x3812": contains("3812_x"),
+                  "y3812": contains("3812_y"),
+                  "x72": contains("31370_x"),
+                  "y72": contains("31370_y"),
+                  "status": status,
               }
 
           src = None
@@ -94,6 +114,8 @@ jobs:
               sys.exit(0)
           f, c = src
           print("Source BeST :", f, c)
+          with open(f, encoding="utf-8-sig") as fh:
+              print("En-tête :", next(fh).strip())
 
           epsg = None
           if c["lat"] is not None:
@@ -124,6 +146,8 @@ jobs:
                   except IndexError:
                       continue
                   if not street or not number:
+                      continue
+                  if c["status"] is not None and row[c["status"]].strip().lower() not in ("current", ""):
                       continue
                   if proc is None:
                       try:
