@@ -53,6 +53,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     } catch {}
   }, []);
   const [radius, setRadius] = useState(DEFAULT_RADIUS);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchTick, setSearchTick] = useState(0);
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
   const [demo, setDemo] = useState(initialData?.demo ?? false);
@@ -66,9 +68,10 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
   const load = useCallback(async () => {
     setLoading(true);
     const qs = `lat=${geo.lat}&lng=${geo.lng}&radius=${radius}`;
+    const sq = searchQuery.trim().length >= 2 ? `&q=${encodeURIComponent(searchQuery.trim())}` : "";
     try {
       const [b, d, n, t] = await Promise.all([
-        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}`),
+        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}${sq}`),
         fetchJSON<{ deals: Deal[]; events: AgendaEvent[]; demo: boolean }>(`/api/deals?${qs}`),
         fetchJSON<{ items: Need[]; demo: boolean }>(`/api/needs?${qs}`),
         fetchJSON<{ items: Tool[]; demo: boolean }>(`/api/tools?${qs}`),
@@ -85,11 +88,15 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     } finally {
       setLoading(false);
     }
-  }, [geo, radius, toast]);
+  }, [geo, radius, searchTick, toast]);
 
   useEffect(() => {
     void load();
   }, [load]);
+  useEffect(() => {
+    const t = setTimeout(() => setSearchTick((n) => n + 1), 400);
+    return () => clearTimeout(t);
+  }, [searchQuery]);
   useEffect(() => {
     if (localStorage.getItem("voisins-geo")) return;
     fetchJSON<{ city: string | null; lat?: number; lng?: number }>("/api/geo")
@@ -172,6 +179,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
                 loading={loading}
                 center={{ lat: geo.lat, lng: geo.lng }}
                 geoShortLabel={geo.shortLabel}
+                searchQuery={searchQuery}
+                onSearchQueryChange={setSearchQuery}
                 onCreated={handleBusinessCreated}
               />
             </TabsContent>

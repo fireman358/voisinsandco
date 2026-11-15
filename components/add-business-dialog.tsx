@@ -43,9 +43,6 @@ export function AddBusinessDialog({
   const [address, setAddress] = useState("");
   const [town, setTown] = useState(geo.shortLabel);
   const [postalCode, setPostalCode] = useState("");
-  const [phone, setPhone] = useState("");
-  const [website, setWebsite] = useState("");
-  const [hours, setHours] = useState("");
   const [bce, setBce] = useState("");
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
@@ -55,9 +52,6 @@ export function AddBusinessDialog({
     setName("");
     setAddress("");
     setPostalCode("");
-    setPhone("");
-    setWebsite("");
-    setHours("");
     setBce("");
     setContactName("");
     setContactEmail("");
@@ -85,9 +79,6 @@ export function AddBusinessDialog({
           address,
           town: finalTown,
           postalCode,
-          phone,
-          website,
-          hours,
           bce,
           contactName,
           contactEmail,
@@ -163,25 +154,9 @@ export function AddBusinessDialog({
               ))}
             </datalist>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="biz-phone">Téléphone</Label>
-              <Input id="biz-phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+32 4xx xx xx xx" />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="biz-web">Site web</Label>
-              <Input id="biz-web" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://…" />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="biz-hours">Horaires</Label>
-              <Input id="biz-hours" value={hours} onChange={(e) => setHours(e.target.value)} placeholder="Lu-Ve 8h-18h" />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="biz-bce">N° BCE</Label>
-              <Input id="biz-bce" value={bce} onChange={(e) => setBce(e.target.value)} placeholder="0XXX.XXX.XXX" />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="biz-bce">N° BCE (facilite la vérification)</Label>
+            <Input id="biz-bce" value={bce} onChange={(e) => setBce(e.target.value)} placeholder="0XXX.XXX.XXX" />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-1.5">

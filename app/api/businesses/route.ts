@@ -10,7 +10,8 @@ const CATEGORIES: BusinessCategory[] = ["alimentation", "artisan", "horeca", "di
 export async function GET(req: NextRequest) {
   const q = parseGeo(req.nextUrl.searchParams);
   const category = req.nextUrl.searchParams.get("category") ?? "all";
-  const { items, demo, total } = await listBusinesses(q, category);
+  const search = req.nextUrl.searchParams.get("q") ?? undefined;
+  const { items, demo, total } = await listBusinesses(q, category, search);
   return NextResponse.json({ items, demo, total });
 }
 

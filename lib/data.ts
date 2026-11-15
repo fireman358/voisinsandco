@@ -64,8 +64,18 @@ function byTierThenDistance(a: Business, b: Business): number {
 export async function listBusinesses(
   q: GeoQuery,
   category: string,
+  search?: string,
 ): Promise<{ items: Business[]; demo: boolean; total: number }> {
   const box = boundingBox(q.lat, q.lng, q.radius);
+  // Recherche texte côté serveur : indispensable avec 275 000 fiches, la
+  // limite de 300 résultats les plus proches masquait les fiches plus loin.
+  const needle = search?.trim().toLowerCase();
+  const matchesSearch = (b: Business) =>
+    !needle ||
+    b.name.toLowerCase().includes(needle) ||
+    b.town.toLowerCase().includes(needle) ||
+    b.address.toLowerCase().includes(needle) ||
+    (b.bce ?? "").replace(/\D/g, "").includes(needle.replace(/\D/g, ""));
   const conn = getDB();
   if (conn) {
     const args = [box.minLat, box.maxLat, box.minLng, box.maxLng];
@@ -103,14 +113,14 @@ export async function listBusinesses(
     }
     if (results.length > 0) {
       const matched = withDistance(q, results)
-        .filter((b) => category === "all" || b.category === category)
+        .filter((b) => (category === "all" || b.category === category) && matchesSearch(b))
         .sort(byTierThenDistance);
       // Borne la charge utile : on ne renvoie que les N plus proches (Pro en tête).
       return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: false, total: matched.length };
     }
   }
   const matched = withDistance(q, BUSINESSES)
-    .filter((b) => category === "all" || b.category === category)
+    .filter((b) => (category === "all" || b.category === category) && matchesSearch(b))
     .sort(byTierThenDistance);
   return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: true, total: matched.length };
 }

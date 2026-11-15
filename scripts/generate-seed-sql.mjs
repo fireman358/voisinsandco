@@ -58,11 +58,12 @@ for (const b of data.businesses) {
   ];
   // `prime` et `paid_until` sont ajoutés à l'INSERT uniquement s'ils existent en
   // base (après migration 0011). On les met à leur valeur par défaut entre-temps.
+  const updateCols = SEED_COLUMNS.filter((c) => c !== "id" && !PRESERVED_ON_CONFLICT.includes(c));
   lines.push(
     `INSERT INTO businesses (${SEED_COLUMNS.join(", ")}) VALUES (${values.join(", ")}) ` +
       `ON CONFLICT(id) DO UPDATE SET ` +
-      SEED_COLUMNS.filter((c) => c !== "id" && !PRESERVED_ON_CONFLICT.includes(c))
-        .map((c) => `${c} = excluded.${c}`)
+      updateCols
+        .map((c) => (c === "name" ? `name = CASE WHEN businesses.tier != 'standard' THEN businesses.name ELSE excluded.name END` : `${c} = excluded.${c}`))
         .join(", ") +
       `;`,
   );

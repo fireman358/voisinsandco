@@ -432,6 +432,9 @@ for (const ent of activeEnt) {
   const quoted = display.match(/[«"]([^«»"]{2,60})[»"]/);
   if (quoted && display.length > 80) display = quoted[1];
   display = display.replace(/\s+/g, " ").trim();
+  // Personnes physiques : « Demoulin, Eric » → « Eric Demoulin »
+  const person = display.match(/^([A-ZÀ-Ü][^,]{1,40}),\s*([^,]{1,40})$/);
+  if (person) display = `${person[2]} ${person[1]}`.trim();
   const key = `${norm(display)}|${norm(addr.town)}`;
   if (osmKeys.has(key) || seenKeys.has(key)) { skippedDup++; continue; }
   seenKeys.add(key);

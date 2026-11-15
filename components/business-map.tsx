@@ -104,7 +104,31 @@ export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMap
             <Minus className="size-4" />
           </button>
         </div>
-        <svg viewBox={`0 0 ${w} ${h}`} className="h-72 w-full" role="img" aria-label="Carte du périmètre">
+        <svg
+          viewBox={`0 0 ${w} ${h}`}
+          className="h-72 w-full"
+          role="img"
+          aria-label="Carte du périmètre"
+          onClick={(e) => {
+            // Clic sur la carte (pas seulement sur un point exact) : on
+            // sélectionne la fiche la plus proche de l'endroit cliqué.
+            const rect = (e.target as SVGElement).ownerSVGElement?.getBoundingClientRect()
+              ?? (e.currentTarget as SVGSVGElement).getBoundingClientRect();
+            const sx = ((e.clientX - rect.left) / rect.width) * w + x0;
+            const sy = ((e.clientY - rect.top) / rect.height) * h + y0;
+            let best: string | null = null;
+            let bestD = Infinity;
+            for (const p of items) {
+              const pp = project(p.lat, p.lng, z);
+              const d = (pp.x - sx) ** 2 + (pp.y - sy) ** 2;
+              if (d < bestD) {
+                bestD = d;
+                best = p.id;
+              }
+            }
+            if (best !== null && bestD <= (r * 3) ** 2) onSelect(best);
+          }}
+        >
           {tiles.map((t) => (
             <image
               key={`${t.x}/${t.y}`}
@@ -138,7 +162,10 @@ export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMap
                 stroke="#FFFFFF"
                 strokeWidth={r * 0.3}
                 className="cursor-pointer transition-all hover:opacity-80"
-                onClick={() => onSelect(p.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelect(p.id);
+                }}
               >
                 <title>
                   {p.name} — {formatDistance(p.distanceKm)} • {p.town}

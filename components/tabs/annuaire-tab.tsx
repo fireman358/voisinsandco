@@ -2,24 +2,63 @@
 
 import { useMemo, useState } from "react";
 import {
+  Apple,
   BadgeCheck,
+  Beef,
+  Beer,
+  Book,
+  Calculator,
+  Camera,
+  Candy,
+  Car,
   ChevronDown,
   Clock,
+  Coffee,
+  Cheese,
+  Croissant,
   Crown,
+  Dumbbell,
+  Flower,
+  Footprints,
+  Fuel,
+  Gamepad2,
+  Gem,
+  Glasses,
   Globe,
+  GraduationCap,
   Hammer,
+  HardHat,
+  Heart,
+  House,
+  Landmark,
+  Leaf,
   List,
   Map as MapIcon,
   MapPin,
   Megaphone,
+  Monitor,
+  Music,
   Navigation,
+  Palette,
+  Paintbrush,
   Phone,
+  Pill,
+  Plane,
   Plus,
+  Scale,
+  Scissors,
   Search,
   SearchX,
+  ShieldCheck,
+  Shirt,
   ShoppingBasket,
   ShoppingCart,
+  Sparkles,
+  Stethoscope,
+  Truck,
+  Utensils,
   UtensilsCrossed,
+  Wrench,
   Zap,
   type LucideIcon,
 } from "lucide-react";
@@ -59,6 +98,84 @@ const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
 ];
 
 const PAGE_SIZE = 50;
+
+// Icône par activité précise — un informaticien n'a pas besoin d'un marteau.
+const ACTIVITY_ICON: Record<string, LucideIcon> = {
+  informatique: Monitor,
+  medecin: Stethoscope,
+  dentiste: Stethoscope,
+  kine: Stethoscope,
+  veterinaire: Stethoscope,
+  pharmacie: Pill,
+  opticien: Glasses,
+  coiffeur: Scissors,
+  esthetique: Sparkles,
+  avocat: Scale,
+  notaire: Scale,
+  comptabilite: Calculator,
+  agence_immobiliere: House,
+  architecte: House,
+  construction: HardHat,
+  maconnerie: HardHat,
+  terrassement: HardHat,
+  menuiserie: Hammer,
+  cuisines: Hammer,
+  plomberie_chauffage: Wrench,
+  electricien: Zap,
+  couvreur: HardHat,
+  peinture: Paintbrush,
+  carrelage_sols: Paintbrush,
+  isolation: Paintbrush,
+  nettoyage: Paintbrush,
+  jardinage: Leaf,
+  fleuriste: Flower,
+  animalerie: Leaf,
+  garage: Car,
+  carburant_recharge: Fuel,
+  boulangerie: Croissant,
+  boucherie: Beef,
+  primeurs: Apple,
+  supermarche: ShoppingBasket,
+  epicerie: ShoppingBasket,
+  fromagerie: Cheese,
+  chocolaterie: Candy,
+  restaurant: Utensils,
+  fast_food: Utensils,
+  cafe: Coffee,
+  bar_pub: Beer,
+  librairie: Book,
+  papeterie: Book,
+  jouets: Gamepad2,
+  articles_sport: Dumbbell,
+  vetements: Shirt,
+  chaussures: Footprints,
+  bijouterie: Gem,
+  horloger: Gem,
+  electronique: Monitor,
+  gsm: Monitor,
+  hifi_tv: Monitor,
+  musique: Music,
+  instruments: Music,
+  galerie_art: Palette,
+  quincaillerie: Wrench,
+  bricolage: Wrench,
+  photographe: Camera,
+  communication_design: Palette,
+  agence_voyage: Plane,
+  enseignement: GraduationCap,
+  assurance: ShieldCheck,
+  banque: Landmark,
+  asbl_ong: Heart,
+  pompes_funebres: Heart,
+  pressing: Shirt,
+  repassage: Shirt,
+  laverie: Shirt,
+  couture: Scissors,
+  cordonnier: Scissors,
+  demagement: Truck,
+  securite: ShieldCheck,
+  pressing_2: Shirt,
+};
 
 const CATEGORY_ICON: Record<BusinessCategory, LucideIcon> = {
   alimentation: ShoppingBasket,
@@ -109,7 +226,7 @@ function TierBadge({ tier, prime }: { tier: Business["tier"]; prime?: boolean })
 function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => void }) {
   const telHref = b.phone ? `tel:${b.phone.replace(/[^+\d]/g, "")}` : null;
   const directions = `https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}`;
-  const Icon = CATEGORY_ICON[b.category] ?? ShoppingBasket;
+  const Icon = ACTIVITY_ICON[activityKey(b.subcategory)] ?? CATEGORY_ICON[b.category] ?? ShoppingBasket;
   return (
     <Card className={cn("lift overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
       <CardHeader className="pb-2">
@@ -126,7 +243,13 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
             </div>
             <div className="min-w-0">
               <CardTitle className="truncate text-base">{b.name}</CardTitle>
-              <CardDescription className="truncate">{b.description}</CardDescription>
+              <CardDescription className="truncate">
+                {b.tier !== "standard"
+                  ? b.bce
+                    ? "Entreprise authentifiée : enregistrée et active à la BCE, gérant vérifié."
+                    : "Commerçant authentifié : gérant vérifié par nos soins."
+                  : b.description}
+              </CardDescription>
             </div>
           </div>
           <TierBadge tier={b.tier} prime={b.prime} />
@@ -203,12 +326,16 @@ export function AnnuaireTab({
   loading,
   center,
   geoShortLabel,
+  searchQuery,
+  onSearchQueryChange,
   onCreated,
 }: {
   businesses: Business[];
   loading: boolean;
   center: { lat: number; lng: number };
   geoShortLabel: string;
+  searchQuery: string;
+  onSearchQueryChange: (q: string) => void;
   onCreated: (b: Business) => void;
 }) {
   const [category, setCategory] = useState<BusinessCategory | "all">("all");
@@ -216,7 +343,6 @@ export function AnnuaireTab({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
   const [addOpen, setAddOpen] = useState(false);
-  const [query, setQuery] = useState("");
   const [subcat, setSubcat] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [catDialog, setCatDialog] = useState(false);
@@ -261,7 +387,7 @@ export function AnnuaireTab({
   }, [businesses]);
 
   const filtered = useMemo(() => {
-    const needle = normalizeText(query.trim());
+    const needle = normalizeText(searchQuery.trim());
     return byCategory.filter(
       (b) =>
         (subcat === "all" || activityKey(b.subcategory) === subcat) &&
@@ -272,7 +398,7 @@ export function AnnuaireTab({
           normalizeText(activityLabel(b.subcategory)).includes(needle) ||
           normalizeText(CATEGORY_LABELS[b.category]).includes(needle)),
     );
-  }, [byCategory, subcat, query]);
+  }, [byCategory, subcat, searchQuery]);
 
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
   const visibleItems = filtered.slice(0, visible);
@@ -313,9 +439,9 @@ export function AnnuaireTab({
       <div className="relative">
         <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
         <Input
-          value={query}
+          value={searchQuery}
           onChange={(e) => {
-            setQuery(e.target.value);
+            onSearchQueryChange(e.target.value);
             setVisible(PAGE_SIZE);
           }}
           placeholder="Rechercher : pharmacie, boulangerie, nom, Rue…"
@@ -346,154 +472,101 @@ export function AnnuaireTab({
       </div>
 
       {subcats.length > 0 && (
-        <div className="flex items-center gap-2">
-          <div className="relative flex-1">
-            <select
-              value={subcat}
-              onChange={(e) => {
-                const key = e.target.value;
-                if (key !== "all" && !subcats.some(([k]) => k === key)) {
-                  setCategory("all");
-                }
-                setSubcat(key);
-                setVisible(PAGE_SIZE);
-              }}
-              className="h-10 w-full appearance-none rounded-xl border border-accent-dark/40 bg-accent-light pl-3 pr-9 text-sm font-semibold text-accent-dark"
-              aria-label="Filtrer par activité"
-            >
-              <option value="all">Toutes les activités ({byCategory.length})</option>
-              {subcats.length > 0 && (
-                <optgroup label="Dans ton périmètre">
-                  {subcats.map(([key, count]) => (
-                    <option key={key} value={key}>
-                      {SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)} ({count})
-                    </option>
-                  ))}
-                </optgroup>
-              )}
-              {groupedSubcats.catalog.length > 0 && (
-                <optgroup label="Autres activités (aucune société dans le périmètre)">
-                  {groupedSubcats.catalog.map((a) => (
-                    <option key={a.key} value={a.key}>
-                      {a.label}
-                    </option>
-                  ))}
-                </optgroup>
-              )}
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-accent-dark" />
-          </div>
+        <div className="relative">
           <button
             type="button"
-            onClick={() => setCatDialog(true)}
-            className="shrink-0 whitespace-nowrap rounded-xl border border-neutral-200 bg-white px-3 py-2 text-xs font-semibold text-neutral-600 hover:border-accent-dark/40"
+            onClick={() => {
+              setCatDialog((o) => !o);
+              setCatSearch("");
+            }}
+            className="flex h-10 w-full items-center justify-between gap-2 rounded-xl border border-accent-dark/40 bg-accent-light px-3 text-sm font-semibold text-accent-dark"
+            aria-label="Filtrer par activité"
           >
-            Catalogue ▾
+            <span className="truncate">
+              {subcat === "all"
+                ? `Toutes les activités (${byCategory.length})`
+                : `${SUBCATEGORY_GROUP_LABELS[subcat] ?? activityLabel(subcat)}${
+                    subcats.find(([k]) => k === subcat) ? ` (${subcats.find(([k]) => k === subcat)![1]})` : ""
+                  }`}
+            </span>
+            <ChevronDown className="size-4 shrink-0" />
           </button>
+          {catDialog && (
+            <div className="absolute z-30 mt-1 max-h-[70dvh] w-full overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-lg">
+              <div className="border-b border-neutral-100 p-2">
+                <Input
+                  autoFocus
+                  value={catSearch}
+                  onChange={(e) => setCatSearch(e.target.value)}
+                  placeholder="Tape un mot : informatique, pharmacie…"
+                  className="h-9"
+                />
+              </div>
+              <div className="max-h-[52dvh] overflow-y-auto p-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSubcat("all");
+                    setVisible(PAGE_SIZE);
+                    setCatDialog(false);
+                  }}
+                  className={cn(
+                    "w-full rounded-lg px-3 py-2 text-left text-sm font-semibold",
+                    subcat === "all" ? "bg-accent-light text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                  )}
+                >
+                  Toutes les activités ({byCategory.length})
+                </button>
+                {subcats
+                  .filter(([key]) => normalizeText(SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)).includes(normalizeText(catSearch.trim())))
+                  .map(([key, count]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => {
+                        setSubcat(key);
+                        setVisible(PAGE_SIZE);
+                        setCatDialog(false);
+                      }}
+                      className={cn(
+                        "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm",
+                        subcat === key ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                      )}
+                    >
+                      <span className="truncate">{SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)}</span>
+                      <span className="shrink-0 text-xs text-neutral-400">{count}</span>
+                    </button>
+                  ))}
+                {groupedSubcats.catalog
+                  .filter((a) => normalizeText(a.label).includes(normalizeText(catSearch.trim())))
+                  .slice(0, 60)
+                  .map((a) => (
+                    <button
+                      key={a.key}
+                      type="button"
+                      onClick={() => {
+                        setCategory("all");
+                        setSubcat(a.key);
+                        setVisible(PAGE_SIZE);
+                        setCatDialog(false);
+                      }}
+                      className={cn(
+                        "w-full rounded-lg px-3 py-2 text-left text-sm",
+                        subcat === a.key
+                          ? "bg-accent-light font-semibold text-accent-dark"
+                          : "text-neutral-400 hover:bg-neutral-50 hover:text-neutral-600",
+                      )}
+                    >
+                      {a.label}
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      <Dialog open={catDialog} onOpenChange={setCatDialog}>
-        <DialogContent className="max-h-[80dvh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>Choisir une activité</DialogTitle>
-            <DialogDescription>
-              Catalogue complet des activités, groupées par famille. Le nombre entre parenthèses compte les sociétés du périmètre actuel.
-            </DialogDescription>
-          </DialogHeader>
-          <Input
-            value={catSearch}
-            onChange={(e) => setCatSearch(e.target.value)}
-            placeholder="Filtrer les activités…"
-          />
-          <div className="space-y-4">
-            {[...groupedSubcats.byMain.entries()]
-              .filter(([cat]) => category === "all" || cat === category)
-              .map(([cat, list]) => {
-                const shown = list.filter((a) =>
-                  normalizeText(a.label).includes(normalizeText(catSearch.trim())),
-                );
-                if (shown.length === 0) return null;
-                return (
-                  <div key={cat} className="space-y-1.5">
-                    <p className="text-xs font-bold uppercase tracking-wide text-neutral-400">
-                      {CATEGORY_LABELS[cat]}
-                    </p>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setCategory(cat);
-                          setSubcat("all");
-                          setVisible(PAGE_SIZE);
-                          setCatDialog(false);
-                        }}
-                        className="col-span-2 rounded-lg border border-neutral-200 px-2.5 py-2 text-left text-xs font-semibold text-neutral-700 hover:border-accent-dark/40"
-                      >
-                        Toutes les activités
-                      </button>
-                      {shown.map((a) => (
-                        <button
-                          key={a.key}
-                          type="button"
-                          onClick={() => {
-                            setSubcat(a.key);
-                            setVisible(PAGE_SIZE);
-                            setCatDialog(false);
-                          }}
-                          className={cn(
-                            "rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-colors",
-                            subcat === a.key
-                              ? "border-accent-dark bg-accent-dark text-white"
-                              : "border-neutral-200 bg-white text-neutral-700 hover:border-accent-dark/40",
-                          )}
-                        >
-                          {a.label}
-                          <span className="ml-1 text-[10px] text-neutral-400">({a.count})</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            {(() => {
-              const shown = groupedSubcats.catalog.filter((a) =>
-                normalizeText(a.label).includes(normalizeText(catSearch.trim())),
-              );
-              if (shown.length === 0) return null;
-              return (
-                <div className="space-y-1.5">
-                  <p className="text-xs font-bold uppercase tracking-wide text-neutral-400">
-                    Autres activités (aucune société dans le périmètre)
-                  </p>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {shown.map((a) => (
-                      <button
-                        key={a.key}
-                        type="button"
-                        onClick={() => {
-                          setCategory("all");
-                          setSubcat(a.key);
-                          setVisible(PAGE_SIZE);
-                          setCatDialog(false);
-                        }}
-                        className={cn(
-                          "rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-colors",
-                          subcat === a.key
-                            ? "border-accent-dark bg-accent-dark text-white"
-                            : "border-dashed border-neutral-200 bg-white text-neutral-500 hover:border-accent-dark/40",
-                        )}
-                      >
-                        {a.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
-        </DialogContent>
-      </Dialog>
+
 
       {loading && businesses.length === 0 ? (
         <ListSkeleton count={4} columns />
