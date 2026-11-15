@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
 import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
-import { activityKey, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
+import { CATEGORY_LABELS, activityKey, activityLabel, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
 import { normalizeText } from "./utils";
 
 export interface GeoQuery {
@@ -147,14 +147,25 @@ export async function listBusinesses(
   const box = boundingBox(q.lat, q.lng, q.radius);
   // Recherche texte côté serveur : indispensable avec 275 000 fiches, la
   // limite de 300 résultats les plus proches masquait les fiches plus loin.
-  const needle = search?.trim().toLowerCase();
-  const digits = needle?.replace(/\D/g, "") ?? "";
-  const matchesSearch = (b: Business) =>
-    !needle ||
-    b.name.toLowerCase().includes(needle) ||
-    b.town.toLowerCase().includes(needle) ||
-    b.address.toLowerCase().includes(needle) ||
-    (digits.length > 0 && (b.bce ?? "").replace(/\D/g, "").includes(digits));
+  // On cherche aussi dans l'activité (« informatique », « pharmacie »…) et la
+  // catégorie, pas seulement le nom.
+  const norm = (s: string) => normalizeText(s).replace(/[^a-z0-9]+/g, " ").trim();
+  const needle = search?.trim() ? norm(search.trim()) : "";
+  const digits = search?.replace(/\D/g, "") ?? "";
+  const matchesSearch = (b: Business) => {
+    if (!needle) return true;
+    const hay = norm(
+      [
+        b.name,
+        b.town,
+        b.address,
+        activityLabel(b.subcategory),
+        activityKey(b.subcategory),
+        CATEGORY_LABELS[b.category],
+      ].join(" "),
+    );
+    return hay.includes(needle) || (digits.length > 0 && (b.bce ?? "").replace(/\D/g, "").includes(digits));
+  };
   const conn = getDB();
   if (conn) {
     const args = [box.minLat, box.maxLat, box.minLng, box.maxLng];
