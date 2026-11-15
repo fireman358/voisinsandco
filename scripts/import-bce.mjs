@@ -418,8 +418,19 @@ if (bestPath && fs.existsSync(bestPath)) {
 }
 
 console.log("8/8 assemblage + dédoublonnage OSM…");
+// Clé de dédoublonnage robuste : nom + code postal + n° de rue. Contrairement à
+// « nom|commune », elle attrape les doublons dont la commune est libellée
+// différemment (ex. Feluy vs Seneffe, mêmes 7181) ou l'adresse inversée
+// (« 5 Avenue X » vs « Avenue X 5 »).
+const houseOf = (s) => (String(s ?? "").match(/\d+/) ?? [""])[0];
+const dedupKey = (name, zip, num) =>
+  `${norm(name)}|${String(zip ?? "").replace(/\s/g, "")}|${String(num ?? "").replace(/\D/g, "")}`;
 const osmBusinesses = JSON.parse(fs.readFileSync(path.join(root, "lib", "seed-data.json"), "utf8")).businesses;
-const osmKeys = new Set(osmBusinesses.map((b) => `${norm(b.name)}|${norm(b.town)}`));
+const osmKeys = new Set();
+for (const b of osmBusinesses) {
+  osmKeys.add(dedupKey(b.name, b.postalCode, houseOf(b.address)));
+  osmKeys.add(`${norm(b.name)}|${norm(b.town)}`); // sécurité (ancien format)
+}
 
 const DESCRIPTIONS = {
   alimentation: "Alimentation et produits frais, fiche issue de la Banque-Carrefour des Entreprises.",
@@ -448,9 +459,17 @@ for (const ent of activeEnt) {
   // Personnes physiques : « Demoulin, Eric » → « Eric Demoulin »
   const person = display.match(/^([A-ZÀ-Ü][^,]{1,40}),\s*([^,]{1,40})$/);
   if (person) display = `${person[2]} ${person[1]}`.trim();
-  const key = `${norm(display)}|${norm(addr.town)}`;
-  if (osmKeys.has(key) || seenKeys.has(key)) { skippedDup++; continue; }
-  seenKeys.add(key);
+  const keyNum = dedupKey(display, addr.zip, addr.house);
+  const keyTown = `${norm(display)}|${norm(addr.town)}`;
+  if (
+    osmKeys.has(keyNum) || osmKeys.has(keyTown) ||
+    seenKeys.has(keyNum) || seenKeys.has(keyTown)
+  ) {
+    skippedDup++;
+    continue;
+  }
+  seenKeys.add(keyNum);
+  seenKeys.add(keyTown);
   const digits = ent.replace(/\D/g, "");
   const bce = digits.replace(/^(\d{4})(\d{3})(\d{3})$/, "$1.$2.$3");
   let { lat, lng } = addr;

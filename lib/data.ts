@@ -84,6 +84,17 @@ function byTierThenDistance(a: Business, b: Business): number {
 }
 
 /**
+ * Clé de dédoublonnage d'une fiche : nom normalisé + code postal + n° de rue.
+ * Attrape les doublons OSM/BCE dont la commune est libellée différemment
+ * (Feluy vs Seneffe, mêmes 7181) et l'adresse inversée.
+ */
+function dedupKey(b: Business): string {
+  const n = b.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const num = (b.address.match(/\d+/) ?? [""])[0];
+  return `${n}|${b.postalCode ?? ""}|${num}`;
+}
+
+/**
  * Applique les filtres sur un lot déjà borné au rayon. Renvoie aussi les
  * « facettes » d'activités (compteurs globaux du rayon, indépendants des filtres)
  * pour que la liste des activités garde toujours ses nombres.
@@ -96,12 +107,21 @@ function selectBusinesses(
   matchesSearch: (b: Business) => boolean,
 ): { items: Business[]; total: number; facets: Record<string, number> } {
   const all = withDistance(q, rows);
-  const facets: Record<string, number> = {};
+  // Fusionne les doublons OSM/BCE : on garde la fiche la plus complète (celle
+  // qui porte un n° BCE) pour ne pas afficher deux fois le même commerce.
+  const byKey = new Map<string, (typeof all)[number]>();
   for (const b of all) {
+    const k = dedupKey(b);
+    const prev = byKey.get(k);
+    if (!prev || (!prev.bce && b.bce)) byKey.set(k, b);
+  }
+  const unique = [...byKey.values()];
+  const facets: Record<string, number> = {};
+  for (const b of unique) {
     const key = activityKey(b.subcategory);
     if (key) facets[key] = (facets[key] ?? 0) + 1;
   }
-  const matched = all
+  const matched = unique
     .filter(
       (b) =>
         (category === "all" || b.category === category) &&
