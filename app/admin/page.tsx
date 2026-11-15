@@ -2,14 +2,17 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, CalendarClock, Copy, EyeOff, Flag, KeyRound, Loader2, Mail, MessageSquare, Pencil, Search, Trash2 } from "lucide-react";
+import { ArrowLeft, CalendarClock, Copy, EyeOff, Flag, KeyRound, Loader2, Mail, MessageSquare, Pencil, Plus, Search, Tag, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { subcategoryLabel, type Business, type BusinessTier } from "@/lib/types";
+import communesJson from "@/lib/communes.json";
+import { subcategoryLabel, type Business, type BusinessCategory, type BusinessTier } from "@/lib/types";
 import { cn } from "@/lib/utils";
+
+const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
 
 interface Claim {
   id: string;
@@ -29,6 +32,16 @@ interface Report {
   contentId: string;
   reason: string;
   createdAt: string;
+}
+
+interface DealAdmin {
+  id: string;
+  businessName: string;
+  title: string;
+  category: BusinessCategory;
+  price: number;
+  expiresAt: string;
+  remaining: number;
 }
 
 const TIERS: { key: BusinessTier; label: string }[] = [
@@ -119,6 +132,20 @@ export default function AdminPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
+  // Bons plans (promos / anti-gaspi saisis depuis un e-mail fournisseur)
+  const [deals, setDeals] = useState<DealAdmin[]>([]);
+  const [dBiz, setDBiz] = useState("");
+  const [dCat, setDCat] = useState<BusinessCategory>("alimentation");
+  const [dTitle, setDTitle] = useState("");
+  const [dDesc, setDDesc] = useState("");
+  const [dPrice, setDPrice] = useState("");
+  const [dOrig, setDOrig] = useState("");
+  const [dQty, setDQty] = useState("10");
+  const [dPickup, setDPickup] = useState("");
+  const [dTown, setDTown] = useState("");
+  const [dExpires, setDExpires] = useState("");
+  const [dSaving, setDSaving] = useState(false);
+
   const [templateKey, setTemplateKey] = useState(TEMPLATES[0].key);
   const [target, setTarget] = useState<Business | null>(null);
   const [targetClaim, setTargetClaim] = useState<Claim | null>(null);
@@ -150,25 +177,91 @@ export default function AdminPage() {
   const loadAll = useCallback(async () => {
     setError("");
     try {
-      const [c, s, r] = await Promise.all([
+      const [c, s, r, d] = await Promise.all([
         api<{ claims?: Claim[] }>("/api/admin/claims"),
         api<{ items?: Business[] }>("/api/admin/subscriptions"),
         api<{ reports?: Report[] }>("/api/admin/reports"),
+        api<{ deals?: DealAdmin[] }>("/api/admin/deals"),
       ]);
       setClaims(c.claims ?? []);
       setSubs(s.items ?? []);
       setReports(r.reports ?? []);
+      setDeals(d.deals ?? []);
     } catch (e) {
       setError((e as Error).message);
       setClaims([]);
       setSubs([]);
       setReports([]);
+      setDeals([]);
     }
   }, [api]);
 
   useEffect(() => {
     if (authed) loadAll();
   }, [authed, loadAll]);
+
+  const addDeal = async () => {
+    if (!dTitle.trim() || !dBiz.trim() || !dTown.trim() || !dExpires) {
+      setError("Titre, commerce, commune et date d'expiration requis.");
+      return;
+    }
+    const normTown = dTown.trim().toLowerCase();
+    const commune =
+      COMMUNES.find((c) => c.name.toLowerCase() === normTown) ??
+      COMMUNES.find((c) => c.name.toLowerCase().startsWith(normTown));
+    if (!commune) {
+      setError("Commune introuvable — vérifie l'orthographe.");
+      return;
+    }
+    const price = Number(dPrice.replace(",", "."));
+    if (!Number.isFinite(price) || price <= 0) {
+      setError("Prix invalide.");
+      return;
+    }
+    setDSaving(true);
+    setError("");
+    try {
+      const data = await api<{ deal: DealAdmin }>("/api/admin/deals", {
+        method: "POST",
+        body: JSON.stringify({
+          businessName: dBiz.trim(),
+          category: dCat,
+          title: dTitle.trim(),
+          description: dDesc.trim(),
+          price,
+          originalPrice: dOrig ? Number(dOrig.replace(",", ".")) : undefined,
+          quantity: Number(dQty) || 1,
+          pickup: dPickup.trim(),
+          town: commune.name,
+          lat: commune.lat,
+          lng: commune.lng,
+          expiresAt: dExpires,
+        }),
+      });
+      setDeals((prev) => [data.deal, ...prev]);
+      setDTitle("");
+      setDDesc("");
+      setDPrice("");
+      setDOrig("");
+      setDBiz("");
+      setDPickup("");
+      setDExpires("");
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setDSaving(false);
+    }
+  };
+
+  const removeDeal = async (id: string) => {
+    setError("");
+    try {
+      await api(`/api/admin/deals?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+      setDeals((prev) => prev.filter((x) => x.id !== id));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
 
   const search = async () => {
     if (q.trim().length < 2) return;
@@ -529,6 +622,76 @@ export default function AdminPage() {
                       </li>
                     );
                   })}
+                </ul>
+              )}
+            </section>
+
+            <section className="space-y-3 rounded-2xl border border-neutral-200 bg-white p-4">
+              <h2 className="flex items-center gap-2 text-sm font-bold text-neutral-900">
+                <Tag className="size-4 text-accent" /> Bons plans ({deals.length})
+              </h2>
+              <p className="text-xs text-neutral-500">
+                Colle ici une offre reçue par e-mail d&apos;un fournisseur : elle apparaît dans les bons
+                plans des voisins du rayon (anti-gaspi ou promo).
+              </p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <Input value={dBiz} onChange={(e) => setDBiz(e.target.value)} placeholder="Nom du commerce *" />
+                <select
+                  value={dCat}
+                  onChange={(e) => setDCat(e.target.value as BusinessCategory)}
+                  className="h-10 rounded-xl border border-neutral-200 bg-white px-3 text-sm"
+                  aria-label="Catégorie du bon plan"
+                >
+                  <option value="alimentation">Alimentation</option>
+                  <option value="artisan">Artisan</option>
+                  <option value="horeca">Horeca</option>
+                  <option value="distributeur">Distributeur</option>
+                </select>
+              </div>
+              <Input value={dTitle} onChange={(e) => setDTitle(e.target.value)} placeholder="Titre de l'offre * (ex. Paniers invendus 5 € à 18h)" />
+              <Input value={dDesc} onChange={(e) => setDDesc(e.target.value)} placeholder="Détails (contenu, conditions…)" />
+              <div className="grid grid-cols-3 gap-2">
+                <Input value={dPrice} onChange={(e) => setDPrice(e.target.value)} placeholder="Prix € *" inputMode="decimal" />
+                <Input value={dOrig} onChange={(e) => setDOrig(e.target.value)} placeholder="Prix initial €" inputMode="decimal" />
+                <Input value={dQty} onChange={(e) => setDQty(e.target.value)} placeholder="Qté" inputMode="numeric" />
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <Input value={dPickup} onChange={(e) => setDPickup(e.target.value)} placeholder="Retrait (ex. sur place, 18h-20h)" />
+                <Input value={dTown} onChange={(e) => setDTown(e.target.value)} placeholder="Commune *" list="deal-communes" />
+              </div>
+              <datalist id="deal-communes">
+                {COMMUNES.filter((c) => c.name.toLowerCase().startsWith(dTown.trim().toLowerCase())).slice(0, 8).map((c) => (
+                  <option key={c.name} value={c.name} />
+                ))}
+              </datalist>
+              <div className="flex flex-wrap items-center gap-2">
+                <label className="text-xs font-medium text-neutral-600">Expire le</label>
+                <input
+                  type="date"
+                  value={dExpires}
+                  onChange={(e) => setDExpires(e.target.value)}
+                  className="h-10 rounded-xl border border-neutral-200 px-3 text-sm"
+                  aria-label="Date d'expiration"
+                />
+                <Button size="sm" onClick={addDeal} disabled={dSaving} className="ml-auto">
+                  {dSaving ? <Loader2 className="size-4 animate-spin" /> : <Plus className="size-4" />} Publier le bon plan
+                </Button>
+              </div>
+              {deals.length > 0 && (
+                <ul className="space-y-2">
+                  {deals.map((d) => (
+                    <li key={d.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-neutral-200 p-3 text-sm">
+                      <div>
+                        <p className="font-semibold text-neutral-800">{d.title}</p>
+                        <p className="text-xs text-neutral-500">
+                          {d.businessName} · {d.price.toFixed(2).replace(".", ",")} € · expire le {d.expiresAt.slice(0, 10)} · {d.remaining} restant(s)
+                        </p>
+                      </div>
+                      <Button size="sm" variant="outline" onClick={() => removeDeal(d.id)} title="Supprimer ce bon plan">
+                        <Trash2 className="size-3.5 text-red-500" />
+                      </Button>
+                    </li>
+                  ))}
                 </ul>
               )}
             </section>

@@ -43,7 +43,8 @@ function withDistance<T extends { lat: number; lng: number }>(
 }
 
 // Priorité d'affichage : Prime (+5 €) > Pro > Visibilité > (Vérifiée = Standard, gratuit).
-// À rang égal, le plus proche d'abord.
+// À rang égal : le plus proche d'abord, puis rotation quotidienne équitable
+// (hash stable id + jour) pour qu'une fiche « Z » ne soit pas toujours en bas.
 const TIER_RANK: Record<string, number> = {
   prime: 3,
   pro: 2,
@@ -57,8 +58,25 @@ function rankOf(b: Business): number {
   return TIER_RANK[b.tier] ?? 0;
 }
 
+const DAY_NUMBER = Math.floor(Date.now() / 86_400_000);
+
+/** Hash déterministe (FNV-1a) de `id` + numéro de jour : change chaque jour. */
+function dailyHash(id: string): number {
+  let h = 2166136261;
+  const s = `${id}#${DAY_NUMBER}`;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
 function byTierThenDistance(a: Business, b: Business): number {
-  return rankOf(b) - rankOf(a) || (a.distanceKm ?? 0) - (b.distanceKm ?? 0);
+  return (
+    rankOf(b) - rankOf(a) ||
+    (a.distanceKm ?? 0) - (b.distanceKm ?? 0) ||
+    dailyHash(a.id) - dailyHash(b.id)
+  );
 }
 
 export async function listBusinesses(
@@ -160,7 +178,8 @@ export async function listDealsAndEvents(
            FROM events
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
              AND hidden = 0
-           ORDER BY date ASC`,
+           ORDER BY date ASC
+           LIMIT 200`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng)
         .all<AgendaEvent>();
@@ -196,7 +215,8 @@ export async function listNeeds(q: GeoQuery): Promise<{ items: Need[]; demo: boo
            FROM needs
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
              AND hidden = 0
-           ORDER BY created_at DESC`,
+           ORDER BY created_at DESC
+           LIMIT 200`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng)
         .all<Need>();
@@ -226,7 +246,8 @@ export async function listTools(
            FROM tools
            WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?
              AND hidden = 0
-             AND (lower(name) LIKE ? OR lower(description) LIKE ? OR lower(owner) LIKE ?)`,
+             AND (lower(name) LIKE ? OR lower(description) LIKE ? OR lower(owner) LIKE ?)
+           LIMIT 200`,
         )
         .bind(box.minLat, box.maxLat, box.minLng, box.maxLng, needle, needle, needle)
         .all<Tool>();
@@ -908,4 +929,88 @@ export async function createBusiness(
     }
   }
   return { business, demo: true, existing: false };
+}
+
+export interface NewDeal {
+  businessId: string;
+  businessName: string;
+  category: BusinessCategory;
+  title: string;
+  description: string;
+  price: number;
+  originalPrice?: number;
+  quantity: number;
+  remaining: number;
+  pickup: string;
+  town: string;
+  lat: number;
+  lng: number;
+  expiresAt: string;
+}
+
+/**
+ * Ajout d'un bon plan par le gestionnaire (à partir d'un e-mail fournisseur).
+ * L'admin colle l'offre reçue : elle apparaît dans le fil des voisins du rayon.
+ */
+export async function createDeal(input: NewDeal): Promise<{ deal: Deal; demo: boolean }> {
+  const deal: Deal = { id: `deal-${crypto.randomUUID()}`, ...input };
+  const conn = getDB();
+  if (conn) {
+    try {
+      await conn
+        .prepare(
+          `INSERT INTO deals (id, business_id, business_name, category, title, description, price, original_price, quantity, remaining, pickup, town, lat, lng, expires_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .bind(
+          deal.id,
+          deal.businessId,
+          deal.businessName,
+          deal.category,
+          deal.title,
+          deal.description,
+          deal.price,
+          deal.originalPrice ?? null,
+          deal.quantity,
+          deal.remaining,
+          deal.pickup,
+          deal.town,
+          deal.lat,
+          deal.lng,
+          deal.expiresAt,
+        )
+        .run();
+      return { deal, demo: false };
+    } catch {
+      // mode démo
+    }
+  }
+  return { deal, demo: true };
+}
+
+export async function listAllDeals(): Promise<Deal[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  try {
+    const { results } = await conn
+      .prepare(
+        `SELECT id, business_id AS businessId, business_name AS businessName, category, title,
+                description, price, original_price AS originalPrice, quantity, remaining,
+                pickup, town, lat, lng, expires_at AS expiresAt
+         FROM deals
+         ORDER BY expires_at ASC
+         LIMIT 200`,
+      )
+      .all<Deal>();
+    return results ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function deleteDeal(id: string): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn.prepare(`DELETE FROM deals WHERE id = ?`).bind(id).run();
+  return true;
 }
