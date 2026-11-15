@@ -513,16 +513,29 @@ export async function setBusinessPrime(id: string, prime: boolean): Promise<bool
 
 export async function updateBusinessDetails(
   id: string,
-  patch: { phone?: string | null; website?: string | null; hours?: string | null; news?: string | null },
+  patch: {
+    name?: string | null;
+    phone?: string | null;
+    website?: string | null;
+    hours?: string | null;
+    news?: string | null;
+  },
 ): Promise<boolean> {
   const conn = getDB();
   if (!conn) return false;
   await conn
     .prepare(
-      `UPDATE businesses SET phone = COALESCE(?, phone), website = COALESCE(?, website),
+      `UPDATE businesses SET name = COALESCE(?, name), phone = COALESCE(?, phone), website = COALESCE(?, website),
        hours = COALESCE(?, hours), news = COALESCE(?, news) WHERE id = ?`,
     )
-    .bind(patch.phone ?? null, patch.website ?? null, patch.hours ?? null, patch.news ?? null, id)
+    .bind(
+      patch.name ?? null,
+      patch.phone ?? null,
+      patch.website ?? null,
+      patch.hours ?? null,
+      patch.news ?? null,
+      id,
+    )
     .run();
   return true;
 }
@@ -773,7 +786,42 @@ export interface NewBusiness {
  */
 export async function createBusiness(
   input: NewBusiness,
-): Promise<{ business: Business; demo: boolean }> {
+): Promise<{ business: Business; demo: boolean; existing: boolean }> {
+  const conn0 = getDB();
+  if (conn0) {
+    // Anti-doublon : si une fiche (OSM/BCE/utilisateur) existe déjà pour ce nom
+    // dans cette localité, on ne crée rien — le gérant doit revendiquer la
+    // fiche existante plutôt que d'en dupliquer une.
+    const normName = input.name
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "");
+    const candidates = await conn0
+      .prepare(`SELECT id, name FROM businesses WHERE town = ?`)
+      .bind(input.town)
+      .all<{ id: string; name: string }>();
+    const dup = (candidates.results ?? []).find(
+      (r) =>
+        r.name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, "") === normName,
+    );
+    if (dup) {
+      const existing = await conn0
+        .prepare(
+          `SELECT id, name, category, subcategory, tier, description, address, town, postal_code AS postalCode,
+                  lat, lng, phone, website, hours, bce, news,
+                  paid_until AS paidUntil, 0 AS prime
+           FROM businesses WHERE id = ? LIMIT 1`,
+        )
+        .bind(dup.id)
+        .first<Business>();
+      if (existing) return { business: existing, demo: false, existing: true };
+    }
+  }
   const business: Business = {
     id: `user-${crypto.randomUUID()}`,
     name: input.name,
@@ -832,10 +880,10 @@ export async function createBusiness(
           new Date().toISOString(),
         )
         .run();
-      return { business, demo: false };
+      return { business, demo: false, existing: false };
     } catch {
       // mode démo
     }
   }
-  return { business, demo: true };
+  return { business, demo: true, existing: false };
 }

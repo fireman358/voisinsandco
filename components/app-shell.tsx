@@ -159,7 +159,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
         onCitySelect={handleCitySelect}
         onUseGps={handleUseGps}
       />
-      <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 lg:max-w-5xl">
+      <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 md:max-w-5xl xl:max-w-7xl">
         {loading && businesses.length === 0 && needs.length === 0 ? (
           <div className="flex items-center justify-center gap-2 py-20 text-sm text-neutral-500">
             <Loader2 className="size-5 animate-spin text-forest" /> Chargement du quartier…
@@ -184,7 +184,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
             <TabsContent value="outils" className="mt-0">
               <OutilsTab tools={tools} loading={loading} geo={geo} onDeleted={(id) => setTools((prev) => prev.filter((x) => x.id !== id))} onCreated={(t) => setTools((prev) => [t, ...prev])} />
             </TabsContent>
-            <TabsList className="fixed bottom-0 left-1/2 z-40 grid h-16 w-full max-w-3xl -translate-x-1/2 grid-cols-4 gap-0 border-t border-neutral-200 bg-white/95 px-1 backdrop-blur">
+            <TabsList className="fixed bottom-0 left-1/2 z-40 grid h-16 w-full max-w-3xl -translate-x-1/2 grid-cols-4 gap-0 border-t border-neutral-200 bg-white/95 px-1 backdrop-blur md:max-w-5xl xl:max-w-7xl">
               <TabsTrigger
                 value="annuaire"
                 className="flex flex-col items-center gap-1 rounded-none data-[state=active]:bg-green-50/60"

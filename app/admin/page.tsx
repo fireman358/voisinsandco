@@ -246,12 +246,14 @@ export default function AdminPage() {
   };
 
   const [editTarget, setEditTarget] = useState<Business | null>(null);
+  const [fName, setFName] = useState("");
   const [fPhone, setFPhone] = useState("");
   const [fWebsite, setFWebsite] = useState("");
   const [fHours, setFHours] = useState("");
   const [fNews, setFNews] = useState("");
   const openEdit = (b: Business) => {
     setEditTarget(b);
+    setFName(b.name);
     setFPhone(b.phone ?? "");
     setFWebsite(b.website ?? "");
     setFHours(b.hours ?? "");
@@ -265,6 +267,7 @@ export default function AdminPage() {
         method: "PATCH",
         body: JSON.stringify({
           id: editTarget.id,
+          name: fName,
           phone: fPhone,
           website: fWebsite,
           hours: fHours,
@@ -273,7 +276,14 @@ export default function AdminPage() {
       });
       const patch = (x: Business): Business =>
         x.id === editTarget.id
-          ? { ...x, phone: fPhone || undefined, website: fWebsite || undefined, hours: fHours || undefined, news: fNews || undefined }
+          ? {
+              ...x,
+              name: fName || x.name,
+              phone: fPhone || undefined,
+              website: fWebsite || undefined,
+              hours: fHours || undefined,
+              news: fNews || undefined,
+            }
           : x;
       setResults((prev) => prev.map(patch));
       setSubs((prev) => prev.map(patch));
@@ -676,6 +686,10 @@ export default function AdminPage() {
             <DialogTitle>Modifier « {editTarget?.name} »</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="f-name">Nom affiché (ex. nom commercial)</Label>
+              <Input id="f-name" value={fName} onChange={(e) => setFName(e.target.value)} />
+            </div>
             <div className="space-y-1.5">
               <Label htmlFor="f-phone">Téléphone (visible dès Vérifiée)</Label>
               <Input id="f-phone" value={fPhone} onChange={(e) => setFPhone(e.target.value)} placeholder="+32 67 …" />

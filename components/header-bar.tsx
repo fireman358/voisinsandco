@@ -80,7 +80,7 @@ export function HeaderBar({
   return (
     <header className="sticky top-0 z-40 overflow-hidden border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
       <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
-      <div className="relative mx-auto w-full max-w-3xl px-4 py-3 lg:max-w-5xl">
+      <div className="relative mx-auto w-full max-w-3xl px-4 py-3 md:max-w-5xl xl:max-w-7xl">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <h1 className="text-2xl font-bold leading-none tracking-tight">

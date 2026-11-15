@@ -526,14 +526,14 @@ export function AnnuaireTab({
           )}
         </div>
       ) : (
-        <div className="grid items-start gap-3 md:grid-cols-2">
+        <div className="grid items-start gap-3 md:grid-cols-2 xl:grid-cols-3">
           {visibleItems.map((b) => (
             <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
           ))}
           {filtered.length > visibleItems.length && (
             <Button
               variant="outline"
-              className="w-full md:col-span-2"
+              className="w-full md:col-span-2 xl:col-span-3"
               onClick={() => setVisible((v) => v + PAGE_SIZE)}
             >
               Afficher 50 de plus ({filtered.length - visibleItems.length} restantes)

@@ -95,6 +95,14 @@ export function AddBusinessDialog({
           lng: commune?.lng ?? geo.lng,
         }),
       });
+      if (res.status === 409) {
+        const data = (await res.json()) as { error?: string; business?: Business };
+        toast(data.error ?? "Cette fiche existe déjà — revendique-la.", "error");
+        if (data.business) onCreated(data.business);
+        reset();
+        onOpenChange(false);
+        return;
+      }
       if (!res.ok) throw new Error("bad status");
       const data = (await res.json()) as { business: Business };
       onCreated(data.business);

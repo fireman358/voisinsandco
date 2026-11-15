@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { business, demo } = await createBusiness({
+  const { business, demo, existing } = await createBusiness({
     name,
     category,
     subcategory: body.subcategory?.trim() || undefined,
@@ -99,5 +99,14 @@ export async function POST(req: NextRequest) {
     contactEmail,
     contactPhone: body.contactPhone?.trim() || undefined,
   });
+  if (existing) {
+    return NextResponse.json(
+      {
+        error: `Une fiche « ${business.name} » existe déjà à ${business.town} — utilise le bouton « Revendiquer » sur sa fiche plutôt que d'en créer une nouvelle.`,
+        business,
+      },
+      { status: 409 },
+    );
+  }
   return NextResponse.json({ business, demo }, { status: 201 });
 }
