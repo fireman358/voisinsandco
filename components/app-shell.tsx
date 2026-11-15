@@ -284,6 +284,10 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
               Comment ça marche
             </Link>{" "}
             ·{" "}
+            <Link href="/communes" className="text-accent underline-offset-2 hover:underline">
+              Communes
+            </Link>{" "}
+            ·{" "}
             <Link href="/abonnements" className="text-accent underline-offset-2 hover:underline">
               Les formules
             </Link>{" "}

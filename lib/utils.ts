@@ -14,3 +14,13 @@ export async function fetchJSON<T>(url: string, init?: RequestInit): Promise<T> 
 export function normalizeText(s: string): string {
   return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
+
+/** Slug d'URL : « Braine-l'Alleud » → « braine-l-alleud ». */
+export function slugify(s: string): string {
+  return s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}

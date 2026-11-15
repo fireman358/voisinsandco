@@ -3,7 +3,7 @@ import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
 import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
 import { CATEGORY_LABELS, GROUP_LABELS, activityKey, activityLabel, groupOf, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
-import { normalizeText } from "./utils";
+import { normalizeText, slugify } from "./utils";
 
 export interface GeoQuery {
   lat: number;
@@ -1098,4 +1098,93 @@ export async function deleteDeal(id: string): Promise<boolean> {
   if (!conn) return false;
   await conn.prepare(`DELETE FROM deals WHERE id = ?`).bind(id).run();
   return true;
+}
+
+/* ------------------------------------------------------------------ *
+ * Pages SEO : une commune, une fiche.
+ * ------------------------------------------------------------------ */
+
+/** Une fiche par son identifiant (page /commerce/[id]). */
+export async function getBusinessById(id: string): Promise<Business | null> {
+  const conn = getDB();
+  if (!conn) return null;
+  try {
+    const row = await conn
+      .prepare(
+        `SELECT id, name, category, subcategory, tier, description, address, town,
+                postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                paid_until AS paidUntil, prime
+         FROM businesses WHERE id = ?`,
+      )
+      .bind(id)
+      .first<Business>();
+    return row ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Fiches d'une commune (page /commune/[slug]). */
+export async function listBusinessesByTown(
+  town: string,
+  limit = 300,
+): Promise<{ items: Business[]; total: number }> {
+  const conn = getDB();
+  if (!conn) return { items: [], total: 0 };
+  try {
+    const items =
+      (
+        await conn
+          .prepare(
+            `SELECT id, name, category, subcategory, tier, description, address, town,
+                    postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                    paid_until AS paidUntil, prime
+             FROM businesses
+             WHERE town = ?
+             ORDER BY prime DESC,
+               CASE tier WHEN 'pro' THEN 4 WHEN 'visibility' THEN 3 WHEN 'verified' THEN 2 ELSE 1 END DESC,
+               name
+             LIMIT ?`,
+          )
+          .bind(town, limit)
+          .all<Business>()
+      ).results ?? [];
+    const total =
+      (await conn.prepare(`SELECT COUNT(*) AS n FROM businesses WHERE town = ?`).bind(town).first<{ n: number }>())
+        ?.n ?? items.length;
+    return { items, total };
+  } catch {
+    return { items: [], total: 0 };
+  }
+}
+
+/** Toutes les communes (villes) présentes en base, avec leur nombre de fiches. */
+export async function listAllTowns(): Promise<{ town: string; count: number }[]> {
+  const conn = getDB();
+  if (!conn) return [];
+  try {
+    return (
+      await conn
+        .prepare(
+          `SELECT town, COUNT(*) AS count FROM businesses
+           WHERE town IS NOT NULL AND town <> ''
+           GROUP BY town ORDER BY town`,
+        )
+        .all<{ town: string; count: number }>()
+    ).results ?? [];
+  } catch {
+    return [];
+  }
+}
+
+let townSlugCache: { at: number; towns: { town: string; slug: string }[] } | null = null;
+
+/** Retrouve le nom exact d'une commune à partir de son slug d'URL. */
+export async function findTownBySlug(slug: string): Promise<string | null> {
+  const now = Date.now();
+  if (!townSlugCache || now - townSlugCache.at > 60 * 60 * 1000) {
+    const rows = await listAllTowns();
+    townSlugCache = { at: now, towns: rows.map((r) => ({ town: r.town, slug: slugify(r.town) })) };
+  }
+  return townSlugCache.towns.find((t) => t.slug === slug)?.town ?? null;
 }
