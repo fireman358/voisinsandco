@@ -255,6 +255,10 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
               contributeurs d&apos;OpenStreetMap
             </a>{" "}
             (ODbL) ·{" "}
+            <Link href="/comment-ca-marche" className="text-accent underline-offset-2 hover:underline">
+              Comment ça marche
+            </Link>{" "}
+            ·{" "}
             <Link href="/abonnements" className="text-accent underline-offset-2 hover:underline">
               Les formules
             </Link>{" "}

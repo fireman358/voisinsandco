@@ -138,6 +138,7 @@ const NACE_RULES = [
   [/commerce de v[ée]hicules? automobiles?/, "garage"],
   [/banques?/, "banque"],
   [/assurances?/, "assurance"],
+  [/commerces? de d[ée]tail hors magasin|interm[ée]diation pour le commerce de d[ée]tail|vente [àa] domicile/, "vente_directe"],
   [/activit[ée]s? des soci[ée]t[ée]s? holding|holding/, null],
   [/comptables?|comptabilit[ée]|fiscalit[ée]/, "comptabilite"],
   [/avocats?|barreaux/, "avocat"],
@@ -259,6 +260,7 @@ const NAME_RULES = [
   [/boulangerie|p[âa]tisserie/, "boulangerie"],
   [/pharmacie/, "pharmacie"],
   [/coiff/, "coiffeur"],
+  [/thermomix|tupperware|softlove|avon|oriflame|amway|forever living|kleeneze/, "vente_directe"],
 ];
 
 const naceGroupCache = new Map();

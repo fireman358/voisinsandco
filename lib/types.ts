@@ -386,6 +386,7 @@ export const SUBCATEGORY_GROUP_LABELS: Record<string, string> = {
   agence_immobiliere: "Agence immobilière",
   informatique: "Informatique & télécoms",
   conseil: "Conseil",
+  vente_directe: "VDI & vente à domicile",
   communication_design: "Communication & design",
   photographe: "Photographe",
   avocat: "Avocat",
