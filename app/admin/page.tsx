@@ -421,6 +421,19 @@ export default function AdminPage() {
     }
   };
 
+  const editClaimBusiness = async (businessId: string) => {
+    setError("");
+    try {
+      const data = await api<{ business: Business | null }>(
+        `/api/admin/businesses?id=${encodeURIComponent(businessId)}`,
+      );
+      if (data.business) openEdit(data.business);
+      else setError("Fiche introuvable.");
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
   const template = TEMPLATES.find((t) => t.key === templateKey) ?? TEMPLATES[0];
   const preview = useMemo(() => fill(template, target, targetClaim), [template, target, targetClaim]);
   const [subjectLine, ...bodyLines] = preview.split("\n\n");
@@ -552,7 +565,15 @@ export default function AdminPage() {
                           {c.message && <p className="mt-1 text-xs text-neutral-500">{c.message}</p>}
                           <p className="mt-1 text-[11px] text-neutral-400">{new Date(c.createdAt).toLocaleString("fr-BE")}</p>
                         </div>
-                        <div className="flex gap-1">
+                        <div className="flex flex-wrap gap-1">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => editClaimBusiness(c.businessId)}
+                            title="Modifier la fiche concernée"
+                          >
+                            <Pencil className="size-3.5" /> Modifier la fiche
+                          </Button>
                           <Button
                             size="sm"
                             variant="outline"

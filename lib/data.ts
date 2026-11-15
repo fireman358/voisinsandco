@@ -438,7 +438,7 @@ export async function createClaim(input: {
   phone?: string;
   bce?: string;
   message?: string;
-}): Promise<{ ok: boolean; demo: boolean }> {
+}): Promise<{ ok: boolean; demo: boolean; created: boolean }> {
   const conn = getDB();
   if (conn) {
     try {
@@ -448,7 +448,7 @@ export async function createClaim(input: {
         .prepare(`SELECT id FROM claims WHERE business_id = ? LIMIT 1`)
         .bind(input.businessId)
         .first<{ id: string }>();
-      if (existing) return { ok: true, demo: false };
+      if (existing) return { ok: true, demo: false, created: false };
       await conn
         .prepare(
           `INSERT INTO claims (id, business_id, name, email, phone, bce, message, created_at)
@@ -465,12 +465,12 @@ export async function createClaim(input: {
           new Date().toISOString(),
         )
         .run();
-      return { ok: true, demo: false };
+      return { ok: true, demo: false, created: true };
     } catch {
       // mode démo
     }
   }
-  return { ok: true, demo: true };
+  return { ok: true, demo: true, created: false };
 }
 
 export async function createLoanRequest(input: {

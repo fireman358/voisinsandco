@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClaim } from "@/lib/data";
+import { createClaim, getBusinessById } from "@/lib/data";
+import { adminNotifEmail, sendEmail } from "@/lib/email";
 import { clientIp, LIMITS, overLimit, rateLimited } from "@/lib/security";
 
 export const runtime = "nodejs";
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
   if (!businessId || !name || !email || !email.includes("@")) {
     return NextResponse.json({ error: "businessId, name et un e-mail valide sont requis" }, { status: 400 });
   }
-  const { ok, demo } = await createClaim({
+  const { ok, demo, created } = await createClaim({
     businessId,
     name,
     email,
@@ -39,5 +40,33 @@ export async function POST(req: NextRequest) {
     bce: body.bce?.trim() || undefined,
     message: body.message?.trim(),
   });
+
+  // Notification e-mail à l'admin (best effort : ne bloque jamais l'enregistrement).
+  if (ok && !demo && created) {
+    const to = adminNotifEmail();
+    if (to) {
+      const business = await getBusinessById(businessId);
+      const label = business?.name ?? businessId;
+      await sendEmail({
+        to,
+        subject: `Nouvelle revendication — ${label}${business ? ` (${business.town})` : ""}`,
+        text: [
+          "Une nouvelle revendication vient d'être envoyée sur Le Bon Voisin.",
+          "",
+          `Fiche : ${label}${business ? ` — ${business.address}, ${business.postalCode} ${business.town}` : ""}`,
+          `Identifiant : ${businessId}`,
+          "",
+          `Demandeur : ${name}`,
+          `E-mail : ${email}`,
+          ...(phone ? [`Téléphone : ${phone}`] : []),
+          ...(body.bce?.trim() ? [`BCE indiqué : ${body.bce.trim()}`] : []),
+          ...(body.message?.trim() ? ["", "Message :", body.message.trim()] : []),
+          "",
+          "Traiter la demande : https://lebonvoisin.org/admin",
+        ].join("\n"),
+      });
+    }
+  }
+
   return NextResponse.json({ ok, demo }, { status: ok ? 200 : 500 });
 }

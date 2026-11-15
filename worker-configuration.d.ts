@@ -7,6 +7,7 @@ declare global {
     ADMIN_TOKEN?: string;
     RESEND_API_KEY?: string;
     RESEND_FROM?: string;
+    NOTIF_EMAIL?: string;
   }
 }
 

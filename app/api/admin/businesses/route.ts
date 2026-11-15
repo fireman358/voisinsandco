@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { adminSearchBusinesses, isAdmin, updateBusinessDetails } from "@/lib/data";
+import { adminSearchBusinesses, getBusinessById, isAdmin, updateBusinessDetails } from "@/lib/data";
 import type { BusinessCategory } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -9,6 +9,10 @@ const CATEGORIES: BusinessCategory[] = ["alimentation", "artisan", "horeca", "di
 export async function GET(req: NextRequest) {
   if (!isAdmin(req.headers.get("x-admin-token"))) {
     return NextResponse.json({ error: "non autorisé" }, { status: 403 });
+  }
+  const id = req.nextUrl.searchParams.get("id")?.trim();
+  if (id) {
+    return NextResponse.json({ business: await getBusinessById(id) });
   }
   const q = req.nextUrl.searchParams.get("q")?.trim() ?? "";
   if (q.length < 2) return NextResponse.json({ items: [] });
