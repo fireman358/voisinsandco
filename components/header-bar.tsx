@@ -58,12 +58,13 @@ export function HeaderBar({
     <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
       <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
       <div className="relative mx-auto w-full max-w-3xl px-4 py-2.5 md:max-w-5xl xl:max-w-7xl">
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <h1 className="text-2xl font-extrabold leading-none tracking-tight text-white">LBV</h1>
-            <p className="mt-0.5 text-[12px] font-semibold text-white/85">Le Bon Voisin</p>
+        <div className="flex items-center justify-between gap-3 md:grid md:grid-cols-[1fr_auto_1fr]">
+          <div className="hidden md:block" aria-hidden="true" />
+          <div className="min-w-0 md:text-center">
+            <h1 className="text-2xl font-extrabold leading-none tracking-tight text-white md:text-3xl">LBV</h1>
+            <p className="mt-0.5 text-[12px] font-semibold text-white/85 md:text-sm">Le Bon Voisin</p>
           </div>
-          <div className="flex shrink-0 items-center gap-1.5">
+          <div className="flex shrink-0 items-center gap-1.5 md:justify-end">
             {demo && !collapsed && (
               <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/80">
                 <Database className="size-3" /> Démo
