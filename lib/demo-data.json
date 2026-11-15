@@ -341,17 +341,18 @@
       "lng": 4.283457
     },
     {
-      "id": "osm-6223624116-wok-magic",
-      "name": "Wok Magic",
-      "category": "horeca",
-      "subcategory": "restaurant",
+      "id": "osm-6223624116-yonhoo-benelux",
+      "name": "Yonhoo Benelux",
+      "category": "alimentation",
+      "subcategory": "supermarket",
       "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Bascoup",
       "postalCode": "",
-      "lat": 50.46732,
-      "lng": 4.275453
+      "lat": 50.467419,
+      "lng": 4.275487,
+      "phone": "+32 64 55 82 88"
     },
     {
       "id": "osm-7970187385-jardin-d-eve",
@@ -411,6 +412,21 @@
       "lng": 4.348662
     },
     {
+      "id": "osm-1567970023-emeraude-asbl",
+      "name": "Émeraude ASBL",
+      "category": "artisan",
+      "subcategory": "association",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "7-7A Avenue de la Gare",
+      "town": "Baulers",
+      "postalCode": "",
+      "lat": 50.609505,
+      "lng": 4.350819,
+      "phone": "+32 6 721 51 04",
+      "website": "https://www.asbl-emeraude.be/"
+    },
+    {
       "id": "osm-330645173-maximus",
       "name": "Maximus",
       "category": "horeca",
@@ -448,7 +464,8 @@
       "town": "Baulers",
       "postalCode": "",
       "lat": 50.601542,
-      "lng": 4.345627
+      "lng": 4.345627,
+      "hours": "Mo-Fr 08:30-18:30; Sa 08:30-12:30; closed"
     },
     {
       "id": "osm-7554659491-vang",
@@ -1213,19 +1230,6 @@
       "hours": "Mo-Th, Sa 08:30-18:30; Fr 08:30-19:00, Su off; PH off"
     },
     {
-      "id": "osm-7554358079-apex-media",
-      "name": "Apex Media",
-      "category": "artisan",
-      "subcategory": "electronics_repair",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684334,
-      "lng": 4.371485
-    },
-    {
       "id": "osm-7529486155-art-et-tradition",
       "name": "Art et Tradition",
       "category": "artisan",
@@ -1238,8 +1242,8 @@
       "lat": 50.687184,
       "lng": 4.380578,
       "phone": "+32 475 97 06 68",
-      "website": "http://www.artettradition.be",
-      "hours": "We, Fr 13:00-17:30"
+      "website": "https://artettradition.be/",
+      "hours": "Mo-Tu 13:00-17:30"
     },
     {
       "id": "osm-7529486161-arti-zik",
@@ -1255,21 +1259,6 @@
       "lng": 4.368559,
       "phone": "+32 497 49 06 51",
       "website": "https://www.artizik.be"
-    },
-    {
-      "id": "osm-13346031153-atelier-d",
-      "name": "Atelier D",
-      "category": "artisan",
-      "subcategory": "beauty",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.685718,
-      "lng": 4.382644,
-      "phone": "+32 492 48 82 05",
-      "hours": "Mo 10:00-19:00; Tu 10:00-18:00; We 10:00-21:30; Th 10:00-20:00; Fr 10:00-21:00; Sa 10:00-15:00; Su off"
     },
     {
       "id": "osm-12140503646-atelier-keika",
@@ -1332,19 +1321,19 @@
       "hours": "Th-Tu 11:00-14:30, 17:00-22:30; We off; PH 11:00-14:30, 17:00-22:30"
     },
     {
-      "id": "osm-13346587007-aude-willems",
-      "name": "Aude Willems",
+      "id": "osm-14268296506-au-pate-truffe",
+      "name": "Au Pâté Truffé",
       "category": "artisan",
-      "subcategory": "beauty",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683241,
-      "lng": 4.379684,
-      "phone": "+32 474 59 57 37",
-      "hours": "Mo 09:00-20:00; Tu 10:00-15:00; We 09:00-18:00; Th-Fr 10:00-15:00; Sa 10:00-16:00; Su off"
+      "lat": 50.682295,
+      "lng": 4.369176,
+      "phone": "+32 471 31 76 11‬",
+      "website": "https://au-pate-truffe.be/"
     },
     {
       "id": "osm-13358123186-aux-delices",
@@ -1360,13 +1349,28 @@
       "lng": 4.385339
     },
     {
+      "id": "osm-14268068535-b-time",
+      "name": "B-Time",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684232,
+      "lng": 4.373003,
+      "phone": "+32 493 85 31 62",
+      "hours": "Mo off; Tu-Sa 10:00-19:00; Su 10:00-16:00; PH 10:00-16:00"
+    },
+    {
       "id": "osm-11438134790-barber-jack",
       "name": "Barber Jack",
       "category": "artisan",
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "18 Chaussée d'Alsemberg",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.685391,
@@ -1392,14 +1396,14 @@
       "id": "osm-3645938970-beitna",
       "name": "Beitna",
       "category": "horeca",
-      "subcategory": "restaurant",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "16 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685521,
-      "lng": 4.37867,
+      "lat": 50.685529,
+      "lng": 4.378637,
       "phone": "+32 494 11 68 43",
       "website": "https://resto-beitna.be/",
       "hours": "Mo-Sa 11:30-22:00"
@@ -1425,14 +1429,14 @@
       "subcategory": "pharmacy",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "13 Place de la Gare",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685673,
-      "lng": 4.375432,
+      "lat": 50.685662,
+      "lng": 4.37545,
       "phone": "+32 2 384 22 77",
       "website": "https://storelocator.benu.be/fr/pharmacie-benu-braine-lalleud",
-      "hours": "Mo-Fr 08:30-13:00, 13:30-18:30; Sa-Su off"
+      "hours": "Mo-Fr 08:30-13:00, 13:30-18:30; Sa-Su off; PH off"
     },
     {
       "id": "osm-7515344135-bioqlim",
@@ -1455,14 +1459,14 @@
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "12 Rue des Croix de Feu",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683963,
-      "lng": 4.375082,
+      "lat": 50.683987,
+      "lng": 4.375043,
       "phone": "+32 2 654 26 89",
-      "website": "https://www.bioshop.be",
-      "hours": "Mo 13:00-19:00; Tu-Sa 10:00-19:00; Su 10:00-13:00, PH off"
+      "website": "https://bioshop.be/fr/bioshop-braine-lalleud",
+      "hours": "Mo-Sa 08:30-19:00; Su off"
     },
     {
       "id": "osm-13483827321-bordi",
@@ -1487,8 +1491,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685748,
-      "lng": 4.370112,
+      "lat": 50.685732,
+      "lng": 4.370131,
       "phone": "+32 2 384 21 01"
     },
     {
@@ -1521,32 +1525,34 @@
       "lng": 4.370933
     },
     {
-      "id": "osm-4100714490-braine-achkid",
-      "name": "Braine Achkid",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "18 Chaussée Reine Astrid",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.685528,
-      "lng": 4.3788,
-      "phone": "+32 485 41 45 67",
-      "hours": "Mo off; Tu-Sa 09:00-19:00; Su 09:00-17:30"
-    },
-    {
       "id": "osm-7538651497-braine-express",
       "name": "Braine Express",
       "category": "alimentation",
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "92 Rue Jules Hans",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684461,
-      "lng": 4.374397
+      "lat": 50.684453,
+      "lng": 4.374403,
+      "phone": "+32 2 852 69 40",
+      "hours": "Su-Th 08:00-20:00; Fr-Sa 08:00-21:00"
+    },
+    {
+      "id": "osm-14125637730-brania",
+      "name": "Brania",
+      "category": "artisan",
+      "subcategory": "association",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.682519,
+      "lng": 4.370122,
+      "website": "https://www.brania.net/",
+      "hours": "Mo-Sa off; Su 10:00-12:00"
     },
     {
       "id": "osm-13358123189-brasserie-de-l-alliance",
@@ -1578,6 +1584,22 @@
       "lng": 4.395027
     },
     {
+      "id": "osm-14028862666-brigitte-vanhandenhove",
+      "name": "Brigitte VANHANDENHOVE",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.681055,
+      "lng": 4.377004,
+      "phone": "+32 2 384 16 82",
+      "website": "https://etiennevg.wixsite.com/cdbv",
+      "hours": "Mo,We,Fr 08:30-18:30; Tu,Th,Sa,Su off; PH off"
+    },
+    {
       "id": "osm-13304989526-bureau-c-o-r",
       "name": "Bureau C.O.R.",
       "category": "artisan",
@@ -1587,8 +1609,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.679885,
-      "lng": 4.384999,
+      "lat": 50.679979,
+      "lng": 4.385018,
       "phone": "+32 2 384 14 25"
     },
     {
@@ -1598,11 +1620,11 @@
       "subcategory": "surveyor",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "8 Avenue Raymond Brassinne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683132,
-      "lng": 4.379427,
+      "lat": 50.683148,
+      "lng": 4.379392,
       "phone": "+32 2 380 13 43",
       "website": "https://www.bureaumaestro.be",
       "hours": "Mo-Fr 09:00-13:00"
@@ -1652,6 +1674,20 @@
       "lng": 4.379265,
       "phone": "+32 2 318 61 54",
       "website": "https://cabinetdentaireduparc.be"
+    },
+    {
+      "id": "osm-7529486159-cabinet-dentaire-nathalie-cosme",
+      "name": "Cabinet Dentaire Nathalie Cosme",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.687077,
+      "lng": 4.380883,
+      "phone": "+32 472 11 35 25"
     },
     {
       "id": "osm-437015710-cabinet-du-dr-florence-aubertin",
@@ -1719,10 +1755,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685709,
-      "lng": 4.381935,
+      "lat": 50.685726,
+      "lng": 4.381909,
       "phone": "+32 478 41 64 47",
-      "website": "https://www.cakedemel.com/"
+      "website": "https://www.cakedemel.com/",
+      "hours": "\"sur rendez-vous\""
     },
     {
       "id": "osm-13295397980-caribou",
@@ -1766,8 +1803,8 @@
       "lat": 50.684703,
       "lng": 4.377775,
       "phone": "+32 2 384 73 90",
-      "website": "https://www.carrosseriejanssens.com/",
-      "hours": "Mo-Fr 08:00-17:30; Sa \"by appointment\""
+      "website": "https://carrosseriejanssens.com/",
+      "hours": "Mo-Th 08:00-17:00; Fr 08:30-17:00; Sa \"sur rendez-vous\"; Su off"
     },
     {
       "id": "osm-6513189127-casa-lugi",
@@ -1802,6 +1839,21 @@
       "hours": "Mo-Fr 09:00-17:30; Sa-Su off"
     },
     {
+      "id": "osm-9572954488-cash",
+      "name": "CASH",
+      "category": "distributeur",
+      "subcategory": "atm",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "1 Place de la Gare",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684686,
+      "lng": 4.375573,
+      "website": "https://cash.be",
+      "hours": "Mo-Su 06:00-00:00"
+    },
+    {
       "id": "osm-13309083800-centre-familial-de-braine-l-alleud",
       "name": "Centre familial de Braine-l’Alleud",
       "category": "artisan",
@@ -1818,6 +1870,22 @@
       "hours": "Mo-Fr 08:00-17:00"
     },
     {
+      "id": "osm-7554358080-centre-jmty",
+      "name": "Centre JMTY",
+      "category": "artisan",
+      "subcategory": "beauty",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "59 Avenue Léon Jourez",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684979,
+      "lng": 4.373605,
+      "phone": "+32 472 86 44 57",
+      "website": "https://jmty-therapies.be/",
+      "hours": "Mo-Fr 08:00-20:00; Sa 09:00-19:00"
+    },
+    {
       "id": "osm-11494803789-century-21",
       "name": "Century 21",
       "category": "artisan",
@@ -1827,10 +1895,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.686402,
-      "lng": 4.374619,
+      "lat": 50.68642,
+      "lng": 4.374598,
       "phone": "+32 2 380 73 74",
-      "website": "https://www.immodewaele.be/"
+      "website": "https://www.immodewaele.be/",
+      "hours": "Mo,Tu,Th,Fr 09:00-12:30, 13:30-17:30; We,Sa 09:00-13:00; Su off"
     },
     {
       "id": "osm-11438134786-chauffage-weets",
@@ -1848,52 +1917,52 @@
       "website": "https://www.chauffageweets.be/"
     },
     {
-      "id": "osm-738356724-chen-xi",
+      "id": "osm-14080683534-chen-xi",
       "name": "Chen Xi",
       "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "4 Place de la Gare",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684999,
-      "lng": 4.375185,
-      "phone": "+32 2 384 36 88",
-      "website": "https://chenxi2012168.wixsite.com/chenxi",
-      "hours": "We-Mo 12:00 -14:30, 18:00 - 22:30; Tu 12:00 -14:30"
-    },
-    {
-      "id": "osm-791075749-chez-bernard",
-      "name": "Chez Bernard",
-      "category": "alimentation",
-      "subcategory": "butcher",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "66 Avenue Alphonse Allard",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.680358,
-      "lng": 4.377821,
-      "phone": "+32 2 384 79 22",
-      "website": "https://chezbernard.be",
-      "hours": "Su-Mo off; Tu-Fr 09:00-18:30; Sa 08:00-13:00"
-    },
-    {
-      "id": "osm-10253176368-chez-linette",
-      "name": "Chez Linette",
-      "category": "horeca",
-      "subcategory": "restaurant",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.682433,
-      "lng": 4.370088,
+      "lat": 50.684972,
+      "lng": 4.375213,
+      "phone": "+32 2 384 36 88",
+      "website": "https://www.chenxi.be/",
+      "hours": "Mo off; Tu-Th 12:00-14:30, 18:00-22:00; Fr-Su 12:00-14:30, 18:00-22:30"
+    },
+    {
+      "id": "osm-14029097802-chez-bernard",
+      "name": "Chez Bernard",
+      "category": "alimentation",
+      "subcategory": "butcher",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.680365,
+      "lng": 4.377837,
+      "phone": "+32 2 384 79 22",
+      "website": "https://chezbernard.be",
+      "hours": "Su-Mo off; Tu-Fr 09:00-18:30; Sa 08:00-13:00"
+    },
+    {
+      "id": "osm-10253176368-chez-linette-bar-a-soupe",
+      "name": "Chez Linette Bar à Soupe",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "7 Rue Doyen Van Belle",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.682426,
+      "lng": 4.370087,
       "phone": "+32 2 230 33 12",
       "website": "https://pjoret.wixsite.com/chezlinettebarasoupe",
-      "hours": "Mo-Tu,Th-Fr 11:30-14:30; Su 10:00-14:00; We,Sa,PH off"
+      "hours": "Mo-Tu,Th-Fr 11:30-14:30; Su 10:00-14:00; We,Sa off; PH off"
     },
     {
       "id": "osm-1774923623-chez-mich",
@@ -1938,6 +2007,21 @@
       "lng": 4.385685
     },
     {
+      "id": "osm-4100714490-coiffeur-achkid",
+      "name": "Coiffeur Achkid",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.68555,
+      "lng": 4.378808,
+      "phone": "+32 485 41 45 67",
+      "hours": "Mo off; Tu-Sa 09:00-19:00; Su 09:00-17:30"
+    },
+    {
       "id": "osm-336450331-coiffure-dominique",
       "name": "Coiffure Dominique",
       "category": "artisan",
@@ -1950,20 +2034,22 @@
       "lat": 50.681385,
       "lng": 4.368036,
       "phone": "+32 2 384 19 82",
-      "hours": "We-Sa 9:00-17:00"
+      "hours": "We-Sa 09:00-17:00"
     },
     {
-      "id": "osm-791075728-coiffure-jacques",
+      "id": "osm-14024732473-coiffure-jacques",
       "name": "Coiffure Jacques",
       "category": "artisan",
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "52 Avenue Alphonse Allard",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.680603,
-      "lng": 4.377579
+      "lat": 50.680609,
+      "lng": 4.377597,
+      "phone": "+32 2 384 38 90",
+      "hours": "Mo-Fr \"sur rendez-vous\"; Sa-Su off; PH off"
     },
     {
       "id": "osm-7501332033-coiffure-versailles",
@@ -1978,21 +2064,6 @@
       "lat": 50.683906,
       "lng": 4.371416,
       "phone": "+32 2 384 86 40"
-    },
-    {
-      "id": "osm-7442761951-credit-2000",
-      "name": "Crédit 2000",
-      "category": "artisan",
-      "subcategory": "financial_advisor",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "14 Place de la Gare",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.685714,
-      "lng": 4.37548,
-      "phone": "+32 2 351 14 84",
-      "website": "https://www.credit2000.be/fr/contact-agence-pret-hypothecaire/braine-nivelles/"
     },
     {
       "id": "osm-6698904476-d-braine-express",
@@ -2024,48 +2095,36 @@
       "hours": "Mo, Su, PH off; Tu-Th 08:30-18:30; Fr-Sa 08:30-19:00"
     },
     {
-      "id": "osm-7519579624-daoust",
-      "name": "Daoust",
+      "id": "osm-13977907247-daenens-clean-xxl",
+      "name": "Daenens — Clean XXL",
       "category": "artisan",
       "subcategory": "employment_agency",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "45 Chaussée Reine Astrid",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.68585,
-      "lng": 4.379474,
-      "phone": "+32 2 227 18 90",
-      "website": "https://www.daoust.be",
-      "hours": "Mo-Fr 08:30-12:30, 13:30-17:30"
-    },
-    {
-      "id": "osm-7538651502-daynighthub-day-shop",
-      "name": "DayNightHub - Day Shop",
-      "category": "alimentation",
-      "subcategory": "convenience",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684348,
-      "lng": 4.371551
+      "lat": 50.679849,
+      "lng": 4.385014,
+      "phone": "+32 2 354 20 96",
+      "website": "https://www.daenens.be/fr/titres-services/agences/clean-xxl-braine-lalleud",
+      "hours": "Mo-Fr 08:30-12:30,13:00-17:00; Sa-Su off; PH off"
     },
     {
-      "id": "osm-4100764744-daynighthub-night-shop",
-      "name": "DayNightHub - Night Shop",
-      "category": "alimentation",
-      "subcategory": "convenience",
+      "id": "osm-7519579624-dajobs",
+      "name": "DaJobs",
+      "category": "artisan",
+      "subcategory": "employment_agency",
       "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "11b",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684314,
-      "lng": 4.371425,
-      "phone": "+32 2 387 39 63",
-      "hours": "Su-Th 18:00-00:00; Fr-Sa 18:00-01:00"
+      "lat": 50.685864,
+      "lng": 4.379476,
+      "phone": "+32 2 227 18 90",
+      "website": "https://dajobs.be",
+      "hours": "Mo off; Tu 08:30-12:30, 13:30-17:30; We off; Th off; Fr 08:30-12:30, 13:30-17:30; Sa-Su off; PH off"
     },
     {
       "id": "osm-13446100019-degeye",
@@ -2084,20 +2143,34 @@
       "hours": "Su-Mo off; Tu-Sa 09:30-12:30, 13:30-18:30"
     },
     {
-      "id": "osm-804861552-deli-traiteur",
+      "id": "osm-9887250814-deli-traiteur",
       "name": "Deli Traiteur",
       "category": "alimentation",
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "60 Chaussée Reine Astrid",
+      "address": "133 Grand'Route",
+      "town": "Braine-l'Alleud",
+      "postalCode": "1428",
+      "lat": 50.643974,
+      "lng": 4.365967,
+      "hours": "Mo-Su 07:30-22:00"
+    },
+    {
+      "id": "osm-804861552-delitraiteur",
+      "name": "Delitraiteur",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68576,
-      "lng": 4.380854,
+      "lat": 50.685752,
+      "lng": 4.380844,
       "phone": "+32 2 387 48 80",
-      "website": "https://www.delitraiteur.com",
-      "hours": "Mo-Su 7:30-22:00"
+      "website": "https://delitraiteur.com/shop/delitraiteur-braine-lalleud-2/",
+      "hours": "Mo-Su 07:00-22:00"
     },
     {
       "id": "osm-7529486163-delortho",
@@ -2109,8 +2182,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685442,
-      "lng": 4.380955,
+      "lat": 50.685524,
+      "lng": 4.380933,
       "phone": "+32 2 385 28 02",
       "website": "https://www.delhayeseverine.be/",
       "hours": "Mo-Th 09:00-18:00; Fr-Su off; PH off"
@@ -2128,6 +2201,7 @@
       "lat": 50.683594,
       "lng": 4.370028,
       "phone": "+32 2 385 17 65",
+      "website": "https://di.be/fr/di-braine.html",
       "hours": "Mo-Sa 09:00-18:30"
     },
     {
@@ -2137,11 +2211,11 @@
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "70 Avenue Léon Jourez",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68497,
-      "lng": 4.374448,
+      "lat": 50.684974,
+      "lng": 4.374432,
       "phone": "+32 2 384 09 59",
       "hours": "We-Fr 09:00-18:00; Sa 09:00-17:00; Su-Tu off"
     },
@@ -2168,8 +2242,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684456,
-      "lng": 4.380552,
+      "lat": 50.684397,
+      "lng": 4.380506,
       "phone": "+32 2 385 45 00"
     },
     {
@@ -2182,11 +2256,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684177,
-      "lng": 4.375084,
+      "lat": 50.684142,
+      "lng": 4.375081,
       "phone": "+32 2 385 19 87",
       "website": "https://florence-tassignon.be",
-      "hours": "Mo-Fr 08:30-13:00, 14:00-18:00, Sa-Su off"
+      "hours": "Mo 09:00-12:30, 15:00-18:00; Tu 09:00-12:00; We-Th 09:00-12:30; Fr-Su off"
     },
     {
       "id": "osm-13381400816-dr-van-ooteghem-aude",
@@ -2205,8 +2279,8 @@
       "hours": "Mo,Th 09:00-17:30; Tu-We 09:00-16:00; Fr-Su off; PH off"
     },
     {
-      "id": "osm-13345995857-dr-chrisoula-choustoulakis",
-      "name": "Dr. Chrisoula Choustoulakis",
+      "id": "osm-13345995857-dr-choustoulakis-chrisoula",
+      "name": "Dr. CHOUSTOULAKIS Chrisoula",
       "category": "artisan",
       "subcategory": "doctors",
       "tier": "standard",
@@ -2214,10 +2288,10 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685725,
-      "lng": 4.382431,
+      "lat": 50.685729,
+      "lng": 4.382434,
       "phone": "+32 2 354 56 59",
-      "hours": "Mo 08:00-12:20; Tu 14:00-17:20; We 08:00-12:00; Th 14:00-17:20; Fr 08:00-12:20; Sa-Su off; PH off"
+      "hours": "Mo 08:00-12:40; Tu 14:00-17:40; We 08:00-12:20; Th 14:00-17:40; Fr 08:00-12:40; Sa-Su off; PH off"
     },
     {
       "id": "osm-13446100016-dr-neuprez-arielle",
@@ -2235,6 +2309,22 @@
       "website": "https://www.chirurgien-neuprez.be/"
     },
     {
+      "id": "osm-13295210649-dr-pham-hong-an-grace",
+      "name": "Dr. PHAM Hông-An Grace",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.682182,
+      "lng": 4.381749,
+      "phone": "+32 473 85 49 84",
+      "website": "https://docteurphamgrace.wixsite.com/accueil",
+      "hours": "Mo 08:40-12:40, 13:20-17:20; Tu 08:40-12:40, 13:20-16:40; We 08:20-12:00, 13:40-16:00; Th 08:40-12:00, 13:20-15:20; Fr 08:20-12:00; Sa-Su off"
+    },
+    {
       "id": "osm-12409952837-dr-wendy-stiernon-dr-caroline-mathieu",
       "name": "Dr. Wendy Stiernon & Dr. Caroline Mathieu",
       "category": "artisan",
@@ -2244,8 +2334,8 @@
       "address": "64 Place Saint-Sébastien",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.679786,
-      "lng": 4.385359
+      "lat": 50.679795,
+      "lng": 4.385266
     },
     {
       "id": "osm-13333899927-ds-immo",
@@ -2276,6 +2366,22 @@
       "phone": "+32 2 384 61 16"
     },
     {
+      "id": "osm-804866032-easyday",
+      "name": "EasyDay",
+      "category": "artisan",
+      "subcategory": "employment_agency",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.685729,
+      "lng": 4.381356,
+      "phone": "+32 2 325 81 71",
+      "website": "https://www.easyday.be/priv/1420.php",
+      "hours": "Mo-Tu 09:00-17:30; We 08:00-19:00; Th-Fr 11:00-19:00; Sa 10:00-18:00; Su off; PH off"
+    },
+    {
       "id": "osm-13295397987-ebony",
       "name": "Ebony",
       "category": "artisan",
@@ -2300,10 +2406,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685599,
-      "lng": 4.377482,
+      "lat": 50.685594,
+      "lng": 4.377466,
       "phone": "+32 470 25 26 36",
-      "website": "https://www.elitetoitures.be/"
+      "website": "https://www.elitetoitures.be/",
+      "hours": "Mo-Sa 09:00-17:00 \"sur rendez-vous\"; Su off"
     },
     {
       "id": "osm-13311708395-elola-beaute",
@@ -2343,11 +2450,12 @@
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "12 Avenue Raymond Brassinne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683029,
-      "lng": 4.379312
+      "lat": 50.683046,
+      "lng": 4.379273,
+      "hours": "Mo-Su 10:00-21:00"
     },
     {
       "id": "osm-13446623587-era-cedimmo",
@@ -2440,6 +2548,21 @@
       "hours": "Mo-Sa 10:00-19:00; Su off"
     },
     {
+      "id": "osm-7529727700-ficotax",
+      "name": "Ficotax",
+      "category": "artisan",
+      "subcategory": "tax_advisor",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.685728,
+      "lng": 4.382265,
+      "phone": "+32 499 03 03 61",
+      "website": "https://ficotax.be/"
+    },
+    {
       "id": "osm-13304989525-fitraco",
       "name": "Fitraco",
       "category": "artisan",
@@ -2449,25 +2572,9 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.679868,
-      "lng": 4.385002,
+      "lat": 50.679939,
+      "lng": 4.384991,
       "phone": "+32 2 384 14 25"
-    },
-    {
-      "id": "osm-3953149729-fleurs-martine-pays",
-      "name": "Fleurs Martine Pays",
-      "category": "artisan",
-      "subcategory": "florist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "3 Avenue Maréchal Ney",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.68427,
-      "lng": 4.377833,
-      "phone": "+32 2 384 67 85",
-      "website": "https://www.fleursmartinepays.be",
-      "hours": "Mo 09:00-18:30; Tu-Sa 08:30-19:00; Su 08:30-16:00"
     },
     {
       "id": "osm-738356726-floribar",
@@ -2489,14 +2596,14 @@
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "66 Place Saint-Sébastien",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.679814,
-      "lng": 4.385074,
+      "lat": 50.679832,
+      "lng": 4.3851,
       "phone": "+32 2 384 77 68",
-      "website": "https://www.franckprovost.be/",
-      "hours": "Mo-Fr 8:30-18:30, Sa 8:30-17:30"
+      "website": "https://www.franckprovost.be/salons/la-commerce/braine-lalleud-2/",
+      "hours": "Mo-Fr 08:30-18:30; Sa 08:30-17:30; Su off; PH off"
     },
     {
       "id": "osm-13295397990-fratelli-osteria",
@@ -2532,21 +2639,21 @@
       "id": "osm-7486389891-fromton",
       "name": "Fromton",
       "category": "horeca",
-      "subcategory": "restaurant",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
       "address": "12 Place du Môle",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684014,
-      "lng": 4.371145,
+      "lat": 50.684045,
+      "lng": 4.371169,
       "phone": "+32 2 387 52 00",
       "website": "https://www.fromton.be/",
       "hours": "Su-Mo off; Tu-Sa 10:00-18:00"
     },
     {
-      "id": "osm-7481967922-g-gelders",
-      "name": "G. Gelders",
+      "id": "osm-7481967922-gelders-g",
+      "name": "Gelders G.",
       "category": "artisan",
       "subcategory": "veterinary",
       "tier": "standard",
@@ -2556,7 +2663,8 @@
       "postalCode": "",
       "lat": 50.680986,
       "lng": 4.377185,
-      "phone": "+32 2 345 23 55"
+      "phone": "+32 2 345 23 55",
+      "hours": "\"sur rendez-vous\""
     },
     {
       "id": "osm-7519294848-golden-key-immo",
@@ -2565,28 +2673,14 @@
       "subcategory": "estate_agent",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "20 Avenue Raymond Brassinne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.682758,
-      "lng": 4.379113,
+      "lat": 50.682811,
+      "lng": 4.379151,
       "phone": "+32 2 466 26 64",
-      "hours": "Mo-Fr 09:00-17:00"
-    },
-    {
-      "id": "osm-10253137744-griff",
-      "name": "Griff",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "7 Place Abbé Renard",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.682742,
-      "lng": 4.370648,
-      "phone": "+32 2 385 12 85",
-      "hours": "Su-Mo off"
+      "website": "https://www.goldenkeyimmo.be/",
+      "hours": "Mo-Fr 09:00-17:00; Sa \"sur rendez-vous\"; Su off; PH off"
     },
     {
       "id": "osm-1774823210-grolaux",
@@ -2626,27 +2720,27 @@
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "85 Rue Jules Hans",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.684767,
       "lng": 4.37498
     },
     {
-      "id": "osm-738356733-hau-wang",
+      "id": "osm-14119423622-hau-wang",
       "name": "Hau Wang",
       "category": "horeca",
       "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "72 Avenue Léon Jourez",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684979,
-      "lng": 4.374519,
+      "lat": 50.684988,
+      "lng": 4.374513,
       "phone": "+32 2 384 41 96",
-      "website": "https://www.hauwang.be/en/contact",
-      "hours": "Mo-Su 11:30-14:30, 17:30-23:00"
+      "website": "https://www.hauwang.be/",
+      "hours": "Mo-Tu 11:30-14:30, 17:30-22:00; We off; Th-Su 11:30-14:30, 17:30-22:00"
     },
     {
       "id": "osm-13333884502-idb-beauty-lounge",
@@ -2663,6 +2757,21 @@
       "hours": "Mo-We 09:30-19:00; Th"
     },
     {
+      "id": "osm-14103117885-il-en-faut-peu",
+      "name": "Il en faut peu",
+      "category": "artisan",
+      "subcategory": "consulting",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.680409,
+      "lng": 4.374307,
+      "phone": "+32 492 20 37 28",
+      "website": "https://www.ilenfautpeu.be/"
+    },
+    {
       "id": "osm-7501798455-illuzion",
       "name": "Illuzion",
       "category": "horeca",
@@ -2674,23 +2783,24 @@
       "postalCode": "",
       "lat": 50.684712,
       "lng": 4.374757,
-      "phone": "+32 484 21 48 24"
+      "phone": "+32 484 21 48 24",
+      "hours": "Mo-Fr 00:00-01:00,11:00-24:00; Sa-Su 00:00-03:00,11:00-24:00"
     },
     {
-      "id": "osm-7462924822-immo-clairiere-brabant-wallon",
-      "name": "IMMO Clairière - Brabant Wallon",
+      "id": "osm-7462924822-immo-clairiere",
+      "name": "IMMO Clairière",
       "category": "artisan",
       "subcategory": "estate_agent",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "1 Avenue Napoléon",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685403,
-      "lng": 4.378107,
+      "lat": 50.685412,
+      "lng": 4.378158,
       "phone": "+32 2 385 18 18",
-      "website": "http://braine.immoclairiere.be/",
-      "hours": "Mo-Fr 09:00-18:00; Sa 09:30-15:00; Su off"
+      "website": "https://immoclairierebraine.be/",
+      "hours": "Mo-Fr 09:00-17:00; Sa 09:30-13:00; Su off"
     },
     {
       "id": "osm-7481967921-immo-ct",
@@ -2705,7 +2815,7 @@
       "lat": 50.681087,
       "lng": 4.377088,
       "phone": "+32 2 851 80 39",
-      "hours": "Mo-Fr 09:00-12:00, 13:00-16:30; \"by appointment\""
+      "hours": "Mo-Fr 09:00-12:00, 13:00-16:30 || \"sur rendez-vous\""
     },
     {
       "id": "osm-13446331060-impulsion",
@@ -2717,8 +2827,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.682525,
-      "lng": 4.369032,
+      "lat": 50.682498,
+      "lng": 4.369052,
       "phone": "+32 2 385 23 51",
       "website": "https://impulsion-asbl.be/",
       "hours": "Mo-Fr 09:00-16:30; Sa-Su off; PH off"
@@ -2756,6 +2866,22 @@
       "hours": "Tu-Sa 08:00-20:00; Mo-Su 08:30-19:00; PH 08:30-19:00"
     },
     {
+      "id": "osm-13305288752-iva-immobiliere",
+      "name": "IVA Immobilière",
+      "category": "artisan",
+      "subcategory": "estate_agent",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684352,
+      "lng": 4.370707,
+      "phone": "+32 2 850 03 63",
+      "website": "https://www.iva-immobiliere.be/",
+      "hours": "We,Fr 10:00-13:00"
+    },
+    {
       "id": "osm-729115481-jean-francois-et-valentin-dellatre",
       "name": "Jean-François et Valentin Dellatre",
       "category": "artisan",
@@ -2786,22 +2912,6 @@
       "phone": "+32 2 384 50 61"
     },
     {
-      "id": "osm-7554358080-jmty",
-      "name": "JMTY",
-      "category": "artisan",
-      "subcategory": "beauty",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684243,
-      "lng": 4.37172,
-      "phone": "+32 472 86 44 57",
-      "website": "https://jmty-therapies.be/",
-      "hours": "Mo-Fr 08:00-20:00; Sa 08:00-16:00"
-    },
-    {
       "id": "osm-13436106367-joyaux",
       "name": "Joyaux",
       "category": "artisan",
@@ -2817,7 +2927,7 @@
       "website": "https://joyauxpro.com/"
     },
     {
-      "id": "osm-7538651498-kameha-poke",
+      "id": "osm-14212211336-kameha-poke",
       "name": "Kameha Poke",
       "category": "horeca",
       "subcategory": "fast_food",
@@ -2826,10 +2936,11 @@
       "address": "100 Rue Jules Hans",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68457,
-      "lng": 4.374718,
-      "phone": "+32 475 75 53 53",
-      "website": "https://www.kamehapoke.be/"
+      "lat": 50.684546,
+      "lng": 4.374801,
+      "phone": "+32 486 53 79 79",
+      "website": "https://www.kamehapoke.be/",
+      "hours": "Mo-Sa 11:30-22:00; Su 17:00-21:30"
     },
     {
       "id": "osm-11438134788-keym-finances",
@@ -2841,10 +2952,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68544,
-      "lng": 4.370497,
+      "lat": 50.68545,
+      "lng": 4.370458,
       "phone": "+32 2 661 30 50",
-      "website": "https://keymfinances.be/"
+      "website": "https://keymfinances.be/",
+      "hours": "Mo-Tu 09:00-13:00, 14:00-17:00; We 09:00-13:00; Th-Fr 09:00-13:00, 14:00-17:00; Sa-Su off"
     },
     {
       "id": "osm-9527405515-kiosk-by-night",
@@ -2858,6 +2970,20 @@
       "postalCode": "",
       "lat": 50.684448,
       "lng": 4.370939
+    },
+    {
+      "id": "osm-9436266318-kohler-s-vandepapeliere-ph",
+      "name": "Köhler S. & Vandepapeliere Ph.",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.68472,
+      "lng": 4.379472,
+      "phone": "+32 2 385 03 46"
     },
     {
       "id": "osm-13360048395-l-ardennaise",
@@ -2887,7 +3013,7 @@
       "lat": 50.684257,
       "lng": 4.375095,
       "phone": "+32 493 03 52 52",
-      "hours": "Sa-Su off"
+      "hours": "Mo-Fr 07:00-17:00; Sa-Su off; Jul-Aug Mo-Fr 08:00-17:00"
     },
     {
       "id": "osm-7480269790-la-barbe-de-papa",
@@ -2896,26 +3022,29 @@
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "10 Place Sainte-Anne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683065,
-      "lng": 4.374758,
+      "lat": 50.683074,
+      "lng": 4.374763,
       "phone": "+32 466 33 33 56",
-      "hours": "Mo,We 09:00-18:00; Tu 09:00-13:00; Th 09:00-19:00; Fr 09:00-20:00; Sa 08:00-17:00"
+      "hours": "Mo,We 09:00-18:00; Tu off; Th 09:00-19:00; Fr 09:00-20:00; Sa 08:00-17:00; Su off"
     },
     {
-      "id": "osm-7504265348-la-douce-heure-yaourt-glace",
-      "name": "La Douce Heure Yaourt Glacé",
-      "category": "horeca",
-      "subcategory": "ice_cream",
+      "id": "osm-14268296505-la-belle-epoque",
+      "name": "La Belle Époque",
+      "category": "artisan",
+      "subcategory": "caterer",
       "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "5 Chaussée d'Alsemberg",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684424,
-      "lng": 4.370682
+      "lat": 50.682548,
+      "lng": 4.369021,
+      "phone": "+32 2 426 01 15",
+      "website": "https://www.labelleepoquetraiteur.com/",
+      "hours": "Mo 10:00-15:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00; Su 09:00-13:00"
     },
     {
       "id": "osm-13289772765-la-galerie-du-tapis",
@@ -2930,7 +3059,8 @@
       "lat": 50.685189,
       "lng": 4.374419,
       "phone": "+32 471 41 77 22",
-      "website": "https://www.la-galerie-du-tapis-1815.be"
+      "website": "https://www.la-galerie-du-tapis-1815.be",
+      "hours": "Mo-Sa 08:30-19:00; Su off"
     },
     {
       "id": "osm-9337761036-la-padella",
@@ -2963,6 +3093,21 @@
       "phone": "+32 2 384 08 93"
     },
     {
+      "id": "osm-14073312078-le-battement-d-ailes",
+      "name": "Le battement d'ailes",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.685897,
+      "lng": 4.37978,
+      "phone": "+32 477 30 48 69",
+      "website": "http://battementdailes.be/"
+    },
+    {
       "id": "osm-13295397986-le-brabancon",
       "name": "Le Brabançon",
       "category": "horeca",
@@ -2975,43 +3120,27 @@
       "lat": 50.682755,
       "lng": 4.369836,
       "phone": "+32 2 660 43 49",
-      "hours": "Mo-Th 10:30-23:00; Fr 7:30-24:00; Sa 11:00-22:00; Su 07:30-20:00"
+      "hours": "Mo-Th 10:30-23:00; Fr 07:30-24:00; Sa 11:00-22:00; Su 07:30-20:00"
     },
     {
-      "id": "osm-762730388-le-bristol",
+      "id": "osm-14105325643-le-bristol",
       "name": "Le Bristol",
       "category": "horeca",
       "subcategory": "pub",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "9 Avenue Albert 1er",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684886,
-      "lng": 4.376909,
-      "phone": "+32 476 79 29 26",
-      "hours": "Mo-Fr 10:00-22:00; Sa 16:00-22:00"
-    },
-    {
-      "id": "osm-738356722-le-castor",
-      "name": "Le Castor",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "2 Place de la Gare",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684879,
-      "lng": 4.375166,
-      "phone": "+32 2 387 16 60",
-      "hours": "Mo-Fr 06:30-14:30"
+      "lat": 50.68489,
+      "lng": 4.376881,
+      "phone": "+32 6 785 57 30"
     },
     {
       "id": "osm-6683202617-le-cedre",
       "name": "Le Cèdre",
       "category": "horeca",
-      "subcategory": "restaurant",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
       "address": "Adresse à compléter",
@@ -3021,7 +3150,7 @@
       "lng": 4.375116,
       "phone": "+32 2 384 73 75",
       "website": "https://www.restaurantlecedre.be/",
-      "hours": "Tu-Fr 12:00-14:00; Mo-Sa 18:00-21:30; Su off"
+      "hours": "Mo 18:00-21:30; Tu-Fr 12:00-14:00,18:00-21:30; Sa 18:00-21:30; Su off"
     },
     {
       "id": "osm-7541476273-le-chemin-de-la-reussite",
@@ -3073,17 +3202,17 @@
       "id": "osm-1306996467-le-dragon-royal",
       "name": "Le Dragon Royal",
       "category": "horeca",
-      "subcategory": "restaurant",
+      "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685156,
-      "lng": 4.376913,
+      "lat": 50.685155,
+      "lng": 4.376938,
       "phone": "+32 2 385 12 88",
-      "website": "https://www.dragonroyal-resto.be",
-      "hours": "Mo-Fr 12:00-14:30, 18:00-22:00; Sa-Su 12:00-14:30, 18:00-24:00; Tu off; PH Tu 12:00-14:30, 18:00-24:00"
+      "website": "https://www.dragonroyal-resto.be/",
+      "hours": "Mo 12:00-14:30,18:00-22:00; Tu off; We-Th 12:00-14:30,18:00-22:00; Fr-Sa 12:00-14:30,18:00-24:00; Su 12:00-14:30,18:00-22:00; PH 12:00-14:30,18:00-22:00"
     },
     {
       "id": "osm-11438816782-le-garnisseur-michel",
@@ -3098,7 +3227,8 @@
       "lat": 50.685158,
       "lng": 4.374438,
       "phone": "+32 470 29 33 39",
-      "website": "https://www.legarnisseurmichel.be/"
+      "website": "https://www.legarnisseurmichel.be/",
+      "hours": "Mo-Sa 08:30-19:00; Su off"
     },
     {
       "id": "osm-738356725-le-matinal",
@@ -3226,10 +3356,10 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684407,
-      "lng": 4.371588,
+      "lat": 50.684372,
+      "lng": 4.371597,
       "phone": "+32 2 384 99 82",
-      "website": "https://lepavot.be/fr",
+      "website": "https://lepavot.be/",
       "hours": "Tu-We off; Th, Fr, Su, Mo 12:00-14:00, 19:00-21:00; Sa 19:00-21:00"
     },
     {
@@ -3277,19 +3407,34 @@
       "hours": "Su-Mo off; Tu-Sa 10:00-13:00, 14:00-18:00"
     },
     {
-      "id": "osm-762370184-les-2-freres",
-      "name": "Les 2 frères",
+      "id": "osm-14027117667-les-2-frere-s",
+      "name": "Les 2 frère'S",
       "category": "artisan",
       "subcategory": "caterer",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "29 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685755,
-      "lng": 4.378281,
+      "lat": 50.685708,
+      "lng": 4.378269,
       "phone": "+32 2 384 08 90",
-      "website": "https://www.traiteurlesdeuxfreres.be"
+      "website": "https://www.traiteurlesdeuxfreres.be/"
+    },
+    {
+      "id": "osm-14232226312-les-ateliers-de-mike",
+      "name": "Les Ateliers de Mike",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684229,
+      "lng": 4.371701,
+      "phone": "+32 470 10 41 95",
+      "website": "https://lam.solutionsdirect.be/"
     },
     {
       "id": "osm-7538868944-les-p-tites-fees-bleues",
@@ -3323,6 +3468,21 @@
       "hours": "Tu-We 08:30-12:30,14:00-18:00; Fr 08:30-12:30,14:00-18:00; Sa 08:30-16:00"
     },
     {
+      "id": "osm-13840538915-les-voisins",
+      "name": "Les Voisins",
+      "category": "horeca",
+      "subcategory": "cafe",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684811,
+      "lng": 4.370929,
+      "phone": "+32 474 68 18 47",
+      "hours": "Su-Mo off; Tu 15:00-23:00; We 13:00-23:00; Th 15:00-23:00; Fr 15:00-24:00; Sa 13:00-24:00"
+    },
+    {
       "id": "osm-26784537-lidl",
       "name": "Lidl",
       "category": "alimentation",
@@ -3334,7 +3494,8 @@
       "postalCode": "",
       "lat": 50.687683,
       "lng": 4.371723,
-      "website": "https://www.lidl.be/"
+      "website": "https://www.lidl.be/s/fr-BE/magasins/braine-l-alleud/avenue-de-la-belle-province-20/",
+      "hours": "Mo-Fr 08:30-20:00; Sa 08:30-19:00; Su off; PH off"
     },
     {
       "id": "osm-729003818-lou-soleou",
@@ -3392,11 +3553,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685632,
-      "lng": 4.379352,
+      "lat": 50.68562,
+      "lng": 4.379343,
       "phone": "+32 484 39 80 01",
       "website": "https://www.mainoi.be",
-      "hours": "Mo off; Tu-Th, Su 12:00-14:00, 18:00-21:00; Fr 12:00-14:00, 18:00-22:00; Sa 18:00-22:00"
+      "hours": "Mo off; Tu-Th 18:00-21:30; Fr 12:00-14:00, 18:00-21:30; Sa 18:00-21:30; Su 12:00-14:00, 18:00-20:30"
     },
     {
       "id": "osm-6071733605-maison-demaret",
@@ -3405,11 +3566,11 @@
       "subcategory": "bakery",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "6 Avenue Raymond Brassinne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683174,
-      "lng": 4.379506,
+      "lat": 50.683191,
+      "lng": 4.37946,
       "phone": "+32 2 676 16 06",
       "website": "https://maisondemaret.be",
       "hours": "Mo-Fr 07:00-18:30; Sa 07:00-17:30; Su 07:00-14:00; PH 07:00-14:00"
@@ -3428,19 +3589,6 @@
       "lng": 4.369305,
       "phone": "+32 2 854 05 95",
       "website": "https://www.braine-lalleud.be/ma-commune/services-communaux/maison-des-associations"
-    },
-    {
-      "id": "osm-13840538915-maison-frangee",
-      "name": "Maison Frangée",
-      "category": "horeca",
-      "subcategory": "cafe",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684811,
-      "lng": 4.370929
     },
     {
       "id": "osm-7554358072-manpower",
@@ -3465,7 +3613,7 @@
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "37 Chaussée de Mont Saint-Jean",
+      "address": "37A;37B Chaussée de Mont Saint-Jean",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.686573,
@@ -3504,18 +3652,19 @@
       "website": "https://www.marliere-ebenisterie.com/"
     },
     {
-      "id": "osm-733085191-mathieu-nayis",
+      "id": "osm-14080538239-mathieu-nayis",
       "name": "Mathieu Nayis",
       "category": "artisan",
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "4 Rue des Croix de Feu",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.684485,
-      "lng": 4.375098,
-      "hours": "Tu-Sa 09:00-19:00"
+      "lng": 4.375137,
+      "phone": "+32 2 649 25 03",
+      "hours": "Mo 10:00-20:00; Tu-Sa 09:00-19:00; Su off"
     },
     {
       "id": "osm-13446320396-max-moi",
@@ -3657,15 +3806,30 @@
       "id": "osm-12374381236-nahia",
       "name": "Nahia",
       "category": "horeca",
-      "subcategory": "fast_food",
+      "subcategory": "bakery",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "38 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685667,
-      "lng": 4.379604,
-      "website": "https://www.nahia.be/"
+      "lat": 50.685656,
+      "lng": 4.379607,
+      "phone": "+32 455 19 38 61",
+      "website": "https://www.nahia.be/",
+      "hours": "Mo-Fr 07:30-14:30; Sa-Su off"
+    },
+    {
+      "id": "osm-14322982107-nato-communications-and-information-agen",
+      "name": "NATO Communications and Information Agency (NCIA)",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Place du Luxembourg",
+      "town": "Braine-l'Alleud",
+      "postalCode": "1420",
+      "lat": 50.666403,
+      "lng": 4.380629
     },
     {
       "id": "osm-13435805157-neuhaus",
@@ -3679,7 +3843,9 @@
       "postalCode": "",
       "lat": 50.684961,
       "lng": 4.374351,
-      "website": "https://www.neuhauschocolates.com"
+      "phone": "+32 2 270 05 00",
+      "website": "https://www.neuhauschocolates.com/fr_BE/stores/detail?store=780",
+      "hours": "Mo off; Tu-Sa 10:00-18:00; Su off"
     },
     {
       "id": "osm-733085188-nord-express",
@@ -3711,17 +3877,59 @@
       "website": "https://www.notaire-botermans.be"
     },
     {
-      "id": "osm-1810650769-oli-s-tearoom-events-bar",
-      "name": "Oli's Tearoom & Events Bar",
-      "category": "horeca",
-      "subcategory": "bar",
+      "id": "osm-13346587007-ode-au-bien-etre",
+      "name": "Ode au bien-être",
+      "category": "artisan",
+      "subcategory": "beauty",
       "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68385,
-      "lng": 4.37242
+      "lat": 50.683246,
+      "lng": 4.379674,
+      "phone": "+32 474 59 57 37",
+      "hours": "Mo,Th-Fr 10:00-15:00; Tu 10:00-16:30; Sa 10:00-16:00; We,Su off"
+    },
+    {
+      "id": "osm-11429301455-olivier-dachkin",
+      "name": "Olivier Dachkin",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.68438,
+      "lng": 4.370939
+    },
+    {
+      "id": "osm-14072980658-olivier-urbain-frere-sprl",
+      "name": "Olivier Urbain & Frère sprl",
+      "category": "artisan",
+      "subcategory": "hvac;interior_work;floorer",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.685611,
+      "lng": 4.379262,
+      "phone": "+32 477 13 07 15"
+    },
+    {
+      "id": "osm-7554358079-one-stop",
+      "name": "One Stop",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684334,
+      "lng": 4.371485
     },
     {
       "id": "osm-13361826903-oostens",
@@ -3737,21 +3945,7 @@
       "lng": 4.378269,
       "phone": "+32 2 384 02 73",
       "website": "https://www.pmoostensassur.be/",
-      "hours": "Mo-Fr 09:00-12:30 || \"by appointment\"; Sa || \"by appointment\"; Su off; PH off"
-    },
-    {
-      "id": "osm-9436266318-p-vandepapeliere",
-      "name": "P. Vandepapeliere",
-      "category": "artisan",
-      "subcategory": "dentist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684737,
-      "lng": 4.379483,
-      "phone": "+32 2 385 03 46"
+      "hours": "Mo-Fr 09:00-12:30 || \"sur rendez-vous\"; Sa \"sur rendez-vous\"; Su off; PH off"
     },
     {
       "id": "osm-7541935476-pan-d-architecture",
@@ -3760,7 +3954,7 @@
       "subcategory": "architect",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "152 Rue du Ménil",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.688661,
@@ -3769,20 +3963,20 @@
       "website": "http://pandarchitecture.com"
     },
     {
-      "id": "osm-762225935-paradis-fleuri",
+      "id": "osm-14026944007-paradis-fleuri",
       "name": "Paradis Fleuri",
       "category": "artisan",
       "subcategory": "florist",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "7;9 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.6856,
-      "lng": 4.377348,
+      "lat": 50.685585,
+      "lng": 4.377346,
       "phone": "+32 2 387 17 00",
-      "website": "https://www.paradisfleuri.be/",
-      "hours": "Mo-Sa 09:00-19:00; Su 09:00-18:00"
+      "website": "https://paradisfleuri.be/",
+      "hours": "Mo-Su 09:00-18:00"
     },
     {
       "id": "osm-7486486829-peau-de-peche",
@@ -3798,37 +3992,6 @@
       "lng": 4.373419,
       "phone": "+32 494 99 44 94",
       "hours": "Mo-Tu,Th,Sa 10:00-18:00; We,Su off; Fr 10:00-19:00"
-    },
-    {
-      "id": "osm-11429301458-pfd-chassis",
-      "name": "PFD Châssis",
-      "category": "artisan",
-      "subcategory": "window_construction",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684383,
-      "lng": 4.3707,
-      "phone": "+32 472 91 35 71",
-      "website": "https://www.pfd-chassis.be/"
-    },
-    {
-      "id": "osm-13295210649-pham-hong-an-grace",
-      "name": "Pham Hông-An Grace",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.682182,
-      "lng": 4.381749,
-      "phone": "+32 473 85 49 84",
-      "website": "https://docteurphamgrace.wixsite.com/",
-      "hours": "Mo-Th 08:40-12:00,13:20-15:20; Fr 08:40-12:00; Sa-Su off"
     },
     {
       "id": "osm-13295397977-pharmacie-centrale",
@@ -3878,49 +4041,63 @@
       "hours": "Mo-Fr 08:30-12:30,13:30-18:30; Sa 08:30-12:00; Su off; PH off"
     },
     {
-      "id": "osm-477506519-pharmacie-genonceaux",
+      "id": "osm-14105577454-pharmacie-genonceaux",
       "name": "Pharmacie Genonceaux",
       "category": "artisan",
       "subcategory": "pharmacy",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2;4 Avenue Napoléon",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685323,
-      "lng": 4.377244,
+      "lat": 50.68534,
+      "lng": 4.377254,
       "phone": "+32 2 384 32 80",
       "website": "https://genonceaux.pharmacie.be/",
-      "hours": "Mo-Fr 08:30-12:30, 13:30-18:45; Sa 08:30-12:30; Su off"
+      "hours": "Mo-Fr 08:30-12:30, 13:30-18:45; Sa 08:30-12:30; Su off; PH off"
     },
     {
-      "id": "osm-762370190-pharmacie-vallee-bailly",
+      "id": "osm-14041901021-pharmacie-vallee-bailly",
       "name": "Pharmacie Vallée Bailly",
       "category": "artisan",
       "subcategory": "pharmacy",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "37 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685767,
-      "lng": 4.378664,
+      "lat": 50.685754,
+      "lng": 4.378692,
       "phone": "+32 2 384 20 62",
       "website": "https://www.pharmacie-vallee-bailly.be/",
       "hours": "Mo-Fr 08:30-12:30, 13:30-19:00; Sa 08:30-12:30; Su off"
     },
     {
-      "id": "osm-13446506277-philippe-meyers",
+      "id": "osm-7504265348-phil-photo",
+      "name": "Phil Photo",
+      "category": "artisan",
+      "subcategory": "photographer",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684472,
+      "lng": 4.370695,
+      "hours": "\"sur rendez-vous\""
+    },
+    {
+      "id": "osm-413115879-philippe-meyers",
       "name": "Philippe Meyers",
       "category": "horeca",
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "6 Rue Doyen Van Belle",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.682308,
-      "lng": 4.37005,
+      "lat": 50.682322,
+      "lng": 4.370042,
       "phone": "+32 2 384 83 18",
       "website": "https://www.philippe-meyers.be/acces",
       "hours": "Sa-Mo off; Tu-Fr 12:00-13:45,19:00-20:45"
@@ -3949,11 +4126,11 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685254,
-      "lng": 4.376941,
+      "lat": 50.685267,
+      "lng": 4.376932,
       "phone": "+32 2 385 41 41",
-      "website": "https://www.pizzahut.be/fr",
-      "hours": "Mo-Su 11:30-22:00"
+      "website": "https://www.pizzahut.be/fr/store/delivery-braine-l-alleud",
+      "hours": "Mo-Th 11:30-21:30; Fr-Sa 11:30-22:00; Su 11:30 - 21:30"
     },
     {
       "id": "osm-7467914897-pluriclean-services",
@@ -3962,28 +4139,14 @@
       "subcategory": "employment_agency",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "54 Avenue Général Ruquoy",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68371,
-      "lng": 4.379443,
+      "lat": 50.683702,
+      "lng": 4.379451,
       "phone": "+32 477 42 32 37",
       "website": "https://www.pluricleanservices.be",
-      "hours": "Mo-Th 09:00-17:30; Fr 09:00-14:30; Sa-Su off"
-    },
-    {
-      "id": "osm-9572954488-point-cash",
-      "name": "Point CASH",
-      "category": "distributeur",
-      "subcategory": "atm",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "1 Place de la Gare",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684618,
-      "lng": 4.375553,
-      "hours": "Mo-Su 06:00-00:00"
+      "hours": "Mo-Fr 09:00-17:30; Sa-Su off; PH off"
     },
     {
       "id": "osm-13436001909-poissonnerie-braine",
@@ -3997,7 +4160,8 @@
       "postalCode": "",
       "lat": 50.683844,
       "lng": 4.370159,
-      "phone": "+32 470 46 86 52"
+      "phone": "+32 470 46 86 52",
+      "hours": "Mo off; Tu-Sa 09:30-19:00; Su 08:00-15:00"
     },
     {
       "id": "osm-1774857936-poivre-noir",
@@ -4006,14 +4170,30 @@
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "9 Place de la Gare",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685462,
-      "lng": 4.37523,
+      "lat": 50.685459,
+      "lng": 4.375249,
       "phone": "+32 2 385 14 12",
       "website": "https://www.poivrenoir.be",
-      "hours": "We, Su, PH off; Mo 12:00-14:00; Tu,Th,Fr, Sa 12:00-14:00, 19:00-21:00"
+      "hours": "We-Sa 12:00-14:00, 19:00-21:00; Su,Mo,Tu off; PH off"
+    },
+    {
+      "id": "osm-11429301458-premium-frames-doors",
+      "name": "Premium Frames & Doors",
+      "category": "artisan",
+      "subcategory": "window_construction",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.684383,
+      "lng": 4.3707,
+      "phone": "+32 472 91 35 71",
+      "website": "https://www.pfd-chassis.be/",
+      "hours": "\"sur rendez-vous\""
     },
     {
       "id": "osm-7541476271-privilege-bresilien",
@@ -4092,27 +4272,14 @@
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "12 Place de la Gare",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
       "lat": 50.685629,
       "lng": 4.375399,
       "phone": "+32 2 387 37 87",
       "website": "https://saigonbistro.be/",
-      "hours": "Su-Mo off; Tu-Fr 11:45-14:00, 17:30-22:00; Sa 17:30-22:00"
-    },
-    {
-      "id": "osm-7480269791-saint-jean-marbrerie",
-      "name": "Saint-Jean Marbrerie",
-      "category": "artisan",
-      "subcategory": "stonemason",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "26 Rue des Croix de Feu",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.682718,
-      "lng": 4.374741
+      "hours": "Tu-Fr 11:45-14:00,17:30-22:00; Sa 17:30-22:00; Su-Mo off"
     },
     {
       "id": "osm-13348228724-secretariat-paroissial-saint-etienne",
@@ -4152,12 +4319,28 @@
       "subcategory": "tailor",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "16 Rue du Môle",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683298,
-      "lng": 4.370265,
-      "phone": "+32 476 77 46 61"
+      "lat": 50.683347,
+      "lng": 4.370228,
+      "phone": "+32 476 77 46 61",
+      "hours": "Su-Mo off; Tu-Fr 10:00-18:00; Sa 10:00-16:00"
+    },
+    {
+      "id": "osm-14268226102-shawarma-lebanon",
+      "name": "Shawarma Lebanon",
+      "category": "horeca",
+      "subcategory": "caterer",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "18 Chaussée d'Alsemberg",
+      "town": "Braine-l'Alleud",
+      "postalCode": "",
+      "lat": 50.685435,
+      "lng": 4.37064,
+      "phone": "+32 465 86 60 48",
+      "website": "https://www.shawarma-lebanon.be/"
     },
     {
       "id": "osm-13436378561-skwat",
@@ -4182,29 +4365,14 @@
       "subcategory": "dentist",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "20 Avenue de Menden",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.684952,
-      "lng": 4.380757,
-      "phone": "+32 2 384 51 49",
-      "website": "https://www.smile-architect.be/",
-      "hours": "Mo-Fr 09:30-18:00; Sa-Su off; PH off"
-    },
-    {
-      "id": "osm-7529727700-so",
-      "name": "So+",
-      "category": "artisan",
-      "subcategory": "consulting",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685733,
-      "lng": 4.382284,
-      "phone": "+32 2 726 81 94",
-      "website": "https://www.soplus.be/"
+      "lat": 50.684968,
+      "lng": 4.380776,
+      "phone": "+32 2 384 51 49",
+      "website": "https://www.smile-architect.be/",
+      "hours": "Mo-Fr 08:00-18:00; Sa-Su off; PH off"
     },
     {
       "id": "osm-13304839659-sodenel",
@@ -4219,7 +4387,8 @@
       "lat": 50.679739,
       "lng": 4.385633,
       "phone": "+32 2 384 42 44",
-      "website": "https://www.cabinetsodenel.be/"
+      "website": "https://www.cabinetsodenel.be/",
+      "hours": "Mo-Fr 09:00-18:00"
     },
     {
       "id": "osm-7485812980-soju-hub",
@@ -4247,9 +4416,9 @@
       "postalCode": "",
       "lat": 50.687005,
       "lng": 4.374476,
-      "phone": "+32 2 616 70 08",
+      "phone": "+32 2 209 42 69",
       "website": "https://www.monspar.be/magasins/spar-braine-lalleud",
-      "hours": "Mo-Th,Sa 08:30-20:00; Fr 08:30-21:00; Su 08:00-13:00"
+      "hours": "Mo 13:00-19:30; Tu-Sa 08:00-19:30; Su 08:00-12:00"
     },
     {
       "id": "osm-7499181314-stivako-s",
@@ -4294,7 +4463,7 @@
       "lng": 4.372257,
       "phone": "+32 2 384 82 07",
       "website": "https://www.styleflowers.net",
-      "hours": "Tu-Fr 09:00-13:00,14:00-18:30; Fr 09:00-13:00; Sa 09:00-18:30; Su 09:00-13:00"
+      "hours": "Mo,We off; Tu,Th,Fr 09:00-13:00,14:00-18:30; Sa 09:00-18:30; Su 10:00-13:00"
     },
     {
       "id": "osm-13446100018-sunday-pistols-studio",
@@ -4306,8 +4475,8 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684592,
-      "lng": 4.372959,
+      "lat": 50.68032,
+      "lng": 4.372868,
       "phone": "+32 499 36 40 83",
       "website": "https://www.sundaypistols.be/"
     },
@@ -4334,14 +4503,14 @@
       "subcategory": "caterer",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "40 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.6857,
-      "lng": 4.379754,
-      "phone": "+32 2 852 10 47",
+      "lat": 50.685675,
+      "lng": 4.379758,
+      "phone": "+32 2 230 36 49",
       "website": "https://restaurant-indien.be/",
-      "hours": "Mo off; Tu, Th 12:00-21:00; We 12:00-21:30; Fr 16:00-22:00; Sa 12:00-22:00; Su 13:00-21:00"
+      "hours": "Mo off; Tu-Th 12:30-14:30, 18:00-21:30; Fr 17:30-22:00; Sa 13:00-22:00; Su 13:00-21:30"
     },
     {
       "id": "osm-9573474220-tamishan-sushi",
@@ -4350,14 +4519,14 @@
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "31 Chaussée Reine Astrid",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.685734,
-      "lng": 4.378428,
+      "lat": 50.685717,
+      "lng": 4.378433,
       "phone": "+32 2 640 14 04",
       "website": "https://tamishansushi.be",
-      "hours": "Mo 11:30-14:30,18:00-22:00, Tu off, We-Su 11:30-14:30,18:00-22:00"
+      "hours": "Su-Fr 11:30-14:30,17:30-21:30, Sa off"
     },
     {
       "id": "osm-4108448676-tasty",
@@ -4389,30 +4558,18 @@
       "hours": "Mo-Tu 10:00-15:00; We 10:00-14:00; Th-Fr 10:00-15:00; Sa 11:00-14:00; Su 11:00-13:30"
     },
     {
-      "id": "osm-10253176359-taverne-chez-georges",
-      "name": "Taverne Chez Georges",
-      "category": "horeca",
-      "subcategory": "pub",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.683123,
-      "lng": 4.370285
-    },
-    {
-      "id": "osm-13295397989-taverne-georges",
+      "id": "osm-10253176359-taverne-georges",
       "name": "Taverne Georges",
       "category": "horeca",
       "subcategory": "pub",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "7 Rue de l'Ancien Bourg",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683192,
-      "lng": 4.37055
+      "lat": 50.683173,
+      "lng": 4.370266,
+      "hours": "Mo off; Tu-Th,Sa 10:30-20:00; Fr,Su 09:00-20:00"
     },
     {
       "id": "osm-10162059913-tchang-de-chine",
@@ -4476,20 +4633,19 @@
       "hours": "Mo-Th 08:30-22:00; Fr 07:30-24:00; Sa 08:30-24:00; Su 07:30-23:00"
     },
     {
-      "id": "osm-13305288752-therapy-beauty-bla",
-      "name": "Therapy Beauty BLA",
+      "id": "osm-14022683663-thibaut-vincent",
+      "name": "Thibaut VINCENT",
       "category": "artisan",
-      "subcategory": "beauty",
+      "subcategory": "yes",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.684352,
-      "lng": 4.370707,
-      "phone": "+32 492 26 95 75",
-      "website": "https://www.therapybeautybla.com",
-      "hours": "Mo,We-Sa 10:00-20:00; Tu,Su off"
+      "lat": 50.682785,
+      "lng": 4.376768,
+      "phone": "+32 474 49 33 80",
+      "website": "https://thibautvincent.be"
     },
     {
       "id": "osm-13295397991-touns-treatment",
@@ -4501,9 +4657,10 @@
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.683242,
-      "lng": 4.370536,
-      "phone": "+3226541453"
+      "lat": 50.683231,
+      "lng": 4.370523,
+      "phone": "+32 2 654 14 53",
+      "hours": "Su-Mo off; Tu-Sa 09:00-19:00"
     },
     {
       "id": "osm-13446398439-tra-di-noi",
@@ -4528,28 +4685,13 @@
       "subcategory": "fast_food",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "39 Chaussée Reine Astrid",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.68585,
-      "lng": 4.379119,
-      "phone": "+32 2 384 29 09",
-      "website": "http://snackturkuaz.be",
-      "hours": "Su-Th 11:30-22:00; Fr-Sa 11:30-23:00"
-    },
-    {
-      "id": "osm-13346560015-valentina-mitica",
-      "name": "Valentina & Mitica",
-      "category": "artisan",
-      "subcategory": "employment_agency",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.68266,
-      "lng": 4.378995,
-      "phone": "+32 496 28 60 19"
+      "lat": 50.685843,
+      "lng": 4.379059,
+      "phone": "+32 2 384 29 09",
+      "hours": "Mo-Th 11:30-22:00; Fr-Sa 11:30-22:30; Su 12:00-22:00"
     },
     {
       "id": "osm-13357880929-veronique-lemaire",
@@ -4583,50 +4725,36 @@
       "hours": "Mo-Sa 11:30-21:00; Su 18:00-21:00"
     },
     {
-      "id": "osm-766569214-wautier-scoupe-assurances-sa",
-      "name": "Wautier Scoupe Assurances sa",
-      "category": "artisan",
-      "subcategory": "insurance",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "53 Avenue Alphonse Allard",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.680901,
-      "lng": 4.37771,
-      "phone": "+32 2 384 02 73",
-      "website": "https://www.wautier-scoupe.be",
-      "hours": "Mo-Th 09:00-12:30, 13:30-17:30; Fr 09:00-12:30, 13:30-17:00; Sa-Su off"
-    },
-    {
       "id": "osm-6071739731-waw-momo",
       "name": "WAW MOMO",
       "category": "horeca",
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "18 Avenue Raymond Brassinne",
+      "address": "Adresse à compléter",
       "town": "Braine-l'Alleud",
       "postalCode": "",
-      "lat": 50.682842,
-      "lng": 4.379187,
+      "lat": 50.682873,
+      "lng": 4.379172,
       "phone": "+32 2 203 43 00",
-      "hours": "Mo-Th 10:00-15:00, 17:00-20:00; Fr 10:00-15:00, 17:00-21:00; Sa 17:00-21:00; Su 17:00-20:00"
+      "website": "https://www.wawmomo.be/",
+      "hours": "Mo-Th 10:00-15:00, 17:00-20:00; Fr 10:00-15:00, 17:00-21:00; Sa off; Su 17:00-20:00"
     },
     {
-      "id": "osm-11429301455-yayou-afro",
-      "name": "Yayou Afro",
+      "id": "osm-14273637416-hair-passion",
+      "name": "Hair Passion",
       "category": "artisan",
       "subcategory": "hairdresser",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Braine-l'Alleud",
-      "postalCode": "",
-      "lat": 50.68438,
-      "lng": 4.370939,
-      "phone": "+32 2 375 62 65",
-      "hours": "Tu-Sa 09:00-19:00; Su-Mo off"
+      "address": "5 Rue du Try",
+      "town": "Braine-L'alleud",
+      "postalCode": "1421",
+      "lat": 50.667601,
+      "lng": 4.345289,
+      "phone": "+32456314896",
+      "website": "https://salonkee.be/salon/hair-passion",
+      "hours": "Mo-Fr 09:00-17:00; We 09:00-12:00"
     },
     {
       "id": "osm-4260636112-ambiante",
@@ -4657,19 +4785,18 @@
       "website": "https://www.panoweb.be/ass2000/index.php"
     },
     {
-      "id": "osm-501614376-au-petit-poids",
-      "name": "Au Petit Poids",
+      "id": "osm-14102625921-au-petit-poids",
+      "name": "Au petit poids",
       "category": "alimentation",
       "subcategory": "greengrocer",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "59 Rue de Tubize",
+      "address": "Adresse à compléter",
       "town": "Braine-le-Château",
-      "postalCode": "1440",
-      "lat": 50.680593,
-      "lng": 4.258635,
-      "phone": "+32 2 850 36 42",
-      "website": "https://aupetitpoids.be/"
+      "postalCode": "",
+      "lat": 50.681416,
+      "lng": 4.271947,
+      "phone": "+32 67 44 37 35"
     },
     {
       "id": "osm-8733840315-bea-beauty-look",
@@ -4812,6 +4939,20 @@
       "lng": 4.272836
     },
     {
+      "id": "osm-14102952195-coiffure-laurence",
+      "name": "Coiffure Laurence",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-le-Château",
+      "postalCode": "",
+      "lat": 50.676577,
+      "lng": 4.266453,
+      "phone": "+32 2 366 21 03"
+    },
+    {
       "id": "osm-163994303-colruyt",
       "name": "Colruyt",
       "category": "alimentation",
@@ -4887,18 +5028,18 @@
       "phone": "+32 2 366 29 49"
     },
     {
-      "id": "osm-166445892-docteur-tamigniau-l",
-      "name": "Docteur Tamigniau L.",
+      "id": "osm-14102509578-docteur-savanah-blaton",
+      "name": "Docteur Savanah Blaton",
       "category": "artisan",
       "subcategory": "doctors",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "24 Rue de Nivelles",
+      "address": "Adresse à compléter",
       "town": "Braine-le-Château",
       "postalCode": "",
-      "lat": 50.680861,
-      "lng": 4.273246,
-      "phone": "+32 2 366 10 91"
+      "lat": 50.680859,
+      "lng": 4.273272,
+      "phone": "+32 4 71 95 14 63"
     },
     {
       "id": "osm-1765545260-dorian-alexandre",
@@ -5313,9 +5454,9 @@
       "subcategory": "fuel",
       "tier": "standard",
       "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "72 Rue de Nivelles",
       "town": "Braine-le-Château",
-      "postalCode": "",
+      "postalCode": "1440",
       "lat": 50.676146,
       "lng": 4.274654
     },
@@ -5347,6 +5488,20 @@
       "lat": 50.683273,
       "lng": 4.272906,
       "phone": "+32 2 366 90 48"
+    },
+    {
+      "id": "osm-14102969806-tatiana-lambot",
+      "name": "Tatiana Lambot",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Braine-le-Château",
+      "postalCode": "",
+      "lat": 50.677055,
+      "lng": 4.274176,
+      "phone": "+32 2 526 07 40"
     },
     {
       "id": "osm-9729283886-van-kim",
@@ -5821,17 +5976,17 @@
       "hours": "Th-Fr 16:30-18:30, Sa 10:30-12:30"
     },
     {
-      "id": "osm-206398457-ferme-du-bouret",
+      "id": "osm-14247416220-ferme-du-bouret",
       "name": "Ferme du Bouret",
       "category": "alimentation",
       "subcategory": "butcher",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "87 Chemin de Nivelles",
+      "address": "77 Chemin de Nivelles",
       "town": "Braine-le-Comte",
       "postalCode": "7090",
-      "lat": 50.578897,
-      "lng": 4.12935,
+      "lat": 50.579776,
+      "lng": 4.13129,
       "phone": "+32 67 56 12 68",
       "hours": "Tu-Fr 09:00-18:00; Sa 08:00-17:00"
     },
@@ -5915,7 +6070,8 @@
       "town": "Braine-le-Comte",
       "postalCode": "7090",
       "lat": 50.602018,
-      "lng": 4.128095
+      "lng": 4.128095,
+      "hours": "Mo-Sa 08:30-20:00; Su 08:30-18:30"
     },
     {
       "id": "osm-5851251710-jade-d-orient",
@@ -6542,6 +6698,20 @@
       "lat": 50.543836,
       "lng": 4.380043,
       "website": "https://barone21.webnode.it/"
+    },
+    {
+      "id": "osm-423615361-crie-de-marimont",
+      "name": "CRIE de Marimont",
+      "category": "artisan",
+      "subcategory": "government",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Canterlot",
+      "postalCode": "",
+      "lat": 50.469982,
+      "lng": 4.231474,
+      "website": "https://www.crie-mariemont.be/fr/"
     },
     {
       "id": "osm-792718166-busquin-philippe",
@@ -7874,19 +8044,6 @@
       "lng": 4.452345
     },
     {
-      "id": "osm-9396570631-black-white",
-      "name": "Black & White",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Charleroi",
-      "postalCode": "",
-      "lat": 50.406434,
-      "lng": 4.439441
-    },
-    {
       "id": "osm-9356781160-brasserie-de-l-eden",
       "name": "Brasserie de l'Eden",
       "category": "horeca",
@@ -8600,6 +8757,19 @@
       "lng": 4.458513
     },
     {
+      "id": "osm-14067231202-la-bon-heure",
+      "name": "La Bon'Heure",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "7 Rue Arthur Regniers",
+      "town": "Charleroi",
+      "postalCode": "6000",
+      "lat": 50.406887,
+      "lng": 4.438303
+    },
+    {
       "id": "osm-574907994-la-cuve-a-biere",
       "name": "La Cuve à bière",
       "category": "horeca",
@@ -9028,7 +9198,7 @@
       "lng": 4.444774,
       "phone": "+32 71 31 22 17",
       "website": "http://www.nadyscoiffure.be",
-      "hours": "8:15 - 18:00"
+      "hours": "08:15-18:00"
     },
     {
       "id": "osm-10997485803-nirvana-bar",
@@ -9190,8 +9360,8 @@
       "lat": 50.408435,
       "lng": 4.442075,
       "phone": "+32 71 53 38 67",
-      "website": "https://www.pointchaud.be/",
-      "hours": "Mo-Fr 06:00-18:00; Sa 07:00-18:00"
+      "website": "https://www.pointchaud.be/fr/Boulangerie-Charleroi-Tirou-point-chaud",
+      "hours": "Mo-Fr 06:00-17:30; Sa 07:00-17:30; 2026 Nov 01,2026 Nov 11 off"
     },
     {
       "id": "osm-10309503846-pokawa",
@@ -9363,6 +9533,19 @@
       "hours": "Mo-Su 10:45-22:00"
     },
     {
+      "id": "osm-9396570631-tasty-crousty",
+      "name": "Tasty Crousty",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Charleroi",
+      "postalCode": "",
+      "lat": 50.406434,
+      "lng": 4.439441
+    },
+    {
       "id": "osm-10852688296-thai-cafe-tirou",
       "name": "Thai Café Tirou",
       "category": "horeca",
@@ -9514,6 +9697,19 @@
       "website": "https://yunacoffee.be"
     },
     {
+      "id": "osm-14233583584-mr-moustache",
+      "name": "Mr. Moustache",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Chensée",
+      "postalCode": "",
+      "lat": 50.49122,
+      "lng": 4.338278
+    },
+    {
       "id": "osm-2160870321-texaco",
       "name": "Texaco",
       "category": "distributeur",
@@ -9649,6 +9845,19 @@
       "phone": "+32 2 366 02 88"
     },
     {
+      "id": "osm-13949565875-hair-creation",
+      "name": "Hair Création",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Colipain",
+      "postalCode": "",
+      "lat": 50.689479,
+      "lng": 4.30448
+    },
+    {
       "id": "osm-319821709-cafe-torine",
       "name": "Café Torine",
       "category": "horeca",
@@ -9782,19 +9991,6 @@
       "website": "https://customer.dats24.be/wps/portal/datscustomer/nl/b2c/locator#!/3034"
     },
     {
-      "id": "osm-361481981-intermarche",
-      "name": "Intermarché",
-      "category": "alimentation",
-      "subcategory": "supermarket",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "154 Rue de Trazegnies",
-      "town": "Courcelles",
-      "postalCode": "6180",
-      "lat": 50.463079,
-      "lng": 4.353669
-    },
-    {
       "id": "osm-13672851302-la-brasserie-du-trieu",
       "name": "La brasserie du Trieu",
       "category": "horeca",
@@ -9832,21 +10028,8 @@
       "town": "Courcelles",
       "postalCode": "6180",
       "lat": 50.461537,
-      "lng": 4.366072
-    },
-    {
-      "id": "osm-262602331-leader-price",
-      "name": "Leader Price",
-      "category": "alimentation",
-      "subcategory": "supermarket",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "62 Rue Philippe Monnoyer",
-      "town": "Courcelles",
-      "postalCode": "6180",
-      "lat": 50.463996,
-      "lng": 4.377609,
-      "hours": "Mo 12:00-19:30; Tu-Sa 08:30-19:30; Su 09:00-12:00"
+      "lng": 4.366072,
+      "hours": "Tu-Sa 11:30-15:00, Tu-Th,Sa 17:30-22:30, Fr 17:30-23:00, Su 11:30-22:30"
     },
     {
       "id": "osm-262602313-lidl",
@@ -9859,7 +10042,8 @@
       "town": "Courcelles",
       "postalCode": "6180",
       "lat": 50.46156,
-      "lng": 4.371506
+      "lng": 4.371506,
+      "hours": "Mo-Fr 08:30-20:00; Sa 08:30-19:00"
     },
     {
       "id": "osm-1146806353-mcdonald-s",
@@ -9873,7 +10057,8 @@
       "postalCode": "6180",
       "lat": 50.463004,
       "lng": 4.352744,
-      "website": "https://www.mcdonalds.be/nl/restaurants/courcelles-drive"
+      "website": "https://www.mcdonalds.be/nl/restaurants/courcelles-drive",
+      "hours": "Su-Th 10:00-24:00, Fr,Sa 10:00-01:00"
     },
     {
       "id": "osm-96241789-okay",
@@ -10802,8 +10987,8 @@
       "address": "Adresse à compléter",
       "town": "Feluy",
       "postalCode": "",
-      "lat": 50.563017,
-      "lng": 4.253223
+      "lat": 50.562908,
+      "lng": 4.253383
     },
     {
       "id": "osm-2506335334-pharmacie-du-petit-moulin",
@@ -11012,6 +11197,19 @@
       "postalCode": "",
       "lat": 50.463652,
       "lng": 4.233544
+    },
+    {
+      "id": "osm-1576864804-l-instant-mariemont",
+      "name": "L'Instant Mariemont",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Fonds de la Hestre",
+      "postalCode": "",
+      "lat": 50.467897,
+      "lng": 4.232136
     },
     {
       "id": "osm-11046414220-rosamaria-pavoncelli",
@@ -11229,6 +11427,20 @@
       "lng": 4.280561,
       "phone": "+32 2 366 29 57",
       "website": "https://centremedical-lefoyau.be/"
+    },
+    {
+      "id": "osm-14102952196-lepoivre-invest",
+      "name": "Lepoivre Invest",
+      "category": "artisan",
+      "subcategory": "insurance",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Fontaine Maqué",
+      "postalCode": "",
+      "lat": 50.67069,
+      "lng": 4.276906,
+      "website": "http://www.lepoivreinvest.be/"
     },
     {
       "id": "osm-9103635274-petit-salon-tatyana",
@@ -11735,7 +11947,7 @@
       "lat": 50.435049,
       "lng": 4.334665,
       "phone": "+32 71 52 23 69",
-      "website": "https://www.delhaize.be",
+      "website": "https://stores.delhaize.be/fr/proxy-delhaize-forchies-la-marche",
       "hours": "Mo 12:00-19:00; Tu-Sa 08:30-19:00; Su 08:30-18:00"
     },
     {
@@ -11750,6 +11962,21 @@
       "postalCode": "",
       "lat": 50.434445,
       "lng": 4.32527
+    },
+    {
+      "id": "osm-14094107766-schamp",
+      "name": "Schamp",
+      "category": "alimentation",
+      "subcategory": "bakery",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Forchies-la-Marche",
+      "postalCode": "",
+      "lat": 50.439849,
+      "lng": 4.337139,
+      "phone": "+32 71 12 68 88",
+      "hours": "Mo-Sa 06:00-17:30; Su 07:00-16:00; PH 07:00-16:00"
     },
     {
       "id": "osm-391134052-taverne-du-centre",
@@ -11810,7 +12037,7 @@
       "subcategory": "hardware",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "9 Chemin du Saucy",
       "town": "Frasnes-lez-Gosselies",
       "postalCode": "",
       "lat": 50.540928,
@@ -11968,6 +12195,19 @@
       "hours": "Mo 13:00-19:00; Tu-Sa 09:00-19:00; Su 09:00-13:00"
     },
     {
+      "id": "osm-7428917631-bioooh",
+      "name": "Bioooh!",
+      "category": "alimentation",
+      "subcategory": "supermarket",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "26 Rue des Lilas",
+      "town": "Genappe",
+      "postalCode": "1470",
+      "lat": 50.61452,
+      "lng": 4.452732
+    },
+    {
       "id": "osm-10202356525-boulangerie-louise",
       "name": "Boulangerie Louise",
       "category": "alimentation",
@@ -11997,6 +12237,22 @@
       "lng": 4.450495
     },
     {
+      "id": "osm-1020978616-cabinet-veterinaire-aurelie-declercq",
+      "name": "Cabinet Vétérinaire Aurélie Declercq",
+      "category": "artisan",
+      "subcategory": "veterinary",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "57 Rue de Charleroi",
+      "town": "Genappe",
+      "postalCode": "",
+      "lat": 50.608745,
+      "lng": 4.450496,
+      "phone": "+32 472 62 75 95",
+      "website": "https://veterinaire-declercq.be/",
+      "hours": "Mo-Fr 09:00-19:00; Sa 09:00-12:00"
+    },
+    {
       "id": "osm-2534870805-cafe-de-la-lanterne",
       "name": "Café de la Lanterne",
       "category": "horeca",
@@ -12021,7 +12277,7 @@
       "postalCode": "",
       "lat": 50.607515,
       "lng": 4.449475,
-      "hours": "Mo 12:30-19:30; Tu-Sa 8:30-19:30, Su 8:30-19:00, PH 8:30-19:00"
+      "hours": "Mo 12:30-19:30; Tu-Sa 08:30-19:30, Su 08:30-19:00, PH 08:30-19:00"
     },
     {
       "id": "osm-3710898810-chez-madame-oleson",
@@ -12106,19 +12362,6 @@
       "lng": 4.450937
     },
     {
-      "id": "osm-7428917631-ekivrac",
-      "name": "ekivrac",
-      "category": "alimentation",
-      "subcategory": "supermarket",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "26 Rue des Lilas",
-      "town": "Genappe",
-      "postalCode": "1470",
-      "lat": 50.61452,
-      "lng": 4.452732
-    },
-    {
       "id": "osm-2406628969-fleurs-frederic",
       "name": "Fleurs Frédéric",
       "category": "artisan",
@@ -12183,6 +12426,21 @@
       "postalCode": "",
       "lat": 50.610874,
       "lng": 4.451442
+    },
+    {
+      "id": "osm-1020916862-institut-hakuna-matata",
+      "name": "Institut Hakuna Matata",
+      "category": "artisan",
+      "subcategory": "beauty",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "33 Rue de Bruxelles",
+      "town": "Genappe",
+      "postalCode": "1470",
+      "lat": 50.611807,
+      "lng": 4.451025,
+      "website": "https://salonkee.be/salon/hakuna-matata",
+      "hours": "Tu 09:00-17:00; We 10:00-18:00; Th 10:00-20:00; Fr 09:00-17:00; Sa 09:00-16:00"
     },
     {
       "id": "osm-620118282-intermarche",
@@ -12706,6 +12964,22 @@
       "lng": 4.442829
     },
     {
+      "id": "osm-14209282800-tutti-quanti",
+      "name": "Tutti Quanti",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Godarville",
+      "postalCode": "",
+      "lat": 50.496798,
+      "lng": 4.304464,
+      "phone": "+32 470 03 63 13",
+      "website": "https://www.tuttiquanti.be/",
+      "hours": "We-Fr 10:00-17:00; Sa 10:00-16:00"
+    },
+    {
       "id": "osm-1772717969-ad-delhaize",
       "name": "AD Delhaize",
       "category": "alimentation",
@@ -12895,7 +13169,7 @@
       "lat": 50.468427,
       "lng": 4.441038,
       "phone": "+32 71 38 16 29",
-      "website": "https://gosselies.cavavin.co/",
+      "website": "https://cavavingosselies.odoo.com/",
       "hours": "Tu-Sa 10:00-18:00"
     },
     {
@@ -12983,20 +13257,6 @@
       "postalCode": "",
       "lat": 50.466435,
       "lng": 4.417465
-    },
-    {
-      "id": "osm-106518213-esso",
-      "name": "Esso",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "1 Rue Robesse",
-      "town": "Gosselies",
-      "postalCode": "6041",
-      "lat": 50.483002,
-      "lng": 4.447811,
-      "website": "https://www.maes-oil.be/nl/tankstation/gosselies-esso/"
     },
     {
       "id": "osm-107127092-fabory",
@@ -13142,9 +13402,9 @@
       "subcategory": "supermarket",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "10 Avenue du Chêne Saint-Jean",
       "town": "Gosselies",
-      "postalCode": "",
+      "postalCode": "6041",
       "lat": 50.466677,
       "lng": 4.440384
     },
@@ -13637,20 +13897,6 @@
       "website": "https://www.produitshongrois.be"
     },
     {
-      "id": "osm-231806863-desclin-francois",
-      "name": "Desclin Francois",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "55 Rue de la Station",
-      "town": "Gouy-lez-Piéton",
-      "postalCode": "6181",
-      "lat": 50.490803,
-      "lng": 4.329949,
-      "phone": "+32 71 84 68 48"
-    },
-    {
       "id": "osm-231800687-epicerie",
       "name": "Epicerie",
       "category": "alimentation",
@@ -13662,7 +13908,8 @@
       "postalCode": "6181",
       "lat": 50.486974,
       "lng": 4.328752,
-      "phone": "+32 71 84 32 96"
+      "phone": "+32 71 84 32 96",
+      "hours": "We-Mo 08:00-20:00"
     },
     {
       "id": "osm-2622896634-la-menagere",
@@ -13675,21 +13922,8 @@
       "town": "Gouy-lez-Piéton",
       "postalCode": "6181",
       "lat": 50.492788,
-      "lng": 4.330048
-    },
-    {
-      "id": "osm-231805800-laurent-staquet-sprl",
-      "name": "Laurent Staquet SPRL",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "27 Rue de la Station",
-      "town": "Gouy-lez-Piéton",
-      "postalCode": "6181",
-      "lat": 50.489232,
-      "lng": 4.328997,
-      "phone": "+32 71 84 40 22"
+      "lng": 4.330048,
+      "hours": "Mo 13:00-18:00, Tu-Su 08:00-12:15, Tu-Sa 13:15-18:00"
     },
     {
       "id": "osm-230076758-le-mont-a-gourmet",
@@ -13704,7 +13938,8 @@
       "lat": 50.486848,
       "lng": 4.32835,
       "phone": "+32 71 84 74 15",
-      "website": "https://www.lemontagourmet.be/"
+      "website": "https://www.lemontagourmet.be/",
+      "hours": "Tu-Fr 12:00-14:00, Tu-Sa 19:00-24:00"
     },
     {
       "id": "osm-1827902374-mike-shop",
@@ -13730,21 +13965,8 @@
       "town": "Gouy-lez-Piéton",
       "postalCode": "",
       "lat": 50.480035,
-      "lng": 4.349723
-    },
-    {
-      "id": "osm-231800686-schoonheyt-guy-fils-sa",
-      "name": "Schoonheyt Guy & Fils sa",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "14 Place Communale",
-      "town": "Gouy-lez-Piéton",
-      "postalCode": "6181",
-      "lat": 50.486988,
-      "lng": 4.328866,
-      "phone": "+32 71 84 29 52"
+      "lng": 4.349723,
+      "hours": "24/7"
     },
     {
       "id": "osm-1836240168-entre-terre-et-biere",
@@ -14464,20 +14686,18 @@
       "lng": 4.29925
     },
     {
-      "id": "osm-9730111057-au-comptoir-des-iles",
-      "name": "Au Comptoir des Îles",
+      "id": "osm-14102992777-beauty-vibe",
+      "name": "Beauty vibe",
       "category": "artisan",
-      "subcategory": "caterer",
+      "subcategory": "beauty",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Hameau du Pont",
       "postalCode": "",
-      "lat": 50.684186,
-      "lng": 4.279108,
-      "phone": "+32 492 86 56 29",
-      "website": "https://exoticconcept.be/",
-      "hours": "Tu-Sa 10:30-19:00"
+      "lat": 50.684215,
+      "lng": 4.279054,
+      "website": "https://salonkee.be/salon/beauty-vibe?lang=fr"
     },
     {
       "id": "osm-4260592959-cabinet-veterinaire-didier-eeckhout",
@@ -14504,8 +14724,8 @@
       "address": "Adresse à compléter",
       "town": "Hameau du Pont",
       "postalCode": "",
-      "lat": 50.6842,
-      "lng": 4.279003,
+      "lat": 50.684216,
+      "lng": 4.278981,
       "phone": "+32 2 355 50 55"
     },
     {
@@ -14577,22 +14797,6 @@
       "lng": 4.368899
     },
     {
-      "id": "osm-6376317001-furia",
-      "name": "Furia",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Hameau du Rossignol",
-      "postalCode": "",
-      "lat": 50.689157,
-      "lng": 4.362727,
-      "phone": "+32 2 522 52 55",
-      "website": "https://furiarestaurant.be/",
-      "hours": "Tu-Fr 12:00-14:00,18:00-22:00; Sa 18:00-22:00; Su-Mo off"
-    },
-    {
       "id": "osm-11494538164-gilbert-walon",
       "name": "Gilbert Walon",
       "category": "artisan",
@@ -14621,6 +14825,21 @@
       "lng": 4.368359,
       "phone": "+32 2 387 36 93",
       "hours": "Tu-Fr 07:00-18:00; Sa 07:00-17:00; Su 06:30-16:00"
+    },
+    {
+      "id": "osm-14004958747-pact-solutions",
+      "name": "Pact Solutions",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Hameau du Rossignol",
+      "postalCode": "",
+      "lat": 50.690618,
+      "lng": 4.35076,
+      "phone": "+32 2 241 95 66",
+      "website": "https://www.pactsolutions.be/"
     },
     {
       "id": "osm-10329272332-pharmacie-de-l-estree",
@@ -14678,21 +14897,6 @@
       "lng": 4.360647,
       "phone": "+32 2 384 41 73",
       "website": "https://leductraiteur.be/fr"
-    },
-    {
-      "id": "osm-9628203892-aclot-pharma",
-      "name": "Aclot pharma",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "101 Rue du Paradis",
-      "town": "Hameau Saint-Pierre",
-      "postalCode": "",
-      "lat": 50.610687,
-      "lng": 4.321332,
-      "phone": "+32 67 21 18 45",
-      "website": "https://www.aclotpharma.be/"
     },
     {
       "id": "osm-13578030981-cindy-coiffure",
@@ -14778,6 +14982,21 @@
       "postalCode": "",
       "lat": 50.596789,
       "lng": 4.484113
+    },
+    {
+      "id": "osm-14287141700-brasserie-o-ittr",
+      "name": "Brasserie Ô‘Ittr",
+      "category": "artisan",
+      "subcategory": "brewery",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Haut-Ittre",
+      "postalCode": "",
+      "lat": 50.661066,
+      "lng": 4.290151,
+      "phone": "+32 479 31 19 56",
+      "website": "https://lamaisonnee.be/index.php/travail/"
     },
     {
       "id": "osm-13455347601-bruno-delchambre",
@@ -16782,6 +17001,19 @@
       "lng": 4.462707
     },
     {
+      "id": "osm-855447510-immobiliere-la-famille",
+      "name": "Immobilière La Famille",
+      "category": "artisan",
+      "subcategory": "estate_agent",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "52 Rue de Dampremy",
+      "town": "Jumet",
+      "postalCode": "6040",
+      "lat": 50.431021,
+      "lng": 4.418825
+    },
+    {
       "id": "osm-248702025-intermarche",
       "name": "Intermarché",
       "category": "alimentation",
@@ -16819,6 +17051,19 @@
       "postalCode": "",
       "lat": 50.451135,
       "lng": 4.433097
+    },
+    {
+      "id": "osm-14214451080-le-royal",
+      "name": "Le Royal",
+      "category": "horeca",
+      "subcategory": "pub",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Jumet",
+      "postalCode": "",
+      "lat": 50.444327,
+      "lng": 4.444029
     },
     {
       "id": "osm-4506242853-le-tip-top",
@@ -16890,6 +17135,32 @@
       "hours": "Mo-Su 08:30-21:30"
     },
     {
+      "id": "osm-14227502897-mdb-car",
+      "name": "MDB car",
+      "category": "artisan",
+      "subcategory": "car_painter",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Jumet",
+      "postalCode": "",
+      "lat": 50.454191,
+      "lng": 4.445445
+    },
+    {
+      "id": "osm-13960117719-o-bon-vivant",
+      "name": "Ô Bon Vivant",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Jumet",
+      "postalCode": "",
+      "lat": 50.436581,
+      "lng": 4.439164
+    },
+    {
       "id": "osm-1072134817-pharmacie-des-hamendes",
       "name": "Pharmacie des Hamendes",
       "category": "artisan",
@@ -16906,6 +17177,32 @@
       "hours": "Mo-Fr 08:45-12:30,13:30-18:30; Sa 08:45-12:30"
     },
     {
+      "id": "osm-855447532-pharmacie-familia",
+      "name": "Pharmacie Familia",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "89 Rue de Dampremy",
+      "town": "Jumet",
+      "postalCode": "6040",
+      "lat": 50.430936,
+      "lng": 4.41951
+    },
+    {
+      "id": "osm-1419011236-puissant-alimentation-general",
+      "name": "Puissant Alimentation Général",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "285 Rue Puissant",
+      "town": "Jumet",
+      "postalCode": "6040",
+      "lat": 50.430856,
+      "lng": 4.419261
+    },
+    {
       "id": "osm-251386263-q8",
       "name": "Q8",
       "category": "distributeur",
@@ -16915,8 +17212,9 @@
       "address": "Adresse à compléter",
       "town": "Jumet",
       "postalCode": "",
-      "lat": 50.450775,
-      "lng": 4.433328
+      "lat": 50.450757,
+      "lng": 4.433322,
+      "website": "https://www.q8.be/fr/stations/q8-charleroi-jumet"
     },
     {
       "id": "osm-122927495-quick",
@@ -16970,6 +17268,21 @@
       "postalCode": "",
       "lat": 50.439023,
       "lng": 4.41989
+    },
+    {
+      "id": "osm-14111797502-the-box-lab",
+      "name": "The Box Lab",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "18 Place du Ballon",
+      "town": "Jumet",
+      "postalCode": "6040",
+      "lat": 50.434697,
+      "lng": 4.413896,
+      "phone": "+32 471 69 32 89",
+      "website": "https://www.takeaway.com/be-en/menu/the-box-lab"
     },
     {
       "id": "osm-11195687145-mathieu-hoogstoel",
@@ -17692,6 +18005,19 @@
       "lng": 4.203221
     },
     {
+      "id": "osm-14056197902-salon-dolce-institut",
+      "name": "Salon Dolce Institut",
+      "category": "artisan",
+      "subcategory": "beauty",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Flache",
+      "postalCode": "",
+      "lat": 50.487863,
+      "lng": 4.20628
+    },
+    {
       "id": "osm-11102652288-sita-cash-carry",
       "name": "Sita Cash & Carry",
       "category": "alimentation",
@@ -17732,7 +18058,7 @@
     },
     {
       "id": "osm-125193770-aldi",
-      "name": "ALDI",
+      "name": "Aldi",
       "category": "alimentation",
       "subcategory": "supermarket",
       "tier": "standard",
@@ -17740,8 +18066,8 @@
       "address": "Adresse à compléter",
       "town": "La Grattine",
       "postalCode": "",
-      "lat": 50.484312,
-      "lng": 4.199911,
+      "lat": 50.484325,
+      "lng": 4.199846,
       "hours": "Mo-Sa 08:30-19:00"
     },
     {
@@ -17812,6 +18138,19 @@
       "hours": "Mo-Sa 07:30-19:00; Su 07:30-12:00"
     },
     {
+      "id": "osm-11065539149-dailygo-shop",
+      "name": "DailyGo Shop",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Grattine",
+      "postalCode": "",
+      "lat": 50.482115,
+      "lng": 4.203345
+    },
+    {
       "id": "osm-11032815321-famiglia-chiolo",
       "name": "Famiglia Chiolo",
       "category": "alimentation",
@@ -17863,6 +18202,19 @@
       "postalCode": "",
       "lat": 50.485367,
       "lng": 4.197051
+    },
+    {
+      "id": "osm-9869987584-le-comptoir-de-mathlide",
+      "name": "Le Comptoir de Mathlide",
+      "category": "alimentation",
+      "subcategory": "chocolate",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Grattine",
+      "postalCode": "",
+      "lat": 50.485718,
+      "lng": 4.20342
     },
     {
       "id": "osm-13197469356-little-shop",
@@ -18422,7 +18774,7 @@
     },
     {
       "id": "osm-11224868996-alises",
-      "name": "ALISES",
+      "name": "Alises",
       "category": "artisan",
       "subcategory": "association",
       "tier": "standard",
@@ -18582,19 +18934,6 @@
       "lat": 50.475774,
       "lng": 4.183495,
       "hours": "06:00-20:00"
-    },
-    {
-      "id": "osm-11034116581-ay-kebab",
-      "name": "Ay Kebab",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Louvière",
-      "postalCode": "",
-      "lat": 50.478534,
-      "lng": 4.188777
     },
     {
       "id": "osm-11002303853-bafc",
@@ -18784,22 +19123,6 @@
       "lng": 4.190901
     },
     {
-      "id": "osm-11323320430-brasa-gril",
-      "name": "Brasa Gril",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "79 Rue Sylvain Guyaux",
-      "town": "La Louvière",
-      "postalCode": "7100",
-      "lat": 50.476086,
-      "lng": 4.182541,
-      "phone": "+32 486 52 03 73",
-      "website": "https://brasagril.com/",
-      "hours": "Mo-We,Su 09:00-22:30; Th-Sa 09:00-24:30"
-    },
-    {
       "id": "osm-11144703008-bruno-choteau",
       "name": "Bruno Choteau",
       "category": "artisan",
@@ -18882,6 +19205,19 @@
       "lng": 4.193781,
       "website": "https://burgerking.be/fr",
       "hours": "Mo-Su 10:30-23:00"
+    },
+    {
+      "id": "osm-10026419684-cabinet-dentaire-guyaux",
+      "name": "Cabinet Dentaire Guyaux",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "58 Rue Sylvain Guyaux",
+      "town": "La Louvière",
+      "postalCode": "7100",
+      "lat": 50.475829,
+      "lng": 4.184062
     },
     {
       "id": "osm-11026019264-cafe-des-arts",
@@ -19353,8 +19689,8 @@
       "address": "228 Rue de la Franco-Belge",
       "town": "La Louvière",
       "postalCode": "7100",
-      "lat": 50.484575,
-      "lng": 4.202969,
+      "lat": 50.484631,
+      "lng": 4.202795,
       "hours": "Mo-Su 08:00-20:00"
     },
     {
@@ -21083,7 +21419,7 @@
       "lng": 4.202038,
       "phone": "+32 495 10 35 00",
       "website": "https://www.phma.be/fr-be",
-      "hours": "sur rendez-vous"
+      "hours": "\"Sur rendez-vous\""
     },
     {
       "id": "osm-11070982813-picardie-laique",
@@ -21180,8 +21516,8 @@
       "address": "228 Rue de la Franco-Belge",
       "town": "La Louvière",
       "postalCode": "7100",
-      "lat": 50.485926,
-      "lng": 4.204072,
+      "lat": 50.485865,
+      "lng": 4.203223,
       "hours": "Mo-Sa 10:00-20:00"
     },
     {
@@ -21267,20 +21603,6 @@
       "hours": "Mo-Th 08:30-12:30,13:30-17:30"
     },
     {
-      "id": "osm-9869987603-randy-american-market",
-      "name": "Randy American Market",
-      "category": "alimentation",
-      "subcategory": "convenience",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "228 Rue de la Franco-Belge",
-      "town": "La Louvière",
-      "postalCode": "7100",
-      "lat": 50.4856,
-      "lng": 4.202776,
-      "hours": "Mo-Sa 10:00-20:00"
-    },
-    {
       "id": "osm-11002303904-sd-assurcredit",
       "name": "SD Assurcrédit",
       "category": "artisan",
@@ -21307,17 +21629,17 @@
       "lng": 4.188533
     },
     {
-      "id": "osm-1202082871-service-clientele-du-forem-de-la-louvier",
+      "id": "osm-14344547974-service-clientele-du-forem-de-la-louvier",
       "name": "Service clientèle du Forem de La Louvière",
       "category": "artisan",
       "subcategory": "employment_agency",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "36 Rue de la Closière",
+      "address": "Adresse à compléter",
       "town": "La Louvière",
-      "postalCode": "7100",
-      "lat": 50.479814,
-      "lng": 4.176284
+      "postalCode": "",
+      "lat": 50.479753,
+      "lng": 4.176236
     },
     {
       "id": "osm-11062923066-setca-centre",
@@ -21359,6 +21681,19 @@
       "lat": 50.48554,
       "lng": 4.202887,
       "hours": "Mo-Sa 10:00-20:00"
+    },
+    {
+      "id": "osm-11034116581-snack-67",
+      "name": "Snack 67",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Louvière",
+      "postalCode": "",
+      "lat": 50.478534,
+      "lng": 4.188777
     },
     {
       "id": "osm-11032210091-snack-aseel",
@@ -21652,6 +21987,19 @@
       "lng": 4.186366
     },
     {
+      "id": "osm-11323320430-tropical-eats",
+      "name": "Tropical Eats",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "79 Rue Sylvain Guyaux",
+      "town": "La Louvière",
+      "postalCode": "7100",
+      "lat": 50.476086,
+      "lng": 4.182541
+    },
+    {
       "id": "osm-10636190816-une-faim-de-loup",
       "name": "Une Faim de Loup",
       "category": "horeca",
@@ -21759,6 +22107,22 @@
       "hours": "Mo-Sa 10:00-20:00, Fr 10:00-21:00"
     },
     {
+      "id": "osm-14131228135-zori-properties",
+      "name": "Zori Properties",
+      "category": "artisan",
+      "subcategory": "estate_agent",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Louvière",
+      "postalCode": "",
+      "lat": 50.477901,
+      "lng": 4.187363,
+      "phone": "+32 490 560 560",
+      "website": "https://zori.immo/",
+      "hours": "Mo-Fr 09:00-17:00"
+    },
+    {
       "id": "osm-11140724226-jean-philippe-taildeman",
       "name": "Jean-Philippe Taildeman",
       "category": "artisan",
@@ -21807,11 +22171,27 @@
       "subcategory": "doctors",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "22 Clos Sainte-Rita",
+      "address": "Adresse à compléter",
       "town": "La Neuville",
       "postalCode": "",
       "lat": 50.673728,
-      "lng": 4.377552
+      "lng": 4.377552,
+      "phone": "+32 2 387 30 13"
+    },
+    {
+      "id": "osm-13988253934-espaces-verts-deckers",
+      "name": "Espaces Verts Deckers",
+      "category": "artisan",
+      "subcategory": "gardener",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Neuville",
+      "postalCode": "",
+      "lat": 50.67418,
+      "lng": 4.361721,
+      "phone": "+32 2 384 30 90",
+      "website": "https://espaces-verts-deckers.be"
     },
     {
       "id": "osm-10138061187-la-releve-ferme-en-ville",
@@ -21880,7 +22260,7 @@
       "subcategory": "doctors",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "5 Rue du Paradis",
       "town": "La Neuville",
       "postalCode": "",
       "lat": 50.678628,
@@ -21937,6 +22317,21 @@
       "hours": "Fr 18:00-24:00; Sa 00:00-24:00; Su 00:00-24:00; Mo 00:00-08:00; PH 00:00-32:00"
     },
     {
+      "id": "osm-13988253935-vaxelaire-deckers",
+      "name": "Vaxelaire & Deckers",
+      "category": "artisan",
+      "subcategory": "architect",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Neuville",
+      "postalCode": "",
+      "lat": 50.67413,
+      "lng": 4.361648,
+      "phone": "+32 2 386 45 10",
+      "website": "https://vaxelaire-deckers.com/"
+    },
+    {
       "id": "osm-11146140325-giovanni-dore",
       "name": "Giovanni Dore",
       "category": "artisan",
@@ -21950,21 +22345,8 @@
       "lng": 4.17166
     },
     {
-      "id": "osm-7626136168-dermatologue",
-      "name": "Dermatologue",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Ramée",
-      "postalCode": "",
-      "lat": 50.671781,
-      "lng": 4.255064
-    },
-    {
-      "id": "osm-13036849892-dr-marie-christine-berghezan-dr-marie-pi",
-      "name": "Dr. Marie-Christine Berghezan & Dr. Marie-Pierre Duchâteau & Dr. Nathalie Vanbelle",
+      "id": "osm-13036849892-cabinet-du-chapitre",
+      "name": "Cabinet du Châpitre",
       "category": "artisan",
       "subcategory": "doctors",
       "tier": "standard",
@@ -21972,8 +22354,9 @@
       "address": "34 Rue du Chapitre",
       "town": "La Ramée",
       "postalCode": "",
-      "lat": 50.671846,
-      "lng": 4.273897
+      "lat": 50.671831,
+      "lng": 4.273974,
+      "website": "https://cabinetduchapitre.be/"
     },
     {
       "id": "osm-8733575887-dr-sylvie-meeus",
@@ -22001,6 +22384,20 @@
       "postalCode": "",
       "lat": 50.667623,
       "lng": 4.252531
+    },
+    {
+      "id": "osm-7626136168-sophie-vanheste",
+      "name": "Sophie Vanheste",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Ramée",
+      "postalCode": "",
+      "lat": 50.671781,
+      "lng": 4.255064,
+      "phone": "+3223550814"
     },
     {
       "id": "osm-10119138476-totolidis-jean",
@@ -22032,6 +22429,21 @@
       "website": "https://www.airclim.be/"
     },
     {
+      "id": "osm-13985906252-atelier-heymans",
+      "name": "Atelier Heymans",
+      "category": "artisan",
+      "subcategory": "metal_construction",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.694063,
+      "lng": 4.361575,
+      "phone": "+32 2 521 26 14",
+      "website": "https://atelierheymans.be/"
+    },
+    {
       "id": "osm-12416148288-b-g-braine",
       "name": "B&G Braine",
       "category": "horeca",
@@ -22061,19 +22473,20 @@
       "hours": "Mo-Th,Sa 09:00-19:30; Fr 09:00-20:00"
     },
     {
-      "id": "osm-12416148290-bn-titres-services",
-      "name": "BN Titres-Services",
+      "id": "osm-11491114313-blooo",
+      "name": "blooo",
       "category": "artisan",
-      "subcategory": "cleaning",
+      "subcategory": "electronics_repair",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "421 Chaussée d'Alsemberg",
+      "address": "Adresse à compléter",
       "town": "La Rue",
       "postalCode": "",
-      "lat": 50.696764,
-      "lng": 4.365167,
-      "phone": "+32 2 757 22 09",
-      "website": "https://bn-titres-services.be"
+      "lat": 50.698413,
+      "lng": 4.359082,
+      "phone": "+32 2 385 41 15",
+      "website": "https://www.blooo.be/fr/magasin/fr-blooo-braine-l'alleud",
+      "hours": "Mo-Sa 10:00-18:30; Su off"
     },
     {
       "id": "osm-10202642724-colruyt",
@@ -22119,6 +22532,21 @@
       "lat": 50.69678,
       "lng": 4.365438,
       "phone": "+32 2 387 27 87"
+    },
+    {
+      "id": "osm-13985530012-facility-partner",
+      "name": "Facility Partner",
+      "category": "artisan",
+      "subcategory": "cleaning",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.694876,
+      "lng": 4.359648,
+      "phone": "+32 2 886 00 42",
+      "website": "https://www.facilitypartner.be/"
     },
     {
       "id": "osm-12416454274-florilege",
@@ -22174,11 +22602,11 @@
       "address": "Adresse à compléter",
       "town": "La Rue",
       "postalCode": "",
-      "lat": 50.697901,
-      "lng": 4.35884,
+      "lat": 50.697919,
+      "lng": 4.358743,
       "phone": "+32 2 384 40 29",
-      "website": "https://lmep65.be/",
-      "hours": "Mo-Fr 12:00-14:00, 18:00-22:00"
+      "website": "https://www.lemondeestpetitbraine.be/",
+      "hours": "Mo off; Tu-Th 12:00-14:30, 18:30-22:00; Fr 12:00-14:30, 18:30-23:00; Sa 18:30-23:00; Su 12:00-15:00, 18:30-22:00"
     },
     {
       "id": "osm-13185691632-le-moulin-blanc",
@@ -22226,19 +22654,6 @@
       "website": "https://www.leonidas.com/be_fr/boutiques/braine-lalleud/leonidas-braine-lalleud-site-4"
     },
     {
-      "id": "osm-11494538166-lightelec",
-      "name": "Lightelec",
-      "category": "artisan",
-      "subcategory": "electrician",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "La Rue",
-      "postalCode": "",
-      "lat": 50.693999,
-      "lng": 4.361476
-    },
-    {
       "id": "osm-13361808068-oostens",
       "name": "Oostens",
       "category": "artisan",
@@ -22253,6 +22668,34 @@
       "phone": "+32 2 387 00 73",
       "website": "https://www.pmoostensassur.be/",
       "hours": "Mo-Tu,Th,Fr 09:00-13:00, 14:00-18:00; We 09:00-13:00; Sa || \"by appointment\"; Su off; PH off"
+    },
+    {
+      "id": "osm-13985906256-panini",
+      "name": "Panini",
+      "category": "artisan",
+      "subcategory": "publisher",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.696614,
+      "lng": 4.361332,
+      "phone": "+32 2 386 42 50",
+      "website": "https://www.paninibelgium.com/"
+    },
+    {
+      "id": "osm-13985530011-pardson",
+      "name": "Pardson",
+      "category": "artisan",
+      "subcategory": "consulting",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.694747,
+      "lng": 4.359653
     },
     {
       "id": "osm-6105736393-passion-et-tradition",
@@ -22285,6 +22728,21 @@
       "website": "https://www.smileatelier.be/"
     },
     {
+      "id": "osm-13985530010-so",
+      "name": "So+",
+      "category": "artisan",
+      "subcategory": "consulting",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.694572,
+      "lng": 4.359661,
+      "phone": "+32 2 726 81 94",
+      "website": "https://www.soplus.be/"
+    },
+    {
       "id": "osm-6102947663-soho",
       "name": "Soho",
       "category": "horeca",
@@ -22298,6 +22756,20 @@
       "lng": 4.365037,
       "phone": "+32 2 384 93 98",
       "website": "https://www.soho7.be/"
+    },
+    {
+      "id": "osm-13985906261-sweet-drinks",
+      "name": "Sweet & Drinks",
+      "category": "alimentation",
+      "subcategory": "beverages",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "La Rue",
+      "postalCode": "",
+      "lat": 50.696097,
+      "lng": 4.361145,
+      "hours": "Mo-Sa 09:00-19:00; Su 10:00-18:00; PH 10:00-18:00"
     },
     {
       "id": "osm-13379173397-sweet-s",
@@ -23036,6 +23508,19 @@
       "postalCode": "",
       "lat": 50.467114,
       "lng": 4.18414
+    },
+    {
+      "id": "osm-1186935886-pharmacie-constant",
+      "name": "Pharmacie Constant",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Le Mitan",
+      "postalCode": "",
+      "lat": 50.469185,
+      "lng": 4.19151
     },
     {
       "id": "osm-1506190110-chez-laurent-et-patricia",
@@ -24502,7 +24987,8 @@
       "town": "Les Wailles",
       "postalCode": "",
       "lat": 50.596604,
-      "lng": 4.306438
+      "lng": 4.306438,
+      "hours": "\"sur rendez-vous\""
     },
     {
       "id": "osm-2206731438-delhaize",
@@ -24643,7 +25129,7 @@
       "lng": 4.309365,
       "phone": "+32 67 64 41 43",
       "website": "https://www.lunchgarden.be/fr/nos-restaurants/nivelles",
-      "hours": "Mo-Su 11:00-21:30"
+      "hours": "Su,PH 11:00-21:30; Mo-Th 08:30-21:30; Fr,Sa 08:30-22:00"
     },
     {
       "id": "osm-7636382238-ma-campagne",
@@ -25048,8 +25534,8 @@
       "phone": "+32 2 384 23 06"
     },
     {
-      "id": "osm-579027666-proxy-delhaize-lillois",
-      "name": "Proxy Delhaize Lillois",
+      "id": "osm-579027666-proxy-delhaize",
+      "name": "Proxy Delhaize",
       "category": "alimentation",
       "subcategory": "supermarket",
       "tier": "standard",
@@ -25058,7 +25544,8 @@
       "town": "Lillois-Witterzée",
       "postalCode": "1428",
       "lat": 50.638874,
-      "lng": 4.360606
+      "lng": 4.360606,
+      "website": "https://stores.delhaize.be/fr/proxy-delhaize-lillois"
     },
     {
       "id": "osm-9887250752-seductif",
@@ -25314,6 +25801,19 @@
       "lng": 4.457601
     },
     {
+      "id": "osm-14065690676-schamp",
+      "name": "Schamp",
+      "category": "alimentation",
+      "subcategory": "bakery",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Lodelinsart",
+      "postalCode": "",
+      "lat": 50.430045,
+      "lng": 4.442317
+    },
+    {
       "id": "osm-252183546-texaco",
       "name": "Texaco",
       "category": "distributeur",
@@ -25565,6 +26065,19 @@
       "lng": 4.200755
     },
     {
+      "id": "osm-14074934199-tavola-calda",
+      "name": "Tavola Calda",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Longtain",
+      "postalCode": "",
+      "lat": 50.476291,
+      "lng": 4.208376
+    },
+    {
       "id": "osm-11032631930-twin-peaks",
       "name": "Twin Peaks",
       "category": "artisan",
@@ -25615,6 +26128,34 @@
       "postalCode": "",
       "lat": 50.4896,
       "lng": 4.284265
+    },
+    {
+      "id": "osm-14106970501-a-bon-port",
+      "name": "A bon port",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "1d Rue de Pont-à-Celles",
+      "town": "Luttre",
+      "postalCode": "6230",
+      "lat": 50.505256,
+      "lng": 4.387563,
+      "hours": "Tu-Su 17:30-21:30"
+    },
+    {
+      "id": "osm-14106086231-a-bon-port",
+      "name": "À bon port",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Luttre",
+      "postalCode": "",
+      "lat": 50.505234,
+      "lng": 4.387521,
+      "hours": "Tu-Su 11:30-14:00,17:30-21:30"
     },
     {
       "id": "osm-253337296-auberge-de-l-ancienne-brasserie",
@@ -25773,7 +26314,9 @@
       "town": "Luttre",
       "postalCode": "6238",
       "lat": 50.513215,
-      "lng": 4.40605
+      "lng": 4.40605,
+      "website": "https://www.lidl.be/s/fr-BE/magasins/luttre/rue-de-liberchies-133/",
+      "hours": "Mo-Fr 08:30-20:00; Sa 08:30-19:00; PH off"
     },
     {
       "id": "osm-12593142195-new-shanghai",
@@ -26358,7 +26901,10 @@
       "town": "Manage",
       "postalCode": "",
       "lat": 50.501046,
-      "lng": 4.23334
+      "lng": 4.23334,
+      "phone": "+32 64 54 17 21",
+      "website": "https://www.multipharma.be/fr/nos-pharmacies/detail/multipharma-manage-38",
+      "hours": "Mo-Fr 08:30-12:30,13:30-18:30; Sa 08:30-12:30"
     },
     {
       "id": "osm-11165473211-night-shop",
@@ -26551,6 +27097,32 @@
       "hours": "Mo,Tu,Th 17:00-20:00; We 14:00-20:00; Fr 09:00-12:00,14:00-20:00; Sa 09:00-12:00,14:00-17:00"
     },
     {
+      "id": "osm-810330348-la-pizerria-vera",
+      "name": "La Pizerria Vera",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "123 Rue Royale",
+      "town": "Marchienne-au-Pont",
+      "postalCode": "6030",
+      "lat": 50.424935,
+      "lng": 4.406995
+    },
+    {
+      "id": "osm-810330429-pharmacie-wissam",
+      "name": "Pharmacie Wissam",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "110 Rue Royale",
+      "town": "Marchienne-au-Pont",
+      "postalCode": "6030",
+      "lat": 50.424809,
+      "lng": 4.407381
+    },
+    {
       "id": "osm-10846420698-taverne-au-vieux-marchiennes",
       "name": "Taverne au Vieux Marchiennes",
       "category": "horeca",
@@ -26601,6 +27173,20 @@
       "postalCode": "",
       "lat": 50.467718,
       "lng": 4.274304
+    },
+    {
+      "id": "osm-13990932962-wagyu-bbq-hot-pot",
+      "name": "WAGYU BBQ HOT POT",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Marie-la-Guerre",
+      "postalCode": "7160",
+      "lat": 50.467434,
+      "lng": 4.27527,
+      "phone": "+32 64 55 82 88"
     },
     {
       "id": "osm-11415130498-au-gre-de-mon-chemin",
@@ -26839,6 +27425,19 @@
       "postalCode": "6031",
       "lat": 50.410269,
       "lng": 4.387712
+    },
+    {
+      "id": "osm-14364940701-love-is-in-the-hair",
+      "name": "Love is in the hair",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "9 Rue de Goutroux",
+      "town": "Monceau-sur-Sambre",
+      "postalCode": "",
+      "lat": 50.412228,
+      "lng": 4.379559
     },
     {
       "id": "osm-10265067906-maison-medicale-l-ernelle",
@@ -27356,6 +27955,19 @@
       "phone": "+32 498 59 69 51"
     },
     {
+      "id": "osm-14214453123-cafe-des-sports",
+      "name": "Café des Sports",
+      "category": "horeca",
+      "subcategory": "pub",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Mont-Sainte-Aldegonde",
+      "postalCode": "",
+      "lat": 50.431542,
+      "lng": 4.235635
+    },
+    {
       "id": "osm-1997115445-pharmacie-marcq",
       "name": "Pharmacie Marcq",
       "category": "artisan",
@@ -27709,6 +28321,19 @@
       "postalCode": "",
       "lat": 50.455067,
       "lng": 4.243737
+    },
+    {
+      "id": "osm-14039671186-luck-786-shop",
+      "name": "Luck 786 Shop",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Morlanwelz",
+      "postalCode": "",
+      "lat": 50.455561,
+      "lng": 4.242557
     },
     {
       "id": "osm-11077453905-maison-de-l-emploi-de-morlanwelz",
@@ -28692,6 +29317,21 @@
       "hours": "Mo-Fr 08:30-12:15, 13:15-17:30"
     },
     {
+      "id": "osm-939537048-aclot-pharma",
+      "name": "Aclot Pharma",
+      "category": "artisan",
+      "subcategory": "pharmacy",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "101 Rue du Paradis",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.610716,
+      "lng": 4.32127,
+      "phone": "+32 67 21 18 45",
+      "website": "https://www.aclotpharma.be/"
+    },
+    {
       "id": "osm-7563910337-aclot-sante",
       "name": "Aclot Santé",
       "category": "artisan",
@@ -28966,21 +29606,6 @@
       "website": "https://www.assurfina.com/"
     },
     {
-      "id": "osm-9831241380-atelier-toke",
-      "name": "Atelier Toké",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "2 Rue de Bruxelles",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.598447,
-      "lng": 4.324765,
-      "phone": "+32 67 55 75 67",
-      "website": "https://www.ateliertoke.be"
-    },
-    {
       "id": "osm-7487213272-au-119",
       "name": "Au 119",
       "category": "horeca",
@@ -29142,6 +29767,19 @@
       "hours": "Th-Mo 12:00-16:00, 18:30-23:00; Tu 12:00-16:00"
     },
     {
+      "id": "osm-11263057338-bistro-my-hanh",
+      "name": "Bistro My Hanh",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "103 Rue de Namur",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.599434,
+      "lng": 4.329533
+    },
+    {
       "id": "osm-9982884621-bole",
       "name": "Bole",
       "category": "artisan",
@@ -29226,22 +29864,6 @@
       "website": "https://www.butterflyfleurs.eu/"
     },
     {
-      "id": "osm-10216810396-cabinet-de-medecine-generale-ilot-sante",
-      "name": "Cabinet de Médecine Générale Ilot Santé",
-      "category": "artisan",
-      "subcategory": "doctors",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "2 Rue Samiette",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.596176,
-      "lng": 4.318261,
-      "phone": "+32 67 33 93 36",
-      "website": "https://www.ilotsante.be",
-      "hours": "Mo-Fr 08:00-18:00"
-    },
-    {
       "id": "osm-7563910338-cabinet-mispelaere",
       "name": "Cabinet Mispelaere",
       "category": "artisan",
@@ -29255,6 +29877,21 @@
       "lng": 4.320815,
       "phone": "+32 67 21 35 36",
       "website": "http://docteur-mispelaere.com/"
+    },
+    {
+      "id": "osm-14068198502-cafe-librairie-matato",
+      "name": "Café-librairie Matato",
+      "category": "horeca",
+      "subcategory": "cafe",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "9 Rue du Pont Gotissart",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.598664,
+      "lng": 4.325648,
+      "website": "http://www.matato.be",
+      "hours": "Tu-Sa 10:00-18:00"
     },
     {
       "id": "osm-9858987219-cally-s",
@@ -29312,7 +29949,7 @@
       "lng": 4.331553,
       "phone": "+32 67 21 04 75",
       "website": "https://www.hvw.fgov.be/",
-      "hours": "Mo-Tu 08:00-11:30,13:00-15:00; We-Fr 08:00-11:30"
+      "hours": "Mo 08:30-11:30,12:30-15:30; Th 08:30-11:30; PH off"
     },
     {
       "id": "osm-7579685827-capoue",
@@ -29382,10 +30019,10 @@
       "address": "Adresse à compléter",
       "town": "Nivelles",
       "postalCode": "",
-      "lat": 50.598631,
-      "lng": 4.328477,
+      "lat": 50.598608,
+      "lng": 4.328526,
       "phone": "+32 67 87 03 44",
-      "website": "https://www.centralecredithypothecaire.be"
+      "website": "https://www.centralecredithypothecaire.be/agences/nivelles/"
     },
     {
       "id": "osm-9980142128-centre-67",
@@ -29489,6 +30126,19 @@
       "lat": 50.597894,
       "lng": 4.328922,
       "hours": "Mo-Fr 11:30-22:00; Sa,Su 17:30-22:00"
+    },
+    {
+      "id": "osm-3503550077-chez-francis",
+      "name": "Chez Francis",
+      "category": "horeca",
+      "subcategory": "pub",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Nivelles",
+      "postalCode": "",
+      "lat": 50.59157,
+      "lng": 4.322289
     },
     {
       "id": "osm-7362096468-chez-leon",
@@ -29624,13 +30274,13 @@
       "subcategory": "shoe_repair",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "15 Rue du Géant",
+      "address": "10 Rue du Géant",
       "town": "Nivelles",
       "postalCode": "1400",
-      "lat": 50.598735,
-      "lng": 4.327072,
-      "phone": "+32 472 76 84 71",
-      "website": "https://mpserrures.be/"
+      "lat": 50.598649,
+      "lng": 4.327214,
+      "phone": "+32 470 91 45 37",
+      "website": "https://mserrures.wixsite.com/serrurier-cordonnier"
     },
     {
       "id": "osm-7447954460-cote-jardin",
@@ -29778,22 +30428,6 @@
       "phone": "+32 67 21 31 93"
     },
     {
-      "id": "osm-7568394429-dis-moi-ou",
-      "name": "Dis moi où?",
-      "category": "horeca",
-      "subcategory": "restaurant",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.59904,
-      "lng": 4.322975,
-      "phone": "+32 67 64 64 64",
-      "website": "http://www.dis-moiou.be/",
-      "hours": "Tu-Th 06:30-18:30; Fr 06:30-18:00; Sa 06:00-18:00; Su 06:00-17:00"
-    },
-    {
       "id": "osm-4053608709-distributeur-parapharmacie",
       "name": "Distributeur parapharmacie",
       "category": "distributeur",
@@ -29865,22 +30499,6 @@
       "lat": 50.599825,
       "lng": 4.326498,
       "phone": "+32 476 49 81 75"
-    },
-    {
-      "id": "osm-7273798074-dufrasne",
-      "name": "Dufrasne",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "6 Rue de Soignies",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.597606,
-      "lng": 4.321609,
-      "phone": "+32 67 21 89 47",
-      "website": "https://pharmacie-dufrasne-sprl.business.site/",
-      "hours": "Mo-Fr 08:00-12:30,13:30-18:30; Sa 08:00-12:30"
     },
     {
       "id": "osm-13725780348-dvv-assurfina",
@@ -30056,6 +30674,20 @@
       "website": "https://fermedelabaraque.be/"
     },
     {
+      "id": "osm-9831241380-flacon",
+      "name": "flacon",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "2 Rue de Bruxelles",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.598447,
+      "lng": 4.324765,
+      "hours": "Tu-Fr 12:00-13:15, Tu-Fr 19:00-20:15"
+    },
+    {
       "id": "osm-9940025795-fleur-de-style",
       "name": "Fleur de Style",
       "category": "artisan",
@@ -30128,22 +30760,6 @@
       "phone": "+32 67 33 31 12"
     },
     {
-      "id": "osm-11263057338-friterie-samelo",
-      "name": "Friterie Samelo",
-      "category": "horeca",
-      "subcategory": "fast_food",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "103 Rue de Namur",
-      "town": "Nivelles",
-      "postalCode": "1400",
-      "lat": 50.599434,
-      "lng": 4.329533,
-      "phone": "+32 455 11 01 64",
-      "website": "https://sameloalabouche.be",
-      "hours": "Mo-Su 11:30-14:00,17:30-22:00"
-    },
-    {
       "id": "osm-6782329089-futurell",
       "name": "Futurell",
       "category": "artisan",
@@ -30170,21 +30786,6 @@
       "lat": 50.599327,
       "lng": 4.341694,
       "website": "https://www.gareauchateau.be/"
-    },
-    {
-      "id": "osm-7478477921-gc-barber-shop",
-      "name": "Gc Barber Shop",
-      "category": "artisan",
-      "subcategory": "hairdresser",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.598921,
-      "lng": 4.32493,
-      "phone": "+32 498 06 64 48",
-      "website": "https://gcbarbershop.business.site/"
     },
     {
       "id": "osm-241787491-gobert-materiaux",
@@ -30680,19 +31281,6 @@
       "lng": 4.324424
     },
     {
-      "id": "osm-3503550077-la-brasserie-du-parc",
-      "name": "La Brasserie du Parc",
-      "category": "horeca",
-      "subcategory": "pub",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Nivelles",
-      "postalCode": "",
-      "lat": 50.59157,
-      "lng": 4.322289
-    },
-    {
       "id": "osm-9921321273-la-farandole",
       "name": "La Farandole",
       "category": "horeca",
@@ -30777,6 +31365,21 @@
       "lng": 4.326907,
       "phone": "+32 67 21 49 24",
       "website": "https://www.lamn.be/"
+    },
+    {
+      "id": "osm-14054019248-la-recyclette",
+      "name": "La ReCyclette",
+      "category": "artisan",
+      "subcategory": "association",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "1 Square Baron Seutin",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.599993,
+      "lng": 4.335018,
+      "phone": "+32 492 20 27 85",
+      "website": "https://www.recyclette.org/"
     },
     {
       "id": "osm-12927834596-la-sandwicherie-valeria",
@@ -31059,13 +31662,12 @@
       "subcategory": "pub",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "13 Place Albert Ier",
+      "address": "Adresse à compléter",
       "town": "Nivelles",
-      "postalCode": "1400",
+      "postalCode": "",
       "lat": 50.598424,
       "lng": 4.323263,
-      "phone": "+32 67 21 90 98",
-      "website": "https://www.lepalaisduhoublon.com/"
+      "phone": "+32 67 21 90 98"
     },
     {
       "id": "osm-7402181063-le-petit-chalet",
@@ -31261,10 +31863,10 @@
       "address": "Adresse à compléter",
       "town": "Nivelles",
       "postalCode": "",
-      "lat": 50.598604,
-      "lng": 4.327108,
+      "lat": 50.598703,
+      "lng": 4.327317,
       "phone": "+32 67 34 04 07",
-      "website": "https://melissalaura.be"
+      "website": "https://salonkee.be/salon/le-salon-de-laura-d-ou-soeurs-des-sens"
     },
     {
       "id": "osm-7601691964-mademoiselle-marielle",
@@ -31385,6 +31987,21 @@
       "phone": "+32 67 22 01 21"
     },
     {
+      "id": "osm-14089342801-mat-cut",
+      "name": "Mat Cut",
+      "category": "artisan",
+      "subcategory": "hairdresser",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "12 Rue de Bruxelles",
+      "town": "Nivelles",
+      "postalCode": "1400",
+      "lat": 50.598682,
+      "lng": 4.325074,
+      "website": "https://salonkee.be/salon/mat-cut",
+      "hours": "\"by appointment\""
+    },
+    {
       "id": "osm-7416490858-maud-pening",
       "name": "Maud Pening",
       "category": "artisan",
@@ -31397,6 +32014,21 @@
       "lat": 50.599884,
       "lng": 4.326431,
       "phone": "+32 67 87 99 47"
+    },
+    {
+      "id": "osm-14089281107-maurice-gaston",
+      "name": "Maurice & Gaston",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Nivelles",
+      "postalCode": "",
+      "lat": 50.598785,
+      "lng": 4.32501,
+      "website": "https://www.mauriceetgaston.com",
+      "hours": "We 14:30-18:30; Th 11:00-19:00; Fr 11:00-16:00; Sa 10:00-15:00"
     },
     {
       "id": "osm-9931838451-maurice-feltz",
@@ -31684,6 +32316,20 @@
       "website": "https://www.notairenoe.be/"
     },
     {
+      "id": "osm-6430253918-o-miam",
+      "name": "O'Miam",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Nivelles",
+      "postalCode": "",
+      "lat": 50.598764,
+      "lng": 4.324886,
+      "hours": "Tu-Su 11:30-23:30"
+    },
+    {
       "id": "osm-7625774381-o-tacos",
       "name": "O'Tacos",
       "category": "horeca",
@@ -31726,6 +32372,20 @@
       "lng": 4.34954,
       "phone": "+32 67 89 20 00",
       "website": "https://www.janssens-law.be/"
+    },
+    {
+      "id": "osm-7478477921-omorfia",
+      "name": "Omorfia",
+      "category": "artisan",
+      "subcategory": "beauty",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Nivelles",
+      "postalCode": "",
+      "lat": 50.598921,
+      "lng": 4.32493,
+      "hours": "\"by appointment\""
     },
     {
       "id": "osm-7589965942-osteotanguy",
@@ -31859,17 +32519,20 @@
       "lng": 4.336851
     },
     {
-      "id": "osm-6430253918-phenicia-plaza",
-      "name": "Phenicia Plaza",
-      "category": "horeca",
-      "subcategory": "restaurant",
+      "id": "osm-7273798074-pharmacie-dufrasne",
+      "name": "Pharmacie Dufrasne",
+      "category": "artisan",
+      "subcategory": "pharmacy",
       "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "Adresse à compléter",
       "town": "Nivelles",
       "postalCode": "",
-      "lat": 50.598764,
-      "lng": 4.324886
+      "lat": 50.597606,
+      "lng": 4.321609,
+      "phone": "+32 67 21 89 47",
+      "website": "https://rosa.be/fr/hp/pharmacie-dufrasne/",
+      "hours": "Mo-Fr 08:00-12:30,13:30-18:30; Sa 08:00-13:00"
     },
     {
       "id": "osm-7578200717-philippe-le-brun",
@@ -32102,7 +32765,7 @@
       "subcategory": "butcher",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "25 Place Émile de Lalieux",
       "town": "Nivelles",
       "postalCode": "",
       "lat": 50.598488,
@@ -32124,6 +32787,19 @@
       "lat": 50.596625,
       "lng": 4.325255,
       "phone": "+32 499 92 44 44"
+    },
+    {
+      "id": "osm-7568394429-robert-bistro",
+      "name": "Robert Bistro",
+      "category": "horeca",
+      "subcategory": "restaurant",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Nivelles",
+      "postalCode": "",
+      "lat": 50.59904,
+      "lng": 4.322975
     },
     {
       "id": "osm-9945811603-roger-delhove",
@@ -32713,17 +33389,17 @@
       "lng": 4.366116
     },
     {
-      "id": "osm-12554141965-pinou-market",
+      "id": "osm-328909635-pinou-market",
       "name": "Pinou Market",
       "category": "alimentation",
       "subcategory": "convenience",
       "tier": "standard",
       "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
+      "address": "2 Rue du Calvaire",
       "town": "Obaix",
-      "postalCode": "",
-      "lat": 50.5266,
-      "lng": 4.362291
+      "postalCode": "6230",
+      "lat": 50.526578,
+      "lng": 4.362234
     },
     {
       "id": "osm-8880738139-boulemberg",
@@ -32974,6 +33650,22 @@
       "website": "http://www.emotionduvin.be/"
     },
     {
+      "id": "osm-14097342855-la-courte-echelle",
+      "name": "La Courte Échelle",
+      "category": "artisan",
+      "subcategory": "tutoring",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Ophain-Bois-Seigneur-Isaac",
+      "postalCode": "",
+      "lat": 50.666118,
+      "lng": 4.34111,
+      "phone": "+32 2 854 02 73",
+      "website": "https://www.braine-lalleud.be/ma-commune/services-communaux/enfance/services/ecole-de-devoirs-communale",
+      "hours": "Mo-Tu,Th 15:30-18:00"
+    },
+    {
       "id": "osm-2463811867-la-ferme-du-moulin-a-eau",
       "name": "La Ferme du Moulin à Eau",
       "category": "horeca",
@@ -33084,6 +33776,22 @@
       "lat": 50.687272,
       "lng": 4.315671,
       "website": "https://www.avotrebongout.be/"
+    },
+    {
+      "id": "osm-13986040496-ateliers-kleinermann",
+      "name": "Ateliers Kleinermann",
+      "category": "artisan",
+      "subcategory": "curtain",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "485A Chaussée de Tubize",
+      "town": "Paudure",
+      "postalCode": "",
+      "lat": 50.692186,
+      "lng": 4.329943,
+      "phone": "+32 2 344 15 88",
+      "website": "https://www.atelierskleinermann.be/",
+      "hours": "Mo-Fr 09:00-17:30; Sa \"Sur rendez-vous\"; Su off; PH off"
     },
     {
       "id": "osm-13149424233-ateliers-multibois",
@@ -33311,6 +34019,22 @@
       "website": "https://store.total.be/fr_BE/NB000512"
     },
     {
+      "id": "osm-13986336677-yd",
+      "name": "YD",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Paudure",
+      "postalCode": "",
+      "lat": 50.69247,
+      "lng": 4.327237,
+      "phone": "+32 2 354 23 56",
+      "website": "https://www.yd.be/",
+      "hours": "Mo-Fr 09:00-17:00"
+    },
+    {
       "id": "osm-1122620151-chez-enza",
       "name": "Chez Enza",
       "category": "horeca",
@@ -33403,8 +34127,22 @@
       "address": "141 Rue Joseph Wauters",
       "town": "Péronnes-lez-Binche",
       "postalCode": "7134",
-      "lat": 50.432778,
-      "lng": 4.182639
+      "lat": 50.432672,
+      "lng": 4.182853
+    },
+    {
+      "id": "osm-14023007268-le-jolimoment",
+      "name": "Le Jolimoment",
+      "category": "horeca",
+      "subcategory": "fast_food",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Petit Bois-d'Haine",
+      "postalCode": "",
+      "lat": 50.477429,
+      "lng": 4.215419,
+      "hours": "Mo-Su 09:15-14:00"
     },
     {
       "id": "osm-10981065288-night-day",
@@ -33446,6 +34184,20 @@
       "lat": 50.477891,
       "lng": 4.44268,
       "website": "http://anivet.be/"
+    },
+    {
+      "id": "osm-14277133981-esso",
+      "name": "Esso",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Petit Pièrsoû",
+      "postalCode": "",
+      "lat": 50.483087,
+      "lng": 4.447686,
+      "website": "https://www.maes-oil.be/nl/tankstation/gosselies-esso/"
     },
     {
       "id": "osm-1814545636-gate-four",
@@ -33537,6 +34289,19 @@
       "postalCode": "",
       "lat": 50.444091,
       "lng": 4.27881
+    },
+    {
+      "id": "osm-13989998535-dr-herve-becq",
+      "name": "Dr. Hervé Becq",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Piroi",
+      "postalCode": "",
+      "lat": 50.665903,
+      "lng": 4.353248
     },
     {
       "id": "osm-423454429-aux-primeurs",
@@ -34947,6 +35712,20 @@
       "lng": 4.134375
     },
     {
+      "id": "osm-1943456768-boulangerie-christophe",
+      "name": "Boulangerie Christophe",
+      "category": "alimentation",
+      "subcategory": "bakery",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Pont-à-Celles",
+      "postalCode": "",
+      "lat": 50.505818,
+      "lng": 4.374196,
+      "website": "https://www.viennoiserieschristophe.be/"
+    },
+    {
       "id": "osm-256205706-buvette-club-de-football-pont-a-celles",
       "name": "Buvette club de Football Pont-à-Celles",
       "category": "horeca",
@@ -35013,17 +35792,17 @@
       "lng": 4.361551
     },
     {
-      "id": "osm-309182075-l-improviste",
+      "id": "osm-14313701757-l-improviste",
       "name": "L'Improviste",
       "category": "horeca",
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "66 Rue Arsenal",
+      "address": "Adresse à compléter",
       "town": "Pont-à-Celles",
-      "postalCode": "6230",
-      "lat": 50.50566,
-      "lng": 4.374935
+      "postalCode": "",
+      "lat": 50.505681,
+      "lng": 4.374928
     },
     {
       "id": "osm-1836275622-la-mie-d-obaix",
@@ -35073,11 +35852,13 @@
       "subcategory": "fast_food",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "1 Rue Arsenal",
+      "address": "Adresse à compléter",
       "town": "Pont-à-Celles",
-      "postalCode": "6230",
+      "postalCode": "",
       "lat": 50.506783,
-      "lng": 4.372063
+      "lng": 4.372063,
+      "phone": "+32 71 84 06 00",
+      "hours": "Mo-Th 11:30-14:00, 17:00-21:30; Fr-Sa 11:30-14:00,17:00-22:00; Su 17:00-21:30"
     },
     {
       "id": "osm-265578191-louis-delhaize",
@@ -35119,19 +35900,6 @@
       "lng": 4.360699
     },
     {
-      "id": "osm-620538855-pharmacie-glorieux",
-      "name": "Pharmacie Glorieux",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "15 Place Communale",
-      "town": "Pont-à-Celles",
-      "postalCode": "6230",
-      "lat": 50.511885,
-      "lng": 4.361385
-    },
-    {
       "id": "osm-265582099-q8",
       "name": "Q8",
       "category": "distributeur",
@@ -35145,32 +35913,19 @@
       "lng": 4.355246
     },
     {
-      "id": "osm-1829498555-schoeneyt",
-      "name": "Schoeneyt",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Pont-à-Celles",
-      "postalCode": "",
-      "lat": 50.511786,
-      "lng": 4.362299
-    },
-    {
-      "id": "osm-463244995-tomeo-thai-street-food",
+      "id": "osm-14313701755-tomeo-thai-street-food",
       "name": "Tomeo Thai Street Food",
       "category": "horeca",
       "subcategory": "restaurant",
       "tier": "standard",
       "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "2D Rue Borneau",
+      "address": "Adresse à compléter",
       "town": "Pont-à-Celles",
-      "postalCode": "6230",
-      "lat": 50.505406,
-      "lng": 4.374769,
+      "postalCode": "",
+      "lat": 50.505458,
+      "lng": 4.37483,
       "phone": "+32 476 93 27 52",
-      "website": "https://www.tomeo.be"
+      "website": "https://www.tomeo.be/"
     },
     {
       "id": "osm-620538866-tonton-michel",
@@ -35184,19 +35939,6 @@
       "postalCode": "6230",
       "lat": 50.512243,
       "lng": 4.362341
-    },
-    {
-      "id": "osm-1829498093-van-de-mortel",
-      "name": "Van De Mortel",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Pont-à-Celles",
-      "postalCode": "",
-      "lat": 50.511762,
-      "lng": 4.361905
     },
     {
       "id": "osm-4537691879-texas-tabac-shop",
@@ -35316,6 +36058,20 @@
       "postalCode": "",
       "lat": 50.452058,
       "lng": 4.473869
+    },
+    {
+      "id": "osm-14302955234-asbl-le-foyer-retrouve",
+      "name": "ASBL Le Foyer Retrouvé",
+      "category": "artisan",
+      "subcategory": "educational_institution",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "2 Rue Jean Volders",
+      "town": "Ransart",
+      "postalCode": "",
+      "lat": 50.456905,
+      "lng": 4.491482,
+      "phone": "+32 71 35 06 75"
     },
     {
       "id": "osm-11360443800-burger-king",
@@ -35550,7 +36306,7 @@
       "address": "Adresse à compléter",
       "town": "Ransart",
       "postalCode": "",
-      "lat": 50.450019,
+      "lat": 50.450016,
       "lng": 4.484743
     },
     {
@@ -36239,32 +36995,6 @@
       "lng": 4.197268
     },
     {
-      "id": "osm-4419459025-chevalier-hermise",
-      "name": "Chevalier Hermise",
-      "category": "artisan",
-      "subcategory": "florist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Rieu de Baume",
-      "postalCode": "",
-      "lat": 50.473097,
-      "lng": 4.204866
-    },
-    {
-      "id": "osm-11101372115-chevalier-hermise",
-      "name": "Chevalier-Hermise",
-      "category": "artisan",
-      "subcategory": "florist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Rieu de Baume",
-      "postalCode": "",
-      "lat": 50.473116,
-      "lng": 4.204899
-    },
-    {
       "id": "osm-11033166040-club-immobilier",
       "name": "Club Immobilier",
       "category": "artisan",
@@ -36434,6 +37164,22 @@
       "lng": 4.19263
     },
     {
+      "id": "osm-13922945168-messaoud-tebache",
+      "name": "Messaoud Tebache",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Rieu de Baume",
+      "postalCode": "",
+      "lat": 50.47472,
+      "lng": 4.191577,
+      "phone": "+32 64 28 27 71",
+      "website": "https://www.rdi-tebache.be/",
+      "hours": "\"sur rendez-vous\""
+    },
+    {
       "id": "osm-11065486672-nathalie-mura",
       "name": "Nathalie Mura",
       "category": "artisan",
@@ -36575,6 +37321,19 @@
       "postalCode": "",
       "lat": 50.474965,
       "lng": 4.193579
+    },
+    {
+      "id": "osm-11033166025-we-invest",
+      "name": "We Invest",
+      "category": "artisan",
+      "subcategory": "estate_agent",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Rieu de Baume",
+      "postalCode": "",
+      "lat": 50.474737,
+      "lng": 4.197009
     },
     {
       "id": "osm-383656617-bell-arrivo",
@@ -36762,6 +37521,19 @@
       "lat": 50.438321,
       "lng": 4.385805,
       "phone": "+32 71 46 48 44"
+    },
+    {
+      "id": "osm-13974259911-7shop",
+      "name": "7Shop",
+      "category": "alimentation",
+      "subcategory": "convenience",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Saint-Vaast",
+      "postalCode": "",
+      "lat": 50.453921,
+      "lng": 4.15624
     },
     {
       "id": "osm-11146132161-assurance-2000",
@@ -37069,6 +37841,22 @@
       "lng": 4.255874
     },
     {
+      "id": "osm-14354172173-hive-finances",
+      "name": "Hive Finances",
+      "category": "artisan",
+      "subcategory": "financial",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "12B Rue de Profondrieux",
+      "town": "Seneffe",
+      "postalCode": "7180",
+      "lat": 50.536086,
+      "lng": 4.288924,
+      "phone": "+32 71 96 08 85",
+      "website": "https://hivefinances.com/",
+      "hours": "Mo-Th 09:00-17:30; Fr 09:00-16:30"
+    },
+    {
       "id": "osm-803857866-intermarche",
       "name": "Intermarché",
       "category": "alimentation",
@@ -37341,6 +38129,20 @@
       "phone": "+32 71 55 49 12",
       "website": "https://www.colruyt.be/fr/recherche-de-magasin/colruyt-courcelles",
       "hours": "Mo-Th,Sa 08:00-20:00; Fr 08:00-21:00"
+    },
+    {
+      "id": "osm-14231677867-coordination-de-l-enfance",
+      "name": "Coordination de l'enfance",
+      "category": "artisan",
+      "subcategory": "government",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Souvret",
+      "postalCode": "",
+      "lat": 50.441596,
+      "lng": 4.343804,
+      "hours": "Mo-Th 09:00-12:00, Mo-Th 13:30-16:00, Fr 09:00-12:00, Fr 13:30-15:00"
     },
     {
       "id": "osm-5393828123-le-changement-d-hair",
@@ -37704,7 +38506,7 @@
     },
     {
       "id": "osm-1192634032-impact",
-      "name": "IMPACT",
+      "name": "Impact",
       "category": "artisan",
       "subcategory": "employment_agency",
       "tier": "standard",
@@ -37939,7 +38741,7 @@
     },
     {
       "id": "osm-1192634078-newelec",
-      "name": "NEWELEC",
+      "name": "Newelec",
       "category": "artisan",
       "subcategory": "electrician",
       "tier": "standard",
@@ -38142,6 +38944,21 @@
       "hours": "Mo-Sa 09:00-19:00; Su 09:00-17:00"
     },
     {
+      "id": "osm-1567708574-fondation-vivat",
+      "name": "Fondation Vivat !",
+      "category": "artisan",
+      "subcategory": "foundation",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "12 Rue Buisson aux Loups",
+      "town": "Thines",
+      "postalCode": "",
+      "lat": 50.593156,
+      "lng": 4.351924,
+      "phone": "+32 6 721 25 13",
+      "website": "https://www.fondationvivat.be/"
+    },
+    {
       "id": "osm-2634272030-gout-et-passion",
       "name": "Goût et passion",
       "category": "alimentation",
@@ -38221,32 +39038,6 @@
       "lng": 4.330347
     },
     {
-      "id": "osm-380715230-au-bon-coin",
-      "name": "Au Bon Coin",
-      "category": "horeca",
-      "subcategory": "pub",
-      "tier": "standard",
-      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
-      "address": "89 Grand-Rue",
-      "town": "Trazegnies",
-      "postalCode": "6183",
-      "lat": 50.459718,
-      "lng": 4.336364
-    },
-    {
-      "id": "osm-3662337271-au-pain-sur-la-planche",
-      "name": "Au Pain Sur La Planche",
-      "category": "alimentation",
-      "subcategory": "bakery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Trazegnies",
-      "postalCode": "",
-      "lat": 50.463334,
-      "lng": 4.332184
-    },
-    {
       "id": "osm-3662337279-cafe-de-l-europe",
       "name": "Café De L'Europe",
       "category": "horeca",
@@ -38286,19 +39077,6 @@
       "lng": 4.330597
     },
     {
-      "id": "osm-3662337273-confiserie-aaron",
-      "name": "Confiserie Aaron",
-      "category": "alimentation",
-      "subcategory": "confectionery",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Trazegnies",
-      "postalCode": "",
-      "lat": 50.463171,
-      "lng": 4.331982
-    },
-    {
       "id": "osm-3659514650-dejean",
       "name": "Dejean",
       "category": "artisan",
@@ -38336,6 +39114,19 @@
       "postalCode": "",
       "lat": 50.463379,
       "lng": 4.333753
+    },
+    {
+      "id": "osm-3662337293-docteur-patrick-gosselin",
+      "name": "Docteur Patrick Gosselin",
+      "category": "artisan",
+      "subcategory": "doctors",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Trazegnies",
+      "postalCode": "",
+      "lat": 50.464394,
+      "lng": 4.332767
     },
     {
       "id": "osm-3662337270-gonsette",
@@ -38417,19 +39208,6 @@
       "postalCode": "",
       "lat": 50.477791,
       "lng": 4.35301
-    },
-    {
-      "id": "osm-3662337282-leclerc",
-      "name": "LeClerc",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Trazegnies",
-      "postalCode": "",
-      "lat": 50.463176,
-      "lng": 4.331859
     },
     {
       "id": "osm-3665686282-louchez",
@@ -38534,19 +39312,6 @@
       "postalCode": "",
       "lat": 50.463316,
       "lng": 4.328831
-    },
-    {
-      "id": "osm-3659481251-williame",
-      "name": "Williame",
-      "category": "artisan",
-      "subcategory": "pharmacy",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Trazegnies",
-      "postalCode": "",
-      "lat": 50.465412,
-      "lng": 4.332052
     },
     {
       "id": "osm-8704782912-yves-gilon",
@@ -38883,6 +39648,21 @@
       "lng": 4.149611
     },
     {
+      "id": "osm-14251185723-les-paniers-verts",
+      "name": "Les Paniers Verts",
+      "category": "alimentation",
+      "subcategory": "farm",
+      "tier": "standard",
+      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Trou de Mon Cul",
+      "postalCode": "",
+      "lat": 50.601212,
+      "lng": 4.277504,
+      "phone": "+32 479 17 08 57",
+      "hours": "Fr,Sa 10:00-18:00"
+    },
+    {
       "id": "osm-5432084765-bouquet-d-avelines",
       "name": "Bouquet d'Avelines",
       "category": "artisan",
@@ -39179,6 +39959,20 @@
       "hours": "Tu-Sa 08:30-18:30; Su 08:30-13:00"
     },
     {
+      "id": "osm-14287122467-l-arrose",
+      "name": "L'arrosé",
+      "category": "horeca",
+      "subcategory": "cafe",
+      "tier": "standard",
+      "description": "Table et terrasse du quartier, repérée sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Virginal-Samme",
+      "postalCode": "",
+      "lat": 50.641704,
+      "lng": 4.21136,
+      "website": "https://larrose.be/"
+    },
+    {
       "id": "osm-701700914-l-art-de-vivre-1460",
       "name": "L'Art de Vivre – 1460",
       "category": "horeca",
@@ -39457,20 +40251,6 @@
       "lng": 4.301516
     },
     {
-      "id": "osm-172449249-dentiste-de-sur-le-mont-f",
-      "name": "Dentiste De Sur le Mont F.",
-      "category": "artisan",
-      "subcategory": "dentist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "34 Rue François Gérard",
-      "town": "Wauthier-Braine",
-      "postalCode": "",
-      "lat": 50.682732,
-      "lng": 4.29456,
-      "phone": "+32 2 366 22 50"
-    },
-    {
       "id": "osm-13149177777-dg-drink",
       "name": "DG-Drink",
       "category": "alimentation",
@@ -39612,19 +40392,6 @@
       "lng": 4.302377,
       "website": "https://www.mcdonalds.be/nl/restaurants/wauthier-braine-drive",
       "hours": "Mo-Sa 10:30-24:00; PH,Su 11:00-24:00"
-    },
-    {
-      "id": "osm-7626503474-orthodontiste",
-      "name": "Orthodontiste",
-      "category": "artisan",
-      "subcategory": "dentist",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "Adresse à compléter",
-      "town": "Wauthier-Braine",
-      "postalCode": "",
-      "lat": 50.682669,
-      "lng": 4.294525
     },
     {
       "id": "osm-239727680-oscar-daffe",
