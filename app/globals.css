@@ -17,6 +17,9 @@
 
 html {
   font-family: var(--font-sans);
+  /* Évite que l'ancrage de défilement du navigateur « compense » le repli du
+     header sticky, ce qui provoquait des sauts/clignotements. */
+  overflow-anchor: none;
 }
 
 /* Taille de texte réglable (petit/normal/grand), appliquée sur <html>. */

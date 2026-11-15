@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronUp, Database, LocateFixed } from "lucide-react";
 import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
@@ -33,24 +33,49 @@ export function HeaderBar({
 
   // Repli automatique sur mobile uniquement : sur desktop/tablette le header
   // reste complet (l'identité occupe toute la hauteur).
+  // On accumule le déplacement dans une direction et on « verrouille » le
+  // changement ~400 ms : évite le clignotement quand on remonte.
+  const collapsedRef = useRef(false);
+  useEffect(() => {
+    collapsedRef.current = collapsed;
+  }, [collapsed]);
+
   useEffect(() => {
     const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
     let lastY = window.scrollY;
+    let acc = 0;
     let raf = 0;
+    let lockedUntil = 0;
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
-        const y = window.scrollY;
-        const delta = y - lastY;
         if (!isMobile()) {
-          lastY = y;
+          lastY = window.scrollY;
+          acc = 0;
           return;
         }
-        if (y < 40) setCollapsed(false);
-        else if (delta > 8) setCollapsed(true);
-        else if (delta < -8) setCollapsed(false);
+        const now = Date.now();
+        const y = window.scrollY;
+        const delta = y - lastY;
         lastY = y;
+        // Tout en haut : on rouvre toujours.
+        if (y < 24) {
+          acc = 0;
+          if (collapsedRef.current) setCollapsed(false);
+          return;
+        }
+        if (now < lockedUntil) return;
+        acc += delta;
+        if (acc > 60 && y > 140 && !collapsedRef.current) {
+          setCollapsed(true);
+          acc = 0;
+          lockedUntil = now + 400;
+        } else if (acc < -60 && collapsedRef.current) {
+          setCollapsed(false);
+          acc = 0;
+          lockedUntil = now + 400;
+        }
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
