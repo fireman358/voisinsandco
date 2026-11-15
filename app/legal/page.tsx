@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export const metadata = { title: "Mentions légales — Voisins & Co" };
+export const metadata = { title: "Mentions légales — Le Bon Voisin" };
 
 export default function LegalPage() {
   return (
@@ -17,7 +17,7 @@ export default function LegalPage() {
         <section className="space-y-2 rounded-2xl border border-neutral-200 bg-white p-5 text-sm text-neutral-700">
           <h2 className="font-bold text-neutral-900">Éditeur</h2>
           <p>
-            Voisins &amp; Co est une application indépendante éditée par <strong>Edukisto</strong> —
+            Le Bon Voisin (LBV) est une application indépendante éditée par <strong>Edukisto</strong> —
             « Votre informaticien de proximité » (<a className="font-medium text-accent-dark underline" href="https://edukisto.win/">edukisto.win</a>),
             zone Seneffe / Lillois. Contact : via le formulaire de revendication dans l&apos;application ou le site edukisto.win.
           </p>

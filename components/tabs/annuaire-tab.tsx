@@ -370,7 +370,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               <Navigation className="size-3.5" /> Itinéraire
             </a>
           </Button>
-          <ShareButton title={b.name} text={`${b.name} — ${b.town} sur Voisins & Co`} />
+          <ShareButton title={b.name} text={`${b.name} — ${b.town} sur Le Bon Voisin`} />
           {b.tier === "standard" && !b.id.startsWith("user-") && (
             <Button variant="outline" size="sm" onClick={() => onClaim(b)}>
               C&apos;est votre commerce ? Revendiquer

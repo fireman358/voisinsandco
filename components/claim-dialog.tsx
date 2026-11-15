@@ -49,7 +49,7 @@ export function ClaimDialog({ business, open, onOpenChange }: ClaimDialogProps) 
       });
       if (!res.ok) throw new Error("bad status");
       setDone(true);
-      toast("Revendication envoyée à l'équipe Voisins & Co", "success");
+      toast("Revendication envoyée à l'équipe Le Bon Voisin", "success");
     } catch {
       toast("Envoi impossible, réessayez dans un instant", "error");
     } finally {

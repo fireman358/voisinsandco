@@ -37,7 +37,7 @@ export function InstallAppButton({ className }: { className?: string }) {
   const install = async () => {
     if (!deferred) {
       alert(
-        "Pour installer Voisins & Co :\n\n• Android / Chrome : menu ⋮ → « Installer l'application »\n• iPhone / iPad : bouton Partager (carré avec flèche) → « Sur l'écran d'accueil »\n• Ordinateur : icône d'installation dans la barre d'adresse.",
+        "Pour installer Le Bon Voisin :\n\n• Android / Chrome : menu ⋮ → « Installer l'application »\n• iPhone / iPad : bouton Partager (carré avec flèche) → « Sur l'écran d'accueil »\n• Ordinateur : icône d'installation dans la barre d'adresse.",
       );
       return;
     }

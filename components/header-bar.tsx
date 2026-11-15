@@ -85,11 +85,10 @@ export function HeaderBar({
       <div className="relative mx-auto w-full max-w-3xl px-4 py-3 md:max-w-5xl xl:max-w-7xl">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="text-2xl font-bold leading-none tracking-tight">
-              Voisins <span className="text-accent">&amp;</span> Co
-            </h1>
+            <h1 className="text-3xl font-extrabold leading-none tracking-tight text-white">LBV</h1>
+            <p className="mt-1 text-[13px] font-semibold text-white/85">Le Bon Voisin</p>
             {!collapsed && (
-              <p className="mt-1 text-[11px] font-medium text-white/60">
+              <p className="text-[11px] font-medium text-white/50">
                 Économie locale &amp; entraide de voisinage
               </p>
             )}

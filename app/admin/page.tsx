@@ -62,42 +62,42 @@ const TEMPLATES: Template[] = [
   {
     key: "verified",
     label: "Fiche vérifiée (gratuit)",
-    subject: "Votre fiche {business} est vérifiée sur Voisins & Co",
+    subject: "Votre fiche {business} est vérifiée sur Le Bon Voisin",
     body:
-      "Bonjour {name},\n\nBonne nouvelle : votre fiche « {business} » ({town}) est maintenant VÉRIFIÉE sur Voisins & Co. Vos clients du quartier la voient avec le badge vert, plus rassurant qu'une fiche standard.\n\nSouhaitez-vous aller plus loin ? Le Pack Visibilité (9 €/mois, sans engagement) vous permet de mettre à jour vos horaires, ajouter une photo de vitrine et publier vos actualités.\n\nPaiement simple par virement (unique, permanent ou annuel : 12 mois pour le prix de 10) ; je vous envoie le QR code dès confirmation.\n\nÀ bientôt,\nDavid — Edukisto, éditeur de Voisins & Co\nhttps://edukisto.win",
+      "Bonjour {name},\n\nBonne nouvelle : votre fiche « {business} » ({town}) est maintenant VÉRIFIÉE sur Le Bon Voisin. Vos clients du quartier la voient avec le badge vert, plus rassurant qu'une fiche standard.\n\nSouhaitez-vous aller plus loin ? Le Pack Visibilité (9 €/mois, sans engagement) vous permet de mettre à jour vos horaires, ajouter une photo de vitrine et publier vos actualités.\n\nPaiement simple par virement (unique, permanent ou annuel : 12 mois pour le prix de 10) ; je vous envoie le QR code dès confirmation.\n\nÀ bientôt,\nDavid — Edukisto, éditeur du Bon Voisin\nhttps://edukisto.win",
   },
   {
     key: "visibilite",
     label: "Pack Visibilité activé (9 €/mois)",
-    subject: "Pack Visibilité activé pour {business} — Voisins & Co",
+    subject: "Pack Visibilité activé pour {business} — Le Bon Voisin",
     body:
-      "Bonjour {name},\n\nVotre Pack Visibilité est activé jusqu'au {until} pour « {business} » ({town}).\n\nVous pouvez maintenant :\n- mettre à jour vos horaires d'ouverture ;\n- ajouter une photo de votre vitrine ;\n- publier vos actualités (fermeture, promo, nouveau produit).\n\nMontant : 9 €/mois — virement au compte communiqué, en indiquant « VC-{business} » en communication. Le QR code de paiement est en pièce jointe.\n\nMerci et à bientôt,\nDavid — Edukisto\nhttps://edukisto.win",
+      "Bonjour {name},\n\nVotre Pack Visibilité est activé jusqu'au {until} pour « {business} » ({town}).\n\nVous pouvez maintenant :\n- mettre à jour vos horaires d'ouverture ;\n- ajouter une photo de votre vitrine ;\n- publier vos actualités (fermeture, promo, nouveau produit).\n\nMontant : 9 €/mois — virement au compte communiqué, en indiquant « LBV-{business} » en communication. Le QR code de paiement est en pièce jointe.\n\nMerci et à bientôt,\nDavid — Edukisto\nhttps://edukisto.win",
   },
   {
     key: "pro",
     label: "Pack Pro activé (29 €/mois)",
-    subject: "Pack Pro activé pour {business} — Voisins & Co",
+    subject: "Pack Pro activé pour {business} — Le Bon Voisin",
     body:
-      "Bonjour {name},\n\nVotre Pack Pro est activé jusqu'au {until} pour « {business} » ({town}).\n\nVotre fiche profite de :\n- lien cliquable vers votre site / Facebook / module de réservation ;\n- publication d'actus et d'offres flash auprès des voisins à 10 km ;\n- mise en avant en tête de liste dans votre catégorie ;\n- badge « Pro » bleu.\n\nMontant : 29 €/mois — virement avec la communication « VC-{business} ». Pensez à la formule annuelle : 12 mois pour le prix de 10.\n\nMerci,\nDavid — Edukisto\nhttps://edukisto.win",
+      "Bonjour {name},\n\nVotre Pack Pro est activé jusqu'au {until} pour « {business} » ({town}).\n\nVotre fiche profite de :\n- lien cliquable vers votre site / Facebook / module de réservation ;\n- publication d'actus et d'offres flash auprès des voisins à 10 km ;\n- mise en avant en tête de liste dans votre catégorie ;\n- badge « Pro » bleu.\n\nMontant : 29 €/mois — virement avec la communication « LBV-{business} ». Pensez à la formule annuelle : 12 mois pour le prix de 10.\n\nMerci,\nDavid — Edukisto\nhttps://edukisto.win",
   },
   {
     key: "echeance",
     label: "Rappel d'échéance (J-7)",
-    subject: "Votre abonnement Voisins & Co arrive à échéance le {until}",
+    subject: "Votre abonnement Le Bon Voisin arrive à échéance le {until}",
     body:
-      "Bonjour {name},\n\nPetit rappel : votre abonnement pour « {business} » ({town}) arrive à échéance le {until}.\n\nPour ne rien perdre de votre visibilité, renouvelez par virement (unique ou permanent) avec la communication « VC-{business} ». Le QR code est à nouveau en pièce jointe.\n\nMerci,\nDavid — Edukisto\nhttps://edukisto.win",
+      "Bonjour {name},\n\nPetit rappel : votre abonnement pour « {business} » ({town}) arrive à échéance le {until}.\n\nPour ne rien perdre de votre visibilité, renouvelez par virement (unique ou permanent) avec la communication « LBV-{business} ». Le QR code est à nouveau en pièce jointe.\n\nMerci,\nDavid — Edukisto\nhttps://edukisto.win",
   },
   {
     key: "retard",
     label: "Relance après échéance",
-    subject: "Votre fiche {business} sur Voisins & Co — renouvellement",
+    subject: "Votre fiche {business} sur Le Bon Voisin — renouvellement",
     body:
       "Bonjour {name},\n\nVotre abonnement pour « {business} » ({town}) a pris fin le {until}. Votre fiche est revenue en « Vérifiée » : le badge reste, mais plus de mise en avant ni d'actus.\n\nUn simple virement suffit pour réactiver le pack — ou passez à la formule annuelle (12 mois pour le prix de 10).\n\nDavid — Edukisto\nhttps://edukisto.win",
   },
   {
     key: "qr",
     label: "Envoi QR code de paiement",
-    subject: "QR code de paiement — Voisins & Co",
+    subject: "QR code de paiement — Le Bon Voisin",
     body:
       "Bonjour {name},\n\nComme convenu, voici le QR code de virement pour « {business} » ({town}). Scannez-le avec votre appli bancaire (ou Payconiq) : le montant et la communication sont pré-remplis.\n\nAstuce : dans votre appli bancaire, vous pouvez aussi régler ce virement de façon permanente — il s'exécutera chaque mois sans y penser.\n\nDès réception, j'active votre pack.\n\nDavid — Edukisto\nhttps://edukisto.win",
   },
@@ -438,7 +438,7 @@ export default function AdminPage() {
     <div className="min-h-dvh bg-paper px-4 py-6">
       <div className="mx-auto w-full max-w-3xl space-y-5">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-bold text-neutral-900">Console Voisins &amp; Co</h1>
+          <h1 className="text-lg font-bold text-neutral-900">Console Le Bon Voisin</h1>
           <div className="flex items-center gap-3">
             {authed && (
               <button

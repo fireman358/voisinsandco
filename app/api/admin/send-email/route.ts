@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: from ?? "Voisins & Co <onboarding@resend.dev>",
+      from: from ?? "Le Bon Voisin <onboarding@resend.dev>",
       to: [to],
       subject,
       text,

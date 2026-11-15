@@ -354,7 +354,7 @@ export function BonsPlansTab({
           <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-8 text-center">
             <p className="text-sm font-medium text-neutral-600">Aucun panier invendu dans ce rayon pour le moment.</p>
             <p className="mx-auto mt-1 max-w-xs text-xs text-neutral-400">
-              Commerçant·e du coin ? Contacte l&apos;équipe Voisins &amp; Co pour publier tes invendus.
+              Commerçant·e du coin ? Contacte l&apos;équipe Le Bon Voisin pour publier tes invendus.
             </p>
           </div>
         ) : (

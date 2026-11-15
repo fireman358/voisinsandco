@@ -22,7 +22,7 @@ const q = (v) => {
 };
 
 const lines = [];
-lines.push("-- Seed Voisins & Co (sociétés réelles OpenStreetMap — Wallonie)");
+lines.push("-- Seed Le Bon Voisin (sociétés réelles OpenStreetMap — Wallonie)");
 lines.push("-- Généré depuis lib/seed-data.json — ne pas éditer à la main.");
 lines.push("-- Appliqué par le workflow quotidien « D1 refresh » (upsert idempotent, pas de purge");
 lines.push("-- pour préserver le contenu communautaire et le quota d'écritures D1).");

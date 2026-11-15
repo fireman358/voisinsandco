@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, BadgeCheck, Check, Crown, Eye, Sparkles, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Les formules — Voisins & Co",
+  title: "Les formules — Le Bon Voisin",
   description:
     "Fiche gratuite, Vérifiée, Visibilité 9 €, Pro 29 € et Prime +5 € : les formules de visibilité pour les commerces et artisans de proximité.",
 };
@@ -68,7 +68,7 @@ export default function AbonnementsPage() {
         </div>
 
         <p className="text-sm text-neutral-600">
-          Voisins &amp; Co référence les commerces et artisans de ta commune. La fiche de base est
+          Le Bon Voisin référence les commerces et artisans de ta commune. La fiche de base est
           gratuite ; les formules payantes te donnent plus de visibilité auprès des voisins. Paiement
           simple par virement (unique, permanent ou annuel). <strong>12 mois payés pour 10</strong> sur
           les formules annuelles.

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 // URL de production. Pour un domaine différent, adapte ici ou via env.
-const BASE = "https://voisinsandco.edukisto.win";
+const BASE = "https://lebonvoisin.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

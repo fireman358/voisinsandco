@@ -11,7 +11,7 @@
 //   5. activity.csv    → activité principale (NACE, groupe 001)
 //   6. contact.csv     → site web + téléphone
 //   7. enterprise.csv  → statut actif uniquement
-//   8. mapping NACE → catégorie Voisins & Co (par mots-clés sur le libellé officiel)
+//   8. mapping NACE → catégorie Le Bon Voisin (par mots-clés sur le libellé officiel)
 //   9. dédoublonnage vs OSM (nom normalisé + localité) → id « bce-<numéro> »
 //
 // Les fiches BCE sont positionnées au centroïde de la commune (pas de GPS dans

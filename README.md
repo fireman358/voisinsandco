@@ -1,4 +1,4 @@
-# Voisins & Co
+# Le Bon Voisin (LBV)
 
 PWA mobile-first d'économie locale, d'artisans et d'entraide de voisinage sur un périmètre
 dynamique (2 à 15 km) autour d'**Arquennes (7181), Seneffe (7180), Feluy (7181), Nivelles (1400)
@@ -13,7 +13,7 @@ et Baulers (1401)** — Lillois.
 - **PWA** : `public/manifest.json`, service worker `public/sw.js` (cache hors-ligne), icônes PNG/SVG.
 
 Palette : fond `#FAFAFA`, cartes blanches, texte **encre `#0F1115`**, primaire **vert forêt `#15803D`**
-(identité Voisins & Co), accent **bleu Edukisto `#38BDF8`** (teal `#0E7490` pour le texte) —
+(identité Le Bon Voisin), accent **bleu Edukisto `#38BDF8`** (teal `#0E7490` pour le texte) —
 badges Pro / offres flash. Les données de démo sont des **sociétés réelles** importées
 d'OpenStreetMap (Overpass) par [`scripts/fetch-osm-pois.mjs`](scripts/fetch-osm-pois.mjs),
 rafraîches chaque mois par [`.github/workflows/update-osm-data.yml`](.github/workflows/update-osm-data.yml).
@@ -33,7 +33,7 @@ Secrets GitHub à définir (Settings → Secrets and variables → Actions), pui
 « Définit le mot de passe admin » qui les pousse vers Cloudflare :
 - `ADMIN_PASSWORD` : mot de passe de la console `/admin` (→ `ADMIN_TOKEN` Cloudflare)
 - `RESEND_API_KEY` : clé API Resend (envoi d'e-mails depuis la console et le cron)
-- `RESEND_FROM` : expéditeur vérifié Resend, ex. `Voisins & Co <contact@tondomaine.be>`
+- `RESEND_FROM` : expéditeur vérifié Resend, ex. `Le Bon Voisin <contact@tondomaine.be>`
 - `NOTIF_EMAIL` : ta boîte pour le résumé quotidien des échéances (cron 06:00 UTC)
 
 ## Légal
@@ -52,7 +52,7 @@ Mentions légales, RGPD et crédit OpenStreetMap (ODbL) : page `/legal` + pied d
 - **Anti-survente** : la réservation décrémente `remaining` de façon atomique (`WHERE remaining > 0`).
 - **SEO** : `/sitemap.xml` généré, JSON-LD `LocalBusiness`, rendu serveur (`force-dynamic`) et
   métadonnées OpenGraph. `/robots.txt` est servi par l'hébergeur : y ajouter une ligne
-  `Sitemap: https://voisinsandco.edukisto.win/sitemap.xml`.
+  `Sitemap: https://lebonvoisin.org/sitemap.xml`.
 - **Bundle allégé** : constantes extraites dans `lib/constants.ts`, `demo-data.json` ne charge plus
   côté client (page `/` ≈ 80 kB au lieu de ~1,3 Mo).
 

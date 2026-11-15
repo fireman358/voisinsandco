@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, BadgeCheck, Clock, Crown, MapPin, Megaphone, Store, Users, Zap } from "lucide-react";
 
-export const metadata = { title: "Comment ça marche — Voisins & Co" };
+export const metadata = { title: "Comment ça marche — Le Bon Voisin" };
 
 function Section({
   icon: Icon,
@@ -34,7 +34,7 @@ export default function HowItWorksPage() {
         </div>
 
         <p className="rounded-2xl border border-forest/20 bg-green-50 p-4 text-sm leading-6 text-neutral-700">
-          Voisins &amp; Co est l&apos;annuaire de proximité de la Wallonie&nbsp;: les commerces, artisans et
+          Le Bon Voisin est l&apos;annuaire de proximité de la Wallonie&nbsp;: les commerces, artisans et
           services qui t&apos;entourent, avec les bons plans, le mur des besoins et la boîte à outils de
           ton quartier. Tu vois ce qui se trouve autour de <strong>ta</strong> position (ou de la ville
           que tu choisis), dans un rayon de 2 à 15&nbsp;km.

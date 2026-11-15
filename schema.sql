@@ -1,4 +1,4 @@
--- Voisins & Co — schéma Cloudflare D1 (SQLite)
+-- Le Bon Voisin — schéma Cloudflare D1 (SQLite)
 -- État final après toutes les migrations (0001 → 0010).
 -- Appliquer en local :  wrangler d1 execute voisins-and-co-db --local --file=schema.sql
 -- Appliquer en prod :   wrangler d1 execute voisins-and-co-db --remote --file=schema.sql

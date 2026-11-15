@@ -19,8 +19,8 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://voisinsandco.edukisto.win"),
-  title: "Voisins & Co — Économie locale & entraide de voisinage",
+  metadataBase: new URL("https://lebonvoisin.org"),
+  title: "Le Bon Voisin — Économie locale & entraide de voisinage",
   description:
     "Annuaire des commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier autour d'Arquennes, Seneffe, Nivelles et Lillois.",
   manifest: "/manifest.json",
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_BE",
     url: "/",
-    siteName: "Voisins & Co",
-    title: "Voisins & Co — Économie locale & entraide",
+    siteName: "Le Bon Voisin",
+    title: "Le Bon Voisin — Économie locale & entraide",
     description:
       "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
   },
   twitter: {
     card: "summary",
-    title: "Voisins & Co — Économie locale & entraide",
+    title: "Le Bon Voisin — Économie locale & entraide",
     description:
       "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
   },
   appleWebApp: {
     capable: true,
-    title: "Voisins & Co",
+    title: "Le Bon Voisin",
     statusBarStyle: "default",
   },
 };
