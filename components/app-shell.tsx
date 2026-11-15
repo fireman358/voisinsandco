@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   BadgePercent,
@@ -163,11 +163,11 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     );
   }, [setGeo, toast]);
 
-  // Hauteur réelle du header → variable CSS pour que la barre de recherche
-  // de l'annuaire se cale juste en dessous quand on défile.
-  const headerRef = useRef<HTMLDivElement>(null);
+  // Hauteur réelle du header → variable CSS pour caler la barre de recherche
+  // de l'annuaire juste dessous. On mesure le <header> directement (le wrapper
+  // casserait son position: sticky).
   useEffect(() => {
-    const el = headerRef.current;
+    const el = document.querySelector<HTMLElement>("header");
     if (!el) return;
     const update = () =>
       document.documentElement.style.setProperty("--app-header-h", `${el.offsetHeight}px`);
@@ -179,17 +179,15 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
 
   return (
     <div className="min-h-dvh bg-paper">
-      <div ref={headerRef}>
-        <HeaderBar
-          geo={geo}
-          radius={radius}
-          demo={demo}
-          count={total}
-          onRadiusChange={setRadius}
-          onCitySelect={handleCitySelect}
-          onUseGps={handleUseGps}
-        />
-      </div>
+      <HeaderBar
+        geo={geo}
+        radius={radius}
+        demo={demo}
+        count={total}
+        onRadiusChange={setRadius}
+        onCitySelect={handleCitySelect}
+        onUseGps={handleUseGps}
+      />
       <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 md:max-w-5xl xl:max-w-7xl">
         {loading && businesses.length === 0 && needs.length === 0 ? (
           <div className="flex items-center justify-center gap-2 py-20 text-sm text-neutral-500">

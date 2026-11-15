@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
 import { FontSizeControl } from "@/components/font-size-control";
+import { InstallAppButton } from "@/components/install-app-button";
 import { RADIUS_OPTIONS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { GeoState } from "@/lib/types";
@@ -189,17 +190,24 @@ export function HeaderBar({
               </div>
             </div>
 
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs text-white/60">
-              <span>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+              <span className="text-xs text-white/60">
                 {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
               </span>
-              <nav className="flex items-center gap-3 font-medium">
-                <Link href="/comment-ca-marche" className="text-accent underline-offset-2 hover:underline">
+              <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold">
+                <Link
+                  href="/comment-ca-marche"
+                  className="rounded-md bg-white/10 px-2 py-1 text-accent underline-offset-2 hover:bg-white/20"
+                >
                   Comment ça marche
                 </Link>
-                <Link href="/abonnements" className="text-accent underline-offset-2 hover:underline">
+                <Link
+                  href="/abonnements"
+                  className="rounded-md bg-white/10 px-2 py-1 text-accent underline-offset-2 hover:bg-white/20"
+                >
                   Les formules
                 </Link>
+                <InstallAppButton className="bg-accent text-forest-950 hover:bg-accent/90" />
               </nav>
             </div>
           </>
