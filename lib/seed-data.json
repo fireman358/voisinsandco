@@ -113766,7 +113766,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "13 Rue de Fexhe-Slins",
       "town": "Hermée",
-      "postalCode": "4680",
+      "postalCode": "",
       "lat": 50.707641,
       "lng": 5.619026
     },
@@ -113821,7 +113821,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "15 Rue de Milmort",
       "town": "Hermée",
-      "postalCode": "4680",
+      "postalCode": "",
       "lat": 50.707337,
       "lng": 5.618612
     },
@@ -114152,6 +114152,20 @@
       "website": "https://plugandgo.be/"
     },
     {
+      "id": "osm-5623891027-q8",
+      "name": "Q8",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "207 Rue de Hermée",
+      "town": "Hermée",
+      "postalCode": "",
+      "lat": 50.696222,
+      "lng": 5.626489,
+      "website": "https://www.q8.be/nl/stations/q8-herstal"
+    },
+    {
       "id": "osm-10911264568-rcarre-belgique",
       "name": "Rcarré Belgique",
       "category": "artisan",
@@ -114175,7 +114189,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "106 Rue de Milmort",
       "town": "Hermée",
-      "postalCode": "4680",
+      "postalCode": "",
       "lat": 50.701014,
       "lng": 5.611953
     },
@@ -114206,6 +114220,34 @@
       "lng": 5.618092,
       "phone": "+32 496 33 64 63",
       "website": "https://www.sebservices.be"
+    },
+    {
+      "id": "osm-5952207070-shell",
+      "name": "Shell",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "201 Rue de Hermée",
+      "town": "Hermée",
+      "postalCode": "",
+      "lat": 50.694182,
+      "lng": 5.626336,
+      "website": "https://www.shell.nl/klanten/shell-tankpas-voor-bedrijven/ons-netwerk.html"
+    },
+    {
+      "id": "osm-10218306199-shell-lng",
+      "name": "Shell LNG",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "201 Rue de Hermée",
+      "town": "Hermée",
+      "postalCode": "",
+      "lat": 50.694085,
+      "lng": 5.625732,
+      "website": "https://www.shell.nl/klanten/shell-tankpas-voor-bedrijven/ons-netwerk.html"
     },
     {
       "id": "osm-111634827-sible",
@@ -115494,19 +115536,6 @@
       "lng": 5.639278
     },
     {
-      "id": "osm-4135134809-international-diesel-service",
-      "name": "International Diesel Service",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "170 Rue de Hermée",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.692079,
-      "lng": 5.627297
-    },
-    {
       "id": "osm-9824290097-jashan-shop",
       "name": "Jashan Shop",
       "category": "alimentation",
@@ -115518,19 +115547,6 @@
       "postalCode": "",
       "lat": 50.673792,
       "lng": 5.630039
-    },
-    {
-      "id": "osm-5952206970-jost-group-tansport-logistics",
-      "name": "Jost Group Tansport & Logistics",
-      "category": "artisan",
-      "subcategory": "logistic",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "65 Rue de l'Abbaye",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.691525,
-      "lng": 5.635033
     },
     {
       "id": "osm-1579353886-knossos-ii",
@@ -116149,20 +116165,6 @@
       "lng": 5.628034
     },
     {
-      "id": "osm-5623891027-q8",
-      "name": "Q8",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "207 Rue de Hermée",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.696222,
-      "lng": 5.626489,
-      "website": "https://www.q8.be/nl/stations/q8-herstal"
-    },
-    {
       "id": "osm-1152683056-q8-herstal",
       "name": "Q8 Herstal",
       "category": "distributeur",
@@ -116205,20 +116207,6 @@
       "hours": "Mo-Fr 12:00-15:00"
     },
     {
-      "id": "osm-5952207070-shell",
-      "name": "Shell",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "201 Rue de Hermée",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.694182,
-      "lng": 5.626336,
-      "website": "https://www.shell.nl/klanten/shell-tankpas-voor-bedrijven/ons-netwerk.html"
-    },
-    {
       "id": "osm-1152683044-shell-express",
       "name": "Shell Express",
       "category": "distributeur",
@@ -116231,20 +116219,6 @@
       "lat": 50.677891,
       "lng": 5.640488,
       "website": "https://find.shell.com/be/fuel/10023039-herstal-shop-shell-express/nl_NL"
-    },
-    {
-      "id": "osm-10218306199-shell-lng",
-      "name": "Shell LNG",
-      "category": "distributeur",
-      "subcategory": "fuel",
-      "tier": "standard",
-      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
-      "address": "201 Rue de Hermée",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.694085,
-      "lng": 5.625732,
-      "website": "https://www.shell.nl/klanten/shell-tankpas-voor-bedrijven/ons-netwerk.html"
     },
     {
       "id": "osm-7881882890-spar",
@@ -116383,21 +116357,6 @@
       "lat": 50.668417,
       "lng": 5.632225,
       "phone": "+32 4 264 16 47"
-    },
-    {
-      "id": "osm-3664125921-wines-friends",
-      "name": "Wines & friends",
-      "category": "artisan",
-      "subcategory": "yes",
-      "tier": "standard",
-      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "115 1re Avenue",
-      "town": "Herstal",
-      "postalCode": "4040",
-      "lat": 50.689549,
-      "lng": 5.61601,
-      "phone": "+32 472 59 45 27",
-      "website": "https://www.raspberrydesign.be/"
     },
     {
       "id": "osm-121548300-wok-herstal",
@@ -185663,7 +185622,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "29 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689862,
       "lng": 5.60339
     },
@@ -185736,7 +185695,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "35 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689766,
       "lng": 5.603723,
       "phone": "+32 4 377 40 76"
@@ -185882,7 +185841,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "25 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689504,
       "lng": 5.604049,
       "phone": "+32 479 54 68 17",
@@ -185927,7 +185886,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "21 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689634,
       "lng": 5.604319,
       "phone": "+32 486 56 29 02",
@@ -185942,7 +185901,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "27 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.68944,
       "lng": 5.603936,
       "phone": "+32 4 290 79 70",
@@ -185983,7 +185942,7 @@
       "subcategory": "cleaning",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "115-117 1ère Avenue",
+      "address": "Adresse à compléter",
       "town": "Milmort",
       "postalCode": "",
       "lat": 50.689426,
@@ -186016,7 +185975,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "37 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689852,
       "lng": 5.603878,
       "phone": "+32 471 49 25 01",
@@ -186117,7 +186076,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "23 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689569,
       "lng": 5.604162,
       "phone": "+32 475 74 98 35",
@@ -186163,7 +186122,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "33 Rue de la Petite Doucette",
       "town": "Milmort",
-      "postalCode": "4041",
+      "postalCode": "",
       "lat": 50.689699,
       "lng": 5.603612,
       "phone": "+32 496 38 07 91",
@@ -186205,7 +186164,7 @@
       "subcategory": "hvac",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "115-117 1ère Avenue",
+      "address": "Adresse à compléter",
       "town": "Milmort",
       "postalCode": "",
       "lat": 50.689547,
@@ -186251,7 +186210,7 @@
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
       "address": "146 4ème Avenue",
       "town": "Milmort",
-      "postalCode": "4040",
+      "postalCode": "",
       "lat": 50.695677,
       "lng": 5.606028
     },
@@ -186271,6 +186230,21 @@
       "website": "https://www.vdcabling.be/"
     },
     {
+      "id": "osm-3664125921-wines-friends",
+      "name": "Wines & friends",
+      "category": "artisan",
+      "subcategory": "yes",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "115 1ère Avenue",
+      "town": "Milmort",
+      "postalCode": "",
+      "lat": 50.689549,
+      "lng": 5.61601,
+      "phone": "+32 472 59 45 27",
+      "website": "https://www.raspberrydesign.be/"
+    },
+    {
       "id": "osm-10912076389-xefi",
       "name": "XEFI",
       "category": "artisan",
@@ -186283,7 +186257,7 @@
       "lat": 50.690592,
       "lng": 5.610058,
       "phone": "+32 4 337 58 51",
-      "website": "https://www.alin1.be"
+      "website": "https://www.alin1.be/"
     },
     {
       "id": "osm-842201926-o55-veranda-gourmande",
@@ -230112,12 +230086,12 @@
       "subcategory": "veterinary",
       "tier": "standard",
       "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
-      "address": "66 Rue Visé-Voie",
+      "address": "Adresse à compléter",
       "town": "Oupeye",
-      "postalCode": "4680",
+      "postalCode": "",
       "lat": 50.707197,
       "lng": 5.640252,
-      "website": "https://www.animalsante.be"
+      "website": "https://www.animalsante.be/"
     },
     {
       "id": "osm-8762122257-art-hair-coiffure-mixte",
@@ -285899,19 +285873,6 @@
       "hours": "Mo-Sa 09:00-18:30"
     },
     {
-      "id": "osm-325373049-boucherie-charcuterie-dejejet",
-      "name": "Boucherie Charcuterie Dejejet",
-      "category": "alimentation",
-      "subcategory": "butcher",
-      "tier": "standard",
-      "description": "Alimentation et produits frais, repérés sur OpenStreetMap.",
-      "address": "16 Avenue de la Salm",
-      "town": "Trois-Ponts",
-      "postalCode": "",
-      "lat": 50.370798,
-      "lng": 5.871687
-    },
-    {
       "id": "osm-325373054-boulangerie-patisserie-bourotte",
       "name": "Boulangerie Pâtisserie Bourotte",
       "category": "alimentation",
@@ -291663,6 +291624,19 @@
       "website": "https://shop.friterielafringale.be/#/commande-en-ligne/bons-plans/nos-produits"
     },
     {
+      "id": "osm-14373949074-la-grande-salle",
+      "name": "La grande salle",
+      "category": "artisan",
+      "subcategory": "coworking",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "Adresse à compléter",
+      "town": "Verviers",
+      "postalCode": "",
+      "lat": 50.590338,
+      "lng": 5.856758
+    },
+    {
       "id": "osm-13717195709-la-marie",
       "name": "La Marie",
       "category": "horeca",
@@ -296756,6 +296730,19 @@
       "website": "https://vanesse.be"
     },
     {
+      "id": "osm-4135134809-international-diesel-service",
+      "name": "International Diesel Service",
+      "category": "distributeur",
+      "subcategory": "fuel",
+      "tier": "standard",
+      "description": "Distributeur et services 24/7, repérés sur OpenStreetMap.",
+      "address": "170 Rue de Hermée",
+      "town": "Vivegnis",
+      "postalCode": "",
+      "lat": 50.692079,
+      "lng": 5.627297
+    },
+    {
       "id": "osm-11096714033-joliment-julie",
       "name": "Joliment Julie",
       "category": "artisan",
@@ -296768,6 +296755,19 @@
       "lat": 50.700347,
       "lng": 5.63947,
       "phone": "+32 491 59 43 56"
+    },
+    {
+      "id": "osm-5952206970-jost-group-tansport-logistics",
+      "name": "Jost Group Tansport & Logistics",
+      "category": "artisan",
+      "subcategory": "logistic",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "65 Rue de l'Abbaye",
+      "town": "Vivegnis",
+      "postalCode": "",
+      "lat": 50.691525,
+      "lng": 5.635033
     },
     {
       "id": "osm-9054703358-la-tartine-toquee",
