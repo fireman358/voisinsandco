@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ArrowLeft, Clock, Globe, MapPin, Megaphone, Phone } from "lucide-react";
 import { getBusinessById } from "@/lib/data";
 import { GROUP_LABELS, activityLabel, groupOf, type Business } from "@/lib/types";
-import { slugify } from "@/lib/utils";
+import { businessSlug, parseBusinessSlug, slugify } from "@/lib/utils";
 
 export const revalidate = 3600;
 
 const BASE = "https://lebonvoisin.org";
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 function activityOf(b: Business): string {
@@ -19,25 +19,32 @@ function activityOf(b: Business): string {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { slug } = await params;
+  const { id } = parseBusinessSlug(slug);
   const b = await getBusinessById(id);
   if (!b) return { title: "Fiche introuvable — Le Bon Voisin" };
   const activity = activityOf(b);
   return {
     title: `${b.name} — ${activity} à ${b.town} — Le Bon Voisin`,
     description: `${b.name} : ${activity} à ${b.town}. ${b.address}.${b.phone ? ` Tél. ${b.phone}.` : ""}`,
-    alternates: { canonical: `/commerce/${id}` },
+    alternates: { canonical: `/commerce/${encodeURIComponent(businessSlug(b.name, b.id))}` },
   };
 }
 
 export default async function BusinessPage({ params }: Props) {
-  const { id } = await params;
+  const { slug } = await params;
+  const { id } = parseBusinessSlug(slug);
   const b = await getBusinessById(id);
   if (!b) notFound();
 
+  const canonical = businessSlug(b.name, b.id);
+  if (slug !== canonical) {
+    permanentRedirect(`/commerce/${encodeURIComponent(canonical)}`);
+  }
+
   const activity = activityOf(b);
   const townSlug = slugify(b.town);
-  const url = `${BASE}/commerce/${encodeURIComponent(b.id)}`;
+  const url = `${BASE}/commerce/${encodeURIComponent(canonical)}`;
 
   const jsonLd = {
     "@context": "https://schema.org",

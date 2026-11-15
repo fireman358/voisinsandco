@@ -1,59 +1,67 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ArrowLeft, MapPin } from "lucide-react";
 import { findTownBySlug, listBusinessesByTown } from "@/lib/data";
-import { GROUP_LABELS, activityLabel, groupOf, type Business, type GroupKey } from "@/lib/types";
+import { GROUP_LABELS, activityLabel, groupOf, type Business } from "@/lib/types";
+import { businessSlug } from "@/lib/utils";
 
 export const revalidate = 3600;
 
 const BASE = "https://lebonvoisin.org";
+const PAGE_SIZE = 100;
 
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const town = await findTownBySlug(slug);
-  if (!town) return { title: "Commune introuvable — Le Bon Voisin" };
-  return {
-    title: `Commerces et artisans à ${town} — Le Bon Voisin`,
-    description: `Annuaire des commerces, artisans et services à ${town} : adresses, téléphones, horaires et bons plans de proximité.`,
-    alternates: { canonical: `/commune/${slug}` },
-  };
+  searchParams: Promise<{ page?: string }>;
 }
 
 function activityOf(b: Business): string {
   return activityLabel(b.subcategory) || GROUP_LABELS[groupOf(b.subcategory, b.category)];
 }
 
-export default async function CommunePage({ params }: Props) {
+function parsePage(raw: string | undefined): number {
+  const n = Number(raw);
+  return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;
+}
+
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const { page: rawPage } = await searchParams;
+  const page = parsePage(rawPage);
+  const town = await findTownBySlug(slug);
+  if (!town) return { title: "Commune introuvable — Le Bon Voisin" };
+  return {
+    title: `Commerces et artisans à ${town}${page > 1 ? ` (page ${page})` : ""} — Le Bon Voisin`,
+    description: `Annuaire des commerces, artisans et services à ${town} : adresses, téléphones, horaires et bons plans de proximité.`,
+    alternates: { canonical: `/commune/${slug}${page > 1 ? `?page=${page}` : ""}` },
+  };
+}
+
+export default async function CommunePage({ params, searchParams }: Props) {
+  const { slug } = await params;
+  const { page: rawPage } = await searchParams;
+  const page = parsePage(rawPage);
+
   const town = await findTownBySlug(slug);
   if (!town) notFound();
 
-  const { items, total } = await listBusinessesByTown(town, 300);
-
-  const byGroup = new Map<GroupKey, Business[]>();
-  for (const b of items) {
-    const g = groupOf(b.subcategory, b.category);
-    const arr = byGroup.get(g) ?? [];
-    arr.push(b);
-    byGroup.set(g, arr);
+  const { items, total } = await listBusinessesByTown(town, PAGE_SIZE, (page - 1) * PAGE_SIZE);
+  const maxPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (page > maxPage) {
+    permanentRedirect(`/commune/${slug}${maxPage > 1 ? `?page=${maxPage}` : ""}`);
   }
-  const groups = [...byGroup.entries()].sort((a, b) => b[1].length - a[1].length);
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `Commerces et artisans à ${town}`,
-    numberOfItems: items.length,
+    numberOfItems: total,
     itemListElement: items.slice(0, 20).map((b, i) => ({
       "@type": "ListItem",
-      position: i + 1,
+      position: (page - 1) * PAGE_SIZE + i + 1,
       name: b.name,
-      url: `${BASE}/commerce/${encodeURIComponent(b.id)}`,
+      url: `${BASE}/commerce/${encodeURIComponent(businessSlug(b.name, b.id))}`,
     })),
   };
   const breadcrumb = {
@@ -80,41 +88,61 @@ export default async function CommunePage({ params }: Props) {
           <p className="text-sm text-neutral-600">
             {total} commerce{total > 1 ? "s" : ""}, artisan{total > 1 ? "s" : ""} et service{total > 1 ? "s" : ""}{" "}
             référencé{total > 1 ? "s" : ""} à {town}.
-            {total > items.length ? ` Affichage des ${items.length} premiers.` : ""}
+            {maxPage > 1 ? ` Page ${page} sur ${maxPage}.` : ""}
           </p>
         </header>
 
-        {groups.length === 0 ? (
-          <p className="text-sm text-neutral-500">Aucune fiche pour cette commune.</p>
-        ) : (
-          groups.map(([g, list]) => (
-            <section key={g} className="space-y-2">
-              <h2 className="text-sm font-bold text-neutral-900">
-                {GROUP_LABELS[g]} <span className="font-normal text-neutral-400">({list.length})</span>
-              </h2>
-              <ul className="space-y-1.5">
-                {list.map((b) => (
-                  <li key={b.id}>
-                    <Link
-                      href={`/commerce/${encodeURIComponent(b.id)}`}
-                      className="block rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm transition-colors hover:border-forest/40"
-                    >
-                      <span className="block truncate font-semibold text-neutral-800">{b.name}</span>
-                      <span className="mt-0.5 flex items-center gap-1 text-xs text-neutral-500">
-                        {activityOf(b)} · <MapPin className="size-3 shrink-0" />
-                        <span className="truncate">{b.address}</span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
+        <ul className="space-y-1.5">
+          {items.map((b) => (
+            <li key={b.id}>
+              <Link
+                href={`/commerce/${encodeURIComponent(businessSlug(b.name, b.id))}`}
+                className="block rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm transition-colors hover:border-forest/40"
+              >
+                <span className="block truncate font-semibold text-neutral-800">{b.name}</span>
+                <span className="mt-0.5 flex items-center gap-1 text-xs text-neutral-500">
+                  {activityOf(b)} · <MapPin className="size-3 shrink-0" />
+                  <span className="truncate">{b.address}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {items.length === 0 && <p className="text-sm text-neutral-500">Aucune fiche pour cette commune.</p>}
+
+        {maxPage > 1 && (
+          <nav className="flex items-center justify-between gap-2 border-t border-neutral-200 pt-3 text-sm">
+            {page > 1 ? (
+              <Link
+                href={`/commune/${slug}${page - 1 > 1 ? `?page=${page - 1}` : ""}`}
+                className="font-medium text-forest hover:underline"
+              >
+                ← Précédent
+              </Link>
+            ) : (
+              <span />
+            )}
+            <span className="text-xs text-neutral-500">
+              Page {page} / {maxPage}
+            </span>
+            {page < maxPage ? (
+              <Link href={`/commune/${slug}?page=${page + 1}`} className="font-medium text-forest hover:underline">
+                Suivant →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         )}
 
         <p className="pt-2 text-xs text-neutral-400">
+          <Link href="/communes" className="text-forest underline-offset-2 hover:underline">
+            Toutes les communes
+          </Link>
+          {" · "}
           <Link href="/" className="text-forest underline-offset-2 hover:underline">
-            Retour à Le Bon Voisin
+            Le Bon Voisin
           </Link>
         </p>
       </div>

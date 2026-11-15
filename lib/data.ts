@@ -1127,7 +1127,8 @@ export async function getBusinessById(id: string): Promise<Business | null> {
 /** Fiches d'une commune (page /commune/[slug]). */
 export async function listBusinessesByTown(
   town: string,
-  limit = 300,
+  limit = 100,
+  offset = 0,
 ): Promise<{ items: Business[]; total: number }> {
   const conn = getDB();
   if (!conn) return { items: [], total: 0 };
@@ -1144,9 +1145,9 @@ export async function listBusinessesByTown(
              ORDER BY prime DESC,
                CASE tier WHEN 'pro' THEN 4 WHEN 'visibility' THEN 3 WHEN 'verified' THEN 2 ELSE 1 END DESC,
                name
-             LIMIT ?`,
+             LIMIT ? OFFSET ?`,
           )
-          .bind(town, limit)
+          .bind(town, limit, offset)
           .all<Business>()
       ).results ?? [];
     const total =
