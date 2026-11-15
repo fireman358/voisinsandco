@@ -145,8 +145,8 @@ const NACE_RULES = [
   [/architecture|architectes?/, "architecte"],
   [/ing[ée]nieurs?|engineering/, "ingenieur"],
   [/g[ée]om[èe]tres?|topographie/, "geomestre"],
-  [/programmation informatique|conseil en syst[èe]mes? informatiques?|traitement de donn[ée]es?|h[ée]bergement de donn[ée]es?|r[ée]paration d.ordinateurs|mat[ée]riel informatique|t[ée]l[ée]communications?|t[ée]l[ée]phonie/, "informatique"],
-  [/informatique|portails? et autres sites|sites? internet|t[ée]l[ée]phonie/, "informatique"],
+  [/programmation informatique|conseil en syst[èe]mes? informatiques?|traitement de donn[ée]es?|h[ée]bergement de donn[ée]es?|r[ée]paration d.ordinateurs|mat[ée]riel informatique|ordinateurs? et de logiciels|ordinateurs?, d.[ée]quipements? et de logiciels|t[ée]l[ée]communications?|t[ée]l[ée]phonie/, "informatique"],
+  [/informatique|logiciels|portails? et autres sites|sites? internet|t[ée]l[ée]phonie/, "informatique"],
   [/conseil pour les affaires et la gestion|conseil de gestion|autres activit[ée]s? de conseil|conseil en/, "conseil"],
   [/publicit[ée]|graphisme|design|communication|relations publiques/, "communication_design"],
   [/photographes?|photographie/, "photographe"],
@@ -249,6 +249,17 @@ const naceLabel = new Map();
   }
 }
 console.log(`   ${naceLabel.size} codes NACE libellés (FR)`);
+
+// Le nom commercial est souvent plus parlant que le code NACE pour le grand
+// public : « AZERTY INFORMATIQUE » reste un magasin d'informatique et
+// « Assurances Lambert » une assurance, même si le code NACE dit autre chose.
+const NAME_RULES = [
+  [/assurances?\b/, "assurance"],
+  [/informatique|computer|it solutions?/, "informatique"],
+  [/boulangerie|p[âa]tisserie/, "boulangerie"],
+  [/pharmacie/, "pharmacie"],
+  [/coiff/, "coiffeur"],
+];
 
 const naceGroupCache = new Map();
 function groupForNace(code) {
@@ -455,11 +466,19 @@ for (const ent of activeEnt) {
   }
   const contact = contactOf.get(ent) ?? {};
   const category = categoryForGroup(group);
+  let sub = group;
+  const nameLower = display.toLowerCase();
+  for (const [re, g] of NAME_RULES) {
+    if (re.test(nameLower)) {
+      sub = g;
+      break;
+    }
+  }
   out.push({
     id: `bce-${digits}`,
     name: display,
     category,
-    subcategory: group,
+    subcategory: sub,
     tier: "standard",
     description: DESCRIPTIONS[category],
     address: [addr.street, addr.house].filter(Boolean).join(" ") || "Adresse à compléter",

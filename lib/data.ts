@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
 import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
-import type { AgendaEvent, Business, BusinessCategory, BusinessTier, Deal, Need, Tool } from "./types";
+import { activityKey, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
 import { normalizeText } from "./utils";
 
 export interface GeoQuery {
@@ -65,6 +65,7 @@ export async function listBusinesses(
   q: GeoQuery,
   category: string,
   search?: string,
+  activity?: string,
 ): Promise<{ items: Business[]; demo: boolean; total: number }> {
   const box = boundingBox(q.lat, q.lng, q.radius);
   // Recherche texte côté serveur : indispensable avec 275 000 fiches, la
@@ -114,14 +115,24 @@ export async function listBusinesses(
     }
     if (results.length > 0) {
       const matched = withDistance(q, results)
-        .filter((b) => (category === "all" || b.category === category) && matchesSearch(b))
+        .filter(
+          (b) =>
+            (category === "all" || b.category === category) &&
+            (!activity || activityKey(b.subcategory) === activity) &&
+            matchesSearch(b),
+        )
         .sort(byTierThenDistance);
       // Borne la charge utile : on ne renvoie que les N plus proches (Pro en tête).
       return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: false, total: matched.length };
     }
   }
   const matched = withDistance(q, BUSINESSES)
-    .filter((b) => (category === "all" || b.category === category) && matchesSearch(b))
+    .filter(
+      (b) =>
+        (category === "all" || b.category === category) &&
+        (!activity || activityKey(b.subcategory) === activity) &&
+        matchesSearch(b),
+    )
     .sort(byTierThenDistance);
   return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: true, total: matched.length };
 }

@@ -55,6 +55,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
   const [radius, setRadius] = useState(DEFAULT_RADIUS);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTick, setSearchTick] = useState(0);
+  const [activity, setActivity] = useState("all");
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
   const [demo, setDemo] = useState(initialData?.demo ?? false);
@@ -69,9 +70,10 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     setLoading(true);
     const qs = `lat=${geo.lat}&lng=${geo.lng}&radius=${radius}`;
     const sq = searchQuery.trim().length >= 2 ? `&q=${encodeURIComponent(searchQuery.trim())}` : "";
+    const sa = activity !== "all" ? `&activity=${encodeURIComponent(activity)}` : "";
     try {
       const [b, d, n, t] = await Promise.all([
-        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}${sq}`),
+        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}${sq}${sa}`),
         fetchJSON<{ deals: Deal[]; events: AgendaEvent[]; demo: boolean }>(`/api/deals?${qs}`),
         fetchJSON<{ items: Need[]; demo: boolean }>(`/api/needs?${qs}`),
         fetchJSON<{ items: Tool[]; demo: boolean }>(`/api/tools?${qs}`),
@@ -88,7 +90,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     } finally {
       setLoading(false);
     }
-  }, [geo, radius, searchTick, toast]);
+  }, [geo, radius, searchTick, activity, toast]);
 
   useEffect(() => {
     void load();
@@ -181,6 +183,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
                 geoShortLabel={geo.shortLabel}
                 searchQuery={searchQuery}
                 onSearchQueryChange={setSearchQuery}
+                activity={activity}
+                onActivityChange={setActivity}
                 onCreated={handleBusinessCreated}
               />
             </TabsContent>

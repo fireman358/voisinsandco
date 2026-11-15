@@ -11,7 +11,8 @@ export async function GET(req: NextRequest) {
   const q = parseGeo(req.nextUrl.searchParams);
   const category = req.nextUrl.searchParams.get("category") ?? "all";
   const search = req.nextUrl.searchParams.get("q") ?? undefined;
-  const { items, demo, total } = await listBusinesses(q, category, search);
+  const activity = req.nextUrl.searchParams.get("activity") ?? undefined;
+  const { items, demo, total } = await listBusinesses(q, category, search, activity);
   return NextResponse.json({ items, demo, total });
 }
 

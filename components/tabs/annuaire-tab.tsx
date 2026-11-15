@@ -3,7 +3,16 @@
 import { useMemo, useState } from "react";
 import {
   Apple,
+  Armchair,
+  Axe,
+  Baby,
   BadgeCheck,
+  Bed,
+  Bike,
+  BookOpen,
+  Briefcase,
+  Building2,
+  Cog,
   Beef,
   Beer,
   Book,
@@ -11,6 +20,7 @@ import {
   Camera,
   Candy,
   Car,
+  Dices,
   ChevronDown,
   Clock,
   Coffee,
@@ -18,27 +28,35 @@ import {
   Croissant,
   Crown,
   Dumbbell,
+  Fish,
+  FlaskConical,
   Flower,
   Footprints,
   Fuel,
   Gamepad2,
   Gem,
+  Gift,
   Glasses,
   Globe,
+  Grape,
   GraduationCap,
   Hammer,
   HardHat,
   Heart,
   House,
+  IceCream,
   Landmark,
+  Laptop,
   Leaf,
   List,
   Map as MapIcon,
   MapPin,
   Megaphone,
+  Microscope,
   Monitor,
   Music,
   Navigation,
+  Newspaper,
   Palette,
   Paintbrush,
   Phone,
@@ -47,17 +65,26 @@ import {
   Plus,
   Scale,
   Scissors,
+  Recycle,
+  Ruler,
   Search,
   SearchX,
   ShieldCheck,
   Shirt,
+  Sofa,
   ShoppingBasket,
   ShoppingCart,
   Sparkles,
+  Snowflake,
   Stethoscope,
+  Store,
+  Ticket,
   Truck,
+  Users,
   Utensils,
   UtensilsCrossed,
+  Wheat,
+  Wine,
   Wrench,
   Zap,
   type LucideIcon,
@@ -174,12 +201,49 @@ const ACTIVITY_ICON: Record<string, LucideIcon> = {
   cordonnier: Scissors,
   demagement: Truck,
   securite: ShieldCheck,
-  pressing_2: Shirt,
+  conseil: Briefcase,
+  ingenieur: Cog,
+  geomestre: Ruler,
+  therapeute: Heart,
+  sage_femme: Baby,
+  services_financiers: Landmark,
+  reparateur_velo: Bike,
+  vins_spiritueux: Wine,
+  glacier: IceCream,
+  traiteur: UtensilsCrossed,
+  poissonnerie: Fish,
+  ferme: Wheat,
+  surgeles: Snowflake,
+  pates_fraiches: Wheat,
+  the_cafe: Coffee,
+  interim: Users,
+  recherche: Microscope,
+  coworking: Laptop,
+  bureaux: Building2,
+  energie: Zap,
+  administration: Landmark,
+  presse: Newspaper,
+  edition: BookOpen,
+  medias: Megaphone,
+  bibliotheque: BookOpen,
+  paris: Dices,
+  decoration: Armchair,
+  meubles: Sofa,
+  literie: Bed,
+  cadeaux: Gift,
+  seconde_main: Recycle,
+  antiquites: Gem,
+  journaux: Newspaper,
+  scierie: Axe,
+  brasserie_artisanale: Beer,
+  vignoble: Grape,
+  distillerie: FlaskConical,
+  billetterie: Ticket,
 };
 
 const CATEGORY_ICON: Record<BusinessCategory, LucideIcon> = {
   alimentation: ShoppingBasket,
-  artisan: Hammer,
+  artisan: Store,
   horeca: UtensilsCrossed,
   distributeur: ShoppingCart,
 };
@@ -328,6 +392,8 @@ export function AnnuaireTab({
   geoShortLabel,
   searchQuery,
   onSearchQueryChange,
+  activity,
+  onActivityChange,
   onCreated,
 }: {
   businesses: Business[];
@@ -336,6 +402,8 @@ export function AnnuaireTab({
   geoShortLabel: string;
   searchQuery: string;
   onSearchQueryChange: (q: string) => void;
+  activity: string;
+  onActivityChange: (a: string) => void;
   onCreated: (b: Business) => void;
 }) {
   const [category, setCategory] = useState<BusinessCategory | "all">("all");
@@ -343,7 +411,6 @@ export function AnnuaireTab({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
   const [addOpen, setAddOpen] = useState(false);
-  const [subcat, setSubcat] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [catDialog, setCatDialog] = useState(false);
   const [catSearch, setCatSearch] = useState("");
@@ -390,7 +457,7 @@ export function AnnuaireTab({
     const needle = normalizeText(searchQuery.trim());
     return byCategory.filter(
       (b) =>
-        (subcat === "all" || activityKey(b.subcategory) === subcat) &&
+        (activity === "all" || activityKey(b.subcategory) === activity) &&
         (needle === "" ||
           normalizeText(b.name).includes(needle) ||
           normalizeText(b.town).includes(needle) ||
@@ -398,7 +465,7 @@ export function AnnuaireTab({
           normalizeText(activityLabel(b.subcategory)).includes(needle) ||
           normalizeText(CATEGORY_LABELS[b.category]).includes(needle)),
     );
-  }, [byCategory, subcat, searchQuery]);
+  }, [byCategory, activity, searchQuery]);
 
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
   const visibleItems = filtered.slice(0, visible);
@@ -456,7 +523,7 @@ export function AnnuaireTab({
             type="button"
             onClick={() => {
               setCategory(c.key);
-              setSubcat("all");
+              onActivityChange("all");
               setVisible(PAGE_SIZE);
             }}
             className={cn(
@@ -483,10 +550,10 @@ export function AnnuaireTab({
             aria-label="Filtrer par activité"
           >
             <span className="truncate">
-              {subcat === "all"
+              {activity === "all"
                 ? `Toutes les activités (${byCategory.length})`
-                : `${SUBCATEGORY_GROUP_LABELS[subcat] ?? activityLabel(subcat)}${
-                    subcats.find(([k]) => k === subcat) ? ` (${subcats.find(([k]) => k === subcat)![1]})` : ""
+                : `${SUBCATEGORY_GROUP_LABELS[activity] ?? activityLabel(activity)}${
+                    subcats.find(([k]) => k === activity) ? ` (${subcats.find(([k]) => k === activity)![1]})` : ""
                   }`}
             </span>
             <ChevronDown className="size-4 shrink-0" />
@@ -506,13 +573,13 @@ export function AnnuaireTab({
                 <button
                   type="button"
                   onClick={() => {
-                    setSubcat("all");
+                    onActivityChange("all");
                     setVisible(PAGE_SIZE);
                     setCatDialog(false);
                   }}
                   className={cn(
                     "w-full rounded-lg px-3 py-2 text-left text-sm font-semibold",
-                    subcat === "all" ? "bg-accent-light text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                    activity === "all" ? "bg-accent-light text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
                   )}
                 >
                   Toutes les activités ({byCategory.length})
@@ -524,13 +591,13 @@ export function AnnuaireTab({
                       key={key}
                       type="button"
                       onClick={() => {
-                        setSubcat(key);
+                        onActivityChange(key);
                         setVisible(PAGE_SIZE);
                         setCatDialog(false);
                       }}
                       className={cn(
                         "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm",
-                        subcat === key ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                        activity === key ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
                       )}
                     >
                       <span className="truncate">{SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)}</span>
@@ -546,13 +613,13 @@ export function AnnuaireTab({
                       type="button"
                       onClick={() => {
                         setCategory("all");
-                        setSubcat(a.key);
+                        onActivityChange(a.key);
                         setVisible(PAGE_SIZE);
                         setCatDialog(false);
                       }}
                       className={cn(
                         "w-full rounded-lg px-3 py-2 text-left text-sm",
-                        subcat === a.key
+                        activity === a.key
                           ? "bg-accent-light font-semibold text-accent-dark"
                           : "text-neutral-400 hover:bg-neutral-50 hover:text-neutral-600",
                       )}
@@ -588,9 +655,16 @@ export function AnnuaireTab({
             onSelect={(id) => setSelectedId(id === selectedId ? null : id)}
           />
           <div className="hidden space-y-3 lg:block lg:max-h-[70vh] lg:overflow-y-auto lg:pr-1">
-            {visibleItems.map((b) => (
-              <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
-            ))}
+            {selected && (
+              <div className="rounded-2xl ring-2 ring-forest">
+                <BusinessCard b={selected} onClaim={setClaimTarget} />
+              </div>
+            )}
+            {visibleItems
+              .filter((b) => b.id !== selected?.id)
+              .map((b) => (
+                <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
+              ))}
           </div>
           {selected && (
             <div className="lg:hidden">

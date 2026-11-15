@@ -14,6 +14,7 @@ interface BusinessMapProps {
 
 const TIER_FILL: Record<string, string> = {
   pro: "#38BDF8",
+  visibility: "#F59E0B",
   verified: "#15803D",
   standard: "#A3A3A3",
 };
@@ -191,6 +192,9 @@ export function BusinessMap({ items, center, selectedId, onSelect }: BusinessMap
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="size-2.5 rounded-full bg-accent" /> Pro
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="size-2.5 rounded-full bg-amber-500" /> Visibilité
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="size-2.5 rounded-full bg-forest" /> Vérifiée

@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/bce-update.yml"
+      - "scripts/import-bce.mjs"
 
 permissions:
   contents: write
