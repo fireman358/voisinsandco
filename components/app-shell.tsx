@@ -185,7 +185,6 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
         demo={demo}
         count={total}
         onRadiusChange={setRadius}
-        onCitySelect={handleCitySelect}
         onUseGps={handleUseGps}
       />
       <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 md:max-w-5xl xl:max-w-7xl">
@@ -208,6 +207,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
                 category={category}
                 onCategoryChange={setCategory}
                 facets={facets}
+                onCitySelect={handleCitySelect}
                 onCreated={handleBusinessCreated}
               />
             </TabsContent>

@@ -21,7 +21,6 @@ import {
   Candy,
   Car,
   Dices,
-  ChevronDown,
   Clock,
   Coffee,
   Cheese,
@@ -72,6 +71,7 @@ import {
   SearchX,
   ShieldCheck,
   Shirt,
+  SlidersHorizontal,
   Sofa,
   ShoppingBasket,
   ShoppingCart,
@@ -87,25 +87,20 @@ import {
   Wheat,
   Wine,
   Wrench,
+  X,
   Zap,
   type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Card, CardContent } from "@/components/ui/card";
 import { BusinessMap } from "@/components/business-map";
 import { ClaimDialog } from "@/components/claim-dialog";
 import { ShareButton } from "@/components/share-button";
 import { AddBusinessDialog } from "@/components/add-business-dialog";
 import { ListSkeleton } from "@/components/skeletons";
+import communesJson from "@/lib/communes.json";
 import { formatDistance } from "@/lib/format";
 import {
   CATEGORY_LABELS,
@@ -116,6 +111,8 @@ import {
   type BusinessCategory,
 } from "@/lib/types";
 import { cn, normalizeText } from "@/lib/utils";
+
+const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
 
 const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
   { key: "all", label: "Tous" },
@@ -290,98 +287,93 @@ function TierBadge({ tier, prime }: { tier: Business["tier"]; prime?: boolean })
 }
 
 function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => void }) {
+  const [open, setOpen] = useState(false);
   const telHref = b.phone ? `tel:${b.phone.replace(/[^+\d]/g, "")}` : null;
   const directions = `https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}`;
   const Icon = ACTIVITY_ICON[activityKey(b.subcategory)] ?? CATEGORY_ICON[b.category] ?? ShoppingBasket;
   return (
     <Card className={cn("lift overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
-      <CardHeader className="pb-2">
+      <CardContent className="space-y-2 p-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2.5">
             <div
               className={cn(
-                "flex size-10 shrink-0 items-center justify-center rounded-xl",
+                "flex size-9 shrink-0 items-center justify-center rounded-lg",
                 CATEGORY_TINT[b.category],
               )}
               aria-hidden="true"
             >
-              <Icon className="size-5" />
+              <Icon className="size-4.5" />
             </div>
             <div className="min-w-0">
-              <CardTitle className="truncate text-base">{b.name}</CardTitle>
-              <CardDescription className="truncate">
-                {b.tier !== "standard"
-                  ? b.bce
-                    ? "Entreprise authentifiée : enregistrée et active à la BCE, gérant vérifié."
-                    : "Commerçant authentifié : gérant vérifié par nos soins."
-                  : b.description}
-              </CardDescription>
+              <p className="truncate text-sm font-bold text-neutral-900">{b.name}</p>
+              <p className="truncate text-[11px] text-neutral-500">
+                {formatDistance(b.distanceKm)} • {b.town} ·{" "}
+                {activityLabel(b.subcategory) || CATEGORY_LABELS[b.category]}
+              </p>
             </div>
           </div>
           <TierBadge tier={b.tier} prime={b.prime} />
         </div>
-      </CardHeader>
-      <CardContent className="space-y-2">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-          <span className="inline-flex items-center gap-1 font-semibold text-forest">
-            <MapPin className="size-3.5" />
-            {formatDistance(b.distanceKm)} • {b.town} {b.postalCode}
-          </span>
-          <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-neutral-600">
-            {CATEGORY_LABELS[b.category]}
-          </span>
-        </div>
-        <p className="text-xs text-neutral-500">{b.address}</p>
-        {b.hours && (b.tier === "visibility" || b.tier === "pro") && (
-          <p className="flex items-center gap-1.5 text-xs text-neutral-600">
-            <Clock className="size-3.5 text-forest" />
-            {b.hours}
-          </p>
-        )}
-        {b.subcategory && (
-          <span className="inline-flex w-fit rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
-            {activityLabel(b.subcategory)}
-          </span>
-        )}
-        {b.news && b.tier === "pro" && (
-          <p className="flex items-start gap-1.5 rounded-lg bg-accent-light px-2.5 py-1.5 text-xs font-medium text-accent-dark">
-            <Megaphone className="mt-0.5 size-3.5 shrink-0" />
-            {b.news}
-          </p>
-        )}
-        {b.bce && <p className="font-mono text-[11px] text-neutral-400">N° BCE : {b.bce}</p>}
-        <div className="flex flex-wrap gap-2 pt-1">
+
+        <div className="flex flex-wrap items-center gap-1.5">
           {telHref && b.tier !== "standard" && (
-            <Button asChild variant="secondary" size="sm">
+            <Button asChild variant="secondary" size="sm" className="h-8">
               <a href={telHref}>
                 <Phone className="size-3.5" /> Appeler
               </a>
             </Button>
           )}
-          {b.website && b.tier === "pro" && (
-            <Button asChild variant="secondary" size="sm">
-              <a href={b.website} target="_blank" rel="noreferrer">
-                <Globe className="size-3.5" /> Site web
-              </a>
-            </Button>
-          )}
-          <Button asChild variant="secondary" size="sm">
+          <Button asChild variant="secondary" size="sm" className="h-8">
             <a href={directions} target="_blank" rel="noreferrer">
               <Navigation className="size-3.5" /> Itinéraire
             </a>
           </Button>
           <ShareButton title={b.name} text={`${b.name} — ${b.town} sur Le Bon Voisin`} />
-          {b.tier === "standard" && !b.id.startsWith("user-") && (
-            <Button variant="outline" size="sm" onClick={() => onClaim(b)}>
-              C&apos;est votre commerce ? Revendiquer
-            </Button>
-          )}
-          {b.id.startsWith("user-") && (
-            <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-medium text-forest">
-              Ajoutée par le gérant
-            </span>
-          )}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="rounded-md px-2 py-1 text-xs font-medium text-neutral-500 hover:bg-neutral-100"
+          >
+            {open ? "Moins" : "Détails"}
+          </button>
         </div>
+
+        {open && (
+          <div className="space-y-1.5 border-t border-neutral-100 pt-2 text-xs text-neutral-600">
+            <p className="flex items-center gap-1 text-neutral-500">
+              <MapPin className="size-3.5 text-forest" /> {b.address}
+            </p>
+            {b.hours && (b.tier === "visibility" || b.tier === "pro") && (
+              <p className="flex items-center gap-1.5">
+                <Clock className="size-3.5 text-forest" /> {b.hours}
+              </p>
+            )}
+            {b.news && b.tier === "pro" && (
+              <p className="flex items-start gap-1.5 rounded-lg bg-accent-light px-2 py-1 font-medium text-accent-dark">
+                <Megaphone className="mt-0.5 size-3.5 shrink-0" /> {b.news}
+              </p>
+            )}
+            {b.bce && <p className="font-mono text-[11px] text-neutral-400">N° BCE : {b.bce}</p>}
+            {b.website && (
+              <Button asChild variant="secondary" size="sm" className="h-8">
+                <a href={b.website} target="_blank" rel="noreferrer">
+                  <Globe className="size-3.5" /> Site web
+                </a>
+              </Button>
+            )}
+            {b.tier === "standard" && !b.id.startsWith("user-") && (
+              <Button variant="outline" size="sm" className="h-8" onClick={() => onClaim(b)}>
+                C&apos;est votre commerce ? Revendiquer
+              </Button>
+            )}
+            {b.id.startsWith("user-") && (
+              <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-medium text-forest">
+                Ajoutée par le gérant
+              </span>
+            )}
+          </div>
+        )}
       </CardContent>
     </Card>
   );
@@ -399,6 +391,7 @@ export function AnnuaireTab({
   category,
   onCategoryChange,
   facets,
+  onCitySelect,
   onCreated,
 }: {
   businesses: Business[];
@@ -412,6 +405,7 @@ export function AnnuaireTab({
   category: BusinessCategory | "all";
   onCategoryChange: (c: BusinessCategory | "all") => void;
   facets: Record<string, number>;
+  onCitySelect: (city: { name: string; lat: number; lng: number }) => void;
   onCreated: (b: Business) => void;
 }) {
   const [view, setView] = useState<"list" | "map">("list");
@@ -419,13 +413,8 @@ export function AnnuaireTab({
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const [catDialog, setCatDialog] = useState(false);
   const [catSearch, setCatSearch] = useState("");
-
-  const byCategory = useMemo(
-    () => (category === "all" ? businesses : businesses.filter((b) => b.category === category)),
-    [businesses, category],
-  );
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Compteurs d'activités « globaux » (facettes du rayon) : ils restent visibles
   // même après avoir choisi une catégorie ou une activité.
@@ -438,6 +427,31 @@ export function AnnuaireTab({
 
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
   const visibleItems = filtered.slice(0, visible);
+
+  // Recherche unifiée : si le texte correspond à une commune, on recentre ;
+  // sinon c'est un filtre texte (géré côté serveur).
+  const communeMatches = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (q.length < 2) return [];
+    return COMMUNES.filter((c) => c.name.toLowerCase().startsWith(q)).slice(0, 8);
+  }, [searchQuery]);
+
+  const onSearchEnter = () => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return;
+    const c = COMMUNES.find((x) => x.name.toLowerCase() === q) ?? communeMatches[0];
+    if (c) {
+      onCitySelect({ name: c.name, lat: c.lat, lng: c.lng });
+      onSearchQueryChange("");
+    }
+  };
+
+  const resetFilters = () => {
+    onCategoryChange("all");
+    onActivityChange("all");
+    onSearchQueryChange("");
+    setVisible(PAGE_SIZE);
+  };
 
   return (
     <div className="space-y-3">
@@ -473,117 +487,161 @@ export function AnnuaireTab({
       </div>
 
       <div
-        className="sticky z-30 space-y-2.5 bg-paper pb-2"
+        className="sticky z-30 bg-paper py-2"
         style={{ top: "var(--app-header-h, 0px)" }}
       >
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
-          <Input
-            value={searchQuery}
-            onChange={(e) => {
-              onSearchQueryChange(e.target.value);
-              setVisible(PAGE_SIZE);
-            }}
-            placeholder="Rechercher : pharmacie, boulangerie, nom, Rue…"
-            className="pl-9"
-          />
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1">
+            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => {
+                onSearchQueryChange(e.target.value);
+                setVisible(PAGE_SIZE);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  onSearchEnter();
+                }
+              }}
+              placeholder="Commune ou commerce…"
+              className="pl-9"
+              list="annuaire-communes"
+              aria-label="Rechercher une commune ou un commerce"
+            />
+            <datalist id="annuaire-communes">
+              {communeMatches.map((c) => (
+                <option key={c.name} value={c.name} />
+              ))}
+            </datalist>
+          </div>
+          <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)} className="h-10 shrink-0">
+            <SlidersHorizontal className="size-4" /> Filtres
+          </Button>
         </div>
-
-      <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
-        {CATEGORIES.map((c) => (
-          <button
-            key={c.key}
-            type="button"
-            onClick={() => {
-              onCategoryChange(c.key);
-              onActivityChange("all");
-              setVisible(PAGE_SIZE);
-            }}
-            className={cn(
-              "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-              category === c.key
-                ? "border-forest bg-forest text-white"
-                : "border-neutral-200 bg-white text-neutral-600 hover:border-forest/40",
+        {(activity !== "all" || category !== "all") && (
+          <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px]">
+            {category !== "all" && (
+              <span className="rounded-full bg-forest px-2 py-0.5 font-medium text-white">
+                {CATEGORIES.find((c) => c.key === category)?.label}
+              </span>
             )}
-          >
-            {c.label}
-          </button>
-        ))}
+            {activity !== "all" && (
+              <span className="rounded-full bg-accent-light px-2 py-0.5 font-medium text-accent-dark">
+                {SUBCATEGORY_GROUP_LABELS[activity] ?? activityLabel(activity)}
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="text-neutral-500 underline-offset-2 hover:underline"
+            >
+              Réinitialiser
+            </button>
+          </div>
+        )}
       </div>
 
-      {subcats.length > 0 && (
-        <div className="relative">
+      {filtersOpen && (
+        <>
           <button
             type="button"
-            onClick={() => {
-              setCatDialog((o) => !o);
-              setCatSearch("");
-            }}
-            className="flex h-10 w-full items-center justify-between gap-2 rounded-xl border border-accent-dark/40 bg-accent-light px-3 text-sm font-semibold text-accent-dark"
-            aria-label="Filtrer par activité"
-          >
-            <span className="truncate">
-              {activity === "all"
-                ? `Toutes les activités (${byCategory.length})`
-                : `${SUBCATEGORY_GROUP_LABELS[activity] ?? activityLabel(activity)}${
-                    subcats.find(([k]) => k === activity) ? ` (${subcats.find(([k]) => k === activity)![1]})` : ""
-                  }`}
-            </span>
-            <ChevronDown className="size-4 shrink-0" />
-          </button>
-          {catDialog && (
-            <div className="absolute z-30 mt-1 max-h-[70dvh] w-full overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-lg">
-              <div className="border-b border-neutral-100 p-2">
-                <Input
-                  autoFocus
-                  value={catSearch}
-                  onChange={(e) => setCatSearch(e.target.value)}
-                  placeholder="Tape un mot : informatique, pharmacie…"
-                  className="h-9"
-                />
-              </div>
-              <div className="max-h-[52dvh] overflow-y-auto p-1">
+            aria-label="Fermer les filtres"
+            className="fixed inset-0 z-40 bg-black/40"
+            onClick={() => setFiltersOpen(false)}
+          />
+          <div className="fixed inset-x-0 bottom-0 z-50 max-h-[82dvh] overflow-y-auto rounded-t-2xl bg-white p-4 shadow-2xl">
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-base font-bold text-neutral-900">Filtres</h2>
+              <button
+                type="button"
+                onClick={() => setFiltersOpen(false)}
+                aria-label="Fermer"
+                className="rounded-lg p-1 text-neutral-400 hover:bg-neutral-100"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">Catégorie</p>
+            <div className="flex flex-wrap gap-1.5">
+              {CATEGORIES.map((c) => (
                 <button
+                  key={c.key}
                   type="button"
                   onClick={() => {
+                    onCategoryChange(c.key);
                     onActivityChange("all");
                     setVisible(PAGE_SIZE);
-                    setCatDialog(false);
                   }}
                   className={cn(
-                    "w-full rounded-lg px-3 py-2 text-left text-sm font-semibold",
-                    activity === "all" ? "bg-accent-light text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                    "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                    category === c.key
+                      ? "border-forest bg-forest text-white"
+                      : "border-neutral-200 bg-white text-neutral-600 hover:border-forest/40",
                   )}
                 >
-                  Toutes les activités ({byCategory.length})
+                  {c.label}
                 </button>
-                {subcats
-                  .filter(([key]) => normalizeText(SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)).includes(normalizeText(catSearch.trim())))
-                  .map(([key, count]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => {
-                        onCategoryChange("all");
-                        onActivityChange(key);
-                        setVisible(PAGE_SIZE);
-                        setCatDialog(false);
-                      }}
-                      className={cn(
-                        "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm",
-                        activity === key ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
-                      )}
-                    >
-                      <span className="truncate">{SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)}</span>
-                      <span className="shrink-0 text-xs text-neutral-400">{count}</span>
-                    </button>
-                  ))}
-              </div>
+              ))}
             </div>
-          )}
-        </div>
+
+            <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">Activité</p>
+            <Input
+              value={catSearch}
+              onChange={(e) => setCatSearch(e.target.value)}
+              placeholder="Tape un mot : pharmacie, informatique…"
+              className="mb-2 h-9"
+            />
+            <div className="max-h-[36dvh] space-y-0.5 overflow-y-auto">
+              <button
+                type="button"
+                onClick={() => {
+                  onActivityChange("all");
+                  setVisible(PAGE_SIZE);
+                }}
+                className={cn(
+                  "flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm",
+                  activity === "all" ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                )}
+              >
+                <span>Toutes les activités</span>
+                <span className="text-xs text-neutral-400">{businesses.length}</span>
+              </button>
+              {subcats
+                .filter(([key]) => normalizeText(SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)).includes(normalizeText(catSearch.trim())))
+                .map(([key, count]) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => {
+                      onCategoryChange("all");
+                      onActivityChange(key);
+                      setVisible(PAGE_SIZE);
+                    }}
+                    className={cn(
+                      "flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm",
+                      activity === key ? "bg-accent-light font-semibold text-accent-dark" : "text-neutral-700 hover:bg-neutral-50",
+                    )}
+                  >
+                    <span className="truncate">{SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)}</span>
+                    <span className="shrink-0 text-xs text-neutral-400">{count}</span>
+                  </button>
+                ))}
+            </div>
+
+            <div className="mt-4 flex gap-2">
+              <Button variant="outline" className="flex-1" onClick={resetFilters}>
+                Réinitialiser
+              </Button>
+              <Button className="flex-1" onClick={() => setFiltersOpen(false)}>
+                Voir les résultats
+              </Button>
+            </div>
+          </div>
+        </>
       )}
-      </div>
 
       {loading && businesses.length === 0 ? (
         <ListSkeleton count={4} columns />

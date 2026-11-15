@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import communesJson from "@/lib/communes.json";
-import { ChevronDown, ChevronUp, Database, LocateFixed, MapPin, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ChevronDown, ChevronUp, Database, LocateFixed } from "lucide-react";
 import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
 import { FontSizeControl } from "@/components/font-size-control";
 import { InstallAppButton } from "@/components/install-app-button";
@@ -13,15 +10,12 @@ import { RADIUS_OPTIONS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { GeoState } from "@/lib/types";
 
-const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
-
 interface HeaderBarProps {
   geo: GeoState;
   radius: number;
   demo: boolean;
   count: number;
   onRadiusChange: (radius: number) => void;
-  onCitySelect: (city: { name: string; lat: number; lng: number }) => void;
   onUseGps: () => void;
 }
 
@@ -31,10 +25,8 @@ export function HeaderBar({
   demo,
   count,
   onRadiusChange,
-  onCitySelect,
   onUseGps,
 }: HeaderBarProps) {
-  const [cityQuery, setCityQuery] = useState("");
   const [collapsed, setCollapsed] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -61,27 +53,6 @@ export function HeaderBar({
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
-
-  const cityMatches = useMemo(() => {
-    const q = cityQuery.trim().toLowerCase();
-    if (q.length < 2) return [];
-    return COMMUNES.filter((c) => c.name.toLowerCase().startsWith(q)).slice(0, 8);
-  }, [cityQuery]);
-
-  const pickCity = (raw?: string) => {
-    const q = (raw ?? cityQuery).trim().toLowerCase();
-    if (!q) return false;
-    const c =
-      COMMUNES.find((x) => x.name.toLowerCase() === q) ??
-      cityMatches[0] ??
-      COMMUNES.find((x) => x.name.toLowerCase().includes(q));
-    if (c) {
-      onCitySelect(c);
-      setCityQuery("");
-      return true;
-    }
-    return false;
-  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
@@ -143,8 +114,8 @@ export function HeaderBar({
             <button
               type="button"
               onClick={() => setCollapsed((v) => !v)}
-              aria-label={collapsed ? "Afficher la recherche" : "Réduire la barre"}
-              title={collapsed ? "Afficher la recherche" : "Réduire la barre (plus de liste visible)"}
+              aria-label={collapsed ? "Afficher les réglages" : "Réduire la barre"}
+              title={collapsed ? "Afficher les réglages" : "Réduire la barre (plus de liste visible)"}
               className="rounded-lg bg-white/10 p-1.5 text-white/80 hover:bg-white/20"
             >
               {collapsed ? <ChevronDown className="size-4" /> : <ChevronUp className="size-4" />}
@@ -154,51 +125,6 @@ export function HeaderBar({
 
         {!collapsed && (
           <>
-            <div className="mt-2.5 flex items-center gap-2">
-              <div className="relative flex-1">
-                <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-forest" />
-                <Input
-                  list="communes-list"
-                  value={cityQuery}
-                  onChange={(e) => setCityQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      pickCity();
-                    }
-                  }}
-                  placeholder="Ta commune (ex. Seneffe, Namur, Dinant…)"
-                  className="h-10 pl-9 text-sm font-medium"
-                  aria-label="Rechercher une commune"
-                />
-                <datalist id="communes-list">
-                  {cityMatches.map((c) => (
-                    <option key={c.name} value={c.name} />
-                  ))}
-                </datalist>
-              </div>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => pickCity()}
-                title="Rechercher cette commune"
-                aria-label="Rechercher cette commune"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/20"
-              >
-                <Search className="size-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={onUseGps}
-                title="Utiliser ma position actuelle (GPS)"
-                aria-label="Utiliser ma position actuelle"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/20"
-              >
-                <LocateFixed className="size-4" />
-              </Button>
-            </div>
-
             <div className="mt-2 flex items-center gap-2">
               <span className="text-[11px] font-medium text-white/55">Rayon</span>
               <div className="flex overflow-hidden rounded-lg border border-white/15">
@@ -219,9 +145,18 @@ export function HeaderBar({
                   </button>
                 ))}
               </div>
-              <span className="ml-auto truncate text-[11px] text-white/45">
-                autour de {geo.shortLabel}
-              </span>
+              <div className="ml-auto flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={onUseGps}
+                  aria-label="Utiliser ma position (GPS)"
+                  title="Utiliser ma position actuelle (GPS)"
+                  className="rounded-lg bg-white/10 p-1.5 text-white/80 hover:bg-white/20"
+                >
+                  <LocateFixed className="size-3.5" />
+                </button>
+                <span className="truncate text-[11px] text-white/45">autour de {geo.shortLabel}</span>
+              </div>
             </div>
 
             <p className="mt-1.5 text-[11px] text-white/50">
