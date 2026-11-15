@@ -70,12 +70,13 @@ export async function listBusinesses(
   // Recherche texte côté serveur : indispensable avec 275 000 fiches, la
   // limite de 300 résultats les plus proches masquait les fiches plus loin.
   const needle = search?.trim().toLowerCase();
+  const digits = needle?.replace(/\D/g, "") ?? "";
   const matchesSearch = (b: Business) =>
     !needle ||
     b.name.toLowerCase().includes(needle) ||
     b.town.toLowerCase().includes(needle) ||
     b.address.toLowerCase().includes(needle) ||
-    (b.bce ?? "").replace(/\D/g, "").includes(needle.replace(/\D/g, ""));
+    (digits.length > 0 && (b.bce ?? "").replace(/\D/g, "").includes(digits));
   const conn = getDB();
   if (conn) {
     const args = [box.minLat, box.maxLat, box.minLng, box.maxLng];
