@@ -435,6 +435,17 @@ export function AnnuaireTab({
     [facets],
   );
 
+  // Activités du groupe sélectionné : la liste se met à jour quand on change de
+  // catégorie (Santé n'affiche plus Conseil/Construction, etc.).
+  const groupActivities = useMemo(
+    () => (category === "all" ? subcats : subcats.filter(([key]) => groupOf(key) === category)),
+    [subcats, category],
+  );
+  const groupTotal = useMemo(
+    () => groupActivities.reduce((sum, [, count]) => sum + count, 0),
+    [groupActivities],
+  );
+
   const filtered = businesses;
 
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
@@ -642,9 +653,9 @@ export function AnnuaireTab({
                 )}
               >
                 <span>Toutes les activités</span>
-                <span className="text-xs text-neutral-400">{businesses.length}</span>
+                <span className="text-xs text-neutral-400">{groupTotal}</span>
               </button>
-              {subcats
+              {groupActivities
                 .filter(([key]) => normalizeText(SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key)).includes(normalizeText(catSearch.trim())))
                 .map(([key, count]) => (
                   <button
