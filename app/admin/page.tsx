@@ -202,6 +202,21 @@ export default function AdminPage() {
     }
   };
 
+  const togglePrime = async (b: Business) => {
+    setError("");
+    try {
+      await api("/api/admin/tier", {
+        method: "POST",
+        body: JSON.stringify({ id: b.id, prime: !b.prime }),
+      });
+      const patch = (x: Business) => (x.id === b.id ? { ...x, prime: !b.prime } : x);
+      setResults((prev) => prev.map(patch));
+      setSubs((prev) => prev.map(patch));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
   const removeClaim = async (id: string) => {
     setError("");
     try {
@@ -545,6 +560,19 @@ export default function AdminPage() {
                             {t.label}
                           </button>
                         ))}
+                        <button
+                          type="button"
+                          onClick={() => togglePrime(b)}
+                          title="Mise en avant exclusive de secteur (+5 €/mois, passe au-dessus du Pro)"
+                          className={cn(
+                            "rounded-full border px-2.5 py-1 text-xs font-medium",
+                            b.prime
+                              ? "border-amber-500 bg-amber-500 text-white"
+                              : "border-neutral-200 bg-white text-neutral-600 hover:border-amber-400",
+                          )}
+                        >
+                          Prime +5 €
+                        </button>
                       </div>
                     </li>
                   ))}

@@ -17,7 +17,7 @@ import { BonsPlansTab } from "@/components/tabs/bons-plans-tab";
 import { MurTab } from "@/components/tabs/mur-tab";
 import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
-import { DEFAULT_BASE } from "@/lib/constants";
+import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
 import type { AgendaEvent, Business, Deal, GeoState, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
 
@@ -51,7 +51,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
       localStorage.setItem("voisins-geo", JSON.stringify(g));
     } catch {}
   }, []);
-  const [radius, setRadius] = useState(10);
+  const [radius, setRadius] = useState(DEFAULT_RADIUS);
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
   const [demo, setDemo] = useState(initialData?.demo ?? false);
@@ -147,7 +147,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
         onCitySelect={handleCitySelect}
         onUseGps={handleUseGps}
       />
-      <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4">
+      <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 lg:max-w-5xl">
         {loading && businesses.length === 0 && needs.length === 0 ? (
           <div className="flex items-center justify-center gap-2 py-20 text-sm text-neutral-500">
             <Loader2 className="size-5 animate-spin text-forest" /> Chargement du quartier…
@@ -198,8 +198,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
             </TabsList>
           </Tabs>
         )}
-      <footer className="relative overflow-hidden border-t border-white/10 bg-forest-950 px-4 py-5 text-center text-xs text-neutral-300">
-        <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
+      <footer className="relative overflow-hidden border-t border-white/10 bg-forest-950 px-4 py-3 text-center text-[11px] leading-5 text-neutral-400">
+        <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.04]" />
         <div className="relative">
           <p>
             Une réalisation{" "}
@@ -224,6 +224,10 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
               contributeurs d&apos;OpenStreetMap
             </a>{" "}
             (ODbL) ·{" "}
+            <Link href="/abonnements" className="text-accent underline-offset-2 hover:underline">
+              Les formules
+            </Link>{" "}
+            ·{" "}
             <Link href="/legal" className="text-accent underline-offset-2 hover:underline">
               Mentions légales &amp; confidentialité
             </Link>{" "}

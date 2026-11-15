@@ -1,6 +1,6 @@
 import { AppShell } from "@/components/app-shell";
 import { listBusinesses, parseGeo } from "@/lib/data";
-import { DEFAULT_BASE } from "@/lib/constants";
+import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
 import type { Business } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -42,7 +42,7 @@ export default async function Home() {
       new URLSearchParams({
         lat: String(DEFAULT_BASE.lat),
         lng: String(DEFAULT_BASE.lng),
-        radius: "10",
+        radius: String(DEFAULT_RADIUS),
       }),
     );
     const res = await listBusinesses(q, "all");

@@ -20,6 +20,8 @@ export interface Business {
   bce?: string;
   news?: string;
   paidUntil?: string | null;
+  /** Mise en avant exclusive de secteur (+5 €/mois) : passe avant les Pro. */
+  prime?: boolean;
   distanceKm?: number;
 }
 

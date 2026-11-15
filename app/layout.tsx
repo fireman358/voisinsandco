@@ -56,6 +56,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className={`${bricolage.variable} ${spaceMono.variable}`}>
       <body className="bg-paper font-sans text-neutral-900 antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var s=localStorage.getItem('voisins-font-size');if(s!=='sm'&&s!=='md'&&s!=='lg')s='md';document.documentElement.dataset.fontSize=s;}catch(e){}",
+          }}
+        />
         <ToastProvider>{children}</ToastProvider>
         <PwaRegister />
       </body>

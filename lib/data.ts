@@ -1,7 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
-import { DEFAULT_BASE, MAX_BUSINESS_RESULTS } from "./constants";
+import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
 import type { AgendaEvent, Business, BusinessTier, Deal, Need, Tool } from "./types";
 import { normalizeText } from "./utils";
 
@@ -20,7 +20,7 @@ export function parseGeo(searchParams: URLSearchParams): GeoQuery {
   return {
     lat: Number.isFinite(lat) && lat !== 0 ? lat : DEFAULT_BASE.lat,
     lng: Number.isFinite(lng) && lng !== 0 ? lng : DEFAULT_BASE.lng,
-    radius: VALID_RADII.includes(radius) ? radius : 10,
+    radius: VALID_RADII.includes(radius) ? radius : DEFAULT_RADIUS,
   };
 }
 
@@ -42,10 +42,23 @@ function withDistance<T extends { lat: number; lng: number }>(
     .filter((row) => row.distanceKm <= q.radius + 1e-6);
 }
 
-function byProThenDistance(a: Business, b: Business): number {
-  const proA = a.tier === "pro" ? 0 : 1;
-  const proB = b.tier === "pro" ? 0 : 1;
-  return proA - proB || (a.distanceKm ?? 0) - (b.distanceKm ?? 0);
+// Priorité d'affichage : Prime (+5 €) > Pro > Visibilité > (Vérifiée = Standard, gratuit).
+// À rang égal, le plus proche d'abord.
+const TIER_RANK: Record<string, number> = {
+  prime: 3,
+  pro: 2,
+  visibility: 1,
+  verified: 0,
+  standard: 0,
+};
+
+function rankOf(b: Business): number {
+  if (b.prime) return TIER_RANK.prime;
+  return TIER_RANK[b.tier] ?? 0;
+}
+
+function byTierThenDistance(a: Business, b: Business): number {
+  return rankOf(b) - rankOf(a) || (a.distanceKm ?? 0) - (b.distanceKm ?? 0);
 }
 
 export async function listBusinesses(
@@ -63,7 +76,7 @@ export async function listBusinesses(
           .prepare(
             `SELECT id, name, category, subcategory, tier, description, address, town,
                     postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-                    paid_until AS paidUntil
+                    paid_until AS paidUntil, prime
              FROM businesses
              WHERE lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?`,
           )
@@ -91,14 +104,14 @@ export async function listBusinesses(
     if (results.length > 0) {
       const matched = withDistance(q, results)
         .filter((b) => category === "all" || b.category === category)
-        .sort(byProThenDistance);
+        .sort(byTierThenDistance);
       // Borne la charge utile : on ne renvoie que les N plus proches (Pro en tête).
       return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: false, total: matched.length };
     }
   }
   const matched = withDistance(q, BUSINESSES)
     .filter((b) => category === "all" || b.category === category)
-    .sort(byProThenDistance);
+    .sort(byTierThenDistance);
   return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: true, total: matched.length };
 }
 
@@ -459,7 +472,7 @@ export async function adminSearchBusinesses(q: string): Promise<Business[]> {
   const query = (full: boolean) =>
     `SELECT id, name, category, ${full ? "subcategory, " : ""}tier, description, address, town,
             postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-            ${full ? "paid_until AS paidUntil" : "'' AS paidUntil"}
+            ${full ? "paid_until AS paidUntil, prime" : "'' AS paidUntil, 0 AS prime"}
      FROM businesses
      WHERE name LIKE ?1 OR town LIKE ?1
      ORDER BY name LIMIT 50`;
@@ -484,6 +497,16 @@ export async function setBusinessTier(
   await conn
     .prepare(`UPDATE businesses SET tier = ?, paid_until = ? WHERE id = ?`)
     .bind(tier, paidUntil ?? null, id)
+    .run();
+  return true;
+}
+
+export async function setBusinessPrime(id: string, prime: boolean): Promise<boolean> {
+  const conn = getDB();
+  if (!conn) return false;
+  await conn
+    .prepare(`UPDATE businesses SET prime = ? WHERE id = ?`)
+    .bind(prime ? 1 : 0, id)
     .run();
   return true;
 }
@@ -513,10 +536,10 @@ export async function listSubscriptions(): Promise<Business[]> {
         .prepare(
           `SELECT id, name, category, subcategory, tier, description, address, town,
                   postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
-                  paid_until AS paidUntil
+                  paid_until AS paidUntil, prime
            FROM businesses
            WHERE tier != 'standard'
-           ORDER BY paid_until ASC NULLS LAST LIMIT 100`,
+           ORDER BY prime DESC, paid_until ASC NULLS LAST LIMIT 100`,
         )
         .all<Business>()
     ).results ?? [];
@@ -526,7 +549,8 @@ export async function listSubscriptions(): Promise<Business[]> {
         await conn
           .prepare(
             `SELECT id, name, category, tier, description, address, town,
-                    postal_code AS postalCode, lat, lng, phone, website, hours, bce, news
+                    postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
+                    0 AS prime
              FROM businesses
              WHERE tier != 'standard'
              LIMIT 100`,

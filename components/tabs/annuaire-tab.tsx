@@ -5,6 +5,7 @@ import {
   BadgeCheck,
   ChevronDown,
   Clock,
+  Crown,
   Globe,
   Hammer,
   List,
@@ -69,7 +70,14 @@ const CATEGORY_TINT: Record<BusinessCategory, string> = {
   distributeur: "bg-neutral-100 text-neutral-600",
 };
 
-function TierBadge({ tier }: { tier: Business["tier"] }) {
+function TierBadge({ tier, prime }: { tier: Business["tier"]; prime?: boolean }) {
+  if (prime) {
+    return (
+      <Badge variant="amber" className="gap-1">
+        <Crown className="size-3" /> Prime
+      </Badge>
+    );
+  }
   if (tier === "pro") {
     return (
       <Badge variant="amber" className="gap-1">
@@ -117,7 +125,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               <CardDescription className="truncate">{b.description}</CardDescription>
             </div>
           </div>
-          <TierBadge tier={b.tier} />
+          <TierBadge tier={b.tier} prime={b.prime} />
         </div>
       </CardHeader>
       <CardContent className="space-y-2">
@@ -489,12 +497,16 @@ export function AnnuaireTab({
           {selected && <BusinessCard b={selected} onClaim={setClaimTarget} />}
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="grid items-start gap-3 md:grid-cols-2">
           {visibleItems.map((b) => (
             <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
           ))}
           {filtered.length > visibleItems.length && (
-            <Button variant="outline" className="w-full" onClick={() => setVisible((v) => v + PAGE_SIZE)}>
+            <Button
+              variant="outline"
+              className="w-full md:col-span-2"
+              onClick={() => setVisible((v) => v + PAGE_SIZE)}
+            >
               Afficher 50 de plus ({filtered.length - visibleItems.length} restantes)
             </Button>
           )}

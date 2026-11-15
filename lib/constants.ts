@@ -18,5 +18,8 @@ export const DEFAULT_BASE = BASE_POINTS[0];
 
 export const RADIUS_OPTIONS = [2, 5, 10, 15];
 
+/** Rayon par défaut à l'ouverture : on privilégie la proximité immédiate. */
+export const DEFAULT_RADIUS = 2;
+
 /** Nombre maximal de fiches renvoyées par /api/businesses (borne la charge utile). */
 export const MAX_BUSINESS_RESULTS = 300;

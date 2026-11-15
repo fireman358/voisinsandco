@@ -29,23 +29,42 @@ lines.push("-- pour préserver le contenu communautaire et le quota d'écritures
 lines.push("");
 
 // Les fiches BCE remplacées (radiées/déplacées hors Wallonie) disparaissent,
-// sauf celles revendiquées par un commerçant.
+// sauf celles revendiquées par un commerçant OU déjà passées en fiche payante
+// (tier != standard) : on ne supprime jamais une fiche payée.
 let bceCount = 0;
 for (const b of data.businesses) if (b.id.startsWith("bce-")) bceCount++;
 if (bceCount > 0) {
   lines.push(
-    "DELETE FROM businesses WHERE id LIKE 'bce-%' AND id NOT IN (SELECT business_id FROM claims);",
+    "DELETE FROM businesses WHERE id LIKE 'bce-%' AND tier = 'standard' AND id NOT IN (SELECT business_id FROM claims);",
   );
   lines.push("");
 }
 
+// Upsert qui PRÉSERVE le statut payant (tier, paid_until, prime) et les champs
+// gérés par le commerçant / l'admin (téléphone, site, horaires, actus).
+// Sans cela, un ré-import du seed remettait tout le monde en « standard ».
+const SEED_COLUMNS = [
+  "id", "name", "category", "subcategory", "tier", "description", "address", "town",
+  "postal_code", "lat", "lng", "phone", "website", "hours", "bce", "news",
+];
+const PRESERVED_ON_CONFLICT = [
+  "tier", "paid_until", "prime", "phone", "website", "hours", "news",
+];
 for (const b of data.businesses) {
+  const values = [
+    q(b.id), q(b.name), q(b.category), q(b.subcategory ?? ""), q(b.tier), q(b.description), q(b.address), q(b.town),
+    q(b.postalCode), q(b.lat), q(b.lng), q(b.phone ?? null), q(b.website ?? null),
+    q(b.hours ?? null), q(b.bce ?? null), q(b.news ?? null),
+  ];
+  // `prime` et `paid_until` sont ajoutés à l'INSERT uniquement s'ils existent en
+  // base (après migration 0011). On les met à leur valeur par défaut entre-temps.
   lines.push(
-    `INSERT OR REPLACE INTO businesses (id, name, category, subcategory, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news) VALUES (${[
-      q(b.id), q(b.name), q(b.category), q(b.subcategory ?? ""), q(b.tier), q(b.description), q(b.address), q(b.town),
-      q(b.postalCode), q(b.lat), q(b.lng), q(b.phone ?? null), q(b.website ?? null),
-      q(b.hours ?? null), q(b.bce ?? null), q(b.news ?? null),
-    ].join(", ")});`,
+    `INSERT INTO businesses (${SEED_COLUMNS.join(", ")}) VALUES (${values.join(", ")}) ` +
+      `ON CONFLICT(id) DO UPDATE SET ` +
+      SEED_COLUMNS.filter((c) => c !== "id" && !PRESERVED_ON_CONFLICT.includes(c))
+        .map((c) => `${c} = excluded.${c}`)
+        .join(", ") +
+      `;`,
   );
 }
 lines.push("");
