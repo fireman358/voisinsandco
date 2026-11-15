@@ -5,10 +5,10 @@ import communesJson from "@/lib/communes.json";
 import { ChevronDown, ChevronUp, Database, LocateFixed, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Slider } from "@/components/ui/slider";
 import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
 import { FontSizeControl } from "@/components/font-size-control";
 import { RADIUS_OPTIONS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import type { GeoState } from "@/lib/types";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
@@ -33,7 +33,6 @@ export function HeaderBar({
   onCitySelect,
   onUseGps,
 }: HeaderBarProps) {
-  const sliderIndex = Math.max(0, RADIUS_OPTIONS.indexOf(radius));
   const [cityQuery, setCityQuery] = useState("");
   const [collapsed, setCollapsed] = useState(false);
 
@@ -169,18 +168,22 @@ export function HeaderBar({
                   {radius} km autour de {geo.shortLabel}
                 </span>
               </div>
-              <Slider
-                value={[sliderIndex]}
-                min={0}
-                max={RADIUS_OPTIONS.length - 1}
-                step={1}
-                onValueChange={([i]) => onRadiusChange(RADIUS_OPTIONS[i])}
-                className="mt-2.5"
-                aria-label="Rayon de recherche en kilomètres"
-              />
-              <div className="mt-1 flex justify-between text-[10px] text-neutral-400">
+              <div className="mt-2 grid grid-cols-4 gap-1.5">
                 {RADIUS_OPTIONS.map((r) => (
-                  <span key={r}>{r} km</span>
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => onRadiusChange(r)}
+                    aria-pressed={radius === r}
+                    className={cn(
+                      "rounded-lg border px-2 py-1.5 text-xs font-semibold transition-colors",
+                      radius === r
+                        ? "border-forest bg-forest text-white"
+                        : "border-neutral-200 bg-white text-neutral-600 hover:border-forest/40",
+                    )}
+                  >
+                    {r} km
+                  </button>
                 ))}
               </div>
             </div>

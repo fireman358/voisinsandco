@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
 import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
-import type { AgendaEvent, Business, BusinessTier, Deal, Need, Tool } from "./types";
+import type { AgendaEvent, Business, BusinessCategory, BusinessTier, Deal, Need, Tool } from "./types";
 import { normalizeText } from "./utils";
 
 export interface GeoQuery {
@@ -744,4 +744,98 @@ export async function createTool(input: NewTool): Promise<{ tool: Tool; ownerTok
     }
   }
   return { tool, ownerToken, demo: true };
+}
+
+export interface NewBusiness {
+  name: string;
+  category: BusinessCategory;
+  subcategory?: string;
+  description?: string;
+  address: string;
+  town: string;
+  postalCode: string;
+  lat: number;
+  lng: number;
+  phone?: string;
+  website?: string;
+  hours?: string;
+  bce?: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone?: string;
+}
+
+/**
+ * Ajout d'un commerce par son gérant (libre-service). La fiche est créée en
+ * « standard » et immédiatement auto-revendiquée (une demande de vérification
+ * est déposée dans la console admin), pour que le gérant n'ait pas à recliquer
+ * « Revendiquer ». On ne la passe pas d'office en « Vérifiée » (anti-abus).
+ */
+export async function createBusiness(
+  input: NewBusiness,
+): Promise<{ business: Business; demo: boolean }> {
+  const business: Business = {
+    id: `user-${crypto.randomUUID()}`,
+    name: input.name,
+    category: input.category,
+    subcategory: input.subcategory,
+    tier: "standard",
+    description: input.description || "Commerce de proximité ajouté par son gérant.",
+    address: input.address,
+    town: input.town,
+    postalCode: input.postalCode,
+    lat: input.lat,
+    lng: input.lng,
+    phone: input.phone,
+    website: input.website,
+    hours: input.hours,
+    bce: input.bce,
+  };
+  const conn = getDB();
+  if (conn) {
+    try {
+      await conn
+        .prepare(
+          `INSERT INTO businesses (id, name, category, subcategory, tier, description, address, town, postal_code, lat, lng, phone, website, hours, bce, news)
+           VALUES (?, ?, ?, ?, 'standard', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)`,
+        )
+        .bind(
+          business.id,
+          business.name,
+          business.category,
+          business.subcategory ?? "",
+          business.description,
+          business.address,
+          business.town,
+          business.postalCode,
+          business.lat,
+          business.lng,
+          business.phone ?? null,
+          business.website ?? null,
+          business.hours ?? null,
+          business.bce ?? null,
+        )
+        .run();
+      await conn
+        .prepare(
+          `INSERT INTO claims (id, business_id, name, email, phone, bce, message, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .bind(
+          crypto.randomUUID(),
+          business.id,
+          input.contactName,
+          input.contactEmail,
+          input.contactPhone ?? null,
+          business.bce ?? null,
+          "Fiche créée par le gérant (auto-revendiquée).",
+          new Date().toISOString(),
+        )
+        .run();
+      return { business, demo: false };
+    } catch {
+      // mode démo
+    }
+  }
+  return { business, demo: true };
 }

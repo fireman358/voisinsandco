@@ -18,6 +18,7 @@ import { MurTab } from "@/components/tabs/mur-tab";
 import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
 import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
+import { haversineKm } from "@/lib/geo";
 import type { AgendaEvent, Business, Deal, GeoState, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
 
@@ -107,6 +108,17 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleBusinessCreated = useCallback(
+    (b: Business) => {
+      setBusinesses((prev) => [
+        { ...b, distanceKm: haversineKm(geo.lat, geo.lng, b.lat, b.lng) },
+        ...prev,
+      ]);
+      setTotal((t) => t + 1);
+    },
+    [geo.lat, geo.lng],
+  );
+
   const handleCitySelect = useCallback(
     (city: { name: string; lat: number; lng: number }) => {
       setGeo({ lat: city.lat, lng: city.lng, label: city.name, shortLabel: city.name, isGeo: false });
@@ -155,7 +167,13 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
         ) : (
           <Tabs value={tab} onValueChange={setTab} className="w-full">
             <TabsContent value="annuaire" className="mt-0">
-              <AnnuaireTab businesses={businesses} loading={loading} center={{ lat: geo.lat, lng: geo.lng }} />
+              <AnnuaireTab
+                businesses={businesses}
+                loading={loading}
+                center={{ lat: geo.lat, lng: geo.lng }}
+                geoShortLabel={geo.shortLabel}
+                onCreated={handleBusinessCreated}
+              />
             </TabsContent>
             <TabsContent value="bons-plans" className="mt-0">
               <BonsPlansTab deals={deals} events={events} loading={loading} geo={geo} />

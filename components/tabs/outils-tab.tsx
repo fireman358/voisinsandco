@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/toast";
+import { ListSkeleton } from "@/components/skeletons";
 import { formatDistance } from "@/lib/format";
 import { getOwnerToken, loadOwnedIds, removeOwnerToken, saveOwnerToken } from "@/lib/ownership";
 import type { Tool } from "@/lib/types";
@@ -290,7 +291,7 @@ export function OutilsTab({
         />
       </div>
       {loading && tools.length === 0 ? (
-        <p className="py-6 text-center text-sm text-neutral-400">Chargement de la boîte à outils…</p>
+        <ListSkeleton count={4} columns />
       ) : filtered.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-8 text-center">
           <p className="text-sm font-medium text-neutral-600">

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/toast";
 import { Textarea } from "@/components/ui/textarea";
+import { RowSkeleton } from "@/components/skeletons";
 import communesJson from "@/lib/communes.json";
 import { formatDateFr, formatDistance, formatPrice } from "@/lib/format";
 import { getOwnerToken, loadOwnedIds, removeOwnerToken, saveOwnerToken } from "@/lib/ownership";
@@ -348,7 +349,7 @@ export function BonsPlansTab({
           <h2 className="text-base font-bold text-neutral-900">Anti-gaspi du jour</h2>
         </div>
         {loading && localDeals.length === 0 ? (
-          <p className="py-6 text-center text-sm text-neutral-400">Chargement des bons plans…</p>
+          <RowSkeleton count={2} />
         ) : localDeals.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-8 text-center">
             <p className="text-sm font-medium text-neutral-600">Aucun panier invendu dans ce rayon pour le moment.</p>

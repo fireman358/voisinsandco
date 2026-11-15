@@ -14,6 +14,7 @@ import {
   Megaphone,
   Navigation,
   Phone,
+  Plus,
   Search,
   SearchX,
   ShoppingBasket,
@@ -35,6 +36,9 @@ import {
 } from "@/components/ui/dialog";
 import { BusinessMap } from "@/components/business-map";
 import { ClaimDialog } from "@/components/claim-dialog";
+import { ShareButton } from "@/components/share-button";
+import { AddBusinessDialog } from "@/components/add-business-dialog";
+import { ListSkeleton } from "@/components/skeletons";
 import { formatDistance } from "@/lib/format";
 import {
   CATEGORY_LABELS,
@@ -177,10 +181,16 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               <Navigation className="size-3.5" /> Itinéraire
             </a>
           </Button>
-          {b.tier === "standard" && (
+          <ShareButton title={b.name} text={`${b.name} — ${b.town} sur Voisins & Co`} />
+          {b.tier === "standard" && !b.id.startsWith("user-") && (
             <Button variant="outline" size="sm" onClick={() => onClaim(b)}>
               C&apos;est votre commerce ? Revendiquer
             </Button>
+          )}
+          {b.id.startsWith("user-") && (
+            <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-medium text-forest">
+              Ajoutée par le gérant
+            </span>
           )}
         </div>
       </CardContent>
@@ -192,15 +202,20 @@ export function AnnuaireTab({
   businesses,
   loading,
   center,
+  geoShortLabel,
+  onCreated,
 }: {
   businesses: Business[];
   loading: boolean;
   center: { lat: number; lng: number };
+  geoShortLabel: string;
+  onCreated: (b: Business) => void;
 }) {
   const [category, setCategory] = useState<BusinessCategory | "all">("all");
   const [view, setView] = useState<"list" | "map">("list");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
+  const [addOpen, setAddOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [subcat, setSubcat] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -264,29 +279,34 @@ export function AnnuaireTab({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-base font-bold text-neutral-900">Commerces &amp; artisans du périmètre</h2>
-        <div className="flex rounded-xl border border-neutral-200 bg-white p-0.5 text-xs font-medium">
-          <button
-            type="button"
-            onClick={() => setView("list")}
-            className={cn(
-              "flex items-center gap-1 rounded-lg px-2.5 py-1.5",
-              view === "list" ? "bg-forest text-white" : "text-neutral-500",
-            )}
-          >
-            <List className="size-3.5" /> Liste
-          </button>
-          <button
-            type="button"
-            onClick={() => setView("map")}
-            className={cn(
-              "flex items-center gap-1 rounded-lg px-2.5 py-1.5",
-              view === "map" ? "bg-forest text-white" : "text-neutral-500",
-            )}
-          >
-            <MapIcon className="size-3.5" /> Carte
-          </button>
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="outline" onClick={() => setAddOpen(true)}>
+            <Plus className="size-3.5" /> Ajouter
+          </Button>
+          <div className="flex rounded-xl border border-neutral-200 bg-white p-0.5 text-xs font-medium">
+            <button
+              type="button"
+              onClick={() => setView("list")}
+              className={cn(
+                "flex items-center gap-1 rounded-lg px-2.5 py-1.5",
+                view === "list" ? "bg-forest text-white" : "text-neutral-500",
+              )}
+            >
+              <List className="size-3.5" /> Liste
+            </button>
+            <button
+              type="button"
+              onClick={() => setView("map")}
+              className={cn(
+                "flex items-center gap-1 rounded-lg px-2.5 py-1.5",
+                view === "map" ? "bg-forest text-white" : "text-neutral-500",
+              )}
+            >
+              <MapIcon className="size-3.5" /> Carte
+            </button>
+          </div>
         </div>
       </div>
 
@@ -475,8 +495,8 @@ export function AnnuaireTab({
         </DialogContent>
       </Dialog>
 
-      {loading ? (
-        <p className="py-8 text-center text-sm text-neutral-400">Mise à jour du périmètre…</p>
+      {loading && businesses.length === 0 ? (
+        <ListSkeleton count={4} columns />
       ) : filtered.length === 0 ? (
         <div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-neutral-300 bg-white py-10 text-center">
           <SearchX className="size-8 text-neutral-300" />
@@ -487,14 +507,23 @@ export function AnnuaireTab({
           </p>
         </div>
       ) : view === "map" ? (
-        <div className="space-y-3">
+        <div className="space-y-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4 lg:space-y-0">
           <BusinessMap
             items={filtered}
             center={center}
             selectedId={selectedId}
             onSelect={(id) => setSelectedId(id === selectedId ? null : id)}
           />
-          {selected && <BusinessCard b={selected} onClaim={setClaimTarget} />}
+          <div className="hidden space-y-3 lg:block lg:max-h-[70vh] lg:overflow-y-auto lg:pr-1">
+            {visibleItems.map((b) => (
+              <BusinessCard key={b.id} b={b} onClaim={setClaimTarget} />
+            ))}
+          </div>
+          {selected && (
+            <div className="lg:hidden">
+              <BusinessCard b={selected} onClaim={setClaimTarget} />
+            </div>
+          )}
         </div>
       ) : (
         <div className="grid items-start gap-3 md:grid-cols-2">
@@ -519,6 +548,12 @@ export function AnnuaireTab({
         onOpenChange={(o) => {
           if (!o) setClaimTarget(null);
         }}
+      />
+      <AddBusinessDialog
+        open={addOpen}
+        onOpenChange={setAddOpen}
+        geo={{ lat: center.lat, lng: center.lng, shortLabel: geoShortLabel }}
+        onCreated={onCreated}
       />
     </div>
   );
