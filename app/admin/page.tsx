@@ -309,8 +309,11 @@ export default function AdminPage() {
       });
       const patch = (x: Business) => (x.id === b.id ? { ...x, tier, paidUntil: paidUntil || null } : x);
       setResults((prev) => prev.map(patch));
-      setSubs((prev) => prev.map(patch));
-      if (tier === "standard") setSubs((prev) => prev.filter((x) => x.id !== b.id));
+      setSubs((prev) => {
+        if (tier === "standard") return prev.filter((x) => x.id !== b.id);
+        if (prev.some((x) => x.id === b.id)) return prev.map(patch);
+        return [...prev, { ...b, tier, paidUntil: paidUntil || null }];
+      });
     } catch (e) {
       setError((e as Error).message);
     }
@@ -371,6 +374,8 @@ export default function AdminPage() {
   const [fWebsite, setFWebsite] = useState("");
   const [fHours, setFHours] = useState("");
   const [fNews, setFNews] = useState("");
+  const [fTier, setFTier] = useState<BusinessTier>("standard");
+  const [fPaidUntil, setFPaidUntil] = useState("");
   const openEdit = (b: Business) => {
     setEditTarget(b);
     setFName(b.name);
@@ -384,6 +389,8 @@ export default function AdminPage() {
     setFWebsite(b.website ?? "");
     setFHours(b.hours ?? "");
     setFNews(b.news ?? "");
+    setFTier(b.tier);
+    setFPaidUntil(b.paidUntil ?? "");
   };
   const saveDetails = async () => {
     if (!editTarget) return;
@@ -428,6 +435,9 @@ export default function AdminPage() {
           : x;
       setResults((prev) => prev.map(patch));
       setSubs((prev) => prev.map(patch));
+      if (fTier !== editTarget.tier || (fPaidUntil || null) !== (editTarget.paidUntil ?? null)) {
+        await saveTier(editTarget, fTier, fPaidUntil || null);
+      }
       setEditTarget(null);
     } catch (e) {
       setError((e as Error).message);
@@ -1006,6 +1016,34 @@ export default function AdminPage() {
             <div className="space-y-1.5">
               <Label htmlFor="f-news">Actu / offre flash (Pack Pro)</Label>
               <Input id="f-news" value={fNews} onChange={(e) => setFNews(e.target.value)} placeholder="Pain au levain chaud dès 16h" />
+            </div>
+            <div className="space-y-2 rounded-xl border border-neutral-200 bg-paper/60 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">Abonnement</p>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="space-y-1.5">
+                  <Label htmlFor="f-tier">Pack</Label>
+                  <select
+                    id="f-tier"
+                    value={fTier}
+                    onChange={(e) => setFTier(e.target.value as BusinessTier)}
+                    className="h-10 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm"
+                  >
+                    {TIERS.map((t) => (
+                      <option key={t.key} value={t.key}>{t.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="f-paid">Échéance (optionnel)</Label>
+                  <input
+                    id="f-paid"
+                    type="date"
+                    value={fPaidUntil}
+                    onChange={(e) => setFPaidUntil(e.target.value)}
+                    className="h-10 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="flex justify-end gap-2 pt-2">
