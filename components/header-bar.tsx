@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 import type { GeoState } from "@/lib/types";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
-const COLLAPSE_KEY = "voisins-header-collapsed";
 
 interface HeaderBarProps {
   geo: GeoState;
@@ -37,26 +36,31 @@ export function HeaderBar({
 }: HeaderBarProps) {
   const [cityQuery, setCityQuery] = useState("");
   const [collapsed, setCollapsed] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  // Repli automatique : on réduit le header en défilant vers le bas, on le
+  // ré-ouvre en remontant ou en revenant en haut.
   useEffect(() => {
-    try {
-      setCollapsed(localStorage.getItem(COLLAPSE_KEY) === "1");
-    } catch {
-      /* stockage indisponible */
-    }
+    let lastY = window.scrollY;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        const delta = y - lastY;
+        if (y < 40) setCollapsed(false);
+        else if (delta > 8) setCollapsed(true);
+        else if (delta < -8) setCollapsed(false);
+        lastY = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
-
-  const toggleCollapsed = () => {
-    setCollapsed((prev) => {
-      const next = !prev;
-      try {
-        localStorage.setItem(COLLAPSE_KEY, next ? "1" : "0");
-      } catch {
-        /* stockage indisponible */
-      }
-      return next;
-    });
-  };
 
   const cityMatches = useMemo(() => {
     const q = cityQuery.trim().toLowerCase();
@@ -80,29 +84,65 @@ export function HeaderBar({
   };
 
   return (
-    <header className="sticky top-0 z-40 overflow-hidden border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
       <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
-      <div className="relative mx-auto w-full max-w-3xl px-4 py-3 md:max-w-5xl xl:max-w-7xl">
+      <div className="relative mx-auto w-full max-w-3xl px-4 py-2.5 md:max-w-5xl xl:max-w-7xl">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="text-3xl font-extrabold leading-none tracking-tight text-white">LBV</h1>
-            <p className="mt-1 text-[13px] font-semibold text-white/85">Le Bon Voisin</p>
-            {!collapsed && (
-              <p className="text-[11px] font-medium text-white/50">
-                Économie locale &amp; entraide de voisinage
-              </p>
-            )}
+            <h1 className="text-2xl font-extrabold leading-none tracking-tight text-white">LBV</h1>
+            <p className="mt-0.5 text-[12px] font-semibold text-white/85">Le Bon Voisin</p>
           </div>
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5">
             {demo && !collapsed && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/80">
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/80">
                 <Database className="size-3" /> Démo
               </span>
             )}
             <FontSizeControl />
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-label="Menu"
+                title="Menu"
+                className="rounded-lg bg-white/10 px-2 py-1 text-white/80 hover:bg-white/20"
+              >
+                <span className="text-base leading-none">⋯</span>
+              </button>
+              {menuOpen && (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Fermer le menu"
+                    className="fixed inset-0 z-40 cursor-default"
+                    onClick={() => setMenuOpen(false)}
+                  />
+                  <div className="absolute right-0 top-full z-50 mt-1 w-56 overflow-hidden rounded-xl border border-neutral-200 bg-white text-neutral-800 shadow-lg">
+                    <Link
+                      href="/comment-ca-marche"
+                      onClick={() => setMenuOpen(false)}
+                      className="block px-3 py-2 text-sm hover:bg-neutral-50"
+                    >
+                      Comment ça marche
+                    </Link>
+                    <Link
+                      href="/abonnements"
+                      onClick={() => setMenuOpen(false)}
+                      className="block px-3 py-2 text-sm hover:bg-neutral-50"
+                    >
+                      Les formules
+                    </Link>
+                    <InstallAppButton
+                      className="flex w-full items-center gap-1 px-3 py-2 text-left text-sm font-normal text-neutral-800 hover:bg-neutral-50"
+                      onClick={() => setMenuOpen(false)}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
             <button
               type="button"
-              onClick={toggleCollapsed}
+              onClick={() => setCollapsed((v) => !v)}
               aria-label={collapsed ? "Afficher la recherche" : "Réduire la barre"}
               title={collapsed ? "Afficher la recherche" : "Réduire la barre (plus de liste visible)"}
               className="rounded-lg bg-white/10 p-1.5 text-white/80 hover:bg-white/20"
@@ -114,7 +154,7 @@ export function HeaderBar({
 
         {!collapsed && (
           <>
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-2.5 flex items-center gap-2">
               <div className="relative flex-1">
                 <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-forest" />
                 <Input
@@ -158,18 +198,10 @@ export function HeaderBar({
                 <LocateFixed className="size-4" />
               </Button>
             </div>
-            <p className="mt-1 text-[11px] text-white/50">
-              Tape ta commune puis Entrée (ou la loupe) — pas besoin de GPS.
-            </p>
 
-            <div className="mt-2.5 rounded-xl bg-white px-3 py-2.5 text-neutral-900 shadow-sm">
-              <div className="flex items-center justify-between gap-2 text-xs font-medium text-neutral-600">
-                <span>Rayon de recherche</span>
-                <span className="whitespace-nowrap rounded-md bg-forest px-2 py-0.5 font-semibold text-white">
-                  {radius} km autour de {geo.shortLabel}
-                </span>
-              </div>
-              <div className="mt-2 grid grid-cols-4 gap-1.5">
+            <div className="mt-2 flex items-center gap-2">
+              <span className="text-[11px] font-medium text-white/55">Rayon</span>
+              <div className="flex overflow-hidden rounded-lg border border-white/15">
                 {RADIUS_OPTIONS.map((r) => (
                   <button
                     key={r}
@@ -177,38 +209,24 @@ export function HeaderBar({
                     onClick={() => onRadiusChange(r)}
                     aria-pressed={radius === r}
                     className={cn(
-                      "rounded-lg border px-2 py-1.5 text-xs font-semibold transition-colors",
+                      "px-2.5 py-1 text-xs font-semibold transition-colors",
                       radius === r
-                        ? "border-forest bg-forest text-white"
-                        : "border-neutral-200 bg-white text-neutral-600 hover:border-forest/40",
+                        ? "bg-accent text-forest-950"
+                        : "bg-white/5 text-white/70 hover:bg-white/10",
                     )}
                   >
                     {r} km
                   </button>
                 ))}
               </div>
+              <span className="ml-auto truncate text-[11px] text-white/45">
+                autour de {geo.shortLabel}
+              </span>
             </div>
 
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
-              <span className="text-xs text-white/60">
-                {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
-              </span>
-              <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold">
-                <Link
-                  href="/comment-ca-marche"
-                  className="rounded-md bg-white/10 px-2 py-1 text-accent underline-offset-2 hover:bg-white/20"
-                >
-                  Comment ça marche
-                </Link>
-                <Link
-                  href="/abonnements"
-                  className="rounded-md bg-white/10 px-2 py-1 text-accent underline-offset-2 hover:bg-white/20"
-                >
-                  Les formules
-                </Link>
-                <InstallAppButton className="bg-accent text-forest-950 hover:bg-accent/90" />
-              </nav>
-            </div>
+            <p className="mt-1.5 text-[11px] text-white/50">
+              {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
+            </p>
           </>
         )}
       </div>

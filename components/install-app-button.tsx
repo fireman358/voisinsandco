@@ -14,7 +14,7 @@ interface BeforeInstallPromptEvent extends Event {
  * le propose (Chrome/Edge Android & desktop), sinon affiche les instructions
  * (iPhone/iPad, ou navigateur non compatible).
  */
-export function InstallAppButton({ className }: { className?: string }) {
+export function InstallAppButton({ className, onClick }: { className?: string; onClick?: () => void }) {
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
   const [installed, setInstalled] = useState(false);
 
@@ -39,11 +39,13 @@ export function InstallAppButton({ className }: { className?: string }) {
       alert(
         "Pour installer Le Bon Voisin :\n\n• Android / Chrome : menu ⋮ → « Installer l'application »\n• iPhone / iPad : bouton Partager (carré avec flèche) → « Sur l'écran d'accueil »\n• Ordinateur : icône d'installation dans la barre d'adresse.",
       );
+      onClick?.();
       return;
     }
     await deferred.prompt();
     await deferred.userChoice;
     setDeferred(null);
+    onClick?.();
   };
 
   return (
