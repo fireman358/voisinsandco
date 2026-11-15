@@ -12,8 +12,8 @@ export async function GET(req: NextRequest) {
   const category = req.nextUrl.searchParams.get("category") ?? "all";
   const search = req.nextUrl.searchParams.get("q") ?? undefined;
   const activity = req.nextUrl.searchParams.get("activity") ?? undefined;
-  const { items, demo, total } = await listBusinesses(q, category, search, activity);
-  return NextResponse.json({ items, demo, total });
+  const { items, demo, total, facets } = await listBusinesses(q, category, search, activity);
+  return NextResponse.json({ items, demo, total, facets });
 }
 
 export async function POST(req: NextRequest) {

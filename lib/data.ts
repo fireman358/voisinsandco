@@ -83,12 +83,41 @@ function byTierThenDistance(a: Business, b: Business): number {
   );
 }
 
+/**
+ * Applique les filtres sur un lot déjà borné au rayon. Renvoie aussi les
+ * « facettes » d'activités (compteurs globaux du rayon, indépendants des filtres)
+ * pour que la liste des activités garde toujours ses nombres.
+ */
+function selectBusinesses(
+  q: GeoQuery,
+  rows: Business[],
+  category: string,
+  activity: string | undefined,
+  matchesSearch: (b: Business) => boolean,
+): { items: Business[]; total: number; facets: Record<string, number> } {
+  const all = withDistance(q, rows);
+  const facets: Record<string, number> = {};
+  for (const b of all) {
+    const key = activityKey(b.subcategory);
+    if (key) facets[key] = (facets[key] ?? 0) + 1;
+  }
+  const matched = all
+    .filter(
+      (b) =>
+        (category === "all" || b.category === category) &&
+        (!activity || activityKey(b.subcategory) === activity) &&
+        matchesSearch(b),
+    )
+    .sort(byTierThenDistance);
+  return { items: matched.slice(0, MAX_BUSINESS_RESULTS), total: matched.length, facets };
+}
+
 export async function listBusinesses(
   q: GeoQuery,
   category: string,
   search?: string,
   activity?: string,
-): Promise<{ items: Business[]; demo: boolean; total: number }> {
+): Promise<{ items: Business[]; demo: boolean; total: number; facets: Record<string, number> }> {
   const box = boundingBox(q.lat, q.lng, q.radius);
   // Recherche texte côté serveur : indispensable avec 275 000 fiches, la
   // limite de 300 résultats les plus proches masquait les fiches plus loin.
@@ -136,27 +165,10 @@ export async function listBusinesses(
       }
     }
     if (results.length > 0) {
-      const matched = withDistance(q, results)
-        .filter(
-          (b) =>
-            (category === "all" || b.category === category) &&
-            (!activity || activityKey(b.subcategory) === activity) &&
-            matchesSearch(b),
-        )
-        .sort(byTierThenDistance);
-      // Borne la charge utile : on ne renvoie que les N plus proches (Pro en tête).
-      return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: false, total: matched.length };
+      return { ...selectBusinesses(q, results, category, activity, matchesSearch), demo: false };
     }
   }
-  const matched = withDistance(q, BUSINESSES)
-    .filter(
-      (b) =>
-        (category === "all" || b.category === category) &&
-        (!activity || activityKey(b.subcategory) === activity) &&
-        matchesSearch(b),
-    )
-    .sort(byTierThenDistance);
-  return { items: matched.slice(0, MAX_BUSINESS_RESULTS), demo: true, total: matched.length };
+  return { ...selectBusinesses(q, BUSINESSES, category, activity, matchesSearch), demo: true };
 }
 
 export async function listDealsAndEvents(

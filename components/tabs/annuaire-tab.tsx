@@ -396,6 +396,9 @@ export function AnnuaireTab({
   onSearchQueryChange,
   activity,
   onActivityChange,
+  category,
+  onCategoryChange,
+  facets,
   onCreated,
 }: {
   businesses: Business[];
@@ -406,9 +409,11 @@ export function AnnuaireTab({
   onSearchQueryChange: (q: string) => void;
   activity: string;
   onActivityChange: (a: string) => void;
+  category: BusinessCategory | "all";
+  onCategoryChange: (c: BusinessCategory | "all") => void;
+  facets: Record<string, number>;
   onCreated: (b: Business) => void;
 }) {
-  const [category, setCategory] = useState<BusinessCategory | "all">("all");
   const [view, setView] = useState<"list" | "map">("list");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [claimTarget, setClaimTarget] = useState<Business | null>(null);
@@ -422,52 +427,14 @@ export function AnnuaireTab({
     [businesses, category],
   );
 
-  const subcats = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const b of byCategory) {
-      const key = activityKey(b.subcategory);
-      if (key) counts.set(key, (counts.get(key) ?? 0) + 1);
-    }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
-  }, [byCategory]);
+  // Compteurs d'activités « globaux » (facettes du rayon) : ils restent visibles
+  // même après avoir choisi une catégorie ou une activité.
+  const subcats = useMemo(
+    () => (Object.entries(facets) as [string, number][]).sort((a, b) => b[1] - a[1]),
+    [facets],
+  );
 
-  const groupedSubcats = useMemo(() => {
-    const counts = new Map<string, number>();
-    const catOf = new Map<string, BusinessCategory>();
-    for (const b of businesses) {
-      const key = activityKey(b.subcategory);
-      if (!key) continue;
-      counts.set(key, (counts.get(key) ?? 0) + 1);
-      if (!catOf.has(key)) catOf.set(key, b.category);
-    }
-    const byMain = new Map<BusinessCategory, { key: string; label: string; count: number }[]>();
-    for (const [key, count] of counts) {
-      const cat = catOf.get(key) as BusinessCategory;
-      const list = byMain.get(cat) ?? [];
-      list.push({ key, label: SUBCATEGORY_GROUP_LABELS[key] ?? activityLabel(key), count });
-      byMain.set(cat, list);
-    }
-    for (const list of byMain.values()) list.sort((a, b) => a.label.localeCompare(b.label, "fr"));
-    const catalog = Object.keys(SUBCATEGORY_GROUP_LABELS)
-      .filter((k) => !counts.has(k))
-      .map((k) => ({ key: k, label: SUBCATEGORY_GROUP_LABELS[k], count: 0 }))
-      .sort((a, b) => a.label.localeCompare(b.label, "fr"));
-    return { byMain, catalog };
-  }, [businesses]);
-
-  const filtered = useMemo(() => {
-    const needle = normalizeText(searchQuery.trim());
-    return byCategory.filter(
-      (b) =>
-        (activity === "all" || activityKey(b.subcategory) === activity) &&
-        (needle === "" ||
-          normalizeText(b.name).includes(needle) ||
-          normalizeText(b.town).includes(needle) ||
-          normalizeText(b.address).includes(needle) ||
-          normalizeText(activityLabel(b.subcategory)).includes(needle) ||
-          normalizeText(CATEGORY_LABELS[b.category]).includes(needle)),
-    );
-  }, [byCategory, activity, searchQuery]);
+  const filtered = businesses;
 
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
   const visibleItems = filtered.slice(0, visible);
@@ -505,18 +472,22 @@ export function AnnuaireTab({
         </div>
       </div>
 
-      <div className="relative">
-        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
-        <Input
-          value={searchQuery}
-          onChange={(e) => {
-            onSearchQueryChange(e.target.value);
-            setVisible(PAGE_SIZE);
-          }}
-          placeholder="Rechercher : pharmacie, boulangerie, nom, Rue…"
-          className="pl-9"
-        />
-      </div>
+      <div
+        className="sticky z-30 space-y-2.5 bg-paper pb-2"
+        style={{ top: "var(--app-header-h, 0px)" }}
+      >
+        <div className="relative">
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+          <Input
+            value={searchQuery}
+            onChange={(e) => {
+              onSearchQueryChange(e.target.value);
+              setVisible(PAGE_SIZE);
+            }}
+            placeholder="Rechercher : pharmacie, boulangerie, nom, Rue…"
+            className="pl-9"
+          />
+        </div>
 
       <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
         {CATEGORIES.map((c) => (
@@ -524,7 +495,7 @@ export function AnnuaireTab({
             key={c.key}
             type="button"
             onClick={() => {
-              setCategory(c.key);
+              onCategoryChange(c.key);
               onActivityChange("all");
               setVisible(PAGE_SIZE);
             }}
@@ -593,6 +564,7 @@ export function AnnuaireTab({
                       key={key}
                       type="button"
                       onClick={() => {
+                        onCategoryChange("all");
                         onActivityChange(key);
                         setVisible(PAGE_SIZE);
                         setCatDialog(false);
@@ -606,36 +578,12 @@ export function AnnuaireTab({
                       <span className="shrink-0 text-xs text-neutral-400">{count}</span>
                     </button>
                   ))}
-                {groupedSubcats.catalog
-                  .filter((a) => normalizeText(a.label).includes(normalizeText(catSearch.trim())))
-                  .slice(0, 60)
-                  .map((a) => (
-                    <button
-                      key={a.key}
-                      type="button"
-                      onClick={() => {
-                        setCategory("all");
-                        onActivityChange(a.key);
-                        setVisible(PAGE_SIZE);
-                        setCatDialog(false);
-                      }}
-                      className={cn(
-                        "w-full rounded-lg px-3 py-2 text-left text-sm",
-                        activity === a.key
-                          ? "bg-accent-light font-semibold text-accent-dark"
-                          : "text-neutral-400 hover:bg-neutral-50 hover:text-neutral-600",
-                      )}
-                    >
-                      {a.label}
-                    </button>
-                  ))}
               </div>
             </div>
           )}
         </div>
       )}
-
-
+      </div>
 
       {loading && businesses.length === 0 ? (
         <ListSkeleton count={4} columns />

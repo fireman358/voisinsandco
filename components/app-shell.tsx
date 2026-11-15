@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   BadgePercent,
@@ -19,7 +19,7 @@ import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
 import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
 import { haversineKm } from "@/lib/geo";
-import type { AgendaEvent, Business, Deal, GeoState, Need, Tool } from "@/lib/types";
+import type { AgendaEvent, Business, BusinessCategory, Deal, GeoState, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
 
 export interface AppShellInitialData {
@@ -56,6 +56,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTick, setSearchTick] = useState(0);
   const [activity, setActivity] = useState("all");
+  const [category, setCategory] = useState<"all" | BusinessCategory>("all");
+  const [facets, setFacets] = useState<Record<string, number>>({});
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);
   const [demo, setDemo] = useState(initialData?.demo ?? false);
@@ -71,15 +73,19 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     const qs = `lat=${geo.lat}&lng=${geo.lng}&radius=${radius}`;
     const sq = searchQuery.trim().length >= 2 ? `&q=${encodeURIComponent(searchQuery.trim())}` : "";
     const sa = activity !== "all" ? `&activity=${encodeURIComponent(activity)}` : "";
+    const sc = category !== "all" ? `&category=${encodeURIComponent(category)}` : "";
     try {
       const [b, d, n, t] = await Promise.all([
-        fetchJSON<{ items: Business[]; total?: number; demo: boolean }>(`/api/businesses?${qs}${sq}${sa}`),
+        fetchJSON<{ items: Business[]; total?: number; demo: boolean; facets?: Record<string, number> }>(
+          `/api/businesses?${qs}${sq}${sa}${sc}`,
+        ),
         fetchJSON<{ deals: Deal[]; events: AgendaEvent[]; demo: boolean }>(`/api/deals?${qs}`),
         fetchJSON<{ items: Need[]; demo: boolean }>(`/api/needs?${qs}`),
         fetchJSON<{ items: Tool[]; demo: boolean }>(`/api/tools?${qs}`),
       ]);
       setBusinesses(b.items ?? []);
       setTotal(b.total ?? b.items?.length ?? 0);
+      setFacets(b.facets ?? {});
       setDemo(Boolean(b.demo));
       setDeals(d.deals ?? []);
       setEvents(d.events ?? []);
@@ -90,7 +96,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     } finally {
       setLoading(false);
     }
-  }, [geo, radius, searchTick, activity, toast]);
+  }, [geo, radius, searchTick, activity, category, toast]);
 
   useEffect(() => {
     void load();
@@ -157,17 +163,33 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
     );
   }, [setGeo, toast]);
 
+  // Hauteur réelle du header → variable CSS pour que la barre de recherche
+  // de l'annuaire se cale juste en dessous quand on défile.
+  const headerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () =>
+      document.documentElement.style.setProperty("--app-header-h", `${el.offsetHeight}px`);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div className="min-h-dvh bg-paper">
-      <HeaderBar
-        geo={geo}
-        radius={radius}
-        demo={demo}
-        count={total}
-        onRadiusChange={setRadius}
-        onCitySelect={handleCitySelect}
-        onUseGps={handleUseGps}
-      />
+      <div ref={headerRef}>
+        <HeaderBar
+          geo={geo}
+          radius={radius}
+          demo={demo}
+          count={total}
+          onRadiusChange={setRadius}
+          onCitySelect={handleCitySelect}
+          onUseGps={handleUseGps}
+        />
+      </div>
       <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4 md:max-w-5xl xl:max-w-7xl">
         {loading && businesses.length === 0 && needs.length === 0 ? (
           <div className="flex items-center justify-center gap-2 py-20 text-sm text-neutral-500">
@@ -185,6 +207,9 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
                 onSearchQueryChange={setSearchQuery}
                 activity={activity}
                 onActivityChange={setActivity}
+                category={category}
+                onCategoryChange={setCategory}
+                facets={facets}
                 onCreated={handleBusinessCreated}
               />
             </TabsContent>

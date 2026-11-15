@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import communesJson from "@/lib/communes.json";
 import { ChevronDown, ChevronUp, Database, LocateFixed, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -188,9 +189,19 @@ export function HeaderBar({
               </div>
             </div>
 
-            <p className="mt-2 text-xs text-white/60">
-              {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
-            </p>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs text-white/60">
+              <span>
+                {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
+              </span>
+              <nav className="flex items-center gap-3 font-medium">
+                <Link href="/comment-ca-marche" className="text-accent underline-offset-2 hover:underline">
+                  Comment ça marche
+                </Link>
+                <Link href="/abonnements" className="text-accent underline-offset-2 hover:underline">
+                  Les formules
+                </Link>
+              </nav>
+            </div>
           </>
         )}
       </div>
