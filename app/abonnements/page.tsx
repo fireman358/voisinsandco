@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Les formules — Le Bon Voisin",
   description:
     "Fiche gratuite, Vérifiée, Visibilité 9 €, Pro 29 € et Prime +5 € : les formules de visibilité pour les commerces et artisans de proximité.",
+  alternates: { canonical: "/abonnements" },
 };
 
 interface Pack {

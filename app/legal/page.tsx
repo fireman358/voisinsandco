@@ -1,7 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 
-export const metadata = { title: "Mentions légales — Le Bon Voisin" };
+export const metadata: Metadata = {
+  title: "Mentions légales — Le Bon Voisin",
+  description:
+    "Mentions légales, éditeur, hébergeur et politique de confidentialité du Bon Voisin.",
+  alternates: { canonical: "/legal" },
+};
 
 export default function LegalPage() {
   return (

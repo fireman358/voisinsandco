@@ -32,12 +32,25 @@ export const metadata: Metadata = {
     title: "Le Bon Voisin — Économie locale & entraide",
     description:
       "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Le Bon Voisin — annuaire local, bons plans et entraide de quartier",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Le Bon Voisin — Économie locale & entraide",
     description:
       "Commerces et artisans, bons plans anti-gaspi, mur des besoins et boîte à outils du quartier.",
+    images: ["/og.png"],
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icons/icon-192.png",
   },
   appleWebApp: {
     capable: true,

@@ -1,7 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowLeft, BadgeCheck, Clock, Crown, MapPin, Megaphone, Store, Users, Zap } from "lucide-react";
 
-export const metadata = { title: "Comment ça marche — Le Bon Voisin" };
+export const metadata: Metadata = {
+  title: "Comment ça marche — Le Bon Voisin",
+  description:
+    "Commerces, bons plans anti-gaspi, mur des besoins et boîte à outils : comment fonctionne Le Bon Voisin, gratuitement et sans compte.",
+  alternates: { canonical: "/comment-ca-marche" },
+};
 
 function Section({
   icon: Icon,

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell";
 import { listBusinesses, parseGeo } from "@/lib/data";
 import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
@@ -5,6 +6,10 @@ import type { Business } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 function businessesJsonLd(items: Business[]): string {
   return JSON.stringify({
