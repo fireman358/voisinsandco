@@ -91,6 +91,143 @@ export const CATEGORY_LABELS: Record<BusinessCategory, string> = {
   distributeur: "Distributeurs 24/7",
 };
 
+/* ------------------------------------------------------------------ *
+ * Groupes d'affichage (8) : on regroupe la longue traîne des ~355
+ * sous-catégories en catégories lisibles pour l'utilisateur. La base
+ * garde les 4 catégories « techniques » (BusinessCategory) ; le groupe
+ * est dérivé de la sous-catégorie, avec repli sur la catégorie.
+ * ------------------------------------------------------------------ */
+export type GroupKey =
+  | "alimentation"
+  | "horeca"
+  | "sante"
+  | "maison"
+  | "services"
+  | "commerces"
+  | "auto"
+  | "distributeurs"
+  | "autres";
+
+export const GROUP_LABELS: Record<GroupKey, string> = {
+  alimentation: "Alimentation & Fermes",
+  horeca: "Horeca",
+  sante: "Santé & bien-être",
+  maison: "Maison & artisans",
+  services: "Services & professions",
+  commerces: "Commerces & loisirs",
+  auto: "Auto & mobilité",
+  distributeurs: "Distributeurs & services 24/7",
+  autres: "Autres",
+};
+
+const GROUP_OF: Record<string, GroupKey> = {
+  // Alimentation & Fermes
+  ferme: "alimentation", farm: "alimentation", beekeeper: "alimentation", honey: "alimentation",
+  supermarket: "alimentation", supermarche: "alimentation", convenience: "alimentation", grocery: "alimentation",
+  country_store: "alimentation", epicerie: "alimentation", bakery: "alimentation", boulangerie: "alimentation",
+  pastry: "alimentation", patisserie: "alimentation", confectionery: "alimentation", confiserie: "alimentation",
+  chocolate: "alimentation", chocolatier: "alimentation", chocolaterie: "alimentation",
+  cheese: "alimentation", fromagerie: "alimentation", seafood: "alimentation", poissonnerie: "alimentation",
+  greengrocer: "alimentation", primeurs: "alimentation", vegetables: "alimentation", food: "alimentation",
+  deli: "alimentation", frozen_food: "alimentation", pasta: "alimentation", dairy: "alimentation",
+  vins_spiritueux: "alimentation", alcohol: "alimentation", beverages: "alimentation", wine: "alimentation",
+  beer: "alimentation", winery: "alimentation", spices: "alimentation", tea: "alimentation",
+  syrop_maker: "alimentation", siropery: "alimentation", butcher: "alimentation", boucherie: "alimentation",
+  // Horeca
+  restaurant: "horeca", fast_food: "horeca", cafe: "horeca", coffee: "horeca", bar: "horeca", pub: "horeca",
+  bar_pub: "horeca", brasserie_artisanale: "horeca", brewery: "horeca", distillerie: "horeca",
+  distillery: "horeca", ice_cream: "horeca", glacier: "horeca", camping: "horeca", caterer: "horeca",
+  // Santé & bien-être
+  medecin: "sante", doctors: "sante", physician: "sante", medical: "sante", healthcare: "sante",
+  dentiste: "sante", dentist: "sante", kine: "sante", physiotherapist: "sante",
+  veterinaire: "sante", veterinary: "sante", pharmacie: "sante", pharmacy: "sante", chemist: "sante",
+  esthetique: "sante", beauty: "sante", hairdresser: "sante", coiffeur: "sante",
+  therapeute: "sante", therapist: "sante", sage_femme: "sante", opticien: "sante", optician: "sante",
+  podologist: "sante", massage: "sante",
+  // Maison & artisans
+  construction: "maison", construction_company: "maison", builder: "maison", menuiserie: "maison",
+  carpenter: "maison", joiner: "maison", plomberie_chauffage: "maison", plumber: "maison", hvac: "maison",
+  chauffage: "maison", electricien: "maison", electrician: "maison", electrical: "maison",
+  peinture: "maison", painter: "maison", couvreur: "maison", roofer: "maison", maconnerie: "maison",
+  isolation: "maison", insulation: "maison", carrelage_sols: "maison", tiler: "maison",
+  terrassement: "maison", earthworks: "maison", jardinage: "maison", gardener: "maison",
+  hardware: "maison", quincaillerie: "maison", bricolage: "maison", doityourself: "maison",
+  serrurier: "maison", locksmith: "maison", key_cutter: "maison", cordonnier: "maison",
+  couture: "maison", tailor: "maison", dressmaker: "maison", parquet_layer: "maison", floorer: "maison",
+  flooring: "maison", plasterer: "maison", stonemason: "maison", sawmill: "maison", lumberjack: "maison",
+  blacksmith: "maison", metal_construction: "maison", metal_works: "maison",
+  window_construction: "maison", glaziery: "maison", door_construction: "maison", veranda: "maison",
+  upholsterer: "maison", saddler: "maison", cabinet_maker: "maison", tinsmith: "maison", turner: "maison",
+  interior_design: "maison", interior_decorator: "maison", cuisines: "maison", garden_centre: "maison",
+  geomestre: "maison", surveyor: "maison",
+  // Services & professions
+  conseil: "services", consulting: "services", avocat: "services", lawyer: "services",
+  notaire: "services", notary: "services", comptabilite: "services", accountant: "services",
+  assurance: "services", insurance: "services", health_insurance: "services", insurance_agent: "services",
+  agence_immobiliere: "services", estate_agent: "services",
+  informatique: "services", computer: "services", it: "services", telecom: "services", telecommunication: "services",
+  web_design: "services", communication_design: "services", graphic_design: "services",
+  publicite: "services", advertising_agency: "services", medias: "services",
+  photographe: "services", photographer: "services", photo_studio: "services",
+  edition: "services", publisher: "services", book_publisher: "services",
+  reprographie: "services", printer: "services", printing: "services",
+  securite: "services", security: "services", surveillance: "services",
+  nettoyage: "services", cleaning: "services", pressing: "services", ironing: "services",
+  demagement: "services", moving_company: "services", interim: "services", employment_agency: "services",
+  enseignement: "services", educational_institution: "services", tutoring: "services", tutor: "services",
+  government: "services", asbl_ong: "services", association: "services", ngo: "services",
+  charity: "services", foundation: "services", union: "services",
+  recherche: "services", research: "services", logistics: "services", transport: "services",
+  agence_voyage: "services", travel_agent: "services", coworking: "services", event_management: "services",
+  pompes_funebres: "services", religion: "services", diplomatic: "services", political_party: "services",
+  financial: "services", financial_advisor: "services", tax_advisor: "services", mortgage: "services",
+  translator: "services", printmaker: "services", engraver: "services", signmaker: "services",
+  clockmaker: "services", watchmaker: "services", secretary: "services", customs: "services",
+  energy_supplier: "services", water_utility: "services", call_center: "services", office: "services",
+  // Commerces & loisirs
+  vetements: "commerces", clothes: "commerces", articles_sport: "commerces", sport: "commerces",
+  jouets: "commerces", toys: "commerces", chaussures: "commerces", shoemaker: "services",
+  bijouterie: "commerces", jeweller: "commerces", jewelry: "commerces", goldsmith: "commerces",
+  fleuriste: "commerces", florist: "commerces", animalerie: "commerces", pet: "commerces",
+  librairie: "commerces", book: "commerces", books: "commerces", papeterie: "commerces",
+  cadeaux: "commerces", gift: "commerces", musique: "commerces", music: "commerces",
+  instruments: "commerces", musical_instrument: "commerces", galerie_art: "commerces",
+  antiquites: "commerces", seconde_main: "commerces", second_hand: "commerces",
+  decoration: "commerces", meubles: "commerces", literie: "commerces",
+  hifi_tv: "commerces", electronique: "commerces", electronics: "commerces",
+  journaux: "commerces", newspaper: "commerces", newsagent: "commerces", kiosk: "commerces",
+  billetterie: "commerces", pottery: "commerces", sculptor: "commerces",
+  cosmetics: "commerces", glasses: "commerces", optique: "commerces", vente_directe: "commerces",
+  // Auto & mobilité
+  garage: "auto", car_repair: "auto", car_parts: "auto", car_painter: "auto",
+  bicycle: "auto", bicycle_repair: "auto", moto: "auto", controle_technique: "auto",
+  pneu: "auto", pieces_auto: "auto", agricultural_engines: "auto", taxi: "auto",
+  // Distributeurs & services 24/7 (dont banques / ATM)
+  carburant_recharge: "distributeurs", fuel: "distributeurs", charging_station: "distributeurs",
+  vending_machine: "distributeurs", distributeur: "distributeurs", atm: "distributeurs",
+  banque: "distributeurs", bank: "distributeurs",
+};
+
+function fallbackGroup(category?: string): GroupKey {
+  switch (category) {
+    case "alimentation":
+      return "alimentation";
+    case "horeca":
+      return "horeca";
+    case "distributeur":
+      return "distributeurs";
+    default:
+      return "autres";
+  }
+}
+
+/** Groupe d'affichage d'une fiche, dérivé de sa sous-catégorie (repli : catégorie). */
+export function groupOf(subcategory?: string, category?: string): GroupKey {
+  const key = (subcategory ?? "").toLowerCase().split(";")[0].trim();
+  return GROUP_OF[key] ?? fallbackGroup(category);
+}
+
+
 export const SUBCATEGORY_LABELS: Record<string, string> = {
   bakery: "Boulangerie",
   pastry: "Pâtisserie",

@@ -103,23 +103,21 @@ import { ListSkeleton } from "@/components/skeletons";
 import communesJson from "@/lib/communes.json";
 import { formatDistance } from "@/lib/format";
 import {
-  CATEGORY_LABELS,
+  GROUP_LABELS,
   SUBCATEGORY_GROUP_LABELS,
   activityKey,
   activityLabel,
+  groupOf,
   type Business,
-  type BusinessCategory,
+  type GroupKey,
 } from "@/lib/types";
 import { cn, normalizeText } from "@/lib/utils";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
 
-const CATEGORIES: { key: BusinessCategory | "all"; label: string }[] = [
+const GROUPS: { key: GroupKey | "all"; label: string }[] = [
   { key: "all", label: "Tous" },
-  { key: "alimentation", label: "Alimentation & Fermes" },
-  { key: "artisan", label: "Artisans & Services" },
-  { key: "horeca", label: "Horeca" },
-  { key: "distributeur", label: "Distributeurs 24/7" },
+  ...(Object.keys(GROUP_LABELS) as GroupKey[]).map((key) => ({ key, label: GROUP_LABELS[key] })),
 ];
 
 const PAGE_SIZE = 50;
@@ -240,18 +238,28 @@ const ACTIVITY_ICON: Record<string, LucideIcon> = {
   billetterie: Ticket,
 };
 
-const CATEGORY_ICON: Record<BusinessCategory, LucideIcon> = {
+const GROUP_ICON: Record<GroupKey, LucideIcon> = {
   alimentation: ShoppingBasket,
-  artisan: Store,
   horeca: UtensilsCrossed,
-  distributeur: ShoppingCart,
+  sante: Stethoscope,
+  maison: HardHat,
+  services: Briefcase,
+  commerces: Store,
+  auto: Car,
+  distributeurs: Landmark,
+  autres: Store,
 };
 
-const CATEGORY_TINT: Record<BusinessCategory, string> = {
+const GROUP_TINT: Record<GroupKey, string> = {
   alimentation: "bg-green-50 text-forest",
-  artisan: "bg-accent-light text-accent-dark",
   horeca: "bg-amber-50 text-amber-600",
-  distributeur: "bg-neutral-100 text-neutral-600",
+  sante: "bg-rose-50 text-rose-600",
+  maison: "bg-orange-50 text-orange-600",
+  services: "bg-accent-light text-accent-dark",
+  commerces: "bg-violet-50 text-violet-600",
+  auto: "bg-sky-50 text-sky-600",
+  distributeurs: "bg-emerald-50 text-emerald-700",
+  autres: "bg-neutral-100 text-neutral-600",
 };
 
 function TierBadge({ tier, prime }: { tier: Business["tier"]; prime?: boolean }) {
@@ -290,7 +298,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
   const [open, setOpen] = useState(false);
   const telHref = b.phone ? `tel:${b.phone.replace(/[^+\d]/g, "")}` : null;
   const directions = `https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}`;
-  const Icon = ACTIVITY_ICON[activityKey(b.subcategory)] ?? CATEGORY_ICON[b.category] ?? ShoppingBasket;
+  const Icon = ACTIVITY_ICON[activityKey(b.subcategory)] ?? GROUP_ICON[groupOf(b.subcategory, b.category)] ?? ShoppingBasket;
   return (
     <Card className={cn("lift overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
       <CardContent className="space-y-2 p-3">
@@ -299,7 +307,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
             <div
               className={cn(
                 "flex size-9 shrink-0 items-center justify-center rounded-lg",
-                CATEGORY_TINT[b.category],
+                GROUP_TINT[groupOf(b.subcategory, b.category)],
               )}
               aria-hidden="true"
             >
@@ -309,7 +317,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               <p className="truncate text-sm font-bold text-neutral-900">{b.name}</p>
               <p className="truncate text-[11px] text-neutral-500">
                 {formatDistance(b.distanceKm)} • {b.town} ·{" "}
-                {activityLabel(b.subcategory) || CATEGORY_LABELS[b.category]}
+                {activityLabel(b.subcategory) || GROUP_LABELS[groupOf(b.subcategory, b.category)]}
               </p>
             </div>
           </div>
@@ -404,8 +412,8 @@ export function AnnuaireTab({
   onSearchQueryChange: (q: string) => void;
   activity: string;
   onActivityChange: (a: string) => void;
-  category: BusinessCategory | "all";
-  onCategoryChange: (c: BusinessCategory | "all") => void;
+  category: GroupKey | "all";
+  onCategoryChange: (c: GroupKey | "all") => void;
   facets: Record<string, number>;
   onCitySelect: (city: { name: string; lat: number; lng: number }) => void;
   radius: number;
@@ -550,7 +558,7 @@ export function AnnuaireTab({
           </span>
           {category !== "all" && (
             <span className="rounded-full bg-forest px-2 py-0.5 font-medium text-white">
-              {CATEGORIES.find((c) => c.key === category)?.label}
+              {GROUPS.find((c) => c.key === category)?.label}
             </span>
           )}
           {activity !== "all" && (
@@ -593,7 +601,7 @@ export function AnnuaireTab({
 
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">Catégorie</p>
             <div className="flex flex-wrap gap-1.5">
-              {CATEGORIES.map((c) => (
+              {GROUPS.map((c) => (
                 <button
                   key={c.key}
                   type="button"

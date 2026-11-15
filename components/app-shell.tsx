@@ -19,7 +19,7 @@ import { OutilsTab } from "@/components/tabs/outils-tab";
 import { useToast } from "@/components/toast";
 import { DEFAULT_BASE, DEFAULT_RADIUS } from "@/lib/constants";
 import { haversineKm } from "@/lib/geo";
-import type { AgendaEvent, Business, BusinessCategory, Deal, GeoState, Need, Tool } from "@/lib/types";
+import type { AgendaEvent, Business, Deal, GeoState, GroupKey, Need, Tool } from "@/lib/types";
 import { fetchJSON } from "@/lib/utils";
 
 export interface AppShellInitialData {
@@ -56,7 +56,7 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTick, setSearchTick] = useState(0);
   const [activity, setActivity] = useState("all");
-  const [category, setCategory] = useState<"all" | BusinessCategory>("all");
+  const [category, setCategory] = useState<"all" | GroupKey>("all");
   const [facets, setFacets] = useState<Record<string, number>>({});
   const [tab, setTab] = useState("annuaire");
   const [loading, setLoading] = useState(true);

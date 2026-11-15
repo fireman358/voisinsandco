@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { boundingBox, haversineKm } from "./geo";
 import { BUSINESSES, DEALS, EVENTS, NEEDS, TOOLS } from "./seed";
 import { DEFAULT_BASE, DEFAULT_RADIUS, MAX_BUSINESS_RESULTS } from "./constants";
-import { CATEGORY_LABELS, activityKey, activityLabel, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
+import { CATEGORY_LABELS, GROUP_LABELS, activityKey, activityLabel, groupOf, type AgendaEvent, type Business, type BusinessCategory, type BusinessTier, type Deal, type Need, type Tool } from "./types";
 import { normalizeText } from "./utils";
 
 export interface GeoQuery {
@@ -102,7 +102,7 @@ function dedupKey(b: Business): string {
 function selectBusinesses(
   q: GeoQuery,
   rows: Business[],
-  category: string,
+  group: string,
   activity: string | undefined,
   matchesSearch: (b: Business) => boolean,
 ): { items: Business[]; total: number; facets: Record<string, number> } {
@@ -130,7 +130,7 @@ function selectBusinesses(
   const matched = unique
     .filter(
       (b) =>
-        (category === "all" || b.category === category) &&
+        (group === "all" || groupOf(b.subcategory, b.category) === group) &&
         (!activity || activityKey(b.subcategory) === activity) &&
         matchesSearch(b),
     )
@@ -140,7 +140,7 @@ function selectBusinesses(
 
 export async function listBusinesses(
   q: GeoQuery,
-  category: string,
+  group: string,
   search?: string,
   activity?: string,
 ): Promise<{ items: Business[]; demo: boolean; total: number; facets: Record<string, number> }> {
@@ -162,6 +162,7 @@ export async function listBusinesses(
         activityLabel(b.subcategory),
         activityKey(b.subcategory),
         CATEGORY_LABELS[b.category],
+        GROUP_LABELS[groupOf(b.subcategory, b.category)],
       ].join(" "),
     );
     return hay.includes(needle) || (digits.length > 0 && (b.bce ?? "").replace(/\D/g, "").includes(digits));
@@ -202,10 +203,10 @@ export async function listBusinesses(
       }
     }
     if (results.length > 0) {
-      return { ...selectBusinesses(q, results, category, activity, matchesSearch), demo: false };
+      return { ...selectBusinesses(q, results, group, activity, matchesSearch), demo: false };
     }
   }
-  return { ...selectBusinesses(q, BUSINESSES, category, activity, matchesSearch), demo: true };
+  return { ...selectBusinesses(q, BUSINESSES, group, activity, matchesSearch), demo: true };
 }
 
 export async function listDealsAndEvents(
