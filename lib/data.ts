@@ -113,7 +113,13 @@ function selectBusinesses(
   for (const b of all) {
     const k = dedupKey(b);
     const prev = byKey.get(k);
-    if (!prev || (!prev.bce && b.bce)) byKey.set(k, b);
+    if (
+      !prev ||
+      rankOf(b) > rankOf(prev) ||
+      (rankOf(b) === rankOf(prev) && !prev.bce && b.bce)
+    ) {
+      byKey.set(k, b);
+    }
   }
   const unique = [...byKey.values()];
   const facets: Record<string, number> = {};
