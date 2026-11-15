@@ -46,16 +46,20 @@ function withDistance<T extends { lat: number; lng: number }>(
 // À rang égal : le plus proche d'abord, puis rotation quotidienne équitable
 // (hash stable id + jour) pour qu'une fiche « Z » ne soit pas toujours en bas.
 const TIER_RANK: Record<string, number> = {
-  prime: 3,
-  pro: 2,
-  visibility: 1,
-  verified: 0,
+  prime: 4,
+  pro: 3,
+  visibility: 2,
+  verified: 1,
   standard: 0,
 };
 
 function rankOf(b: Business): number {
   if (b.prime) return TIER_RANK.prime;
-  return TIER_RANK[b.tier] ?? 0;
+  const base = TIER_RANK[b.tier] ?? 0;
+  // Fiche ajoutée par son gérant (auto-revendiquée, pas encore vérifiée) : juste
+  // au-dessus d'une fiche « standard » non revendiquée.
+  if (base === 0 && b.id.startsWith("user-")) return 0.5;
+  return base;
 }
 
 const DAY_NUMBER = Math.floor(Date.now() / 86_400_000);
