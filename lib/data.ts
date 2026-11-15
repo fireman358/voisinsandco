@@ -554,18 +554,26 @@ export async function adminSearchBusinesses(q: string): Promise<Business[]> {
   const conn = getDB();
   if (!conn) return [];
   const like = `%${q}%`;
+  const digits = q.replace(/\D/g, "");
+  const hasDigits = digits.length > 0;
+  const digitsLike = `%${digits}%`;
   const query = (full: boolean) =>
     `SELECT id, name, category, ${full ? "subcategory, " : ""}tier, description, address, town,
             postal_code AS postalCode, lat, lng, phone, website, hours, bce, news,
             ${full ? "paid_until AS paidUntil, prime" : "'' AS paidUntil, 0 AS prime"}
      FROM businesses
-     WHERE name LIKE ?1 OR town LIKE ?1
-     ORDER BY name LIMIT 50`;
+     WHERE (name LIKE ?1 OR town LIKE ?1 OR address LIKE ?1${hasDigits ? " OR replace(bce, '.', '') LIKE ?2" : ""})
+     ORDER BY name LIMIT 100`;
+  const run = async (sql: string) => {
+    const stmt = conn.prepare(sql);
+    const res = hasDigits ? await stmt.bind(like, digitsLike).all<Business>() : await stmt.bind(like).all<Business>();
+    return res.results ?? [];
+  };
   try {
-    return (await conn.prepare(query(true)).bind(like).all<Business>()).results ?? [];
+    return await run(query(true));
   } catch {
     try {
-      return (await conn.prepare(query(false)).bind(like).all<Business>()).results ?? [];
+      return await run(query(false));
     } catch {
       return [];
     }
@@ -600,6 +608,12 @@ export async function updateBusinessDetails(
   id: string,
   patch: {
     name?: string | null;
+    category?: string | null;
+    subcategory?: string | null;
+    address?: string | null;
+    town?: string | null;
+    postalCode?: string | null;
+    description?: string | null;
     phone?: string | null;
     website?: string | null;
     hours?: string | null;
@@ -610,11 +624,28 @@ export async function updateBusinessDetails(
   if (!conn) return false;
   await conn
     .prepare(
-      `UPDATE businesses SET name = COALESCE(?, name), phone = COALESCE(?, phone), website = COALESCE(?, website),
-       hours = COALESCE(?, hours), news = COALESCE(?, news) WHERE id = ?`,
+      `UPDATE businesses SET
+         name = COALESCE(?, name),
+         category = COALESCE(?, category),
+         subcategory = COALESCE(?, subcategory),
+         address = COALESCE(?, address),
+         town = COALESCE(?, town),
+         postal_code = COALESCE(?, postal_code),
+         description = COALESCE(?, description),
+         phone = COALESCE(?, phone),
+         website = COALESCE(?, website),
+         hours = COALESCE(?, hours),
+         news = COALESCE(?, news)
+       WHERE id = ?`,
     )
     .bind(
       patch.name ?? null,
+      patch.category ?? null,
+      patch.subcategory ?? null,
+      patch.address ?? null,
+      patch.town ?? null,
+      patch.postalCode ?? null,
+      patch.description ?? null,
       patch.phone ?? null,
       patch.website ?? null,
       patch.hours ?? null,

@@ -128,6 +128,17 @@ export default function AdminPage() {
   const [reports, setReports] = useState<Report[] | null>(null);
   const [subs, setSubs] = useState<Business[]>([]);
   const [q, setQ] = useState("");
+  const [subFilter, setSubFilter] = useState("");
+  const subFilterNorm = subFilter.trim().toLowerCase();
+  const filteredSubs = subs.filter((b) => {
+    if (!subFilterNorm) return true;
+    const digits = subFilterNorm.replace(/\D/g, "");
+    return (
+      b.name.toLowerCase().includes(subFilterNorm) ||
+      b.town.toLowerCase().includes(subFilterNorm) ||
+      (digits.length > 0 && (b.bce ?? "").replace(/\D/g, "").includes(digits))
+    );
+  });
   const [results, setResults] = useState<Business[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -340,6 +351,12 @@ export default function AdminPage() {
 
   const [editTarget, setEditTarget] = useState<Business | null>(null);
   const [fName, setFName] = useState("");
+  const [fCategory, setFCategory] = useState<BusinessCategory>("artisan");
+  const [fSubcategory, setFSubcategory] = useState("");
+  const [fAddress, setFAddress] = useState("");
+  const [fTown, setFTown] = useState("");
+  const [fPostalCode, setFPostalCode] = useState("");
+  const [fDescription, setFDescription] = useState("");
   const [fPhone, setFPhone] = useState("");
   const [fWebsite, setFWebsite] = useState("");
   const [fHours, setFHours] = useState("");
@@ -347,6 +364,12 @@ export default function AdminPage() {
   const openEdit = (b: Business) => {
     setEditTarget(b);
     setFName(b.name);
+    setFCategory(b.category);
+    setFSubcategory(b.subcategory ?? "");
+    setFAddress(b.address);
+    setFTown(b.town);
+    setFPostalCode(b.postalCode);
+    setFDescription(b.description);
     setFPhone(b.phone ?? "");
     setFWebsite(b.website ?? "");
     setFHours(b.hours ?? "");
@@ -361,6 +384,12 @@ export default function AdminPage() {
         body: JSON.stringify({
           id: editTarget.id,
           name: fName,
+          category: fCategory,
+          subcategory: fSubcategory,
+          address: fAddress,
+          town: fTown,
+          postalCode: fPostalCode,
+          description: fDescription,
           phone: fPhone,
           website: fWebsite,
           hours: fHours,
@@ -372,6 +401,12 @@ export default function AdminPage() {
           ? {
               ...x,
               name: fName || x.name,
+              category: fCategory,
+              subcategory: fSubcategory || undefined,
+              address: fAddress,
+              town: fTown,
+              postalCode: fPostalCode,
+              description: fDescription,
               phone: fPhone || undefined,
               website: fWebsite || undefined,
               hours: fHours || undefined,
@@ -576,53 +611,68 @@ export default function AdminPage() {
 
             <section className="space-y-2 rounded-2xl border border-neutral-200 bg-white p-4">
               <h2 className="flex items-center gap-2 text-sm font-bold text-neutral-900">
-                <CalendarClock className="size-4 text-forest" /> Abonnements ({subs.length})
+                <CalendarClock className="size-4 text-forest" /> Abonnements ({filteredSubs.length}/{subs.length})
               </h2>
               {subs.length === 0 ? (
                 <p className="text-sm text-neutral-500">Aucun pack actif — active un pack via la recherche ci-dessous.</p>
               ) : (
-                <ul className="space-y-2">
-                  {subs.map((b) => {
-                    const d = daysUntil(b.paidUntil);
-                    return (
-                      <li key={b.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-neutral-200 p-3 text-sm">
-                        <div>
-                          <p className="font-semibold text-neutral-800">{b.name}</p>
-                          <p className="text-xs text-neutral-500">
-                            {b.town} · {b.tier === "pro" ? "Pack Pro" : b.tier === "visibility" ? "Pack Visibilité" : b.tier === "verified" ? "Vérifiée" : "Standard"}
-                            {b.paidUntil ? ` · jusqu'au ${b.paidUntil}` : ""}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {d !== null && d < 0 ? (
-                            <Badge variant="amber">Expiré</Badge>
-                          ) : d !== null && d <= 7 ? (
-                            <Badge variant="amber">Échoit dans {d} j</Badge>
-                          ) : (
-                            <Badge variant="secondary">Actif</Badge>
-                          )}
-                          <input
-                            type="date"
-                            value={b.paidUntil ?? ""}
-                            onChange={(e) => saveTier(b, b.tier, e.target.value || null)}
-                            className="h-8 rounded-lg border border-neutral-200 px-2 text-xs"
-                            aria-label={`Échéance ${b.name}`}
-                          />
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => {
-                              pickTarget(b);
-                              setTemplateKey(d !== null && d < 0 ? "retard" : d !== null && d <= 7 ? "echeance" : b.tier === "pro" ? "pro" : "visibilite");
-                            }}
-                          >
-                            <Mail className="size-3.5" />
-                          </Button>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <>
+                  <Input
+                    value={subFilter}
+                    onChange={(e) => setSubFilter(e.target.value)}
+                    placeholder="Filtrer par nom, commune ou n° BCE…"
+                    className="h-9"
+                  />
+                  {filteredSubs.length === 0 ? (
+                    <p className="text-sm text-neutral-500">Aucun abonnement ne correspond à ce filtre.</p>
+                  ) : (
+                    <ul className="space-y-2">
+                      {filteredSubs.map((b) => {
+                        const d = daysUntil(b.paidUntil);
+                        return (
+                          <li key={b.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-neutral-200 p-3 text-sm">
+                            <div>
+                              <p className="font-semibold text-neutral-800">{b.name}</p>
+                              <p className="text-xs text-neutral-500">
+                                {b.town} · {b.tier === "pro" ? "Pack Pro" : b.tier === "visibility" ? "Pack Visibilité" : b.tier === "verified" ? "Vérifiée" : "Standard"}
+                                {b.paidUntil ? ` · jusqu'au ${b.paidUntil}` : ""}
+                              </p>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-2">
+                              {d !== null && d < 0 ? (
+                                <Badge variant="amber">Expiré</Badge>
+                              ) : d !== null && d <= 7 ? (
+                                <Badge variant="amber">Échoit dans {d} j</Badge>
+                              ) : (
+                                <Badge variant="secondary">Actif</Badge>
+                              )}
+                              <input
+                                type="date"
+                                value={b.paidUntil ?? ""}
+                                onChange={(e) => saveTier(b, b.tier, e.target.value || null)}
+                                className="h-8 rounded-lg border border-neutral-200 px-2 text-xs"
+                                aria-label={`Échéance ${b.name}`}
+                              />
+                              <Button size="sm" variant="outline" onClick={() => openEdit(b)} title="Modifier la fiche">
+                                <Pencil className="size-3.5" />
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => {
+                                  pickTarget(b);
+                                  setTemplateKey(d !== null && d < 0 ? "retard" : d !== null && d <= 7 ? "echeance" : b.tier === "pro" ? "pro" : "visibilite");
+                                }}
+                              >
+                                <Mail className="size-3.5" />
+                              </Button>
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </>
               )}
             </section>
 
@@ -697,9 +747,19 @@ export default function AdminPage() {
             </section>
 
             <section className="space-y-3 rounded-2xl border border-neutral-200 bg-white p-4">
-              <h2 className="text-sm font-bold text-neutral-900">Gérer une fiche</h2>
+              <h2 className="text-sm font-bold text-neutral-900">Rechercher &amp; modifier une fiche</h2>
+              <p className="text-xs text-neutral-500">
+                Nom, commune, adresse ou n° BCE. Fonctionne aussi pour les fiches déjà abonnées.
+              </p>
               <div className="flex gap-2">
-                <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Nom du commerce ou ville…" />
+                <Input
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") search();
+                  }}
+                  placeholder="Nom, commune, adresse ou n° BCE…"
+                />
                 <Button onClick={search} disabled={busy || q.trim().length < 2}>
                   {busy ? <Loader2 className="size-4 animate-spin" /> : <Search className="size-4" />}
                 </Button>
@@ -848,10 +908,55 @@ export default function AdminPage() {
           <DialogHeader>
             <DialogTitle>Modifier « {editTarget?.name} »</DialogTitle>
           </DialogHeader>
-          <div className="space-y-3">
+          <div className="max-h-[65dvh] space-y-3 overflow-y-auto pr-1">
             <div className="space-y-1.5">
-              <Label htmlFor="f-name">Nom affiché (ex. nom commercial)</Label>
+              <Label htmlFor="f-name">Nom affiché</Label>
               <Input id="f-name" value={fName} onChange={(e) => setFName(e.target.value)} />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="f-cat">Catégorie</Label>
+                <select
+                  id="f-cat"
+                  value={fCategory}
+                  onChange={(e) => setFCategory(e.target.value as BusinessCategory)}
+                  className="h-10 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm"
+                >
+                  <option value="alimentation">Alimentation & Fermes</option>
+                  <option value="artisan">Artisans & Services</option>
+                  <option value="horeca">Horeca</option>
+                  <option value="distributeur">Distributeurs 24/7</option>
+                </select>
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="f-sub">Sous-catégorie (ex. pharmacie)</Label>
+                <Input id="f-sub" value={fSubcategory} onChange={(e) => setFSubcategory(e.target.value)} placeholder="pharmacie" />
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="f-addr">Adresse</Label>
+              <Input id="f-addr" value={fAddress} onChange={(e) => setFAddress(e.target.value)} placeholder="Rue des Carrières 49" />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="f-town">Commune</Label>
+                <Input id="f-town" value={fTown} onChange={(e) => setFTown(e.target.value)} placeholder="Seneffe" />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="f-zip">Code postal</Label>
+                <Input id="f-zip" value={fPostalCode} onChange={(e) => setFPostalCode(e.target.value)} placeholder="7181" />
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="f-desc">Description</Label>
+              <textarea
+                id="f-desc"
+                value={fDescription}
+                onChange={(e) => setFDescription(e.target.value)}
+                rows={2}
+                className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm"
+                placeholder="Description…"
+              />
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="f-phone">Téléphone (visible dès Vérifiée)</Label>
@@ -869,10 +974,10 @@ export default function AdminPage() {
               <Label htmlFor="f-news">Actu / offre flash (Pack Pro)</Label>
               <Input id="f-news" value={fNews} onChange={(e) => setFNews(e.target.value)} placeholder="Pain au levain chaud dès 16h" />
             </div>
-            <div className="flex justify-end gap-2 pt-1">
-              <Button variant="outline" size="sm" onClick={() => setEditTarget(null)}>Annuler</Button>
-              <Button size="sm" onClick={saveDetails}>Enregistrer</Button>
-            </div>
+          </div>
+          <div className="flex justify-end gap-2 pt-2">
+            <Button variant="outline" size="sm" onClick={() => setEditTarget(null)}>Annuler</Button>
+            <Button size="sm" onClick={saveDetails}>Enregistrer</Button>
           </div>
         </DialogContent>
       </Dialog>
