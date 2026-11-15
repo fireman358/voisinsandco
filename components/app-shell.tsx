@@ -208,6 +208,8 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
                 onCategoryChange={setCategory}
                 facets={facets}
                 onCitySelect={handleCitySelect}
+                radius={radius}
+                onRadiusChange={setRadius}
                 onCreated={handleBusinessCreated}
               />
             </TabsContent>

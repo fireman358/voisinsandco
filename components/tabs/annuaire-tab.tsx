@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Apple,
   Armchair,
@@ -392,6 +392,8 @@ export function AnnuaireTab({
   onCategoryChange,
   facets,
   onCitySelect,
+  radius,
+  onRadiusChange,
   onCreated,
 }: {
   businesses: Business[];
@@ -406,6 +408,8 @@ export function AnnuaireTab({
   onCategoryChange: (c: BusinessCategory | "all") => void;
   facets: Record<string, number>;
   onCitySelect: (city: { name: string; lat: number; lng: number }) => void;
+  radius: number;
+  onRadiusChange: (r: number) => void;
   onCreated: (b: Business) => void;
 }) {
   const [view, setView] = useState<"list" | "map">("list");
@@ -428,22 +432,29 @@ export function AnnuaireTab({
   const selected = filtered.find((b) => b.id === selectedId) ?? null;
   const visibleItems = filtered.slice(0, visible);
 
-  // Recherche unifiée : si le texte correspond à une commune, on recentre ;
-  // sinon c'est un filtre texte (géré côté serveur).
+  // Champ « Commune » : indique clairement où l'on cherche, et permet de recentrer.
+  const [communeQuery, setCommuneQuery] = useState(geoShortLabel);
+  useEffect(() => {
+    setCommuneQuery(geoShortLabel);
+  }, [geoShortLabel]);
+
   const communeMatches = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
+    const q = communeQuery.trim().toLowerCase();
     if (q.length < 2) return [];
     return COMMUNES.filter((c) => c.name.toLowerCase().startsWith(q)).slice(0, 8);
-  }, [searchQuery]);
+  }, [communeQuery]);
 
-  const onSearchEnter = () => {
-    const q = searchQuery.trim().toLowerCase();
+  const pickCommune = (raw: string) => {
+    const q = raw.trim().toLowerCase();
     if (!q) return;
     const c = COMMUNES.find((x) => x.name.toLowerCase() === q) ?? communeMatches[0];
-    if (c) {
-      onCitySelect({ name: c.name, lat: c.lat, lng: c.lng });
-      onSearchQueryChange("");
-    }
+    if (c) onCitySelect({ name: c.name, lat: c.lat, lng: c.lng });
+  };
+
+  const onCommuneChange = (v: string) => {
+    setCommuneQuery(v);
+    const exact = COMMUNES.find((x) => x.name.toLowerCase() === v.trim().toLowerCase());
+    if (exact) onCitySelect({ name: exact.name, lat: exact.lat, lng: exact.lng });
   };
 
   const resetFilters = () => {
@@ -490,25 +501,22 @@ export function AnnuaireTab({
         className="sticky z-30 bg-paper py-2"
         style={{ top: "var(--app-header-h, 0px)" }}
       >
-        <div className="flex items-center gap-2">
-          <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="relative sm:w-44 sm:shrink-0">
+            <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-forest" />
             <Input
-              value={searchQuery}
-              onChange={(e) => {
-                onSearchQueryChange(e.target.value);
-                setVisible(PAGE_SIZE);
-              }}
+              value={communeQuery}
+              list="annuaire-communes"
+              onChange={(e) => onCommuneChange(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
-                  onSearchEnter();
+                  pickCommune(communeQuery);
                 }
               }}
-              placeholder="Commune ou commerce…"
+              placeholder="Commune"
               className="pl-9"
-              list="annuaire-communes"
-              aria-label="Rechercher une commune ou un commerce"
+              aria-label="Commune"
             />
             <datalist id="annuaire-communes">
               {communeMatches.map((c) => (
@@ -516,31 +524,50 @@ export function AnnuaireTab({
               ))}
             </datalist>
           </div>
-          <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)} className="h-10 shrink-0">
-            <SlidersHorizontal className="size-4" /> Filtres
-          </Button>
+          <div className="flex items-center gap-2 sm:flex-1">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+              <Input
+                value={searchQuery}
+                onChange={(e) => {
+                  onSearchQueryChange(e.target.value);
+                  setVisible(PAGE_SIZE);
+                }}
+                placeholder="Commerce ou métier…"
+                className="pl-9"
+                aria-label="Rechercher un commerce"
+              />
+            </div>
+            <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)} className="h-10 shrink-0">
+              <SlidersHorizontal className="size-4" /> Filtres
+            </Button>
+          </div>
         </div>
-        {(activity !== "all" || category !== "all") && (
-          <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px]">
-            {category !== "all" && (
-              <span className="rounded-full bg-forest px-2 py-0.5 font-medium text-white">
-                {CATEGORIES.find((c) => c.key === category)?.label}
-              </span>
-            )}
-            {activity !== "all" && (
-              <span className="rounded-full bg-accent-light px-2 py-0.5 font-medium text-accent-dark">
-                {SUBCATEGORY_GROUP_LABELS[activity] ?? activityLabel(activity)}
-              </span>
-            )}
+        <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-neutral-500">
+          <span className="inline-flex items-center gap-1">
+            <MapPin className="size-3 text-forest" /> Autour de{" "}
+            <strong className="font-semibold text-neutral-700">{geoShortLabel}</strong> · {radius} km
+          </span>
+          {category !== "all" && (
+            <span className="rounded-full bg-forest px-2 py-0.5 font-medium text-white">
+              {CATEGORIES.find((c) => c.key === category)?.label}
+            </span>
+          )}
+          {activity !== "all" && (
+            <span className="rounded-full bg-accent-light px-2 py-0.5 font-medium text-accent-dark">
+              {SUBCATEGORY_GROUP_LABELS[activity] ?? activityLabel(activity)}
+            </span>
+          )}
+          {(activity !== "all" || category !== "all") && (
             <button
               type="button"
               onClick={resetFilters}
-              className="text-neutral-500 underline-offset-2 hover:underline"
+              className="underline-offset-2 hover:underline"
             >
               Réinitialiser
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {filtersOpen && (
@@ -648,11 +675,33 @@ export function AnnuaireTab({
       ) : filtered.length === 0 ? (
         <div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-neutral-300 bg-white py-10 text-center">
           <SearchX className="size-8 text-neutral-300" />
-          <p className="text-sm font-medium text-neutral-600">Aucune adresse dans ce rayon.</p>
-          <p className="max-w-xs text-xs text-neutral-400">
-            Élargis le rayon, ou tape une ville plus grande (Nivelles, La Louvière…) dans la barre du
-            haut.
+          <p className="text-sm font-medium text-neutral-600">
+            {searchQuery.trim()
+              ? `Aucun résultat pour « ${searchQuery.trim()} »`
+              : "Aucun commerce trouvé"}{" "}
+            dans un rayon de {radius} km autour de {geoShortLabel}.
           </p>
+          <p className="max-w-xs text-xs text-neutral-400">
+            Élargis le rayon, ou change de commune dans le champ « Commune ».
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 pt-1">
+            {radius < 15 && (
+              <Button size="sm" onClick={() => onRadiusChange(radius < 10 ? 10 : 15)}>
+                Élargir à {radius < 10 ? 10 : 15} km
+              </Button>
+            )}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                onSearchQueryChange("");
+                onCategoryChange("all");
+                onActivityChange("all");
+              }}
+            >
+              Tout effacer
+            </Button>
+          </div>
         </div>
       ) : view === "map" ? (
         <div className="space-y-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4 lg:space-y-0">
