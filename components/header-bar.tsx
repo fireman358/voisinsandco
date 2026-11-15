@@ -2,11 +2,11 @@
 
 import { useMemo, useState } from "react";
 import communesJson from "@/lib/communes.json";
-import { Database, LocateFixed, MapPin, Search, Users } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Database, LocateFixed, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
 import { RADIUS_OPTIONS } from "@/lib/constants";
 import type { GeoState } from "@/lib/types";
 
@@ -56,30 +56,28 @@ export function HeaderBar({
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto w-full max-w-3xl px-4 py-3">
+    <header className="sticky top-0 z-40 overflow-hidden border-b border-white/10 bg-forest-950 text-white shadow-lg backdrop-blur">
+      <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
+      <div className="relative mx-auto w-full max-w-3xl px-4 py-3">
         <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-anthracite shadow-sm">
-              <Users className="size-5 text-accent" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold leading-tight text-ink">Voisins &amp; Co</h1>
-              <p className="text-xs text-neutral-500">
-                Économie locale &amp; entraide
-              </p>
-            </div>
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold leading-none tracking-tight">
+              Voisins <span className="text-accent">&amp;</span> Co
+            </h1>
+            <p className="mt-1 text-[11px] font-medium text-white/60">
+              Économie locale &amp; entraide de voisinage
+            </p>
           </div>
           {demo && (
-            <Badge variant="secondary" className="gap-1 text-[11px]">
-              <Database className="size-3" /> Données de démo (D1 non liée)
-            </Badge>
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/80">
+              <Database className="size-3" /> Données de démo
+            </span>
           )}
         </div>
 
         <div className="mt-3 flex items-center gap-2">
           <div className="relative flex-1">
-            <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-accent-dark" />
+            <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-forest" />
             <Input
               list="communes-list"
               value={cityQuery}
@@ -90,9 +88,9 @@ export function HeaderBar({
                   pickCity();
                 }
               }}
-              placeholder="Ta ville (ex. Seneffe, Namur, Dinant…)"
+              placeholder="Ta commune (ex. Seneffe, Namur, Dinant…)"
               className="h-10 pl-9 text-sm font-medium"
-              aria-label="Rechercher une ville"
+              aria-label="Rechercher une commune"
             />
             <datalist id="communes-list">
               {cityMatches.map((c) => (
@@ -104,8 +102,9 @@ export function HeaderBar({
             variant="outline"
             size="icon"
             onClick={() => pickCity()}
-            title="Rechercher cette ville"
-            aria-label="Rechercher cette ville"
+            title="Rechercher cette commune"
+            aria-label="Rechercher cette commune"
+            className="border-white/20 bg-white/10 text-white hover:bg-white/20"
           >
             <Search className="size-4" />
           </Button>
@@ -115,18 +114,19 @@ export function HeaderBar({
             onClick={onUseGps}
             title="Utiliser ma position actuelle (GPS)"
             aria-label="Utiliser ma position actuelle"
+            className="border-white/20 bg-white/10 text-white hover:bg-white/20"
           >
             <LocateFixed className="size-4" />
           </Button>
         </div>
-        <p className="mt-1 text-[11px] text-neutral-400">
-          Tape ta ville puis Entrée (ou la loupe) — pas besoin de GPS.
+        <p className="mt-1 text-[11px] text-white/50">
+          Tape ta commune puis Entrée (ou la loupe) — pas besoin de GPS.
         </p>
 
-        <div className="mt-2.5 rounded-xl border border-neutral-200 bg-paper px-3 py-2.5">
+        <div className="mt-2.5 rounded-xl bg-white px-3 py-2.5 text-neutral-900 shadow-sm">
           <div className="flex items-center justify-between gap-2 text-xs font-medium text-neutral-600">
             <span>Rayon de recherche</span>
-            <span className="whitespace-nowrap rounded-md bg-forest px-2 py-0.5 text-white">
+            <span className="whitespace-nowrap rounded-md bg-forest px-2 py-0.5 font-semibold text-white">
               {radius} km autour de {geo.shortLabel}
             </span>
           </div>
@@ -146,7 +146,7 @@ export function HeaderBar({
           </div>
         </div>
 
-        <p className="mt-2 text-xs text-neutral-500">
+        <p className="mt-2 text-xs text-white/60">
           {count} adresse{count > 1 ? "s" : ""} dans le périmètre • distances à vol d&apos;oiseau
         </p>
       </div>

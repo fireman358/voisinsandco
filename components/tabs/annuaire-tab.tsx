@@ -148,7 +148,7 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
             {b.news}
           </p>
         )}
-        {b.bce && <p className="text-[11px] text-neutral-400">N° BCE : {b.bce}</p>}
+        {b.bce && <p className="font-mono text-[11px] text-neutral-400">N° BCE : {b.bce}</p>}
         <div className="flex flex-wrap gap-2 pt-1">
           {telHref && b.tier !== "standard" && (
             <Button asChild variant="secondary" size="sm">

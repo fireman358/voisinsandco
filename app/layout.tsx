@@ -1,8 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { Bricolage_Grotesque, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/components/toast";
 import { PwaRegister } from "@/components/pwa-register";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://voisinsandco.edukisto.win"),
@@ -40,7 +54,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${bricolage.variable} ${spaceMono.variable}`}>
       <body className="bg-paper font-sans text-neutral-900 antialiased">
         <ToastProvider>{children}</ToastProvider>
         <PwaRegister />

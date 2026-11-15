@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HeaderBar } from "@/components/header-bar";
+import { NeighbourhoodMotif } from "@/components/neighbourhood-motif";
 import { AnnuaireTab } from "@/components/tabs/annuaire-tab";
 import { BonsPlansTab } from "@/components/tabs/bons-plans-tab";
 import { MurTab } from "@/components/tabs/mur-tab";
@@ -197,38 +198,41 @@ export function AppShell({ initialData }: { initialData?: AppShellInitialData })
             </TabsList>
           </Tabs>
         )}
-      <footer className="border-t border-neutral-200 bg-anthracite px-4 py-4 text-center text-xs text-neutral-300">
-        <p>
-          Une réalisation{" "}
-          <a
-            href="https://edukisto.win/"
-            target="_blank"
-            rel="noreferrer"
-            className="font-semibold text-accent underline-offset-2 hover:underline"
-          >
-            Edukisto
-          </a>{" "}
-          — votre informaticien de proximité
-        </p>
-        <p className="mt-1">
-          Données © les{" "}
-          <a
-            href="https://www.openstreetmap.org/copyright"
-            target="_blank"
-            rel="noreferrer"
-            className="text-accent underline-offset-2 hover:underline"
-          >
-            contributeurs d&apos;OpenStreetMap
-          </a>{" "}
-          (ODbL) ·{" "}
-          <Link href="/legal" className="text-accent underline-offset-2 hover:underline">
-            Mentions légales &amp; confidentialité
-          </Link>{" "}
-          ·{" "}
-          <Link href="/admin" title="Console" className="text-neutral-500 hover:text-accent">
-            •
-          </Link>
-        </p>
+      <footer className="relative overflow-hidden border-t border-white/10 bg-forest-950 px-4 py-5 text-center text-xs text-neutral-300">
+        <NeighbourhoodMotif className="pointer-events-none absolute inset-0 h-full w-full text-white opacity-[0.05]" />
+        <div className="relative">
+          <p>
+            Une réalisation{" "}
+            <a
+              href="https://edukisto.win/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-accent underline-offset-2 hover:underline"
+            >
+              Edukisto
+            </a>{" "}
+            — votre informaticien de proximité
+          </p>
+          <p className="mt-1">
+            Données © les{" "}
+            <a
+              href="https://www.openstreetmap.org/copyright"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent underline-offset-2 hover:underline"
+            >
+              contributeurs d&apos;OpenStreetMap
+            </a>{" "}
+            (ODbL) ·{" "}
+            <Link href="/legal" className="text-accent underline-offset-2 hover:underline">
+              Mentions légales &amp; confidentialité
+            </Link>{" "}
+            ·{" "}
+            <Link href="/admin" title="Console" className="text-neutral-500 hover:text-accent">
+              •
+            </Link>
+          </p>
+        </div>
       </footer>
       </main>
     </div>

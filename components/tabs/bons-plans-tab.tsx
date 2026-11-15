@@ -359,7 +359,7 @@ export function BonsPlansTab({
         ) : (
           <div className="space-y-3">
             {heroDeal && (
-              <Card className="lift overflow-hidden border-accent/40 bg-gradient-to-br from-amber-50 to-accent-light/40">
+              <Card className="lift overflow-hidden border-2 border-dashed border-amber-300/60 bg-gradient-to-br from-amber-50 to-accent-light/40">
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
@@ -380,7 +380,7 @@ export function BonsPlansTab({
                   <p className="mt-2 text-sm text-neutral-600">{heroDeal.description}</p>
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-accent-dark">{formatPrice(heroDeal.price)}</span>
+                      <span className="font-mono text-2xl font-bold text-accent-dark">{formatPrice(heroDeal.price)}</span>
                       {heroDeal.originalPrice && (
                         <span className="text-sm text-neutral-400 line-through">
                           {formatPrice(heroDeal.originalPrice)}
@@ -406,7 +406,7 @@ export function BonsPlansTab({
                 .map((deal) => {
                   const Icon = DEAL_ICONS[deal.category] ?? Store;
                   return (
-                    <Card key={deal.id} className="lift overflow-hidden">
+                    <Card key={deal.id} className="lift overflow-hidden border border-dashed border-amber-200/80">
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2.5">
@@ -433,7 +433,7 @@ export function BonsPlansTab({
                   <CardContent className="space-y-2">
                     <p className="text-xs text-neutral-500">{deal.description}</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-accent-dark">{formatPrice(deal.price)}</span>
+                      <span className="font-mono text-xl font-bold text-accent-dark">{formatPrice(deal.price)}</span>
                       {deal.originalPrice && (
                         <span className="text-xs text-neutral-400 line-through">
                           {formatPrice(deal.originalPrice)}
