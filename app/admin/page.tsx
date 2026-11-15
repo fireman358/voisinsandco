@@ -9,7 +9,17 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import communesJson from "@/lib/communes.json";
-import { subcategoryLabel, type Business, type BusinessCategory, type BusinessTier } from "@/lib/types";
+import {
+  GROUP_CATEGORY,
+  GROUP_LABELS,
+  GROUP_REPRESENTATIVE,
+  groupOf,
+  subcategoryLabel,
+  type Business,
+  type BusinessCategory,
+  type BusinessTier,
+  type GroupKey,
+} from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const COMMUNES = communesJson as { name: string; lat: number; lng: number }[];
@@ -351,7 +361,7 @@ export default function AdminPage() {
 
   const [editTarget, setEditTarget] = useState<Business | null>(null);
   const [fName, setFName] = useState("");
-  const [fCategory, setFCategory] = useState<BusinessCategory>("artisan");
+  const [fGroup, setFGroup] = useState<GroupKey>("services");
   const [fSubcategory, setFSubcategory] = useState("");
   const [fAddress, setFAddress] = useState("");
   const [fTown, setFTown] = useState("");
@@ -364,7 +374,7 @@ export default function AdminPage() {
   const openEdit = (b: Business) => {
     setEditTarget(b);
     setFName(b.name);
-    setFCategory(b.category);
+    setFGroup(groupOf(b.subcategory, b.category));
     setFSubcategory(b.subcategory ?? "");
     setFAddress(b.address);
     setFTown(b.town);
@@ -378,14 +388,17 @@ export default function AdminPage() {
   const saveDetails = async () => {
     if (!editTarget) return;
     setError("");
+    const originalGroup = groupOf(fSubcategory, editTarget.category);
+    const nextSub = fGroup === originalGroup ? fSubcategory : GROUP_REPRESENTATIVE[fGroup];
+    const nextCat = GROUP_CATEGORY[fGroup];
     try {
       await api("/api/admin/businesses", {
         method: "PATCH",
         body: JSON.stringify({
           id: editTarget.id,
           name: fName,
-          category: fCategory,
-          subcategory: fSubcategory,
+          category: nextCat,
+          subcategory: nextSub,
           address: fAddress,
           town: fTown,
           postalCode: fPostalCode,
@@ -401,8 +414,8 @@ export default function AdminPage() {
           ? {
               ...x,
               name: fName || x.name,
-              category: fCategory,
-              subcategory: fSubcategory || undefined,
+              category: nextCat,
+              subcategory: nextSub || undefined,
               address: fAddress,
               town: fTown,
               postalCode: fPostalCode,
@@ -939,14 +952,13 @@ export default function AdminPage() {
                 <Label htmlFor="f-cat">Catégorie</Label>
                 <select
                   id="f-cat"
-                  value={fCategory}
-                  onChange={(e) => setFCategory(e.target.value as BusinessCategory)}
+                  value={fGroup}
+                  onChange={(e) => setFGroup(e.target.value as GroupKey)}
                   className="h-10 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm"
                 >
-                  <option value="alimentation">Alimentation & Fermes</option>
-                  <option value="artisan">Artisans & Services</option>
-                  <option value="horeca">Horeca</option>
-                  <option value="distributeur">Distributeurs 24/7</option>
+                  {(Object.keys(GROUP_LABELS) as GroupKey[]).map((g) => (
+                    <option key={g} value={g}>{GROUP_LABELS[g]}</option>
+                  ))}
                 </select>
               </div>
               <div className="space-y-1.5">

@@ -120,8 +120,33 @@ export const GROUP_LABELS: Record<GroupKey, string> = {
   autres: "Autres",
 };
 
+/** Sous-catégorie représentative d'un groupe (quand on reclasse depuis l'admin). */
+export const GROUP_REPRESENTATIVE: Record<GroupKey, string> = {
+  alimentation: "epicerie",
+  horeca: "restaurant",
+  sante: "medecin",
+  maison: "construction",
+  services: "conseil",
+  commerces: "vetements",
+  auto: "garage",
+  distributeurs: "distributeur",
+  autres: "divers",
+};
+
+/** Catégorie « technique » stockée en base pour un groupe donné. */
+export const GROUP_CATEGORY: Record<GroupKey, BusinessCategory> = {
+  alimentation: "alimentation",
+  horeca: "horeca",
+  distributeurs: "distributeur",
+  sante: "artisan",
+  maison: "artisan",
+  services: "artisan",
+  commerces: "artisan",
+  auto: "artisan",
+  autres: "artisan",
+};
+
 const GROUP_OF: Record<string, GroupKey> = {
-  // Alimentation & Fermes
   ferme: "alimentation", farm: "alimentation", beekeeper: "alimentation", honey: "alimentation",
   supermarket: "alimentation", supermarche: "alimentation", convenience: "alimentation", grocery: "alimentation",
   country_store: "alimentation", epicerie: "alimentation", bakery: "alimentation", boulangerie: "alimentation",
