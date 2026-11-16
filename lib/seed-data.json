@@ -54050,6 +54050,22 @@
       "lng": 5.260191
     },
     {
+      "id": "osm-14382980896-cabinet-dentaire-sophie-vellut",
+      "name": "Cabinet Dentaire Sophie Vellut",
+      "category": "artisan",
+      "subcategory": "dentist",
+      "tier": "standard",
+      "description": "Artisan ou service de proximité, repéré sur OpenStreetMap.",
+      "address": "2 Rue Gaston Delvaux",
+      "town": "Chastre",
+      "postalCode": "1450",
+      "lat": 50.608441,
+      "lng": 4.648493,
+      "phone": "+3210604058",
+      "website": "https://www.cabinet-dentaire-sophie-vellut.be/",
+      "hours": "Mo-Th 09:00-18:00; Fr 09:00-15:00"
+    },
+    {
       "id": "osm-12094830194-digitalternative",
       "name": "DigitAlterNative",
       "category": "artisan",
