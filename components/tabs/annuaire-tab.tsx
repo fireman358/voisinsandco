@@ -24,6 +24,7 @@ import {
   Clock,
   Coffee,
   Cheese,
+  ChevronDown,
   Croissant,
   Crown,
   Dumbbell,
@@ -302,7 +303,12 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
   return (
     <Card className={cn("lift overflow-hidden", b.tier === "pro" && "border-accent/70 bg-accent-light/40")}>
       <CardContent className="space-y-2 p-3">
-        <div className="flex items-start justify-between gap-2">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="flex w-full items-center justify-between gap-2 text-left"
+        >
           <div className="flex min-w-0 items-center gap-2.5">
             <div
               className={cn(
@@ -321,8 +327,13 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
               </p>
             </div>
           </div>
-          <TierBadge tier={b.tier} prime={b.prime} />
-        </div>
+          <div className="flex shrink-0 items-center gap-1.5">
+            <TierBadge tier={b.tier} prime={b.prime} />
+            <ChevronDown
+              className={cn("size-4 text-neutral-400 transition-transform", open && "rotate-180")}
+            />
+          </div>
+        </button>
 
         <div className="flex flex-wrap items-center gap-1.5">
           {telHref && b.tier !== "standard" && (
@@ -338,13 +349,6 @@ function BusinessCard({ b, onClaim }: { b: Business; onClaim: (b: Business) => v
             </a>
           </Button>
           <ShareButton title={b.name} text={`${b.name} — ${b.town} sur Le Bon Voisin`} />
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-md px-2 py-1 text-xs font-medium text-neutral-500 hover:bg-neutral-100"
-          >
-            {open ? "Moins" : "Détails"}
-          </button>
         </div>
 
         {open && (
