@@ -138,7 +138,7 @@ const NACE_RULES = [
   [/commerce de v[ée]hicules? automobiles?/, "garage"],
   [/banques?/, "banque"],
   [/assurances?/, "assurance"],
-  [/commerces? de d[ée]tail hors magasin|interm[ée]diation pour le commerce de d[ée]tail|vente [àa] domicile/, "vente_directe"],
+  [/commerces? de d[ée]tail hors magasin|interm[ée]diation pour le commerce de d[ée]tail|vente [àa] domicile|d[ée]marcheurs?|d[ée]monstrateurs?|distributeurs automatiques|marchands? ambulants?/, "vente_directe"],
   [/activit[ée]s? des soci[ée]t[ée]s? holding|holding/, null],
   [/comptables?|comptabilit[ée]|fiscalit[ée]/, "comptabilite"],
   [/avocats?|barreaux/, "avocat"],
